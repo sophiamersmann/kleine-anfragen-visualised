@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <election-period-list data-src="./data_vParties_slim.csv"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import ElectionPeriodList from './components/ElectionPeriodList.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    ElectionPeriodList,
   },
 };
 </script>
