@@ -1,6 +1,11 @@
 <template>
-  <div class="election-period-list" v-for="group in groups" :key="group.key">
-    <election-period :body=group.body :term=group.term :data=group.values />
+  <div class="election-period-list">
+    <election-period
+      v-for="group in groups"
+      :key=group.key
+      :body=group.body
+      :term=group.term
+      :data=group.values />
   </div>
 </template>
 
