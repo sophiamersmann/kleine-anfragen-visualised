@@ -1,5 +1,8 @@
 <template>
-  <election-period-list data-src="./data_vParties_slim.csv"/>
+  <main>
+    <election-period-list data-src="./data_vParties_slim.csv"/>
+  </main>
+  <nav></nav>
 </template>
 
 <script>
@@ -15,11 +18,12 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: grid;
+  grid-template-columns: 1fr minmax(50px, 10%);
+  padding: var(--spacing);
+}
+
+nav {
+  background-color: bisque;
 }
 </style>

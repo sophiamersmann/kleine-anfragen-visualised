@@ -1,6 +1,5 @@
 <template>
   <div class="election-period">
-    <h1>Election Period</h1>
     <p>Body: {{ body }}</p>
     <p>Term: {{ term }}</p>
     <p>data: {{ data.length }}</p>
@@ -21,5 +20,13 @@ export default {
 <style scoped>
 .election-period {
   background-color: aliceblue;
+  margin: var(--spacing) 0;
+  padding: calc(var(--spacing) / 2);
+}
+.election-period:first-of-type {
+  margin-top: 0;
+}
+.election-period:last-of-type {
+  margin-bottom: 0;
 }
 </style>
