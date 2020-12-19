@@ -1,6 +1,8 @@
 <template>
   <main>
-    <election-period-list data-src="./data_vParties_slim.csv"/>
+    <election-period-list
+      src-requests="./data_vParties_slim.csv"
+      src-votes="./votes.csv" />
   </main>
   <nav></nav>
 </template>

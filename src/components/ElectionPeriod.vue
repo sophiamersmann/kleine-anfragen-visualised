@@ -14,11 +14,12 @@ export default {
   props: {
     body: String,
     term: String,
-    data: Object,
+    requests: Object,
+    votes: Object,
   },
   mounted() {
     const chartDiv = this.$el.querySelector('.chart');
-    new Chart(`#${chartDiv.id}`, this.data)
+    new Chart(`#${chartDiv.id}`, this.requests, this.votes)
       .draw(chartDiv.clientWidth);
   },
   computed: {

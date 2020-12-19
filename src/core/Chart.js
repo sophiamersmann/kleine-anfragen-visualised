@@ -1,12 +1,13 @@
 import { select } from 'd3-selection';
-import { rollups, descending } from 'd3-array';
+import { rollups, descending, sum } from 'd3-array';
 
 import drawHorizentalBar from '@/core/draw';
 
 export default class Chart {
-  constructor(selector, data) {
+  constructor(selector, requests, votes) {
     this.selector = selector;
-    this.data = data;
+    this.requests = requests;
+    this.votes = votes;
     this.svg = null;
 
     this.width = 100;
@@ -19,6 +20,8 @@ export default class Chart {
     };
 
     this.partyCount = null;
+
+    this.barHeight = 5;
   }
 
   draw(width = 100) {
@@ -31,14 +34,14 @@ export default class Chart {
   }
 
   prepareData() {
-    this.partyCount = rollups(this.data, (v) => v.length, (d) => d.inquiringParty)
+    this.partyCount = rollups(this.requests, (v) => v.length, (d) => d.inquiringParty)
       .map(([party, count]) => ({ party, count }));
 
     // const sortedParties = this.partyCount
     //   .sort((a, b) => descending(a.count, b.count))
     //   .map((d) => d.party);
 
-    // this.data = this.data.map((d) => {
+    // this.requests = this.requests.map((d) => {
     //   // eslint-disable-next-line no-param-reassign
     //   d.index = {
     //     inquiringParty: sortedParties.findIndex((e) => e === d.party),
@@ -61,20 +64,22 @@ export default class Chart {
   }
 
   drawHorizentalBars() {
-    const data = Object.fromEntries(
+    const rData = Object.fromEntries(
       this.partyCount
         .sort((a, b) => descending(a.count, b.count))
-        .map(({ party, count }) => [party, count / this.data.length]),
+        .map(({ party, count }) => [party, count / this.requests.length]),
+    );
+
+    const proportionTotal = sum(this.votes.map((d) => d.vote));
+    const vData = Object.fromEntries(
+      this.votes.map(({ party, vote }) => [party, vote / proportionTotal]),
     );
 
     const { svg, width, margin } = this;
-    const height = 5;
-    drawHorizentalBar(svg, data, {
-      width, margin, y: 0, height,
-    });
-    drawHorizentalBar(svg, data, {
-      width, margin, y: 2 * height, height: 4 * height,
-    });
+    const h = this.barHeight;
+    const cfg = { width, margin };
+    drawHorizentalBar(svg, vData, { ...cfg, ...{ y: 0, height: h } });
+    drawHorizentalBar(svg, rData, { ...cfg, ...{ y: 2 * h, height: 4 * h } });
 
     return this;
   }
