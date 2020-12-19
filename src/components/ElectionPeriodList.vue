@@ -50,6 +50,7 @@ export default {
         type: d.interpellation_type,
         date: d.published_at,
         body: d.body,
+        inquiringParty: d.inquiringParty,
       }));
     },
   },

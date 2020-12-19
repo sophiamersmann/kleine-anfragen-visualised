@@ -1,18 +1,30 @@
 <template>
   <div class="election-period">
-    <p>Body: {{ body }}</p>
-    <p>Term: {{ term }}</p>
-    <p>data: {{ data.length }}</p>
+    <h2>{{ body }} ({{ term }})</h2>
+    <div :id=chartId class="chart"></div>
   </div>
 </template>
 
 <script>
+import Chart from '@/core/Chart';
+import normalize from '@/core/utils';
+
 export default {
   name: 'ElectionPeriod',
   props: {
     body: String,
     term: String,
     data: Object,
+  },
+  mounted() {
+    const chartDiv = this.$el.querySelector('.chart');
+    new Chart(`#${chartDiv.id}`, this.data)
+      .draw(chartDiv.clientWidth);
+  },
+  computed: {
+    chartId() {
+      return `chart-${normalize(this.body)}-${this.term}`;
+    },
   },
 };
 </script>

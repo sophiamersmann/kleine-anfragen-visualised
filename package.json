@@ -10,7 +10,11 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "d3-array": "^2.9.1",
+    "d3-color": "^2.0.0",
     "d3-fetch": "^2.0.0",
+    "d3-scale": "^3.2.3",
+    "d3-selection": "^2.0.0",
+    "d3-shape": "^2.0.0",
     "normalize.css": "^8.0.1",
     "vue": "^3.0.0"
   },
