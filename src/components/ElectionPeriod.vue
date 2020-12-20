@@ -36,10 +36,4 @@ export default {
   margin: var(--spacing) 0;
   padding: calc(var(--spacing) / 2);
 }
-.election-period:first-of-type {
-  margin-top: 0;
-}
-.election-period:last-of-type {
-  margin-bottom: 0;
-}
 </style>

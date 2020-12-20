@@ -84,5 +84,8 @@ export default {
 <style scoped>
 .election-period-list {
   background-color: khaki;
+  display: grid;
+  grid-gap: calc(var(--spacing) / 2);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
 </style>

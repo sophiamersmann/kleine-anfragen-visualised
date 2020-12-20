@@ -4,7 +4,6 @@
       src-requests="./data_vParties_slim.csv"
       src-elections="./elections.csv" />
   </main>
-  <nav></nav>
 </template>
 
 <script>
@@ -19,13 +18,7 @@ export default {
 </script>
 
 <style>
-#app {
-  display: grid;
-  grid-template-columns: 1fr minmax(50px, 10%);
+main {
   padding: var(--spacing);
-}
-
-nav {
-  background-color: bisque;
 }
 </style>

@@ -1,8 +1,6 @@
 import { select } from 'd3-selection';
-import { rollups, descending, sum } from 'd3-array';
 
-import drawHorizentalBar from '@/core/draw';
-
+// eslint-disable-next-line no-unused-vars
 const PARTY_COLORS = new Map([
   ['CDU', 'black'],
   ['CDU/CSU', 'black'],
@@ -29,7 +27,7 @@ export default class Chart {
     this.elections = elections;
     this.svg = null;
 
-    this.width = 100;
+    this.width = null;
     this.height = 100;
     this.margin = {
       top: 0,
@@ -44,22 +42,16 @@ export default class Chart {
     this.barHeight = 5;
   }
 
-  draw(width = 100) {
+  draw(width) {
     this.width = width;
 
     return this
       .prepareData()
-      .setUpSVG();
+      .setUpSVG()
+      .drawRect();
   }
 
   prepareData() {
-    this.partyCount = rollups(this.requests, (v) => v.length, (d) => d.party)
-      .map(([party, count]) => ({ party, count }));
-
-    this.sortedParties = this.partyCount
-      .sort((a, b) => descending(a.count, b.count))
-      .map((d) => d.party);
-
     return this;
   }
 
@@ -71,27 +63,6 @@ export default class Chart {
       // .style('height', this.height + this.margin.top + this.margin.botom)
       .append('g')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
-    return this;
-  }
-
-  drawHorizentalBars() {
-    const rData = Object.fromEntries(
-      this.partyCount
-        .sort((a, b) => descending(a.count, b.count))
-        .map(({ party, count }) => [party, count / this.requests.length]),
-    );
-
-    const proportionTotal = sum(this.votes.map((d) => d.vote));
-    const vData = Object.fromEntries(
-      this.votes.map(({ party, vote }) => [party, vote / proportionTotal]),
-    );
-
-    const { svg, width, margin } = this;
-    const h = this.barHeight;
-    const cfg = { width, margin };
-    drawHorizentalBar(svg, vData, { ...cfg, ...{ y: 0, height: h } }, PARTY_COLORS);
-    drawHorizentalBar(svg, rData, { ...cfg, ...{ y: 2 * h, height: 4 * h } }, PARTY_COLORS);
-
     return this;
   }
 }
