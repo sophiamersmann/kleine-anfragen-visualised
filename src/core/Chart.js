@@ -23,10 +23,10 @@ const PARTY_COLORS = new Map([
 ]);
 
 export default class Chart {
-  constructor(selector, requests, votes) {
+  constructor(selector, requests, elections) {
     this.selector = selector;
     this.requests = requests;
-    this.votes = votes;
+    this.elections = elections;
     this.svg = null;
 
     this.width = 100;
@@ -49,8 +49,7 @@ export default class Chart {
 
     return this
       .prepareData()
-      .setUpSVG()
-      .drawHorizentalBars();
+      .setUpSVG();
   }
 
   prepareData() {

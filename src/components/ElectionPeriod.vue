@@ -15,11 +15,11 @@ export default {
     body: String,
     term: String,
     requests: Object,
-    votes: Object,
+    elections: Object,
   },
   mounted() {
     const chartDiv = this.$el.querySelector('.chart');
-    new Chart(`#${chartDiv.id}`, this.requests, this.votes)
+    new Chart(`#${chartDiv.id}`, this.requests, this.elections)
       .draw(chartDiv.clientWidth);
   },
   computed: {

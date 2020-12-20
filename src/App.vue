@@ -2,7 +2,7 @@
   <main>
     <election-period-list
       src-requests="./data_vParties_slim.csv"
-      src-votes="./votes.csv" />
+      src-elections="./elections.csv" />
   </main>
   <nav></nav>
 </template>

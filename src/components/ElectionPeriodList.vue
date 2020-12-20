@@ -6,12 +6,13 @@
       :body=group.body
       :term=group.term
       :requests=group.requests
-      :votes=group.votes />
+      :elections=group.elections />
   </div>
 </template>
 
 <script>
 import { csv } from 'd3-fetch';
+import { timeParse } from 'd3-time-format';
 import { group, groups } from 'd3-array';
 
 import normalize from '@/core/utils';
@@ -25,12 +26,12 @@ export default {
   },
   props: {
     srcRequests: String,
-    srcVotes: String,
+    srcElections: String,
   },
   data() {
     return {
       requests: [],
-      votes: [],
+      elections: [],
       merged: [],
     };
   },
@@ -39,16 +40,16 @@ export default {
 
     const keyFunc = (d) => `${normalize(d.body)}/${d.term}`;
     const groupedRequests = groups(this.requests, keyFunc);
-    const groupedVotes = group(this.votes, keyFunc);
+    const groupedElections = group(this.elections, keyFunc);
 
     this.merged = groupedRequests.map(([key, requests]) => ({
       key,
       body: requests[0].body,
       term: requests[0].term,
-      years: groupedVotes.get(key)[0].years,
+      dates: groupedElections.get(key)[0].years,
       requests: requests.map(({ body, term, ...rest }) => rest),
-      votes: groupedVotes.get(key).map(({
-        body, term, years, ...rest
+      elections: groupedElections.get(key).map(({
+        body, term, dates, ...rest
       }) => rest),
     }));
   },
@@ -63,15 +64,17 @@ export default {
         party: d.inquiringPartyNormalised,
       }));
 
-      this.votes = await csv(this.srcVotes, (d) => ({
+      const parseTime = timeParse('%d/%m/%Y');
+      this.elections = await csv(this.srcElections, (d) => ({
         body: d.body,
         term: d.term,
-        years: {
-          start: +d.start_year,
-          end: +d.end_year,
+        dates: {
+          start: parseTime(d.start_date),
+          end: d.end_date ? parseTime(d.end_date) : new Date(2020, 12, 31),
         },
         party: d.party,
-        vote: +d.vote,
+        seats: +d.seats,
+        isOpposition: d.opposition === 'TRUE',
       }));
     },
   },
