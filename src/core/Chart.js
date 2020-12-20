@@ -3,6 +3,25 @@ import { rollups, descending, sum } from 'd3-array';
 
 import drawHorizentalBar from '@/core/draw';
 
+const PARTY_COLORS = new Map([
+  ['CDU', 'black'],
+  ['CDU/CSU', 'black'],
+  ['CSU', 'black'],
+  ['SPD', 'red'],
+  ['BUNDNIS90/DIEGRUNEN', 'green'],
+  ['DIELINKE', 'purple'],
+  ['FDP', 'yellow'],
+  ['FDP/DVP', 'yellow'],
+  ['AFD', 'blue'],
+  ['PIRATEN', 'orange'],
+  ['NPD', 'brown'],
+  ['FW', 'gray'],
+  ['ABW', 'gray'],
+  ['BVB/FW', 'gray'],
+  ['BIW', 'gray'],
+  ['SSW', 'gray'],
+]);
+
 export default class Chart {
   constructor(selector, requests, votes) {
     this.selector = selector;
@@ -20,6 +39,7 @@ export default class Chart {
     };
 
     this.partyCount = null;
+    this.sortedParties = null;
 
     this.barHeight = 5;
   }
@@ -34,20 +54,12 @@ export default class Chart {
   }
 
   prepareData() {
-    this.partyCount = rollups(this.requests, (v) => v.length, (d) => d.inquiringParty)
+    this.partyCount = rollups(this.requests, (v) => v.length, (d) => d.party)
       .map(([party, count]) => ({ party, count }));
 
-    // const sortedParties = this.partyCount
-    //   .sort((a, b) => descending(a.count, b.count))
-    //   .map((d) => d.party);
-
-    // this.requests = this.requests.map((d) => {
-    //   // eslint-disable-next-line no-param-reassign
-    //   d.index = {
-    //     inquiringParty: sortedParties.findIndex((e) => e === d.party),
-    //   };
-    //   return d;
-    // });
+    this.sortedParties = this.partyCount
+      .sort((a, b) => descending(a.count, b.count))
+      .map((d) => d.party);
 
     return this;
   }
@@ -78,8 +90,8 @@ export default class Chart {
     const { svg, width, margin } = this;
     const h = this.barHeight;
     const cfg = { width, margin };
-    drawHorizentalBar(svg, vData, { ...cfg, ...{ y: 0, height: h } });
-    drawHorizentalBar(svg, rData, { ...cfg, ...{ y: 2 * h, height: 4 * h } });
+    drawHorizentalBar(svg, vData, { ...cfg, ...{ y: 0, height: h } }, PARTY_COLORS);
+    drawHorizentalBar(svg, rData, { ...cfg, ...{ y: 2 * h, height: 4 * h } }, PARTY_COLORS);
 
     return this;
   }

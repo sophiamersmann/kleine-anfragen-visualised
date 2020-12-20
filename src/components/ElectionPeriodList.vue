@@ -60,7 +60,7 @@ export default {
         title: d.title,
         type: d.interpellation_type,
         date: d.published_at,
-        inquiringParty: d.inquiringParty,
+        party: d.inquiringPartyNormalised,
       }));
 
       this.votes = await csv(this.srcVotes, (d) => ({
