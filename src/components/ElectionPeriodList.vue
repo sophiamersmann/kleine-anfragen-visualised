@@ -5,6 +5,7 @@
       :key=group.key
       :body=group.body
       :term=group.term
+      :dates=group.dates
       :requests=group.requests
       :elections=group.elections />
   </div>
@@ -46,7 +47,7 @@ export default {
       key,
       body: requests[0].body,
       term: requests[0].term,
-      dates: groupedElections.get(key)[0].years,
+      dates: groupedElections.get(key)[0].dates,
       requests: requests.map(({ body, term, ...rest }) => rest),
       elections: groupedElections.get(key).map(({
         body, term, dates, ...rest
