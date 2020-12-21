@@ -15,10 +15,25 @@ const PARTY_COLORS = new Map([
   ['PIRATEN', 'orange'],
   ['NPD', 'brown'],
   ['FW', 'gray'],
-  ['ABW', 'gray'],
   ['BVB/FW', 'gray'],
-  ['BIW', 'gray'],
   ['SSW', 'gray'],
+]);
+
+const PARTY_NAMES = new Map([
+  ['CDU', 'CDU'],
+  ['CDU/CSU', 'CDU/CSU'],
+  ['CSU', 'CSU'],
+  ['SPD', 'SPD'],
+  ['BUNDNIS90/DIEGRUNEN', 'Grüne'],
+  ['DIELINKE', 'Linke'],
+  ['FDP', 'FDP'],
+  ['FDP/DVP', 'FDP/DVP'],
+  ['AFD', 'AfD'],
+  ['PIRATEN', 'Piraten'],
+  ['NPD', 'NPD'],
+  ['FW', 'FW'],
+  ['BVB/FW', 'BVB/FW'],
+  ['SSW', 'SSW'],
 ]);
 
 export default class Chart {
@@ -42,7 +57,7 @@ export default class Chart {
 
     this.config = {
       offset: {
-        left: 180,
+        left: 80,
         top: 5,
       },
       radius: 6,
@@ -145,7 +160,7 @@ export default class Chart {
       .attr('fill', 'black')
       .style('dominant-baseline', 'central')
       .style('font-size', '0.9em')
-      .text((d) => d.party);
+      .text((d) => PARTY_NAMES.get(d.party));
 
     line.selectAll('circle')
       .data((d) => range(Math.round(d.value)))
