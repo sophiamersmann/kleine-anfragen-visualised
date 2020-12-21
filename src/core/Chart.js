@@ -9,8 +9,8 @@ const PARTY_COLORS = new Map([
   ['SPD', 'red'],
   ['BUNDNIS90/DIEGRUNEN', 'green'],
   ['DIELINKE', 'purple'],
-  ['FDP', 'yellow'],
-  ['FDP/DVP', 'yellow'],
+  ['FDP', 'gold'],
+  ['FDP/DVP', 'gold'],
   ['AFD', 'blue'],
   ['PIRATEN', 'orange'],
   ['NPD', 'brown'],
@@ -30,7 +30,7 @@ export default class Chart {
 
     this.svg = null;
     this.width = null;
-    this.height = 150;
+    this.height = null;
     this.margin = {
       top: 0,
       right: 0,
@@ -39,18 +39,31 @@ export default class Chart {
     };
 
     this.nRequestsPerHead = null;
+
+    this.config = {
+      offset: {
+        left: 180,
+        top: 5,
+      },
+      radius: 6,
+      maxCirclesPerLine: null,
+    };
+    this.config.diameter = this.config.radius * 2;
   }
 
   draw(width) {
-    this.width = width;
-
     return this
-      .prepareData()
+      .prepareData(width)
       .setUpSVG()
       .drawRequestsPerHead();
   }
 
-  prepareData() {
+  prepareData(width) {
+    const { offset, diameter: dm } = this.config;
+
+    this.width = width;
+    this.config.maxCirclesPerLine = Math.floor((this.width - offset.left) / dm) - 2;
+
     const nDays = timeDay.count(this.dates.start, this.dates.end);
 
     const seatsMap = new Map(this.elections
@@ -58,6 +71,7 @@ export default class Chart {
     const oppositionMap = new Map(this.elections
       .map(({ party, isOpposition }) => [party, isOpposition]));
 
+    let running = 0;
     this.nRequestsPerHead = rollups(this.requests, (v) => v.length, (d) => d.party)
       .map(([party, nRequests]) => {
         const value = ((nRequests / nDays) * 365) / seatsMap.get(party);
@@ -70,7 +84,18 @@ export default class Chart {
           display,
           isOpposition: oppositionMap.get(party),
         };
-      }).filter(({ party }) => !['MISSING', 'FRAKTIONSLOS'].includes(party));
+      })
+      .filter(({ party }) => !['MISSING', 'FRAKTIONSLOS'].includes(party))
+      .sort((a, b) => descending(a.value, b.value))
+      .map((d) => {
+        let nLines = Math.ceil(Math.round(d.value) / this.config.maxCirclesPerLine);
+        nLines = nLines || 1;
+        const prevLines = running;
+        running += nLines;
+        return { ...d, ...{ nLines, prevLines } };
+      });
+
+    this.height = running * dm + (this.nRequestsPerHead.length + 1) * offset.top;
 
     return this;
   }
@@ -83,42 +108,55 @@ export default class Chart {
       // .style('height', this.height + this.margin.top + this.margin.botom)
       .append('g')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
+
+    this.svg.append('rect')
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .attr('fill', 'steelblue')
+      .attr('fill-opacity', 0.1);
+
     return this;
   }
 
   drawRequestsPerHead() {
-    const LINE_HEIGHT = 20;
-    const OFFSET = 200;
-    const RADIUS = 5;
+    const {
+      offset, radius: r, diameter: dm, maxCirclesPerLine: m,
+    } = this.config;
 
     const g = this.svg.append('g')
       .attr('class', 'g-requests-per-head');
 
     const line = g.selectAll('g')
-      .data(this.nRequestsPerHead.sort((a, b) => descending(a.value, b.value)))
+      .data(this.nRequestsPerHead)
       .join('g')
       .attr('class', 'g-requests-per-head')
-      .attr('transform', (_, i) => `translate(0, ${(i + 1) * LINE_HEIGHT})`)
+      .attr('transform', (d, i) => `translate(0, ${(d.prevLines + 1) * dm + i * offset.top})`)
       .attr('fill', (d) => PARTY_COLORS.get(d.party))
       .attr('fill-opacity', (d) => (d.isOpposition ? 1 : 0.4));
 
     line.append('text')
       .attr('class', 'label label-party')
       .attr('fill', 'black')
-      .attr('dominant-baseline', 'central')
+      .style('dominant-baseline', 'central')
+      .style('font-size', '0.9em')
       .text((d) => d.party);
 
     line.selectAll('circle')
       .data((d) => range(Math.round(d.value)))
       .join('circle')
-      .attr('cx', (d) => OFFSET + d * 2 * RADIUS)
-      .attr('r', RADIUS);
+      .attr('cx', (d) => offset.left + (d % m) * dm)
+      .attr('cy', (d) => Math.floor(d / m) * dm)
+      .attr('r', r);
 
     line.append('text')
-      .attr('x', (d) => (Math.round(d.value) >= 1 ? OFFSET + Math.round(d.value) * 2 * RADIUS : OFFSET - RADIUS))
-      .attr('dominant-baseline', 'central')
-      .attr('font-size', '0.9em')
-      .attr('fill-opacity', (d) => (d.isOpposition ? 1 : 0.3))
+      .attr('x', (d) => (Math.round(d.value) >= 1
+        ? offset.left + ((Math.round(d.value) - 1) % m) * dm + dm
+        : offset.left - r))
+      .attr('y', (d) => (Math.round(d.value) >= 1
+        ? Math.floor((Math.round(d.value) - 1) / m) * dm
+        : 0))
+      .style('dominant-baseline', 'central')
+      .style('font-size', '0.8em')
       .style('font-weight', 'bold')
       .text((d) => d.display);
 
