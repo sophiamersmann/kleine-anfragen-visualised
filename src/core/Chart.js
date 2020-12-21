@@ -57,7 +57,7 @@ export default class Chart {
 
     this.config = {
       offset: {
-        left: 80,
+        left: 70,
         top: 5,
       },
       radius: 6,
@@ -157,7 +157,9 @@ export default class Chart {
 
     line.append('text')
       .attr('class', 'label label-party')
+      .attr('x', offset.left)
       .attr('fill', 'black')
+      .style('text-anchor', 'end')
       .style('dominant-baseline', 'central')
       .style('font-size', '0.9em')
       .text((d) => PARTY_NAMES.get(d.party));
@@ -165,14 +167,14 @@ export default class Chart {
     line.selectAll('circle')
       .data((d) => range(Math.round(d.value)))
       .join('circle')
-      .attr('cx', (d) => offset.left + (d % m) * dm)
+      .attr('cx', (d) => offset.left + ((d % m) + 1) * dm)
       .attr('cy', (d) => Math.floor(d / m) * dm)
       .attr('r', r);
 
     line.append('text')
       .attr('x', (d) => (Math.round(d.value) >= 1
-        ? offset.left + ((Math.round(d.value) - 1) % m) * dm + dm
-        : offset.left - r))
+        ? offset.left + (Math.round(d.value) % m) * dm + dm
+        : offset.left + r))
       .attr('y', (d) => (Math.round(d.value) >= 1
         ? Math.floor((Math.round(d.value) - 1) / m) * dm
         : 0))
