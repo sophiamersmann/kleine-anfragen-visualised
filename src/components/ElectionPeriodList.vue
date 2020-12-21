@@ -6,6 +6,7 @@
       :body=group.body
       :term=group.term
       :dates=group.dates
+      :has-ended=group.hasEnded
       :requests=group.requests
       :elections=group.elections />
   </div>
@@ -48,9 +49,10 @@ export default {
       body: requests[0].body,
       term: requests[0].term,
       dates: groupedElections.get(key)[0].dates,
+      hasEnded: groupedElections.get(key)[0].hasEnded,
       requests: requests.map(({ body, term, ...rest }) => rest),
       elections: groupedElections.get(key).map(({
-        body, term, dates, ...rest
+        body, term, dates, hasEnded, ...rest
       }) => rest),
     }));
   },
@@ -73,6 +75,7 @@ export default {
           start: parseTime(d.start_date),
           end: d.end_date ? parseTime(d.end_date) : new Date(2020, 12, 31),
         },
+        hasEnded: d.end_date !== '',
         party: d.party,
         seats: +d.seats,
         isOpposition: d.opposition === 'TRUE',
