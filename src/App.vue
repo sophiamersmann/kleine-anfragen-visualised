@@ -1,24 +1,16 @@
 <template>
-  <main>
-    <election-period-list
-      src-requests="./data_vParties_slim.csv"
-      src-elections="./elections.csv" />
-  </main>
+  <top
+    src-requests="./data_vParties_slim.csv"
+    src-elections="./elections.csv" />
 </template>
 
 <script>
-import ElectionPeriodList from './components/ElectionPeriodList.vue';
+import Top from './components/Top.vue';
 
 export default {
   name: 'App',
   components: {
-    ElectionPeriodList,
+    Top,
   },
 };
 </script>
-
-<style>
-main {
-  padding: var(--spacing);
-}
-</style>

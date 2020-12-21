@@ -1,15 +1,20 @@
 <template>
-  <div class="election-period-list">
-    <election-period
-      v-for="group in merged"
-      :key=group.key
-      :body=group.body
-      :term=group.term
-      :dates=group.dates
-      :has-ended=group.hasEnded
-      :requests=group.requests
-      :elections=group.elections />
-  </div>
+  <main @click="onClick">
+    <div class="election-period-list">
+      <election-period
+        v-for="group in merged"
+        :key=group.key
+        :name=group.key
+        :body=group.body
+        :term=group.term
+        :dates=group.dates
+        :has-ended=group.hasEnded
+        :requests=group.requests
+        :elections=group.elections
+        :key-on-top=keyOnTop
+        @top="onTop" />
+    </div>
+  </main>
 </template>
 
 <script>
@@ -22,7 +27,7 @@ import normalize from '@/core/utils';
 import ElectionPeriod from './ElectionPeriod.vue';
 
 export default {
-  name: 'ElectionPeriodList',
+  name: 'Top',
   components: {
     ElectionPeriod,
   },
@@ -35,6 +40,7 @@ export default {
       requests: [],
       elections: [],
       merged: [],
+      keyOnTop: '',
     };
   },
   async created() {
@@ -81,11 +87,21 @@ export default {
         isOpposition: d.opposition === 'TRUE',
       }));
     },
+    onTop(key) {
+      this.keyOnTop = key;
+    },
+    onClick() {
+      this.keyOnTop = '';
+    },
   },
 };
 </script>
 
 <style scoped>
+main {
+  padding: var(--spacing);
+}
+
 .election-period-list {
   background-color: khaki;
   display: grid;

@@ -1,7 +1,9 @@
 <template>
-  <div class="election-period">
+  <div :class=classes @click.stop="onClick">
     <h2>{{ body }} ({{ years }})</h2>
-    <div :id=chartId class="chart"></div>
+    <div
+      :id=chartId
+      class="chart" />
   </div>
 </template>
 
@@ -14,16 +16,18 @@ import { timeFormat } from 'd3-time-format';
 export default {
   name: 'ElectionPeriod',
   props: {
+    name: String,
     body: String,
     term: String,
     dates: Object,
     hasEnded: Boolean,
     requests: Object,
     elections: Object,
+    keyOnTop: String,
   },
   data() {
     return {
-      chart: Object,
+      chart: null,
     };
   },
   created() {
@@ -39,6 +43,13 @@ export default {
     ).draw(chartDiv.clientWidth);
   },
   computed: {
+    classes() {
+      return {
+        'election-period': true,
+        popup: this.keyOnTop === this.name,
+        background: this.keyOnTop ? this.keyOnTop !== this.name : false,
+      };
+    },
     chartId() {
       return `chart-${normalize(this.body)}-${this.term}`;
     },
@@ -57,6 +68,9 @@ export default {
       const chartDiv = this.getChartDiv();
       this.chart.draw(chartDiv.clientWidth);
     },
+    onClick() {
+      this.$emit('top', this.name);
+    },
   },
 };
 </script>
@@ -66,5 +80,19 @@ export default {
   background-color: aliceblue;
   margin: var(--spacing) 0;
   padding: calc(var(--spacing) / 2);
+}
+.background {
+  filter: blur(4px);
+  pointer-events: none;
+}
+.popup {
+  --offset: 100px;
+  position: fixed;
+  z-index: 1;
+  left: var(--offset);
+  top: var(--offset);
+  width: calc(100% - 2 * var(--offset));
+  height: calc(100% - 2 * var(--offset));
+  transition: all 2s ease-in-out;
 }
 </style>
