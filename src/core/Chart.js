@@ -152,7 +152,7 @@ export default class Chart {
       .join('g')
       .attr('class', 'g-requests-per-head')
       .attr('transform', (d, i) => `translate(0, ${(d.prevLines + 1) * dm + i * offset.top})`)
-      .attr('fill', (d) => PARTY_COLORS.get(d.party))
+      .attr('fill', (d) => (Math.round(d.value) >= 1 ? PARTY_COLORS.get(d.party) : 'currentColor'))
       .attr('fill-opacity', (d) => (d.isOpposition ? 1 : 0.4));
 
     line.append('text')
