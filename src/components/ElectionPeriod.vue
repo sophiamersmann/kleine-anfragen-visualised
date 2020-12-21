@@ -78,7 +78,6 @@ export default {
 <style scoped>
 .election-period {
   background-color: aliceblue;
-  margin: var(--spacing) 0;
   padding: calc(var(--spacing) / 2);
 }
 .background {
@@ -86,13 +85,12 @@ export default {
   pointer-events: none;
 }
 .popup {
-  --offset: 100px;
+  --offset: calc(var(--spacing) * 4);
   position: fixed;
   z-index: 1;
   left: var(--offset);
   top: var(--offset);
   width: calc(100% - 2 * var(--offset));
   height: calc(100% - 2 * var(--offset));
-  transition: all 2s ease-in-out;
 }
 </style>
