@@ -36,7 +36,7 @@ const PARTY_NAMES = new Map([
   ['SSW', 'SSW'],
 ]);
 
-export default class Chart {
+export default class SummaryChart {
   constructor(selector, requests, elections, dates) {
     this.selector = selector;
     this.requests = requests;
@@ -125,8 +125,6 @@ export default class Chart {
     this.svg = select(this.selector)
       .append('svg')
       .attr('viewBox', [0, 0, this.width, this.height])
-      // .style('width', this.width + this.margin.left + this.margin.right)
-      // .style('height', this.height + this.margin.top + this.margin.botom)
       .append('g')
       .attr('transform', `translate(${this.margin.left}, ${this.margin.top})`);
 
@@ -150,7 +148,7 @@ export default class Chart {
     const line = g.selectAll('g')
       .data(this.nRequestsPerHead)
       .join('g')
-      .attr('class', 'g-requests-per-head')
+      .attr('class', 'line-requests-per-head')
       .attr('transform', (d, i) => `translate(0, ${(d.prevLines + 1) * dm + i * offset.top})`)
       .attr('fill', (d) => (Math.round(d.value) >= 1 ? PARTY_COLORS.get(d.party) : 'currentColor'))
       .attr('fill-opacity', (d) => (d.isOpposition ? 1 : 0.4));

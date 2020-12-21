@@ -2,13 +2,18 @@
   <div :class=classes @click.stop="onClick">
     <h2>{{ body }} ({{ years }})</h2>
     <div
-      :id=chartId
-      class="chart" />
+      :id=summaryChartId
+      class="chart chart-summary"
+      v-show="!classes.popup" />
+    <div
+      :id=detailedChartId
+      class="chart chart-detailed"
+      v-show="classes.popup" />
   </div>
 </template>
 
 <script>
-import Chart from '@/core/Chart';
+import SummaryChart from '@/core/SummaryChart';
 import normalize from '@/core/utils';
 
 import { timeFormat } from 'd3-time-format';
@@ -27,7 +32,7 @@ export default {
   },
   data() {
     return {
-      chart: null,
+      summaryChart: null,
     };
   },
   created() {
@@ -35,7 +40,7 @@ export default {
   },
   mounted() {
     const chartDiv = this.getChartDiv();
-    this.chart = new Chart(
+    this.summaryChart = new SummaryChart(
       `#${chartDiv.id}`,
       this.requests,
       this.elections,
@@ -50,8 +55,11 @@ export default {
         background: this.keyOnTop ? this.keyOnTop !== this.name : false,
       };
     },
-    chartId() {
-      return `chart-${normalize(this.body)}-${this.term}`;
+    summaryChartId() {
+      return `chart-summary-${normalize(this.body)}-${this.term}`;
+    },
+    detailedChartId() {
+      return `chart-detailed-${normalize(this.body)}-${this.term}`;
     },
     years() {
       const formatTime = timeFormat('%Y');
@@ -64,9 +72,9 @@ export default {
       return this.$el.querySelector('.chart');
     },
     onResize() {
-      if (!this.chart) return;
+      if (!this.summaryChart) return;
       const chartDiv = this.getChartDiv();
-      this.chart.draw(chartDiv.clientWidth);
+      this.summaryChart.draw(chartDiv.clientWidth);
     },
     onClick() {
       this.$emit('top', this.name);
