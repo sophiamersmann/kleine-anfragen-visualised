@@ -53,9 +53,15 @@ export default class Chart {
 
   draw(width) {
     return this
+      .reset()
       .prepareData(width)
       .setUpSVG()
       .drawRequestsPerHead();
+  }
+
+  reset() {
+    if (this.svg) select(`${this.selector} svg`).remove();
+    return this;
   }
 
   prepareData(width) {

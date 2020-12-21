@@ -18,14 +18,36 @@ export default {
     requests: Object,
     elections: Object,
   },
+  data() {
+    return {
+      chart: Object,
+    };
+  },
+  created() {
+    window.addEventListener('resize', this.onResize);
+  },
   mounted() {
-    const chartDiv = this.$el.querySelector('.chart');
-    new Chart(`#${chartDiv.id}`, this.requests, this.elections, this.dates)
-      .draw(chartDiv.clientWidth);
+    const chartDiv = this.getChartDiv();
+    this.chart = new Chart(
+      `#${chartDiv.id}`,
+      this.requests,
+      this.elections,
+      this.dates,
+    ).draw(chartDiv.clientWidth);
   },
   computed: {
     chartId() {
       return `chart-${normalize(this.body)}-${this.term}`;
+    },
+  },
+  methods: {
+    getChartDiv() {
+      return this.$el.querySelector('.chart');
+    },
+    onResize() {
+      if (!this.chart) return;
+      const chartDiv = this.getChartDiv();
+      this.chart.draw(chartDiv.clientWidth);
     },
   },
 };
