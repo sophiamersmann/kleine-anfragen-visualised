@@ -22,7 +22,8 @@
       :term=popup.term
       :dates=popup.dates
       :has-ended=popup.hasEnded
-      :requests=popup.requests />
+      :requests=popup.requests
+      :elections=popup.elections />
   </transition>
   <transition name="fade">
     <div
@@ -37,7 +38,7 @@ import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
 import { group, groups, rollup } from 'd3-array';
 
-import normalize from '@/core/utils';
+import { getTermId } from '@/core/utils';
 
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
@@ -71,7 +72,7 @@ export default {
   async created() {
     await this.fetchData();
 
-    const keyFunc = (d) => `${normalize(d.body)}/${d.term}`;
+    const keyFunc = (d) => getTermId(d.body, d.term);
     const groupedRequests = groups(this.requests, keyFunc);
     const groupedElections = group(this.elections, keyFunc);
 

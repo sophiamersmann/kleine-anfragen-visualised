@@ -9,9 +9,7 @@
 
 <script>
 import SummaryChart from '@/core/SummaryChart';
-import normalize from '@/core/utils';
-
-import { timeFormat } from 'd3-time-format';
+import { getTermId, displayTimeRange } from '@/core/utils';
 
 export default {
   name: 'ElectionPeriod',
@@ -44,12 +42,10 @@ export default {
   },
   computed: {
     summaryChartId() {
-      return `chart-summary-${normalize(this.body)}-${this.term}`;
+      return `chart-summary-${getTermId(this.body, this.term)}`;
     },
     years() {
-      const formatTime = timeFormat('%Y');
-      const years = Object.values(this.dates).map(formatTime);
-      return this.hasEnded ? years.join('-') : `ab ${years[0]}`;
+      return displayTimeRange(this.dates, this.hasEnded);
     },
   },
   methods: {
