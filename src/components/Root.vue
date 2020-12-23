@@ -97,7 +97,7 @@ export default {
       mergedMap: null,
       popup: null,
       sortOptions: [
-        { label: 'Sort alphabetically', value: 'alphabetically', active: false },
+        { label: 'Sort alphabetically', value: 'alphabetically', active: true },
         { label: 'Sort by the number of requests', value: 'requestCount', active: false },
       ],
       sortBy: 'alphabetically',
