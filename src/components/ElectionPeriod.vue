@@ -34,7 +34,7 @@ export default {
     window.addEventListener('resize', this.onResize);
   },
   mounted() {
-    const chartDiv = this.$el.querySelector('.chart-summary');
+    const chartDiv = this.getChartDiv();
     this.summaryChart = new SummaryChart(
       `#${chartDiv.id}`,
       this.requests,
@@ -56,6 +56,9 @@ export default {
     },
   },
   methods: {
+    getChartDiv() {
+      return this.$el.querySelector('.chart-summary');
+    },
     onResize() {
       if (!this.summaryChart) return;
       const chartDiv = this.getChartDiv();
