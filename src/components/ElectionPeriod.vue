@@ -46,9 +46,6 @@ export default {
     summaryChartId() {
       return `chart-summary-${normalize(this.body)}-${this.term}`;
     },
-    detailedChartId() {
-      return `chart-detailed-${normalize(this.body)}-${this.term}`;
-    },
     years() {
       const formatTime = timeFormat('%Y');
       const years = Object.values(this.dates).map(formatTime);
