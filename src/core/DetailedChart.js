@@ -6,7 +6,7 @@ export default class DetailedChart {
     this.requests = requests;
 
     this.svg = null;
-    this.width = 100;
+    this.width = null;
     this.height = 50;
     this.margin = {
       top: 0,
@@ -16,13 +16,14 @@ export default class DetailedChart {
     };
   }
 
-  draw() {
+  draw(width) {
     return this
-      .prepareData()
+      .prepareData(width)
       .setUpSVG();
   }
 
-  prepareData() {
+  prepareData(width) {
+    this.width = width;
     return this;
   }
 

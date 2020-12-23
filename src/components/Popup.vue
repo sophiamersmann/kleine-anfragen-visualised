@@ -46,7 +46,7 @@ export default {
     this.detailedChart = new DetailedChart(
       `#${detailedChartDiv.id}`,
       this.requests,
-    ).draw();
+    ).draw(detailedChartDiv.clientWidth);
   },
   computed: {
     summaryChartId() {
