@@ -1,16 +1,16 @@
 <template>
-  <top
+  <root
     src-requests="./data_vParties_slim.csv"
     src-elections="./elections.csv" />
 </template>
 
 <script>
-import Top from './components/Top.vue';
+import Root from './components/Root.vue';
 
 export default {
   name: 'App',
   components: {
-    Top,
+    Root,
   },
 };
 </script>

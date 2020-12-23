@@ -44,7 +44,7 @@ import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
 
 export default {
-  name: 'Top',
+  name: 'Root',
   components: {
     ElectionPeriod,
     Popup,
