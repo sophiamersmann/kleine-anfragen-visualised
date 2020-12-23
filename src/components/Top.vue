@@ -14,15 +14,22 @@
         @top="onTop" />
     </div>
   </main>
-  <popup
-    v-if="popup"
-    :name=popup.key
-    :body=popup.body
-    :term=popup.term
-    :dates=popup.dates
-    :has-ended=popup.hasEnded
-    :requests=popup.requests
-    @flat="onFlat" />
+  <transition name="scale">
+    <popup
+      v-if="popup"
+      :name=popup.key
+      :body=popup.body
+      :term=popup.term
+      :dates=popup.dates
+      :has-ended=popup.hasEnded
+      :requests=popup.requests />
+  </transition>
+  <transition name="fade">
+    <div
+      v-if="popup"
+      class="overlay"
+      @click="onFlat" />
+  </transition>
 </template>
 
 <script>
@@ -126,7 +133,7 @@ main {
 
 .background {
   filter: blur(4px);
-  transition: filter 0.3s;
+  transition: filter 0.2s ease-in;
 }
 
 .election-period-list {
@@ -134,5 +141,37 @@ main {
   display: grid;
   grid-gap: calc(var(--spacing) / 2);
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.2);
+
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fade-enter-active,
+.scale-enter-active  {
+  transition: all 0.2s ease-in;
+}
+
+.fade-leave-active,
+.scale-leave-active {
+  transition: all 0.1s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-from,
+.scale-leave-to {
+  transform: scale(0.9);
+  opacity: 0;
 }
 </style>
