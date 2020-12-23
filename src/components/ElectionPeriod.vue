@@ -1,14 +1,9 @@
 <template>
-  <div :class=classes @click.stop="onClick">
+  <div class="election-period" @click="onClick">
     <h2>{{ body }} ({{ years }})</h2>
     <div
       :id=summaryChartId
-      class="chart chart-summary"
-      v-show="!classes.popup" />
-    <div
-      :id=detailedChartId
-      class="chart chart-detailed"
-      v-show="classes.popup" />
+      class="chart chart-summary" />
   </div>
 </template>
 
@@ -28,8 +23,8 @@ export default {
     hasEnded: Boolean,
     requests: Object,
     elections: Object,
-    keyOnTop: String,
   },
+  emits: ['top'],
   data() {
     return {
       summaryChart: null,
@@ -39,7 +34,7 @@ export default {
     window.addEventListener('resize', this.onResize);
   },
   mounted() {
-    const chartDiv = this.getChartDiv();
+    const chartDiv = this.$el.querySelector('.chart-summary');
     this.summaryChart = new SummaryChart(
       `#${chartDiv.id}`,
       this.requests,
@@ -48,13 +43,6 @@ export default {
     ).draw(chartDiv.clientWidth);
   },
   computed: {
-    classes() {
-      return {
-        'election-period': true,
-        popup: this.keyOnTop === this.name,
-        background: this.keyOnTop ? this.keyOnTop !== this.name : false,
-      };
-    },
     summaryChartId() {
       return `chart-summary-${normalize(this.body)}-${this.term}`;
     },
@@ -68,9 +56,6 @@ export default {
     },
   },
   methods: {
-    getChartDiv() {
-      return this.$el.querySelector('.chart');
-    },
     onResize() {
       if (!this.summaryChart) return;
       const chartDiv = this.getChartDiv();
@@ -87,18 +72,5 @@ export default {
 .election-period {
   background-color: aliceblue;
   padding: calc(var(--spacing) / 2);
-}
-.background {
-  filter: blur(4px);
-  pointer-events: none;
-}
-.popup {
-  --offset: calc(var(--spacing) * 4);
-  position: fixed;
-  z-index: 1;
-  left: var(--offset);
-  top: var(--offset);
-  width: calc(100% - 2 * var(--offset));
-  height: calc(100% - 2 * var(--offset));
 }
 </style>

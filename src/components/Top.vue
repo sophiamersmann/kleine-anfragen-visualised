@@ -1,5 +1,5 @@
 <template>
-  <main @click="onClick">
+  <main :class=mainClasses>
     <div class="election-period-list">
       <election-period
         v-for="group in merged"
@@ -11,36 +11,54 @@
         :has-ended=group.hasEnded
         :requests=group.requests
         :elections=group.elections
-        :key-on-top=keyOnTop
         @top="onTop" />
     </div>
   </main>
+  <popup
+    v-if="popup"
+    :name=popup.key
+    :body=popup.body
+    :term=popup.term
+    :dates=popup.dates
+    :has-ended=popup.hasEnded
+    :requests=popup.requests
+    @flat="onFlat" />
 </template>
 
 <script>
 import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
-import { group, groups } from 'd3-array';
+import { group, groups, rollup } from 'd3-array';
 
 import normalize from '@/core/utils';
 
 import ElectionPeriod from './ElectionPeriod.vue';
+import Popup from './Popup.vue';
 
 export default {
   name: 'Top',
   components: {
     ElectionPeriod,
+    Popup,
   },
   props: {
     srcRequests: String,
     srcElections: String,
+  },
+  computed: {
+    mainClasses() {
+      return {
+        background: this.popup,
+      };
+    },
   },
   data() {
     return {
       requests: [],
       elections: [],
       merged: [],
-      keyOnTop: '',
+      mergedMap: null,
+      popup: null,
     };
   },
   async created() {
@@ -61,6 +79,8 @@ export default {
         body, term, dates, hasEnded, ...rest
       }) => rest),
     }));
+
+    this.mergedMap = rollup(this.merged, (v) => v[0], (d) => d.key);
   },
   methods: {
     async fetchData() {
@@ -71,6 +91,7 @@ export default {
         type: d.interpellation_type,
         date: d.published_at,
         party: d.inquiringPartyNormalised,
+        ministry: d.answerers,
       }));
 
       const parseTime = timeParse('%d/%m/%Y');
@@ -88,10 +109,10 @@ export default {
       }));
     },
     onTop(key) {
-      this.keyOnTop = key;
+      this.popup = this.mergedMap.get(key);
     },
-    onClick() {
-      this.keyOnTop = '';
+    onFlat() {
+      this.popup = null;
     },
   },
 };
@@ -100,6 +121,12 @@ export default {
 <style scoped>
 main {
   padding: var(--spacing);
+  transition: filter 0.1s;
+}
+
+.background {
+  filter: blur(4px);
+  transition: filter 0.3s;
 }
 
 .election-period-list {
