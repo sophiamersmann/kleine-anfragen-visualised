@@ -1,8 +1,11 @@
 <template>
   <main :class=mainClasses>
+    <data-button-group
+      :options=sortOptions
+      @clicked="setSortBy" />
     <div class="election-period-list">
       <election-period
-        v-for="group in merged"
+        v-for="group in sortedData"
         :key=group.key
         :name=group.key
         :body=group.body
@@ -36,16 +39,20 @@
 <script>
 import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
-import { group, groups, rollup } from 'd3-array';
+import {
+  group, groups, rollup, ascending, descending, sum,
+} from 'd3-array';
 
 import { getTermId } from '@/core/utils';
 
+import DataButtonGroup from './DataButtonGroup.vue';
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
 
 export default {
   name: 'Root',
   components: {
+    DataButtonGroup,
     ElectionPeriod,
     Popup,
   },
@@ -59,6 +66,28 @@ export default {
         background: this.popup,
       };
     },
+    sortedData() {
+      const data = this.merged;
+
+      let sortFunc;
+      switch (this.sortBy) {
+        case 'alphabetically':
+          sortFunc = (a, b) => ascending(a.body, b.body)
+            || ascending(a.dates.start, b.dates.start);
+          break;
+        case 'requestCount':
+          sortFunc = (a, b) => descending(
+            a.requests.length / sum(a.elections, (d) => d.seats),
+            b.requests.length / sum(b.elections, (d) => d.seats),
+          );
+          break;
+        default:
+          sortFunc = (a, b) => ascending(a.body, b.body)
+            || ascending(a.dates.start, b.dates.start);
+      }
+
+      return data.sort(sortFunc);
+    },
   },
   data() {
     return {
@@ -67,6 +96,11 @@ export default {
       merged: [],
       mergedMap: null,
       popup: null,
+      sortOptions: [
+        { label: 'Sort alphabetically', value: 'alphabetically', active: false },
+        { label: 'Sort by the number of requests', value: 'requestCount', active: false },
+      ],
+      sortBy: 'alphabetically',
     };
   },
   async created() {
@@ -122,6 +156,9 @@ export default {
     onFlat() {
       this.popup = null;
     },
+    setSortBy(value) {
+      this.sortBy = value;
+    },
   },
 };
 </script>
@@ -129,7 +166,7 @@ export default {
 <style scoped>
 main {
   padding: var(--spacing);
-  transition: filter 0.1s;
+  transition: filter 0.2s ease;
 }
 
 .background {
@@ -162,7 +199,7 @@ main {
 
 .fade-leave-active,
 .scale-leave-active {
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
 }
 
 .fade-enter-from,
