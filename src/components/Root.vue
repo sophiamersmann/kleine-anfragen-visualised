@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav :class=classes>
     <data-button-group
       :options=sortOptions
       @clicked="setSortBy" />
@@ -7,7 +7,7 @@
       :options=requestTypes
       @clicked="setRequestType" />
   </nav>
-  <main :class=mainClasses>
+  <main :class=classes>
     <div class="election-period-list">
       <election-period
         v-for="group in groups"
@@ -79,7 +79,7 @@ export default {
     srcElections: String,
   },
   computed: {
-    mainClasses() {
+    classes() {
       return {
         background: this.popup,
       };
