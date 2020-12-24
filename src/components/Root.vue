@@ -56,6 +56,19 @@ import DataButtonGroup from './DataButtonGroup.vue';
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
 
+const DEFAULT = {
+  sortOptions: [
+    { label: 'Sort alphabetically', value: 'alphabetically', active: true },
+    { label: 'Sort by the number of requests', value: 'requestCount', active: false },
+  ],
+  requestTypes: [
+    { label: 'All', value: 'all', active: true },
+    { label: 'Minor', value: 'minor', active: false },
+    { label: 'Major', value: 'major', active: false },
+    { label: 'Written', value: 'written', active: false },
+  ],
+};
+
 export default {
   name: 'Root',
   components: {
@@ -117,23 +130,22 @@ export default {
       merged: [],
       mergedMap: null,
       popup: null,
-      sortOptions: [
-        { label: 'Sort alphabetically', value: 'alphabetically', active: true },
-        { label: 'Sort by the number of requests', value: 'requestCount', active: false },
-      ],
+      sortOptions: DEFAULT.sortOptions,
+      requestTypes: DEFAULT.requestTypes,
       sortBy: 'alphabetically',
-      // Todo: Add number of requests in paranthesis
-      requestTypes: [
-        { label: 'All', value: 'all', active: true },
-        { label: 'Minor', value: 'minor', active: false },
-        { label: 'Major', value: 'major', active: false },
-        { label: 'Written', value: 'written', active: false },
-      ],
       requestType: 'all',
     };
   },
   async created() {
     await this.fetchData();
+
+    const requestCount = rollup(this.requests, (v) => v.length, (d) => d.type);
+    this.requestTypes = this.requestTypes.map((d) => {
+      const e = d;
+      const count = e.value === 'all' ? this.requests.length : requestCount.get(e.value);
+      e.label = `${e.label} (${count})`;
+      return e;
+    });
 
     const keyFunc = (d) => `${getTermId(d.body, d.term)}-${this.requestType}`;
     const groupedRequests = groups(this.requests, keyFunc);
