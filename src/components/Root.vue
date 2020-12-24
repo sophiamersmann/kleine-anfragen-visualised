@@ -1,13 +1,18 @@
 <template>
-  <main :class=mainClasses>
+  <nav>
     <data-button-group
       :options=sortOptions
       @clicked="setSortBy" />
+    <data-button-group
+      :options=requestTypes
+      @clicked="setRequestType" />
+  </nav>
+  <main :class=mainClasses>
     <div class="election-period-list">
       <election-period
-        v-for="group in sortedData"
+        v-for="group in groups"
         :key=group.key
-        :name=group.key
+        :name=group.name
         :body=group.body
         :term=group.term
         :dates=group.dates
@@ -37,6 +42,8 @@
 </template>
 
 <script>
+import cloneDeep from 'clone-deep';
+
 import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
 import {
@@ -66,8 +73,19 @@ export default {
         background: this.popup,
       };
     },
-    sortedData() {
-      const data = this.merged;
+    groups() {
+      let data = cloneDeep(this.merged);
+
+      if (this.requestType !== 'all') {
+        data = data
+          .map((d) => {
+            const e = d;
+            e.key = `${getTermId(e.body, e.term)}-${this.requestType}`;
+            e.requests = e.requests.filter((f) => f.type === this.requestType);
+            return d;
+          })
+          .filter((d) => d.requests.length > 0);
+      }
 
       let sortFunc;
       switch (this.sortBy) {
@@ -88,6 +106,9 @@ export default {
 
       return data.sort(sortFunc);
     },
+    groupsMap() {
+      return rollup(this.groups, (v) => v[0], (d) => d.name);
+    },
   },
   data() {
     return {
@@ -101,17 +122,26 @@ export default {
         { label: 'Sort by the number of requests', value: 'requestCount', active: false },
       ],
       sortBy: 'alphabetically',
+      // Todo: Add number of requests in paranthesis
+      requestTypes: [
+        { label: 'All', value: 'all', active: true },
+        { label: 'Minor', value: 'minor', active: false },
+        { label: 'Major', value: 'major', active: false },
+        { label: 'Written', value: 'written', active: false },
+      ],
+      requestType: 'all',
     };
   },
   async created() {
     await this.fetchData();
 
-    const keyFunc = (d) => getTermId(d.body, d.term);
+    const keyFunc = (d) => `${getTermId(d.body, d.term)}-${this.requestType}`;
     const groupedRequests = groups(this.requests, keyFunc);
     const groupedElections = group(this.elections, keyFunc);
 
     this.merged = groupedRequests.map(([key, requests]) => ({
       key,
+      name: getTermId(requests[0].body, requests[0].term),
       body: requests[0].body,
       term: requests[0].term,
       dates: groupedElections.get(key)[0].dates,
@@ -121,8 +151,6 @@ export default {
         body, term, dates, hasEnded, ...rest
       }) => rest),
     }));
-
-    this.mergedMap = rollup(this.merged, (v) => v[0], (d) => d.key);
   },
   methods: {
     async fetchData() {
@@ -151,13 +179,16 @@ export default {
       }));
     },
     onTop(key) {
-      this.popup = this.mergedMap.get(key);
+      this.popup = this.groupsMap.get(key);
     },
     onFlat() {
       this.popup = null;
     },
     setSortBy(value) {
       this.sortBy = value;
+    },
+    setRequestType(value) {
+      this.requestType = value;
     },
   },
 };
