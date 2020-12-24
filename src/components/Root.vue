@@ -61,6 +61,7 @@ const DEFAULT = {
   sortOptions: [
     { label: 'Sort alphabetically', value: 'alphabetically', active: true },
     { label: 'Sort by the number of requests', value: 'requestCount', active: false },
+    { label: 'Sort by start date', value: 'startDate', active: false },
   ],
   requestTypes: [
     { label: 'All', value: 'all', active: true },
@@ -77,11 +78,12 @@ const DEFAULT = {
 
 const SORT_FUNCS = {
   alphabetically: (a, b) => ascending(a.body, b.body)
-    || ascending(a.dates.start, b.dates.start),
+    || descending(a.dates.start, b.dates.start),
   requestCount: (a, b) => descending(
     a.requests.get('all').length / sum(a.elections, (d) => d.seats),
     b.requests.get('all').length / sum(b.elections, (d) => d.seats),
   ),
+  startDate: (a, b) => descending(a.dates.start, b.dates.start),
 };
 
 export default {
