@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import cloneDeep from 'clone-deep';
+import cloneDeep from 'lodash.clonedeep';
 
 import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
@@ -87,8 +87,12 @@ export default {
       };
     },
     groups() {
+      let start = new Date();
       let data = cloneDeep(this.merged);
+      let end = new Date();
+      console.log('deep clone', end - start);
 
+      start = new Date();
       if (this.requestType !== 'all') {
         data = data
           .map((d) => {
@@ -99,7 +103,10 @@ export default {
           })
           .filter((d) => d.requests.length > 0);
       }
+      end = new Date();
+      console.log('filter', end - start);
 
+      start = new Date();
       let sortFunc;
       switch (this.sortBy) {
         case 'alphabetically':
@@ -117,7 +124,11 @@ export default {
             || ascending(a.dates.start, b.dates.start);
       }
 
-      return data.sort(sortFunc);
+      data = data.sort(sortFunc);
+      end = new Date();
+      console.log('sort', end - start);
+
+      return data;
     },
     groupsMap() {
       return rollup(this.groups, (v) => v[0], (d) => d.name);
