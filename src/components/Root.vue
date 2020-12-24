@@ -75,6 +75,15 @@ const DEFAULT = {
   ],
 };
 
+const SORT_FUNCS = {
+  alphabetically: (a, b) => ascending(a.body, b.body)
+    || ascending(a.dates.start, b.dates.start),
+  requestCount: (a, b) => descending(
+    a.requests.get('all').length / sum(a.elections, (d) => d.seats),
+    b.requests.get('all').length / sum(b.elections, (d) => d.seats),
+  ),
+};
+
 export default {
   name: 'Root',
   components: {
@@ -98,24 +107,7 @@ export default {
           this.timeFilter === 'all' || d.hasEnded === (this.timeFilter === 'previous'))
           && d.requests.get(this.requestType).length > 0);
 
-      let sortFunc;
-      switch (this.sortBy) {
-        case 'alphabetically':
-          sortFunc = (a, b) => ascending(a.body, b.body)
-            || ascending(a.dates.start, b.dates.start);
-          break;
-        case 'requestCount':
-          sortFunc = (a, b) => descending(
-            a.requests.get('all').length / sum(a.elections, (d) => d.seats),
-            b.requests.get('all').length / sum(b.elections, (d) => d.seats),
-          );
-          break;
-        default:
-          sortFunc = (a, b) => ascending(a.body, b.body)
-            || ascending(a.dates.start, b.dates.start);
-      }
-
-      return data.sort(sortFunc);
+      return data.sort(SORT_FUNCS[this.sortBy]);
     },
     groupsMap() {
       return rollup(this.groups, (v) => v[0], (d) => d.name);
