@@ -11,13 +11,13 @@
     <div class="election-period-list">
       <election-period
         v-for="group in groups"
-        :key=group.key
+        :key="group.name+`-${requestType}`"
         :name=group.name
         :body=group.body
         :term=group.term
         :dates=group.dates
         :has-ended=group.hasEnded
-        :requests=group.requests
+        :requests=group.requests.get(requestType)
         :elections=group.elections
         @top="onTop" />
     </div>
@@ -30,7 +30,7 @@
       :term=popup.term
       :dates=popup.dates
       :has-ended=popup.hasEnded
-      :requests=popup.requests
+      :requests=popup.requests.get(requestType)
       :elections=popup.elections />
   </transition>
   <transition name="fade">
@@ -42,8 +42,6 @@
 </template>
 
 <script>
-import cloneDeep from 'lodash.clonedeep';
-
 import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
 import {
@@ -87,26 +85,9 @@ export default {
       };
     },
     groups() {
-      let start = new Date();
-      let data = cloneDeep(this.merged);
-      let end = new Date();
-      console.log('deep clone', end - start);
+      const data = this.merged
+        .filter((d) => d.requests.get(this.requestType).length > 0);
 
-      start = new Date();
-      if (this.requestType !== 'all') {
-        data = data
-          .map((d) => {
-            const e = d;
-            e.key = `${getTermId(e.body, e.term)}-${this.requestType}`;
-            e.requests = e.requests.filter((f) => f.type === this.requestType);
-            return d;
-          })
-          .filter((d) => d.requests.length > 0);
-      }
-      end = new Date();
-      console.log('filter', end - start);
-
-      start = new Date();
       let sortFunc;
       switch (this.sortBy) {
         case 'alphabetically':
@@ -115,8 +96,8 @@ export default {
           break;
         case 'requestCount':
           sortFunc = (a, b) => descending(
-            a.requests.length / sum(a.elections, (d) => d.seats),
-            b.requests.length / sum(b.elections, (d) => d.seats),
+            a.requests.get('all').length / sum(a.elections, (d) => d.seats),
+            b.requests.get('all').length / sum(b.elections, (d) => d.seats),
           );
           break;
         default:
@@ -124,11 +105,7 @@ export default {
             || ascending(a.dates.start, b.dates.start);
       }
 
-      data = data.sort(sortFunc);
-      end = new Date();
-      console.log('sort', end - start);
-
-      return data;
+      return data.sort(sortFunc);
     },
     groupsMap() {
       return rollup(this.groups, (v) => v[0], (d) => d.name);
@@ -162,18 +139,29 @@ export default {
     const groupedRequests = groups(this.requests, keyFunc);
     const groupedElections = group(this.elections, keyFunc);
 
-    this.merged = groupedRequests.map(([key, requests]) => ({
-      key,
-      name: getTermId(requests[0].body, requests[0].term),
-      body: requests[0].body,
-      term: requests[0].term,
-      dates: groupedElections.get(key)[0].dates,
-      hasEnded: groupedElections.get(key)[0].hasEnded,
-      requests: requests.map(({ body, term, ...rest }) => rest),
-      elections: groupedElections.get(key).map(({
-        body, term, dates, hasEnded, ...rest
-      }) => rest),
-    }));
+    this.merged = groupedRequests.map(([key, requests]) => {
+      const filtered = requests.map(({ body, term, ...rest }) => rest);
+      const grouped = group(filtered, (d) => d.type);
+      grouped.set('all', filtered);
+      DEFAULT.requestTypes.forEach((d) => {
+        if (d.value !== 'all' && !grouped.has(d.value)) {
+          grouped.set(d.value, []);
+        }
+      });
+
+      return {
+        key,
+        name: getTermId(requests[0].body, requests[0].term),
+        body: requests[0].body,
+        term: requests[0].term,
+        dates: groupedElections.get(key)[0].dates,
+        hasEnded: groupedElections.get(key)[0].hasEnded,
+        requests: grouped,
+        elections: groupedElections.get(key).map(({
+          body, term, dates, hasEnded, ...rest
+        }) => rest),
+      };
+    });
   },
   methods: {
     async fetchData() {
