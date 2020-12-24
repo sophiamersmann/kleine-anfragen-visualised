@@ -6,6 +6,9 @@
     <data-button-group
       :options=requestTypes
       @clicked="setRequestType" />
+    <data-button-group
+      :options=timeOptions
+      @clicked="setTimeFilter" />
   </nav>
   <main :class=classes>
     <div class="election-period-list">
@@ -65,6 +68,11 @@ const DEFAULT = {
     { label: 'Major', value: 'major', active: false },
     { label: 'Written', value: 'written', active: false },
   ],
+  timeOptions: [
+    { label: 'All', value: 'all', active: true },
+    { label: 'Current', value: 'current', active: false },
+    { label: 'Previous', value: 'previous', active: false },
+  ],
 };
 
 export default {
@@ -86,7 +94,9 @@ export default {
     },
     groups() {
       const data = this.merged
-        .filter((d) => d.requests.get(this.requestType).length > 0);
+        .filter((d) => (
+          this.timeFilter === 'all' || d.hasEnded === (this.timeFilter === 'previous'))
+          && d.requests.get(this.requestType).length > 0);
 
       let sortFunc;
       switch (this.sortBy) {
@@ -120,8 +130,10 @@ export default {
       popup: null,
       sortOptions: DEFAULT.sortOptions,
       requestTypes: DEFAULT.requestTypes,
+      timeOptions: DEFAULT.timeOptions,
       sortBy: 'alphabetically',
       requestType: 'all',
+      timeFilter: 'all',
     };
   },
   async created() {
@@ -162,6 +174,15 @@ export default {
         }) => rest),
       };
     });
+
+    this.timeOptions = this.timeOptions.map((d) => {
+      const e = d;
+      const count = (e.value === 'all'
+        ? this.merged.length
+        : this.merged.filter((f) => f.hasEnded === (e.value === 'previous')).length);
+      e.label = `${e.label} (${count})`;
+      return e;
+    });
   },
   methods: {
     async fetchData() {
@@ -200,6 +221,9 @@ export default {
     },
     setRequestType(value) {
       this.requestType = value;
+    },
+    setTimeFilter(value) {
+      this.timeFilter = value;
     },
   },
 };
