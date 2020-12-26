@@ -36,7 +36,7 @@ const PARTY_NAMES = new Map([
   ['SSW', 'SSW'],
 ]);
 
-export default class SummaryChart {
+export default class DotChart {
   constructor(selector, requests, elections, dates) {
     this.selector = selector;
     this.requests = requests;

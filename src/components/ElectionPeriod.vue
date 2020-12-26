@@ -2,13 +2,13 @@
   <div :class=classes @click="onClick">
     {{ body }} ({{ years }})
     <div
-      :id=summaryChartId
-      class="chart chart-summary" />
+      :id=dotChartId
+      class="chart chart-dot" />
   </div>
 </template>
 
 <script>
-import SummaryChart from '@/core/SummaryChart';
+import DotChart from '@/core/DotChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
 
 export default {
@@ -26,7 +26,7 @@ export default {
   emits: ['top'],
   data() {
     return {
-      summaryChart: null,
+      dotChart: null,
     };
   },
   created() {
@@ -34,7 +34,7 @@ export default {
   },
   mounted() {
     const chartDiv = this.getChartDiv();
-    this.summaryChart = new SummaryChart(
+    this.dotChart = new DotChart(
       `#${chartDiv.id}`,
       this.requests,
       this.elections,
@@ -47,8 +47,8 @@ export default {
       classes[`col-${this.periodNum}`] = true;
       return classes;
     },
-    summaryChartId() {
-      return `chart-summary-${getTermId(this.body, this.term)}`;
+    dotChartId() {
+      return `chart-dot-${getTermId(this.body, this.term)}`;
     },
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
@@ -56,12 +56,12 @@ export default {
   },
   methods: {
     getChartDiv() {
-      return this.$el.querySelector('.chart-summary');
+      return this.$el.querySelector('.chart-dot');
     },
     onResize() {
-      if (!this.summaryChart) return;
+      if (!this.dotChart) return;
       const chartDiv = this.getChartDiv();
-      this.summaryChart.draw(chartDiv.clientWidth);
+      this.dotChart.draw(chartDiv.clientWidth);
     },
     onClick() {
       this.$emit('top', this.name);

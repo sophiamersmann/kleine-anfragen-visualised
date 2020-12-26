@@ -2,8 +2,8 @@
   <div class="popup">
     <h2>{{ body }} ({{ years }})</h2>
     <div
-      :id=summaryChartId
-      class="chart chart-summary" />
+      :id=dotChartId
+      class="chart chart-dot" />
     <div
       :id=detailedChartId
       class="chart chart-detailed" />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import SummaryChart from '@/core/SummaryChart';
+import DotChart from '@/core/DotChart';
 import DetailedChart from '@/core/DetailedChart';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
@@ -29,18 +29,18 @@ export default {
   },
   data() {
     return {
-      summaryChart: null,
+      dotChart: null,
       detailedChart: null,
     };
   },
   mounted() {
-    const summaryChartDiv = this.$el.querySelector('.chart-summary');
-    this.summaryChart = new SummaryChart(
-      `#${summaryChartDiv.id}`,
+    const dotChartDiv = this.$el.querySelector('.chart-dot');
+    this.dotChart = new DotChart(
+      `#${dotChartDiv.id}`,
       this.requests,
       this.elections,
       this.dates,
-    ).draw(summaryChartDiv.clientWidth);
+    ).draw(dotChartDiv.clientWidth);
 
     const detailedChartDiv = this.$el.querySelector('.chart-detailed');
     this.detailedChart = new DetailedChart(
@@ -49,8 +49,8 @@ export default {
     ).draw(detailedChartDiv.clientWidth);
   },
   computed: {
-    summaryChartId() {
-      return `popup-chart-summary-${getTermId(this.body, this.term)}`;
+    dotChartId() {
+      return `popup-chart-dot-${getTermId(this.body, this.term)}`;
     },
     detailedChartId() {
       return `popup-chart-detailed-${getTermId(this.body, this.term)}`;
