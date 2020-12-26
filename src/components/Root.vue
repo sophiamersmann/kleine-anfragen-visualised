@@ -1,27 +1,28 @@
 <template>
-  <nav :class=classes>
-    <data-button-group
-      :options=sortOptions
-      @clicked="setSortBy" />
-    <data-button-group
-      :options=requestTypes
-      @clicked="setRequestType" />
-    <data-button-group
-      :options=timeOptions
-      @clicked="setTimeFilter" />
-  </nav>
   <main :class=classes>
-    <div class="election-period-list">
+    <div class="row">
+      <div class="col-1">Aktuelle Legislaturperiode</div>
+      <div class="col-2">Letzte Legislaturperiode</div>
+      <div class="col-3">Vorletzte Legislaturperiode</div>
+    </div>
+    <div
+      v-for="row in tiles"
+      :key=row.body
+      class="row">
+      <div class="col-0">
+        <div class="inner rotate">{{ row.body }}</div>
+      </div>
       <election-period
-        v-for="group in groups"
-        :key="group.name+`-${requestType}`"
-        :name=group.name
-        :body=group.body
-        :term=group.term
-        :dates=group.dates
-        :has-ended=group.hasEnded
-        :requests=group.requests.get(requestType)
-        :elections=group.elections
+        v-for="period in row.periods"
+        :key=period.name
+        :name=period.name
+        :body=period.body
+        :term=period.term
+        :dates=period.dates
+        :has-ended=period.hasEnded
+        :period-num=period.periodNum
+        :requests=period.requests
+        :elections=period.elections
         @top="onTop" />
     </div>
   </main>
@@ -33,7 +34,7 @@
       :term=popup.term
       :dates=popup.dates
       :has-ended=popup.hasEnded
-      :requests=popup.requests.get(requestType)
+      :requests=popup.requests
       :elections=popup.elections />
   </transition>
   <transition name="fade">
@@ -48,48 +49,17 @@
 import { csv } from 'd3-fetch';
 import { timeParse } from 'd3-time-format';
 import {
-  group, groups, rollup, ascending, descending, sum,
+  group, groups, ascending, descending, rollup,
 } from 'd3-array';
 
 import { getTermId } from '@/core/utils';
 
-import DataButtonGroup from './DataButtonGroup.vue';
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
-
-const DEFAULT = {
-  sortOptions: [
-    { label: 'Sort alphabetically', value: 'alphabetically', active: true },
-    { label: 'Sort by the number of requests', value: 'requestCount', active: false },
-    { label: 'Sort by start date', value: 'startDate', active: false },
-  ],
-  requestTypes: [
-    { label: 'All', value: 'all', active: true },
-    { label: 'Minor', value: 'minor', active: false },
-    { label: 'Major', value: 'major', active: false },
-    { label: 'Written', value: 'written', active: false },
-  ],
-  timeOptions: [
-    { label: 'All', value: 'all', active: true },
-    { label: 'Current', value: 'current', active: false },
-    { label: 'Previous', value: 'previous', active: false },
-  ],
-};
-
-const SORT_FUNCS = {
-  alphabetically: (a, b) => ascending(a.body, b.body)
-    || descending(a.dates.start, b.dates.start),
-  requestCount: (a, b) => descending(
-    a.requests.get('all').length / sum(a.elections, (d) => d.seats),
-    b.requests.get('all').length / sum(b.elections, (d) => d.seats),
-  ),
-  startDate: (a, b) => descending(a.dates.start, b.dates.start),
-};
 
 export default {
   name: 'Root',
   components: {
-    DataButtonGroup,
     ElectionPeriod,
     Popup,
   },
@@ -103,80 +73,43 @@ export default {
         background: this.popup,
       };
     },
-    groups() {
-      const data = this.merged
-        .filter((d) => (
-          this.timeFilter === 'all' || d.hasEnded === (this.timeFilter === 'previous'))
-          && d.requests.get(this.requestType).length > 0);
-
-      return data.sort(SORT_FUNCS[this.sortBy]);
-    },
-    groupsMap() {
-      return rollup(this.groups, (v) => v[0], (d) => d.name);
-    },
   },
   data() {
     return {
       requests: [],
       elections: [],
-      merged: [],
-      mergedMap: null,
+      tiles: [],
+      tileMap: null,
       popup: null,
-      sortOptions: DEFAULT.sortOptions,
-      requestTypes: DEFAULT.requestTypes,
-      timeOptions: DEFAULT.timeOptions,
-      sortBy: 'alphabetically',
-      requestType: 'all',
-      timeFilter: 'all',
     };
   },
   async created() {
     await this.fetchData();
 
-    const requestCount = rollup(this.requests, (v) => v.length, (d) => d.type);
-    this.requestTypes = this.requestTypes.map((d) => {
-      const e = d;
-      const count = e.value === 'all' ? this.requests.length : requestCount.get(e.value);
-      e.label = `${e.label} (${count})`;
-      return e;
-    });
-
-    const keyFunc = (d) => `${getTermId(d.body, d.term)}-${this.requestType}`;
+    const keyFunc = (d) => getTermId(d.body, d.term);
     const groupedRequests = groups(this.requests, keyFunc);
     const groupedElections = group(this.elections, keyFunc);
 
-    this.merged = groupedRequests.map(([key, requests]) => {
-      const filtered = requests.map(({ body, term, ...rest }) => rest);
-      const grouped = group(filtered, (d) => d.type);
-      grouped.set('all', filtered);
-      DEFAULT.requestTypes.forEach((d) => {
-        if (d.value !== 'all' && !grouped.has(d.value)) {
-          grouped.set(d.value, []);
-        }
-      });
-
-      return {
+    const merged = groupedRequests
+      .map(([key, requests]) => ({
         key,
         name: getTermId(requests[0].body, requests[0].term),
         body: requests[0].body,
         term: requests[0].term,
         dates: groupedElections.get(key)[0].dates,
         hasEnded: groupedElections.get(key)[0].hasEnded,
-        requests: grouped,
+        periodNum: groupedElections.get(key)[0].periodNum,
+        requests: requests.map(({ body, term, ...rest }) => rest),
         elections: groupedElections.get(key).map(({
-          body, term, dates, hasEnded, ...rest
+          body, term, dates, hasEnded, periodNum, ...rest
         }) => rest),
-      };
-    });
+      }))
+      .sort((a, b) => descending(a.dates.start, b.dates.start));
 
-    this.timeOptions = this.timeOptions.map((d) => {
-      const e = d;
-      const count = (e.value === 'all'
-        ? this.merged.length
-        : this.merged.filter((f) => f.hasEnded === (e.value === 'previous')).length);
-      e.label = `${e.label} (${count})`;
-      return e;
-    });
+    this.tiles = groups(merged, (d) => d.body)
+      .map(([body, periods]) => ({ body, periods }))
+      .sort((a, b) => ascending(a.body, b.body));
+    this.tileMap = rollup(merged, (v) => v[0], (d) => d.name);
   },
   methods: {
     async fetchData() {
@@ -199,25 +132,17 @@ export default {
           end: d.end_date ? parseTime(d.end_date) : new Date(2020, 12, 31),
         },
         hasEnded: d.end_date !== '',
+        periodNum: +d.period_num,
         party: d.party,
         seats: +d.seats,
         isOpposition: d.opposition === 'TRUE',
       }));
     },
     onTop(key) {
-      this.popup = this.groupsMap.get(key);
+      this.popup = this.tileMap.get(key);
     },
     onFlat() {
       this.popup = null;
-    },
-    setSortBy(value) {
-      this.sortBy = value;
-    },
-    setRequestType(value) {
-      this.requestType = value;
-    },
-    setTimeFilter(value) {
-      this.timeFilter = value;
     },
   },
 };
@@ -234,11 +159,44 @@ main {
   transition: filter 0.2s ease-in;
 }
 
-.election-period-list {
+.row {
   background-color: khaki;
+  margin: var(--spacing) 0;
   display: grid;
   grid-gap: calc(var(--spacing) / 2);
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: 100px repeat(3, 300px);
+}
+
+.col-1 {
+  grid-column: 2 / 3;
+}
+
+.col-2 {
+  grid-column: 3 / 4;
+}
+
+.col-3 {
+  grid-column: 4 / 5;
+}
+
+.col-0 {
+  background-color: cornsilk;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: white;
+}
+
+.rotate {
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
 }
 
 .overlay {

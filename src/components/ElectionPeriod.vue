@@ -1,6 +1,6 @@
 <template>
-  <div class="election-period" @click="onClick">
-    <h2>{{ body }} ({{ years }})</h2>
+  <div :class=classes @click="onClick">
+    {{ body }} ({{ years }})
     <div
       :id=summaryChartId
       class="chart chart-summary" />
@@ -19,6 +19,7 @@ export default {
     term: String,
     dates: Object,
     hasEnded: Boolean,
+    periodNum: Number,
     requests: Object,
     elections: Object,
   },
@@ -41,6 +42,11 @@ export default {
     ).draw(chartDiv.clientWidth);
   },
   computed: {
+    classes() {
+      const classes = { 'election-period': true };
+      classes[`col-${this.periodNum}`] = true;
+      return classes;
+    },
     summaryChartId() {
       return `chart-summary-${getTermId(this.body, this.term)}`;
     },
@@ -66,7 +72,6 @@ export default {
 
 <style scoped>
 .election-period {
-  background-color: aliceblue;
-  padding: calc(var(--spacing) / 2);
+  background-color: white;
 }
 </style>
