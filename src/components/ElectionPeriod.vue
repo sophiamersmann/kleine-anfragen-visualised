@@ -2,13 +2,13 @@
   <div :class=classes @click="onClick">
     {{ body }} ({{ years }})
     <div
-      :id=dotChartId
-      class="chart chart-dot" />
+      :id=parliamentChartId
+      class="chart chart-parliament" />
   </div>
 </template>
 
 <script>
-import DotChart from '@/core/DotChart';
+import ParliamentChart from '@/core/ParliamentChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
 
 export default {
@@ -26,15 +26,16 @@ export default {
   emits: ['top'],
   data() {
     return {
-      dotChart: null,
+      parliamentChart: null,
     };
   },
   created() {
     window.addEventListener('resize', this.onResize);
   },
   mounted() {
+    console.log(this.body, this.term);
     const chartDiv = this.getChartDiv();
-    this.dotChart = new DotChart(
+    this.parliamentChart = new ParliamentChart(
       `#${chartDiv.id}`,
       this.requests,
       this.elections,
@@ -47,8 +48,8 @@ export default {
       classes[`col-${this.periodNum}`] = true;
       return classes;
     },
-    dotChartId() {
-      return `chart-dot-${getTermId(this.body, this.term)}`;
+    parliamentChartId() {
+      return `chart-parliament-${getTermId(this.body, this.term)}`;
     },
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
@@ -56,12 +57,12 @@ export default {
   },
   methods: {
     getChartDiv() {
-      return this.$el.querySelector('.chart-dot');
+      return this.$el.querySelector('.chart-parliament');
     },
     onResize() {
-      if (!this.dotChart) return;
+      if (!this.parliamentChart) return;
       const chartDiv = this.getChartDiv();
-      this.dotChart.draw(chartDiv.clientWidth);
+      this.parliamentChart.draw(chartDiv.clientWidth);
     },
     onClick() {
       this.$emit('top', this.name);

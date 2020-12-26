@@ -2,39 +2,7 @@ import { select } from 'd3-selection';
 import { timeDay } from 'd3-time';
 import { rollups, range, descending } from 'd3-array';
 
-const PARTY_COLORS = new Map([
-  ['CDU', 'black'],
-  ['CDU/CSU', 'black'],
-  ['CSU', 'black'],
-  ['SPD', 'red'],
-  ['BUNDNIS90/DIEGRUNEN', 'green'],
-  ['DIELINKE', 'purple'],
-  ['FDP', 'gold'],
-  ['FDP/DVP', 'gold'],
-  ['AFD', 'blue'],
-  ['PIRATEN', 'orange'],
-  ['NPD', 'brown'],
-  ['FW', 'gray'],
-  ['BVB/FW', 'gray'],
-  ['SSW', 'gray'],
-]);
-
-const PARTY_NAMES = new Map([
-  ['CDU', 'CDU'],
-  ['CDU/CSU', 'CDU/CSU'],
-  ['CSU', 'CSU'],
-  ['SPD', 'SPD'],
-  ['BUNDNIS90/DIEGRUNEN', 'Grüne'],
-  ['DIELINKE', 'Linke'],
-  ['FDP', 'FDP'],
-  ['FDP/DVP', 'FDP/DVP'],
-  ['AFD', 'AfD'],
-  ['PIRATEN', 'Piraten'],
-  ['NPD', 'NPD'],
-  ['FW', 'FW'],
-  ['BVB/FW', 'BVB/FW'],
-  ['SSW', 'SSW'],
-]);
+import { PARTY_COLORS, PARTY_NAMES } from '@/core/CONSTANTS';
 
 export default class DotChart {
   constructor(selector, requests, elections, dates) {
