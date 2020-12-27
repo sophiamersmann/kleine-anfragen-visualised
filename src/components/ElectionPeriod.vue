@@ -1,6 +1,14 @@
 <template>
   <div :class=classes @click="onClick">
-    {{ body }} ({{ years }})
+    <div>
+      {{ body }} ({{ years }})
+      <p style="font-size: 0.8em">
+        {{ nRequests }} requests in total<br>
+        average {{ nRequestsPerHead }} requests per head (in a year)<br>
+        average {{ nRequestsPerOppositionHead }} requests per opposition head (in a year)<br>
+        top themen: todo
+      </p>
+    </div>
     <div
       :id=parliamentChartId
       class="chart chart-parliament" />
@@ -10,6 +18,9 @@
 <script>
 import ParliamentChart from '@/core/ParliamentChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
+
+import { sum } from 'd3-array';
+import { timeDay } from 'd3-time';
 
 export default {
   name: 'ElectionPeriod',
@@ -53,6 +64,22 @@ export default {
     },
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
+    },
+    nRequests() {
+      return this.requests.length;
+    },
+    nRequestsPerHead() {
+      const nDays = timeDay.count(this.dates.start, this.dates.end);
+      const nSeats = sum(this.elections, (d) => d.seats);
+      return Math.round(((this.requests.length / nDays) * 365) / nSeats);
+    },
+    nRequestsPerOppositionHead() {
+      const nDays = timeDay.count(this.dates.start, this.dates.end);
+      const oppositionMap = new Map(this.elections
+        .map(({ party, isOpposition }) => [party, isOpposition]));
+      const nSeats = sum(this.elections.filter((d) => d.isOpposition), (d) => d.seats);
+      const nRequests = this.requests.filter((d) => oppositionMap.get(d.party)).length;
+      return Math.round(((nRequests / nDays) * 365) / nSeats);
     },
   },
   methods: {
