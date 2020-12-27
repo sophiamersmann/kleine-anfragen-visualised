@@ -3,6 +3,7 @@ import { timeDay } from 'd3-time';
 import { rollup, ascending, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { pointRadial, arc } from 'd3-shape';
+import { format } from 'd3-format';
 
 import { PARTY_COLORS, PARTY_NAMES, SORTED_PARTIES } from '@/core/CONSTANTS';
 
@@ -23,8 +24,9 @@ export default class ParliamentChart {
     this.config = {
       maxValue: 30,
       nBands: 12,
-      innerRadius: 20,
+      innerRadius: null,
       outerRadius: null,
+      fontSize: null,
     };
   }
 
@@ -44,7 +46,9 @@ export default class ParliamentChart {
   prepareData(width) {
     this.width = width;
     this.height = width / 2;
+    this.config.innerRadius = 0.05 * width;
     this.config.outerRadius = width / 2 - this.margin;
+    this.config.fontSize = `${format('.1f')(width / 27)}px`;
 
     const nDays = timeDay.count(this.dates.start, this.dates.end);
 
@@ -82,6 +86,8 @@ export default class ParliamentChart {
         -this.height,
         this.width,
         this.height])
+      .attr('width', this.width)
+      .attr('height', this.height)
       // .attr('overflow', 'visible')
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round');
@@ -99,7 +105,7 @@ export default class ParliamentChart {
 
   drawChart() {
     const {
-      maxValue, nBands, innerRadius, outerRadius,
+      maxValue, nBands, innerRadius, outerRadius, fontSize,
     } = this.config;
 
     const x = scaleLinear()
@@ -183,7 +189,7 @@ export default class ParliamentChart {
       .append('textPath')
       .attr('xlink:href', (_, i) => `#${this.selector}-label-path-${i}`)
       .attr('startOffset', 5)
-      .style('font-size', '0.7em')
+      .style('font-size', fontSize)
       .style('font-weight', (d) => (d.isOpposition ? 'bold' : 'normal'))
       .text((d) => `${PARTY_NAMES.get(d.party)} \u00A0 ${d.display}`);
 
