@@ -12,10 +12,12 @@ export const PARTY_COLORS = new Map([
   ['NPD', 'brown'],
   ['FW', 'gray'],
   ['BVB/FW', 'gray'],
+  ['BIW', 'gray'],
   ['SSW', 'lightgray'],
 ]);
 
 export const SORTED_PARTIES = [
+  'BIW',
   'NPD',
   'AFD',
   'FW',
@@ -49,4 +51,5 @@ export const PARTY_NAMES = new Map([
   ['FREIEWAHLER', 'Freie Wähler'],
   ['BVB/FW', 'BVB/FW'],
   ['SSW', 'SSW'],
+  ['BIW', 'BIW'],
 ]);

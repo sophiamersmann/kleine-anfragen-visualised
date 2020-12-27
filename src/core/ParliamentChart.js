@@ -1,6 +1,6 @@
 import { select } from 'd3-selection';
 import { timeDay } from 'd3-time';
-import { rollups, ascending, range } from 'd3-array';
+import { rollup, ascending, range } from 'd3-array';
 import { scaleLinear } from 'd3-scale';
 import { pointRadial, arc } from 'd3-shape';
 
@@ -48,31 +48,28 @@ export default class ParliamentChart {
 
     const nDays = timeDay.count(this.dates.start, this.dates.end);
 
+    const requestsMap = rollup(this.requests, (v) => v.length, (d) => d.party);
     const seatsMap = new Map(this.elections
       .map(({ party, seats }) => [party, seats]));
-    const oppositionMap = new Map(this.elections
-      .map(({ party, isOpposition }) => [party, isOpposition]));
 
-    const requests = this.requests.filter((d) => !['MISSING', 'FRAKTIONSLOS'].includes(d.party));
-    this.nRequestsPerHead = rollups(requests, (v) => v.length, (d) => d.party)
-      .map(([party, nRequests]) => {
-        const value = ((nRequests / nDays) * 365) / seatsMap.get(party);
-        let display = 0;
-        if (value > 0) {
-          display = value < 1 ? '<1' : Math.round(value);
-        }
+    this.nRequestsPerHead = this.elections.map((d) => {
+      const nRequests = requestsMap.has(d.party) ? requestsMap.get(d.party) : 0;
+      const value = ((nRequests / nDays) * 365) / seatsMap.get(d.party);
+      let display = 0;
+      if (value > 0) {
+        display = value < 1 ? '<1' : Math.round(value);
+      }
 
-        return {
-          party,
-          value: Math.round(value),
-          display,
-          isOpposition: oppositionMap.get(party),
-        };
-      })
-      .sort((a, b) => ascending(
-        SORTED_PARTIES.findIndex((d) => d === a.party),
-        SORTED_PARTIES.findIndex((d) => d === b.party),
-      ));
+      return {
+        party: d.party,
+        value: Math.round(value),
+        display,
+        isOpposition: d.isOpposition,
+      };
+    }).sort((a, b) => ascending(
+      SORTED_PARTIES.findIndex((d) => d === a.party),
+      SORTED_PARTIES.findIndex((d) => d === b.party),
+    ));
 
     return this;
   }
