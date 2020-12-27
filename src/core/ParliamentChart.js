@@ -158,49 +158,6 @@ export default class ParliamentChart {
         .startAngle(x(d.angle))
         .endAngle(x(d.angle + 1))(d));
 
-    // Label (inner radius, without textPath)
-    // this.svg.selectAll('.label-value')
-    //   .data(this.nRequestsPerHead.map((d, i) => {
-    //     const e = d;
-    //     e.point = pointRadial(x(i + 0.5), innerRadius - 10);
-    //     return e;
-    //   }))
-    //   .join('text')
-    //   .attr('class', 'label label-value')
-    //   .attr('x', (d) => d.point[0])
-    //   .attr('y', (d) => d.point[1])
-    //   .attr('text-anchor', 'middle')
-    //   .attr('dominant-baseline', 'middle')
-    //   .attr('fill', (d) => PARTY_COLORS.get(d.party))
-    //   .style('font-size', '0.7em')
-    //   .style('font-weight', 'bold')
-    //   .text((d) => (d.isOpposition ? d.display : `${d.display}*`));
-
-    // Label aligned with path on the inner radius
-    // this.svg
-    //   .selectAll('.path-phantom2')
-    //   .data(this.nRequestsPerHead)
-    //   .join('path')
-    //   .attr('id', (_, i) => `${this.selector}-phantom2-path-${i}`)
-    //   .attr('class', 'path-phantom2')
-    //   .attr('fill', 'none')
-    //   .attr('d', (_, i) => `
-    //     M${pointRadial(x(i + 0.5), innerRadius - 5)}
-    //     A${innerRadius - 5},${innerRadius - 5} 0,0,1 ${pointRadial(x(i + 1), innerRadius - 5)}
-    //   `);
-    // this.svg.selectAll('.label-value')
-    //   .data(this.nRequestsPerHead)
-    //   .join('text')
-    //   .attr('class', 'label label-value')
-    //   .append('textPath')
-    //   .attr('xlink:href', (_, i) => `#${this.selector}-phantom2-path-${i}`)
-    //   .attr('dominant-baseline', 'hanging')
-    //   .attr('text-anchor', 'middle')
-    //   .attr('fill', (d) => PARTY_COLORS.get(d.party))
-    //   .style('font-size', '0.7em')
-    //   .style('font-weight', 'bold')
-    //   .text((d) => d.display);
-
     const gLabels = this.svg
       .append('g')
       .attr('class', 'labels');
