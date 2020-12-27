@@ -53,20 +53,22 @@ export default class ParliamentChart {
     const oppositionMap = new Map(this.elections
       .map(({ party, isOpposition }) => [party, isOpposition]));
 
-    this.nRequestsPerHead = rollups(this.requests, (v) => v.length, (d) => d.party)
+    const requests = this.requests.filter((d) => !['MISSING', 'FRAKTIONSLOS'].includes(d.party));
+    this.nRequestsPerHead = rollups(requests, (v) => v.length, (d) => d.party)
       .map(([party, nRequests]) => {
         const value = ((nRequests / nDays) * 365) / seatsMap.get(party);
         let display = 0;
-        if (value) display = Math.round(value) >= 1 ? Math.round(value) : '<1';
+        if (value > 0) {
+          display = value < 1 ? '<1' : Math.round(value);
+        }
 
         return {
           party,
-          value,
+          value: Math.round(value),
           display,
           isOpposition: oppositionMap.get(party),
         };
       })
-      .filter(({ party }) => !['MISSING', 'FRAKTIONSLOS'].includes(party))
       .sort((a, b) => ascending(
         SORTED_PARTIES.findIndex((d) => d === a.party),
         SORTED_PARTIES.findIndex((d) => d === b.party),
@@ -83,6 +85,7 @@ export default class ParliamentChart {
         -this.height,
         this.width,
         this.height])
+      // .attr('overflow', 'visible')
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round');
 
