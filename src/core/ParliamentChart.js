@@ -1,9 +1,4 @@
-import { select } from 'd3-selection';
-import { timeDay } from 'd3-time';
-import { rollup, ascending, range } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
-import { pointRadial, arc } from 'd3-shape';
-import { format } from 'd3-format';
+import d3 from '@/assets/d3';
 
 import { PARTY_COLORS, PARTY_NAMES, SORTED_PARTIES } from '@/core/CONSTANTS';
 
@@ -39,7 +34,7 @@ export default class ParliamentChart {
   }
 
   reset() {
-    if (this.svg) select(`${this.selector} svg`).remove();
+    if (this.svg) d3.select(`${this.selector} svg`).remove();
     return this;
   }
 
@@ -48,11 +43,11 @@ export default class ParliamentChart {
     this.height = width / 2;
     this.config.innerRadius = 0.05 * width;
     this.config.outerRadius = width / 2 - this.margin;
-    this.config.fontSize = `${format('.1f')(width / 27)}px`;
+    this.config.fontSize = `${d3.format('.1f')(width / 27)}px`;
 
-    const nDays = timeDay.count(this.dates.start, this.dates.end);
+    const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
 
-    const requestsMap = rollup(this.requests, (v) => v.length, (d) => d.party);
+    const requestsMap = d3.rollup(this.requests, (v) => v.length, (d) => d.party);
     const seatsMap = new Map(this.elections
       .map(({ party, seats }) => [party, seats]));
 
@@ -70,7 +65,7 @@ export default class ParliamentChart {
         display,
         isOpposition: d.isOpposition,
       };
-    }).sort((a, b) => ascending(
+    }).sort((a, b) => d3.ascending(
       SORTED_PARTIES.findIndex((d) => d === a.party),
       SORTED_PARTIES.findIndex((d) => d === b.party),
     ));
@@ -79,7 +74,7 @@ export default class ParliamentChart {
   }
 
   setUpSVG() {
-    this.svg = select(this.selector)
+    this.svg = d3.select(this.selector)
       .append('svg')
       .attr('viewBox', [
         -this.width / 2,
@@ -108,11 +103,11 @@ export default class ParliamentChart {
       maxValue, nBands, innerRadius, outerRadius, fontSize,
     } = this.config;
 
-    const x = scaleLinear()
+    const x = d3.scaleLinear()
       .domain([0, this.nRequestsPerHead.length])
       .range([-0.5 * Math.PI, 0.5 * Math.PI]);
 
-    const y = scaleLinear()
+    const y = d3.scaleLinear()
       .domain([0, maxValue])
       .range([innerRadius, outerRadius]);
 
@@ -121,15 +116,15 @@ export default class ParliamentChart {
 
     const xAxis = (g) => g
       .selectAll('g')
-      .data(range(this.nRequestsPerHead.length + 1))
+      .data(d3.range(this.nRequestsPerHead.length + 1))
       .join('g')
       .append('path')
       .attr('stroke', '#000')
       .attr('stroke-opacity', 0.2)
       .attr('stroke-width', 0.5)
       .attr('d', (d) => `
-        M${pointRadial(x(d), innerRadius)}
-        L${pointRadial(x(d), outerRadius + this.margin)}
+        M${d3.pointRadial(x(d), innerRadius)}
+        L${d3.pointRadial(x(d), outerRadius + this.margin)}
       `);
 
     const yAxis = (g) => g.selectAll('g')
@@ -140,7 +135,7 @@ export default class ParliamentChart {
       .attr('stroke', '#000')
       .attr('stroke-opacity', 0.2)
       .attr('stroke-width', 0.5)
-      .attr('d', (d) => arc()
+      .attr('d', (d) => d3.arc()
         .outerRadius(y(d))
         .startAngle(x(0))
         .endAngle(x(this.nRequestsPerHead.length))(d));
@@ -151,11 +146,11 @@ export default class ParliamentChart {
       .attr('class', 'g-party-slice')
       .attr('fill', (d) => PARTY_COLORS.get(d.party))
       .selectAll('path')
-      .data((d, i) => range(yTickSpacing, d.value + 1, yTickSpacing)
+      .data((d, i) => d3.range(yTickSpacing, d.value + 1, yTickSpacing)
         .map((step) => ({ step, party: d.party, angle: i })))
       .join('path')
       .attr('fill-opacity', (d, i) => (d.step > maxValue ? 0.1 : (i + 1) / nBands))
-      .attr('d', (d) => arc()
+      .attr('d', (d) => d3.arc()
         .innerRadius(y(d.step - yTickSpacing))
         .outerRadius(y(d.step))
         .startAngle(x(d.angle))
@@ -169,14 +164,14 @@ export default class ParliamentChart {
       .append('g')
       .attr('class', 'g-label-paths')
       .selectAll('.label-path')
-      .data(range(this.nRequestsPerHead.length))
+      .data(d3.range(this.nRequestsPerHead.length))
       .join('path')
       .attr('id', (i) => `${this.selector}-label-path-${i}`)
       .attr('class', 'label-path')
       .attr('fill', 'none')
       .attr('d', (i) => `
-        M${pointRadial(x(i), outerRadius + 5)}
-        A${outerRadius + 5},${outerRadius + 5} 0,0,1 ${pointRadial(x(i + 1), outerRadius + 5)}
+        M${d3.pointRadial(x(i), outerRadius + 5)}
+        A${outerRadius + 5},${outerRadius + 5} 0,0,1 ${d3.pointRadial(x(i + 1), outerRadius + 5)}
       `);
 
     gLabels

@@ -1,4 +1,4 @@
-import { select } from 'd3-selection';
+import d3 from '@/assets/d3';
 
 export default class DetailedChart {
   constructor(selector, requests) {
@@ -28,7 +28,7 @@ export default class DetailedChart {
   }
 
   setUpSVG() {
-    this.svg = select(this.selector)
+    this.svg = d3.select(this.selector)
       .append('svg')
       .attr('viewBox', [0, 0, this.width, this.height])
       .append('g')

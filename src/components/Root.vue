@@ -46,11 +46,7 @@
 </template>
 
 <script>
-import { csv } from 'd3-fetch';
-import { timeParse } from 'd3-time-format';
-import {
-  group, groups, ascending, descending, rollup,
-} from 'd3-array';
+import d3 from '@/assets/d3';
 
 import { getTermId } from '@/core/utils';
 
@@ -87,8 +83,8 @@ export default {
     await this.fetchData();
 
     const keyFunc = (d) => getTermId(d.body, d.term);
-    const groupedRequests = groups(this.requests, keyFunc);
-    const groupedElections = group(this.elections, keyFunc);
+    const groupedRequests = d3.groups(this.requests, keyFunc);
+    const groupedElections = d3.group(this.elections, keyFunc);
 
     const merged = groupedRequests
       .map(([key, requests]) => ({
@@ -104,16 +100,16 @@ export default {
           body, term, dates, hasEnded, periodNum, ...rest
         }) => rest),
       }))
-      .sort((a, b) => descending(a.dates.start, b.dates.start));
+      .sort((a, b) => d3.descending(a.dates.start, b.dates.start));
 
-    this.tiles = groups(merged, (d) => d.body)
+    this.tiles = d3.groups(merged, (d) => d.body)
       .map(([body, periods]) => ({ body, periods }))
-      .sort((a, b) => ascending(a.body, b.body));
-    this.tileMap = rollup(merged, (v) => v[0], (d) => d.name);
+      .sort((a, b) => d3.ascending(a.body, b.body));
+    this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
   },
   methods: {
     async fetchData() {
-      this.requests = await csv(this.srcRequests, (d) => ({
+      this.requests = await d3.csv(this.srcRequests, (d) => ({
         body: d.body,
         term: d.legislative_term,
         title: d.title,
@@ -123,8 +119,8 @@ export default {
         ministry: d.answerers,
       }));
 
-      const parseTime = timeParse('%d/%m/%Y');
-      this.elections = await csv(this.srcElections, (d) => ({
+      const parseTime = d3.timeParse('%d/%m/%Y');
+      this.elections = await d3.csv(this.srcElections, (d) => ({
         body: d.body,
         term: d.term,
         dates: {

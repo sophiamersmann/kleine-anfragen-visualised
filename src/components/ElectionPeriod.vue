@@ -16,11 +16,10 @@
 </template>
 
 <script>
+import d3 from '@/assets/d3';
+
 import ParliamentChart from '@/core/ParliamentChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
-
-import { sum } from 'd3-array';
-import { timeDay } from 'd3-time';
 
 export default {
   name: 'ElectionPeriod',
@@ -44,7 +43,6 @@ export default {
     window.addEventListener('resize', this.onResize);
   },
   mounted() {
-    console.log(this.body, this.term);
     const chartDiv = this.getChartDiv();
     this.parliamentChart = new ParliamentChart(
       `#${chartDiv.id}`,
@@ -69,15 +67,15 @@ export default {
       return this.requests.length;
     },
     nRequestsPerHead() {
-      const nDays = timeDay.count(this.dates.start, this.dates.end);
-      const nSeats = sum(this.elections, (d) => d.seats);
+      const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
+      const nSeats = d3.sum(this.elections, (d) => d.seats);
       return Math.round(((this.requests.length / nDays) * 365) / nSeats);
     },
     nRequestsPerOppositionHead() {
-      const nDays = timeDay.count(this.dates.start, this.dates.end);
+      const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
       const oppositionMap = new Map(this.elections
         .map(({ party, isOpposition }) => [party, isOpposition]));
-      const nSeats = sum(this.elections.filter((d) => d.isOpposition), (d) => d.seats);
+      const nSeats = d3.sum(this.elections.filter((d) => d.isOpposition), (d) => d.seats);
       const nRequests = this.requests.filter((d) => oppositionMap.get(d.party)).length;
       return Math.round(((nRequests / nDays) * 365) / nSeats);
     },

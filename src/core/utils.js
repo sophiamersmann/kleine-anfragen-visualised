@@ -1,4 +1,4 @@
-import { timeFormat } from 'd3-time-format';
+import d3 from '@/assets/d3';
 
 export function normalize(str) {
   return str
@@ -8,7 +8,7 @@ export function normalize(str) {
 }
 
 export function displayTimeRange(dates, hasEnded) {
-  const formatTime = timeFormat('%Y');
+  const formatTime = d3.timeFormat('%Y');
   const years = Object.values(dates).map(formatTime);
   return hasEnded ? years.join('-') : `ab ${years[0]}`;
 }

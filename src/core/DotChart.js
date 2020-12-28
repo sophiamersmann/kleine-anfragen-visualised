@@ -1,6 +1,4 @@
-import { select } from 'd3-selection';
-import { timeDay } from 'd3-time';
-import { rollups, range, descending } from 'd3-array';
+import d3 from '@/assets/d3';
 
 import { PARTY_COLORS, PARTY_NAMES } from '@/core/CONSTANTS';
 
@@ -43,7 +41,7 @@ export default class DotChart {
   }
 
   reset() {
-    if (this.svg) select(`${this.selector} svg`).remove();
+    if (this.svg) d3.select(`${this.selector} svg`).remove();
     return this;
   }
 
@@ -53,7 +51,7 @@ export default class DotChart {
     this.width = width;
     this.config.maxCirclesPerLine = Math.floor((this.width - offset.left) / dm) - 2;
 
-    const nDays = timeDay.count(this.dates.start, this.dates.end);
+    const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
 
     const seatsMap = new Map(this.elections
       .map(({ party, seats }) => [party, seats]));
@@ -61,7 +59,7 @@ export default class DotChart {
       .map(({ party, isOpposition }) => [party, isOpposition]));
 
     let running = 0;
-    this.nRequestsPerHead = rollups(this.requests, (v) => v.length, (d) => d.party)
+    this.nRequestsPerHead = d3.rollups(this.requests, (v) => v.length, (d) => d.party)
       .map(([party, nRequests]) => {
         const value = ((nRequests / nDays) * 365) / seatsMap.get(party);
         let display = 0;
@@ -75,7 +73,7 @@ export default class DotChart {
         };
       })
       .filter(({ party }) => !['MISSING', 'FRAKTIONSLOS'].includes(party))
-      .sort((a, b) => descending(a.value, b.value))
+      .sort((a, b) => d3.descending(a.value, b.value))
       .map((d) => {
         let nLines = Math.ceil(Math.round(d.value) / this.config.maxCirclesPerLine);
         nLines = nLines || 1;
@@ -90,7 +88,7 @@ export default class DotChart {
   }
 
   setUpSVG() {
-    this.svg = select(this.selector)
+    this.svg = d3.select(this.selector)
       .append('svg')
       .attr('viewBox', [0, 0, this.width, this.height])
       .append('g')
@@ -131,7 +129,7 @@ export default class DotChart {
       .text((d) => PARTY_NAMES.get(d.party));
 
     line.selectAll('circle')
-      .data((d) => range(Math.round(d.value)))
+      .data((d) => d3.range(Math.round(d.value)))
       .join('circle')
       .attr('cx', (d) => offset.left + ((d % m) + 1) * dm)
       .attr('cy', (d) => Math.floor(d / m) * dm)
