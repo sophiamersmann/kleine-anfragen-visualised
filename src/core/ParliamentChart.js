@@ -2,6 +2,8 @@ import d3 from '@/assets/d3';
 
 import { PARTY_COLORS, PARTY_NAMES, SORTED_PARTIES } from '@/core/CONSTANTS';
 
+const IGNORE_PARTIES = ['MISSING', 'FRAKTIONSLOS'];
+
 export default class ParliamentChart {
   constructor(selector, requests, elections, dates) {
     this.selector = selector;
@@ -47,9 +49,20 @@ export default class ParliamentChart {
 
     const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
 
-    const requestsMap = d3.rollup(this.requests, (v) => v.length, (d) => d.party);
+    const parties = this.requests
+      .flatMap((d) => d.parties.split(';'))
+      .filter((party) => !IGNORE_PARTIES.includes(party));
+    const requestsMap = d3.rollup(parties, (v) => v.length, (d) => d);
     const seatsMap = new Map(this.elections
       .map(({ party, seats }) => [party, seats]));
+
+    const partyDiff = d3.difference(
+      new Set(parties),
+      new Set(this.elections.map(({ party }) => party)),
+    );
+    if (partyDiff.size > 0) {
+      console.warn('Parties recorded in requests data are missing in elections', partyDiff);
+    }
 
     this.nRequestsPerHead = this.elections.map((d) => {
       const nRequests = requestsMap.has(d.party) ? requestsMap.get(d.party) : 0;

@@ -1,6 +1,6 @@
 <template>
   <root
-    src-requests="./data_vParties_slim.csv"
+    src-requests="./requests_v0.1.csv"
     src-elections="./elections.csv" />
 </template>
 

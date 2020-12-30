@@ -11,6 +11,7 @@ import {
   sum,
   descending,
   ascending,
+  difference,
 } from 'd3-array';
 
 import { scaleLinear } from 'd3-scale';
@@ -34,6 +35,7 @@ export default {
   sum,
   descending,
   ascending,
+  difference,
   scaleLinear,
   pointRadial,
   arc,

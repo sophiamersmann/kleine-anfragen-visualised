@@ -115,8 +115,8 @@ export default {
         title: d.title,
         type: d.interpellation_type,
         date: d.published_at,
-        party: d.inquiringPartyNormalised,
-        ministry: d.answerers,
+        parties: d.parties,
+        ministries: d.ministries,
       }));
 
       const parseTime = d3.timeParse('%d/%m/%Y');
