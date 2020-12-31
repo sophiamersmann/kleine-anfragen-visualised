@@ -1,6 +1,6 @@
 :root {
   --spacing: 2rem;
-  --popup-offset: calc(var(--spacing) * 4);
+  --popup-offset: calc(var(--spacing) * 2);
   --black: hsl(210 11% 15%);
 }
 

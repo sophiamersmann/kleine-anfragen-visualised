@@ -53,3 +53,5 @@ export const PARTY_NAMES = new Map([
   ['SSW', 'SSW'],
   ['BIW', 'BIW'],
 ]);
+
+export const IGNORE_PARTIES = ['FRAKTIONSLOS', 'MISSING'];

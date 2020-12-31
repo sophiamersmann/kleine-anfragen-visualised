@@ -116,7 +116,7 @@ export default {
         type: d.interpellation_type,
         date: d.published_at,
         parties: d.parties.split(';').map((s) => s.trim()),
-        ministries: d.ministries,
+        ministries: d.ministries.split(';').map((s) => s.trim()),
       }));
 
       const parseTime = d3.timeParse('%d/%m/%Y');

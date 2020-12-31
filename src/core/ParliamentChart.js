@@ -1,8 +1,8 @@
 import d3 from '@/assets/d3';
 
-import { PARTY_COLORS, PARTY_NAMES, SORTED_PARTIES } from '@/core/CONSTANTS';
-
-const IGNORE_PARTIES = ['MISSING', 'FRAKTIONSLOS'];
+import {
+  PARTY_COLORS, PARTY_NAMES, SORTED_PARTIES, IGNORE_PARTIES,
+} from '@/core/CONSTANTS';
 
 export default class ParliamentChart {
   constructor(selector, requests, elections, dates) {
