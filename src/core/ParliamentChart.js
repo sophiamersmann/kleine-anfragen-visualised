@@ -50,7 +50,7 @@ export default class ParliamentChart {
     const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
 
     const parties = this.requests
-      .flatMap((d) => d.parties.split(';'))
+      .flatMap((d) => d.parties)
       .filter((party) => !IGNORE_PARTIES.includes(party));
     const requestsMap = d3.rollup(parties, (v) => v.length, (d) => d);
     const seatsMap = new Map(this.elections

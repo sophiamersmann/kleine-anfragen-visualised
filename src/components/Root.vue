@@ -115,7 +115,7 @@ export default {
         title: d.title,
         type: d.interpellation_type,
         date: d.published_at,
-        parties: d.parties,
+        parties: d.parties.split(';').map((s) => s.trim()),
         ministries: d.ministries,
       }));
 
