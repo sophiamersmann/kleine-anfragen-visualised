@@ -9,7 +9,7 @@ export default class DetailedChart {
 
     this.svg = null;
     this.width = null;
-    this.height = 500;
+    this.height = 2000;
     this.margin = {
       top: 20,
       right: 0,
@@ -35,8 +35,6 @@ export default class DetailedChart {
   prepareData(width) {
     this.width = width;
 
-    const { nRows, squareSize } = this.config;
-
     const parties = this.requests
       .flatMap((d) => d.parties)
       .filter((party) => !IGNORE_PARTIES.includes(party));
@@ -59,7 +57,17 @@ export default class DetailedChart {
 
     this.grouped = d3
       .groups(this.requests, (d) => d.ministries[0])
-      .map(([ministry, values]) => ({
+      .map(([ministry, values]) => ({ ministry, values }))
+      .sort((a, b) => d3.descending(a.values.length, b.values.length));
+
+    const nRequests = this.grouped[0].values.length;
+    const { squareSize } = this.config;
+    const w = this.width - this.margin.left - this.margin.right;
+    const nRows = Math.max(Math.ceil(nRequests / (w / this.config.squareSize)), 4);
+    this.config.nRows = nRows;
+
+    this.grouped = this.grouped
+      .map(({ ministry, values }) => ({
         ministry,
         values: values
           .sort((a, b) => d3.ascending(orderIndex(a), orderIndex(b)))
@@ -69,8 +77,7 @@ export default class DetailedChart {
             e.y = (i % nRows) * squareSize;
             return e;
           }),
-      }))
-      .sort((a, b) => d3.descending(a.values.length, b.values.length));
+      }));
 
     return this;
   }
