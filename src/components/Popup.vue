@@ -73,4 +73,10 @@ export default {
   width: calc(100vw - 2 * var(--popup-offset));
   height: calc(100vh - 2 * var(--popup-offset));
 }
+
+.chart-detailed {
+  padding: var(--spacing);
+  height: 60vh; /* todo: magiv value */
+  overflow-y: auto;
+}
 </style>
