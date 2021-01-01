@@ -9,7 +9,7 @@ export default class DetailedChart {
 
     this.svg = null;
     this.width = null;
-    this.height = 2000;
+    this.height = null;
     this.margin = {
       top: 20,
       right: 0,
@@ -20,9 +20,10 @@ export default class DetailedChart {
     this.groups = null;
 
     this.config = {
-      nRows: 6,
+      nRows: null,
       squareSize: 8,
     };
+    this.config.offset = 3 * this.config.squareSize;
   }
 
   draw(width) {
@@ -34,6 +35,9 @@ export default class DetailedChart {
 
   prepareData(width) {
     this.width = width;
+
+    const { margin } = this;
+    const { squareSize, offset } = this.config;
 
     const parties = this.requests
       .flatMap((d) => d.parties)
@@ -61,10 +65,8 @@ export default class DetailedChart {
       .sort((a, b) => d3.descending(a.values.length, b.values.length));
 
     const nRequests = this.grouped[0].values.length;
-    const { squareSize } = this.config;
-    const w = this.width - this.margin.left - this.margin.right;
-    const nRows = Math.max(Math.ceil(nRequests / (w / this.config.squareSize)), 4);
-    this.config.nRows = nRows;
+    const w = this.width - margin.left - margin.right;
+    const nRows = Math.max(Math.ceil(nRequests / (w / squareSize)), 4);
 
     this.grouped = this.grouped
       .map(({ ministry, values }) => ({
@@ -78,6 +80,9 @@ export default class DetailedChart {
             return e;
           }),
       }));
+
+    this.config.nRows = nRows;
+    this.height = margin.top + margin.bottom + this.grouped.length * (nRows * squareSize + offset);
 
     return this;
   }
@@ -99,8 +104,7 @@ export default class DetailedChart {
 
   drawChart() {
     const { margin } = this;
-    const { nRows, squareSize: size } = this.config;
-    const offset = 3 * size;
+    const { nRows, squareSize: size, offset } = this.config;
 
     this.svg.selectAll('g')
       .data(this.grouped)
