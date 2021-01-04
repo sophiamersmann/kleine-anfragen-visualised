@@ -5,14 +5,14 @@
       :id=parliamentChartId
       class="chart chart-parliament" />
     <div
-      :id=detailedChartId
-      class="chart chart-detailed" />
+      :id=ringChartId
+      class="chart chart-ring" />
   </div>
 </template>
 
 <script>
 import ParliamentChart from '@/core/ParliamentChart';
-// import DetailedChart from '@/core/DetailedChart';
+import RingChart from '@/core/DetailedChart';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
 
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       parliamentChart: null,
-      detailedChart: null,
+      ringChart: null,
     };
   },
   mounted() {
@@ -39,11 +39,11 @@ export default {
       .data(this.requests, this.elections, this.dates)
       .draw(200);
 
-    // const detailedChartDiv = this.$el.querySelector('.chart-detailed');
-    // this.detailedChart = new DetailedChart(
-    //   `#${detailedChartDiv.id}`,
-    //   this.requests,
-    // ).draw(detailedChartDiv.clientWidth);
+    const ringChartDiv = this.$el.querySelector('.chart-ring');
+    this.ringChart = new RingChart(
+      `#${ringChartDiv.id}`,
+      this.requests,
+    ).draw(ringChartDiv.clientWidth);
   },
   updated() {
     if (this.requests) {
@@ -56,8 +56,8 @@ export default {
     parliamentChartId() {
       return `popup-chart-parliament-${getTermId(this.body, this.term)}`;
     },
-    detailedChartId() {
-      return `popup-chart-detailed-${getTermId(this.body, this.term)}`;
+    ringChartId() {
+      return `popup-chart-ring-${getTermId(this.body, this.term)}`;
     },
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
@@ -78,9 +78,9 @@ export default {
   height: calc(100vh - 2 * var(--popup-offset));
 }
 
-.chart-detailed {
+.chart-ring {
   padding: var(--spacing);
-  height: 60vh; /* todo: magiv value */
+  height: 60vh; /* todo: magic value */
   overflow-y: auto;
 }
 </style>
