@@ -12,7 +12,7 @@
 
 <script>
 import ParliamentChart from '@/core/ParliamentChart';
-import RingChart from '@/core/DetailedChart';
+import RingChart from '@/core/RingChart';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
 
@@ -40,10 +40,8 @@ export default {
       .draw(200);
 
     const ringChartDiv = this.$el.querySelector('.chart-ring');
-    this.ringChart = new RingChart(
-      `#${ringChartDiv.id}`,
-      this.requests,
-    ).draw(ringChartDiv.clientWidth);
+    this.ringChart = new RingChart(`#${ringChartDiv.id}`)
+      .data(this.requests);
   },
   updated() {
     if (this.requests) {
