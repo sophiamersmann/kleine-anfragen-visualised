@@ -5,19 +5,20 @@ import {
 } from '@/core/CONSTANTS';
 
 export default class ParliamentChart {
-  constructor(selector, requests, elections, dates) {
+  constructor(selector) {
     this.selector = selector;
-    this.requests = requests;
-    this.elections = elections;
-    this.dates = dates;
 
+    // data
+    this.requests = null;
+    this.elections = null;
+    this.dates = null;
+    this.nRequestsPerHead = null;
+
+    // options
     this.svg = null;
     this.width = null;
     this.height = null;
     this.margin = 20;
-
-    this.nRequestsPerHead = null;
-
     this.config = {
       maxValue: 30,
       nBands: 12,
@@ -25,14 +26,63 @@ export default class ParliamentChart {
       outerRadius: null,
       fontSize: null,
     };
+
+    // scales
+    this.scales = {
+      x: null,
+      y: null,
+    };
+  }
+
+  data(requests, elections, dates) {
+    this.requests = requests;
+
+    this.elections = elections
+      .sort((a, b) => d3.ascending(
+        SORTED_PARTIES.findIndex((d) => d === a.party),
+        SORTED_PARTIES.findIndex((d) => d === b.party),
+      ));
+
+    this.dates = dates;
+
+    return this;
+  }
+
+  requestsData(requests) {
+    this.requests = requests;
+    return this;
+  }
+
+  setConfigs(width) {
+    this.width = width;
+    this.height = width / 2;
+
+    this.config.innerRadius = 0.05 * width;
+    this.config.outerRadius = width / 2 - this.margin;
+    this.config.fontSize = `${d3.format('.1f')(width / 27)}px`;
+
+    return this;
+  }
+
+  drawSkeleton(width) {
+    return this
+      .setConfigs(width)
+      .reset()
+      .setUpSVG()
+      .setUpScales()
+      .drawAxes();
+  }
+
+  drawData() {
+    return this
+      .prepareData()
+      .drawParliament();
   }
 
   draw(width) {
-    return this
-      .reset()
-      .prepareData(width)
-      .setUpSVG()
-      .drawChart();
+    this.drawSkeleton(width);
+    if (this.requests === null) return this;
+    return this.drawData();
   }
 
   reset() {
@@ -40,13 +90,122 @@ export default class ParliamentChart {
     return this;
   }
 
-  prepareData(width) {
-    this.width = width;
-    this.height = width / 2;
-    this.config.innerRadius = 0.05 * width;
-    this.config.outerRadius = width / 2 - this.margin;
-    this.config.fontSize = `${d3.format('.1f')(width / 27)}px`;
+  setUpSVG() {
+    this.svg = d3.select(this.selector)
+      .append('svg')
+      .attr('viewBox', [
+        -this.width / 2,
+        -this.height,
+        this.width,
+        this.height])
+      .attr('width', this.width)
+      .attr('height', this.height)
+      // .attr('overflow', 'visible')
+      .attr('stroke-linejoin', 'round')
+      .attr('stroke-linecap', 'round');
 
+    // this.svg.append('rect')
+    //   .attr('x', -this.width / 2)
+    //   .attr('y', -this.height)
+    //   .attr('width', this.width)
+    //   .attr('height', this.height)
+    //   .attr('fill', 'steelblue')
+    //   .attr('fill-opacity', 0.1);
+
+    return this;
+  }
+
+  setUpScales() {
+    const { maxValue, innerRadius, outerRadius } = this.config;
+
+    this.scales.x = d3.scaleLinear()
+      .domain([0, this.elections.length])
+      .range([-0.5 * Math.PI, 0.5 * Math.PI]);
+
+    this.scales.y = d3.scaleLinear()
+      .domain([0, maxValue])
+      .range([innerRadius, outerRadius]);
+
+    return this;
+  }
+
+  drawAxes() {
+    const { x, y } = this.scales;
+    const {
+      maxValue, innerRadius, outerRadius, fontSize,
+    } = this.config;
+    const nParties = this.elections.length;
+
+    const xAxis = (g) => g
+      .selectAll('g')
+      .data(d3.range(nParties + 1))
+      .join('g')
+      .append('path')
+      .attr('stroke', '#000')
+      .attr('stroke-opacity', 0.2)
+      .attr('stroke-width', 0.5)
+      .attr('d', (d) => `
+        M${d3.pointRadial(x(d), innerRadius)}
+        L${d3.pointRadial(x(d), outerRadius + this.margin)}
+      `);
+
+    const yAxis = (g) => g.selectAll('g')
+      .data([0, maxValue])
+      .join('g')
+      .attr('fill', 'none')
+      .append('path')
+      .attr('stroke', '#000')
+      .attr('stroke-opacity', 0.2)
+      .attr('stroke-width', 0.5)
+      .attr('d', (d) => d3.arc()
+        .outerRadius(y(d))
+        .startAngle(x(0))
+        .endAngle(x(nParties))(d));
+
+    const gLabels = this.svg
+      .append('g')
+      .attr('class', 'labels');
+
+    gLabels
+      .append('g')
+      .attr('class', 'g-label-paths')
+      .selectAll('.label-path')
+      .data(d3.range(nParties))
+      .join('path')
+      .attr('id', (i) => `${this.selector}-label-path-${i}`)
+      .attr('class', 'label-path')
+      .attr('fill', 'none')
+      .attr('d', (i) => `
+        M${d3.pointRadial(x(i), outerRadius + 5)}
+        A${outerRadius + 5},${outerRadius + 5} 0,0,1 ${d3.pointRadial(x(i + 1), outerRadius + 5)}
+      `);
+
+    gLabels
+      .append('g')
+      .attr('class', 'g-label-texts')
+      .selectAll('.label')
+      .data(this.elections, (d) => d.party)
+      .join('text')
+      .attr('class', 'label')
+      .append('textPath')
+      .attr('xlink:href', (_, i) => `#${this.selector}-label-path-${i}`)
+      .attr('startOffset', 5)
+      .style('font-size', fontSize)
+      .style('font-weight', (d) => (d.isOpposition ? 'bold' : 'normal'))
+      .text((d) => PARTY_NAMES.get(d.party));
+
+    this.svg.append('g')
+      .attr('class', 'axis axis-x')
+      .call(xAxis);
+
+    this.svg.append('g')
+      .attr('class', 'axis axis-y')
+      .call(yAxis);
+
+    return this;
+  }
+
+  prepareData() {
     const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
 
     const parties = this.requests
@@ -86,77 +245,20 @@ export default class ParliamentChart {
     return this;
   }
 
-  setUpSVG() {
-    this.svg = d3.select(this.selector)
-      .append('svg')
-      .attr('viewBox', [
-        -this.width / 2,
-        -this.height,
-        this.width,
-        this.height])
-      .attr('width', this.width)
-      .attr('height', this.height)
-      // .attr('overflow', 'visible')
-      .attr('stroke-linejoin', 'round')
-      .attr('stroke-linecap', 'round');
-
-    // this.svg.append('rect')
-    //   .attr('x', -this.width / 2)
-    //   .attr('y', -this.height)
-    //   .attr('width', this.width)
-    //   .attr('height', this.height)
-    //   .attr('fill', 'steelblue')
-    //   .attr('fill-opacity', 0.1);
-
-    return this;
-  }
-
-  drawChart() {
-    const {
-      maxValue, nBands, innerRadius, outerRadius, fontSize,
-    } = this.config;
-
-    const x = d3.scaleLinear()
-      .domain([0, this.nRequestsPerHead.length])
-      .range([-0.5 * Math.PI, 0.5 * Math.PI]);
-
-    const y = d3.scaleLinear()
-      .domain([0, maxValue])
-      .range([innerRadius, outerRadius]);
+  drawParliament() {
+    const { x, y } = this.scales;
+    const { maxValue, nBands } = this.config;
 
     const yTicks = y.ticks(nBands);
     const yTickSpacing = yTicks[1] - yTicks[0];
 
-    const xAxis = (g) => g
+    this.svg
+      .append('g')
+      .attr('class', 'g-parliament')
       .selectAll('g')
-      .data(d3.range(this.nRequestsPerHead.length + 1))
+      .data(this.nRequestsPerHead, (d) => d.party)
       .join('g')
-      .append('path')
-      .attr('stroke', '#000')
-      .attr('stroke-opacity', 0.2)
-      .attr('stroke-width', 0.5)
-      .attr('d', (d) => `
-        M${d3.pointRadial(x(d), innerRadius)}
-        L${d3.pointRadial(x(d), outerRadius + this.margin)}
-      `);
-
-    const yAxis = (g) => g.selectAll('g')
-      .data([0, maxValue])
-      .join('g')
-      .attr('fill', 'none')
-      .append('path')
-      .attr('stroke', '#000')
-      .attr('stroke-opacity', 0.2)
-      .attr('stroke-width', 0.5)
-      .attr('d', (d) => d3.arc()
-        .outerRadius(y(d))
-        .startAngle(x(0))
-        .endAngle(x(this.nRequestsPerHead.length))(d));
-
-    this.svg.selectAll('g')
-      .data(this.nRequestsPerHead)
-      .join('g')
-      .attr('class', 'g-party-slice')
+      .attr('class', 'g-parliament-slice')
       .attr('fill', (d) => PARTY_COLORS.get(d.party))
       .selectAll('path')
       .data((d, i) => d3.range(yTickSpacing, d.value + 1, yTickSpacing)
@@ -169,45 +271,9 @@ export default class ParliamentChart {
         .startAngle(x(d.angle))
         .endAngle(x(d.angle + 1))(d));
 
-    const gLabels = this.svg
-      .append('g')
-      .attr('class', 'labels');
-
-    gLabels
-      .append('g')
-      .attr('class', 'g-label-paths')
-      .selectAll('.label-path')
-      .data(d3.range(this.nRequestsPerHead.length))
-      .join('path')
-      .attr('id', (i) => `${this.selector}-label-path-${i}`)
-      .attr('class', 'label-path')
-      .attr('fill', 'none')
-      .attr('d', (i) => `
-        M${d3.pointRadial(x(i), outerRadius + 5)}
-        A${outerRadius + 5},${outerRadius + 5} 0,0,1 ${d3.pointRadial(x(i + 1), outerRadius + 5)}
-      `);
-
-    gLabels
-      .append('g')
-      .attr('class', 'g-label-texts')
-      .selectAll('.label')
-      .data(this.nRequestsPerHead)
-      .join('text')
-      .attr('class', 'label')
-      .append('textPath')
-      .attr('xlink:href', (_, i) => `#${this.selector}-label-path-${i}`)
-      .attr('startOffset', 5)
-      .style('font-size', fontSize)
-      .style('font-weight', (d) => (d.isOpposition ? 'bold' : 'normal'))
+    this.svg.selectAll('.label textPath')
+      .data(this.nRequestsPerHead, (d) => d.party)
       .text((d) => `${PARTY_NAMES.get(d.party)} \u00A0 ${d.display}`);
-
-    this.svg.append('g')
-      .attr('class', 'axis axis-x')
-      .call(xAxis);
-
-    this.svg.append('g')
-      .attr('class', 'axis axis-y')
-      .call(yAxis);
 
     return this;
   }

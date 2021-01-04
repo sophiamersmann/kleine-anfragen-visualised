@@ -80,45 +80,60 @@ export default {
     };
   },
   async created() {
-    await this.fetchData();
+    await this.fetchElectionsData();
 
     const keyFunc = (d) => getTermId(d.body, d.term);
-    const groupedRequests = d3.groups(this.requests, keyFunc);
-    const groupedElections = d3.group(this.elections, keyFunc);
+    const electionsMap = d3.group(this.elections, keyFunc);
 
-    const merged = groupedRequests
-      .map(([key, requests]) => ({
-        key,
-        name: getTermId(requests[0].body, requests[0].term),
-        body: requests[0].body,
-        term: requests[0].term,
-        dates: groupedElections.get(key)[0].dates,
-        hasEnded: groupedElections.get(key)[0].hasEnded,
-        periodNum: groupedElections.get(key)[0].periodNum,
-        requests: requests.map(({ body, term, ...rest }) => rest),
-        elections: groupedElections.get(key).map(({
-          body, term, dates, hasEnded, periodNum, ...rest
-        }) => rest),
-      }))
-      .sort((a, b) => d3.descending(a.dates.start, b.dates.start));
+    const groupedElections = Array.from(electionsMap)
+      .map(([key, electionResults]) => {
+        const {
+          body, term, dates, hasEnded, periodNum,
+        } = electionResults[0];
 
-    this.tiles = d3.groups(merged, (d) => d.body)
-      .map(([body, periods]) => ({ body, periods }))
-      .sort((a, b) => d3.ascending(a.body, b.body));
-    this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
+        return {
+          key,
+          name: getTermId(body, term),
+          body,
+          term,
+          dates,
+          hasEnded,
+          periodNum,
+          elections: electionResults.map(({
+            party, seats, isOpposition,
+          }) => ({ party, seats, isOpposition })),
+          requests: null,
+        };
+      });
+
+    this.computeTiles(groupedElections);
+    this.tileMap = d3.rollup(groupedElections, (v) => v[0], (d) => d.name);
+
+    this.fetchRequestsData().then((fetchedRequests) => {
+      this.requests = fetchedRequests;
+
+      // To do: This takes too long
+      const merged = d3.groups(this.requests, keyFunc)
+        .map(([key, requests]) => ({
+          key,
+          name: getTermId(requests[0].body, requests[0].term),
+          body: requests[0].body,
+          term: requests[0].term,
+          dates: electionsMap.get(key)[0].dates,
+          hasEnded: electionsMap.get(key)[0].hasEnded,
+          periodNum: electionsMap.get(key)[0].periodNum,
+          requests: requests.map(({ body, term, ...rest }) => rest),
+          elections: electionsMap.get(key).map(({
+            body, term, dates, hasEnded, periodNum, ...rest
+          }) => rest),
+        }));
+
+      this.computeTiles(merged);
+      this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
+    });
   },
   methods: {
-    async fetchData() {
-      this.requests = await d3.csv(this.srcRequests, (d) => ({
-        body: d.body,
-        term: d.legislative_term,
-        title: d.title,
-        type: d.interpellation_type,
-        date: d.published_at,
-        parties: d.parties.split(';').map((s) => s.trim()),
-        ministries: d.ministries.split(';').map((s) => s.trim()),
-      }));
-
+    async fetchElectionsData() {
       const parseTime = d3.timeParse('%d/%m/%Y');
       this.elections = await d3.csv(this.srcElections, (d) => ({
         body: d.body,
@@ -133,6 +148,26 @@ export default {
         seats: +d.seats,
         isOpposition: d.opposition === 'TRUE',
       }));
+    },
+    fetchRequestsData() {
+      return d3.csv(this.srcRequests, (d) => ({
+        body: d.body,
+        term: d.legislative_term,
+        title: d.title,
+        type: d.interpellation_type,
+        date: d.published_at,
+        parties: d.parties.split(';').map((s) => s.trim()),
+        ministries: d.ministries.split(';').map((s) => s.trim()),
+      }));
+    },
+    computeTiles(grouped) {
+      this.tiles = d3.groups(grouped, (d) => d.body)
+        .map(([body, periods]) => ({
+          body,
+          periods: periods
+            .sort((a, b) => d3.descending(a.dates.start, b.dates.start)),
+        }))
+        .sort((a, b) => d3.ascending(a.body, b.body));
     },
     onTop(key) {
       this.popup = this.tileMap.get(key);

@@ -44,12 +44,16 @@ export default {
   },
   mounted() {
     const chartDiv = this.getChartDiv();
-    this.parliamentChart = new ParliamentChart(
-      `#${chartDiv.id}`,
-      this.requests,
-      this.elections,
-      this.dates,
-    ).draw(chartDiv.clientWidth);
+    this.parliamentChart = new ParliamentChart(`#${chartDiv.id}`)
+      .data(this.requests, this.elections, this.dates)
+      .draw(chartDiv.clientWidth);
+  },
+  updated() {
+    if (this.requests) {
+      this.parliamentChart
+        .requestsData(this.requests)
+        .drawData();
+    }
   },
   computed: {
     classes() {
@@ -64,14 +68,19 @@ export default {
       return displayTimeRange(this.dates, this.hasEnded);
     },
     nRequests() {
+      if (this.requests === null) return '';
       return this.requests.length;
     },
     nRequestsPerHead() {
+      if (this.requests === null) return '';
+
       const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
       const nSeats = d3.sum(this.elections, (d) => d.seats);
       return Math.round(((this.requests.length / nDays) * 365) / nSeats);
     },
     nRequestsPerOppositionHead() {
+      if (this.requests === null) return '';
+
       const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
       const oppositionMap = new Map(this.elections
         .map(({ party, isOpposition }) => [party, isOpposition]));

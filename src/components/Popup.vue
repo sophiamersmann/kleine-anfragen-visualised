@@ -12,7 +12,7 @@
 
 <script>
 import ParliamentChart from '@/core/ParliamentChart';
-import DetailedChart from '@/core/DetailedChart';
+// import DetailedChart from '@/core/DetailedChart';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
 
@@ -35,18 +35,22 @@ export default {
   },
   mounted() {
     const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
-    this.parliamentChart = new ParliamentChart(
-      `#${parliamentChartDiv.id}`,
-      this.requests,
-      this.elections,
-      this.dates,
-    ).draw(200);
+    this.parliamentChart = new ParliamentChart(`#${parliamentChartDiv.id}`)
+      .data(this.requests, this.elections, this.dates)
+      .draw(200);
 
-    const detailedChartDiv = this.$el.querySelector('.chart-detailed');
-    this.detailedChart = new DetailedChart(
-      `#${detailedChartDiv.id}`,
-      this.requests,
-    ).draw(detailedChartDiv.clientWidth);
+    // const detailedChartDiv = this.$el.querySelector('.chart-detailed');
+    // this.detailedChart = new DetailedChart(
+    //   `#${detailedChartDiv.id}`,
+    //   this.requests,
+    // ).draw(detailedChartDiv.clientWidth);
+  },
+  updated() {
+    if (this.requests) {
+      this.parliamentChart
+        .requestsData(this.requests)
+        .drawData();
+    }
   },
   computed: {
     parliamentChartId() {
