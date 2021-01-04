@@ -57,7 +57,10 @@ export default {
   },
   computed: {
     classes() {
-      const classes = { 'election-period': true };
+      const classes = {
+        'election-period': true,
+        disabled: this.requests === null,
+      };
       classes[`col-${this.periodNum}`] = true;
       return classes;
     },
@@ -108,5 +111,9 @@ export default {
 <style scoped>
 .election-period {
   background-color: white;
+}
+
+.election-period.disabled {
+  pointer-events: none;
 }
 </style>

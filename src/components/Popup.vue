@@ -43,13 +43,6 @@ export default {
     this.ringChart = new RingChart(`#${ringChartDiv.id}`)
       .data(this.requests);
   },
-  updated() {
-    if (this.requests) {
-      this.parliamentChart
-        .requestsData(this.requests)
-        .drawData();
-    }
-  },
   computed: {
     parliamentChartId() {
       return `popup-chart-parliament-${getTermId(this.body, this.term)}`;
