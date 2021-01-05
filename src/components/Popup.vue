@@ -42,8 +42,10 @@ export default {
       .draw(200);
 
     const ringChartDiv = this.$el.querySelector('.chart-ring');
+    // TODO: Hard-coded for development
+    const requests = this.requests.filter((d) => d.ministries[0] === 'Ministerium für Verkehr und Infrastruktur');
     this.ringChart = new RingChart(`#${ringChartDiv.id}`, ringChartDiv.clientHeight)
-      .data(this.requests, this.dates)
+      .data(requests, this.dates)
       .draw();
   },
   computed: {

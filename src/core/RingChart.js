@@ -9,6 +9,7 @@ export default class RingChart {
     this.dates = null;
     this.months = null;
     this.parties = null;
+    this.bins = null;
 
     // options
     this.svg = null;
@@ -49,11 +50,54 @@ export default class RingChart {
       .sort((a, b) => d3.descending(a.count, b.count))
       .map(({ party }) => party);
 
-    const outerRadius = this.width / 2 - this.margin;
+    const outerRadius = this.width / 2 - this.margin + 12; // * Magic value
     const innerRadius = outerRadius - 2 * this.config.circleRadius * this.parties.length;
 
     this.config.innerRadius = innerRadius;
     this.config.outerRadius = outerRadius;
+
+    // TODO: For now, random colors
+    this.color = d3.scaleOrdinal()
+      .domain(this.parties)
+      .range(d3.schemePaired.filter((_, i) => i % 2 === 1));
+
+    this.lightColor = d3.scaleOrdinal()
+      .domain(this.parties)
+      .range(d3.schemePaired.filter((_, i) => i % 2 === 0));
+
+    return this;
+  }
+
+  prepareData() {
+    const { internalFormat } = this.formats;
+
+    const outliers = this.requests
+      .filter((d) => d.date < this.dates.start || d.date > this.dates.end);
+    if (outliers.length) {
+      console.warn('Requests outside of election period', `[${outliers.length}]`, outliers);
+    }
+
+    this.bins = d3
+      .groups(this.requests, (d) => internalFormat(d.date))
+      .map(([month, requests]) => {
+        // ! This means some requests will be shown twice
+        // ? Connect question marks with a line ?
+        const parties = requests.flatMap((d) => d.parties);
+        const count = d3.rollup(parties, (v) => v.length, (d) => d);
+        const values = [...new Set(parties)]
+          .map((party) => ({ party, count: count.has(party) ? count.get(party) : 0 }))
+          .sort((a, b) => d3.descending(a.count, b.count) || d3.ascending(
+            this.parties.findIndex((p) => p === a.party),
+            this.parties.findIndex((p) => p === b.party),
+          ));
+
+        return { month, values };
+      });
+
+    const max = d3.max(this.bins, (d) => d3.max(d.values, (e) => e.count));
+    this.scales.c = d3.scaleSqrt()
+      .domain([1, max])
+      .range([1, this.config.circleRadius]);
 
     return this;
   }
@@ -62,7 +106,9 @@ export default class RingChart {
     return this
       .setUpSVG()
       .setUpScales()
-      .drawAxes();
+      .drawAxes()
+      .prepareData()
+      .drawData();
   }
 
   setUpSVG() {
@@ -111,21 +157,13 @@ export default class RingChart {
     const { innerRadius, outerRadius, unit } = this.config;
     const { internalFormat, shortFormat, longFormat } = this.formats;
 
-    // const color = d3.scaleOrdinal()
-    //   .domain(this.parties)
-    //   .range(d3.schemePaired.filter((_, i) => i % 2 === 1));
-
-    const lightColor = d3.scaleOrdinal()
-      .domain(this.parties)
-      .range(d3.schemePaired.filter((_, i) => i % 2 === 0));
-
     const xGrid = (grid) => grid
       .attr('fill', 'transparent')
       .call((g) => g.selectAll('circle')
         .data(this.parties)
         .join('circle')
         .attr('r', (party) => y(party))
-        .attr('stroke', (party) => lightColor(party)));
+        .attr('stroke', (party) => this.lightColor(party)));
 
     const xAxis = (grid) => grid
       .call((g) => g.selectAll('g')
@@ -208,6 +246,47 @@ export default class RingChart {
     this.svg.append('g')
       .attr('class', 'axis axis-x')
       .call(xAxis);
+
+    return this;
+  }
+
+  drawData() {
+    const { x, y, c } = this.scales;
+    const { circleRadius } = this.config;
+
+    const ring = (r) => r
+      .call((g) => g
+        .selectAll('g')
+        .data(this.bins)
+        .join('g')
+        .attr('class', (d) => `g-bin g-bin-${d.month}`)
+        .selectAll('g')
+        .data(({ month, values }) => values
+          .map(({ party, count }) => ({
+            party,
+            count,
+            point: d3.pointRadial(x(month), y(party)),
+          })))
+        .join('g')
+        .call((overlayedCircles) => overlayedCircles
+          .append('circle')
+          .attr('class', 'circle-outer')
+          .attr('cx', (d) => d.point[0])
+          .attr('cy', (d) => d.point[1])
+          .attr('r', (d) => (d.count === 0 ? 0 : circleRadius))
+          .attr('fill', (d) => this.lightColor(d.party)))
+        .call((overlayedCircles) => overlayedCircles
+          .append('circle')
+          .attr('class', 'circle-inner')
+          .attr('cx', (d) => d.point[0])
+          .attr('cy', (d) => d.point[1])
+          .attr('r', (d) => (d.count === 0 ? 0 : c(d.count)))
+          .attr('fill', (d) => this.color(d.party))
+          .style('pointer-events', 'none')));
+
+    this.svg.append('g')
+      .attr('class', 'ring')
+      .call(ring);
 
     return this;
   }

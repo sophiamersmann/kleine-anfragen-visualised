@@ -9,6 +9,7 @@ import {
   rollups,
   range,
   sum,
+  max,
   descending,
   ascending,
   difference,
@@ -19,6 +20,7 @@ import {
   scaleBand,
   scaleOrdinal,
   scalePoint,
+  scaleSqrt,
 } from 'd3-scale';
 
 import { schemePaired } from 'd3-scale-chromatic';
@@ -42,6 +44,7 @@ export default {
   rollups,
   range,
   sum,
+  max,
   descending,
   ascending,
   difference,
@@ -50,6 +53,7 @@ export default {
   scaleBand,
   scaleOrdinal,
   scalePoint,
+  scaleSqrt,
 
   schemePaired,
 

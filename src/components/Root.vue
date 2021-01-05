@@ -150,12 +150,13 @@ export default {
       }));
     },
     fetchRequestsData() {
+      const parseTime = d3.timeParse('%Y-%m-%d');
       return d3.csv(this.srcRequests, (d) => ({
         body: d.body,
         term: d.legislative_term,
         title: d.title,
         type: d.interpellation_type,
-        date: d.published_at,
+        date: parseTime(d.published_at),
         parties: d.parties.split(';').map((s) => s.trim()),
         ministries: d.ministries.split(';').map((s) => s.trim()),
       }));
