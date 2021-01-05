@@ -1,9 +1,9 @@
 <template>
   <div class="popup">
     <h2>{{ body }} ({{ years }})</h2>
-    <div
+    <!-- <div
       :id=parliamentChartId
-      class="chart chart-parliament" />
+      class="chart chart-parliament" /> -->
     <div
       :id=ringChartId
       class="chart chart-ring" />
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ParliamentChart from '@/core/ParliamentChart';
+// import ParliamentChart from '@/core/ParliamentChart';
 import RingChart from '@/core/RingChart';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
@@ -34,14 +34,15 @@ export default {
     };
   },
   mounted() {
-    const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
-    this.parliamentChart = new ParliamentChart(`#${parliamentChartDiv.id}`)
-      .data(this.requests, this.elections, this.dates)
-      .draw(200);
+    // const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
+    // this.parliamentChart = new ParliamentChart(`#${parliamentChartDiv.id}`)
+    //   .data(this.requests, this.elections, this.dates)
+    //   .draw(200);
 
     const ringChartDiv = this.$el.querySelector('.chart-ring');
     this.ringChart = new RingChart(`#${ringChartDiv.id}`)
-      .data(this.requests);
+      .data(this.requests, this.dates)
+      .draw();
   },
   computed: {
     parliamentChartId() {
@@ -71,7 +72,7 @@ export default {
 
 .chart-ring {
   padding: var(--spacing);
-  height: 60vh; /* todo: magic value */
-  overflow-y: auto;
+  /* height: 60vh; */
+  /* overflow-y: auto; */
 }
 </style>

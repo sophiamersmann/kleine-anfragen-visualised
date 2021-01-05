@@ -14,11 +14,18 @@ import {
   difference,
 } from 'd3-array';
 
-import { scaleLinear } from 'd3-scale';
+import {
+  scaleLinear,
+  scaleBand,
+  scaleOrdinal,
+  scalePoint,
+} from 'd3-scale';
+
+import { schemePaired } from 'd3-scale-chromatic';
 
 import { pointRadial, arc } from 'd3-shape';
 
-import { timeDay } from 'd3-time';
+import { timeDay, timeMonth, timeMonths } from 'd3-time';
 
 import { timeParse, timeFormat } from 'd3-time-format';
 
@@ -26,7 +33,9 @@ import { format } from 'd3-format';
 
 export default {
   csv,
+
   select,
+
   group,
   groups,
   rollup,
@@ -36,11 +45,23 @@ export default {
   descending,
   ascending,
   difference,
+
   scaleLinear,
+  scaleBand,
+  scaleOrdinal,
+  scalePoint,
+
+  schemePaired,
+
   pointRadial,
   arc,
+
   timeDay,
+  timeMonth,
+  timeMonths,
+
   timeParse,
   timeFormat,
+
   format,
 };
