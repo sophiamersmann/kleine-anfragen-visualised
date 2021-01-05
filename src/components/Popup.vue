@@ -1,9 +1,11 @@
 <template>
   <div class="popup">
-    <h2>{{ body }} ({{ years }})</h2>
-    <!-- <div
-      :id=parliamentChartId
-      class="chart chart-parliament" /> -->
+    <div class="sidebar">
+      <h2>{{ body }} ({{ years }})</h2>
+      <div
+        :id=parliamentChartId
+        class="chart chart-parliament" />
+    </div>
     <div
       :id=ringChartId
       class="chart chart-ring" />
@@ -11,7 +13,7 @@
 </template>
 
 <script>
-// import ParliamentChart from '@/core/ParliamentChart';
+import ParliamentChart from '@/core/ParliamentChart';
 import RingChart from '@/core/RingChart';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
@@ -34,13 +36,13 @@ export default {
     };
   },
   mounted() {
-    // const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
-    // this.parliamentChart = new ParliamentChart(`#${parliamentChartDiv.id}`)
-    //   .data(this.requests, this.elections, this.dates)
-    //   .draw(200);
+    const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
+    this.parliamentChart = new ParliamentChart(`#${parliamentChartDiv.id}`)
+      .data(this.requests, this.elections, this.dates)
+      .draw(200);
 
     const ringChartDiv = this.$el.querySelector('.chart-ring');
-    this.ringChart = new RingChart(`#${ringChartDiv.id}`)
+    this.ringChart = new RingChart(`#${ringChartDiv.id}`, ringChartDiv.clientHeight)
       .data(this.requests, this.dates)
       .draw();
   },
@@ -60,19 +62,27 @@ export default {
 
 <style scoped>
 .popup {
+  --height: calc(100vh - 2 * var(--popup-offset));
+
   background-color: white;
 
   position: fixed;
   z-index: 2000;
   top: var(--popup-offset);
-  left: var(--popup-offset);
-  width: calc(100vw - 2 * var(--popup-offset));
-  height: calc(100vh - 2 * var(--popup-offset));
+  left: calc(3 * var(--popup-offset));
+  width: calc(100vw - 6 * var(--popup-offset));
+  height: var(--height);
+
+  display: grid;
+  grid-template-columns: 1fr var(--height);
+}
+
+.sidebar {
+  padding: var(--spacing);
 }
 
 .chart-ring {
-  padding: var(--spacing);
-  /* height: 60vh; */
-  /* overflow-y: auto; */
+  height: var(--height);
+  width: var(--height);
 }
 </style>

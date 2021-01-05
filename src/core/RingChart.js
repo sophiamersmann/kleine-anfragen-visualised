@@ -1,7 +1,7 @@
 import d3 from '@/assets/d3';
 
 export default class RingChart {
-  constructor(selector) {
+  constructor(selector, size) {
     this.selector = selector;
 
     // data
@@ -12,8 +12,8 @@ export default class RingChart {
 
     // options
     this.svg = null;
-    this.width = 600; // TODO: fixed for now
-    this.height = 600;
+    this.width = size;
+    this.height = size;
     this.margin = 40;
     this.config = {
       innerRadius: null,
