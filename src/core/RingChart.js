@@ -1,5 +1,7 @@
 import d3 from '@/assets/d3';
 
+import forceClusterCollision from '@/core/forceClusterCollision';
+
 export default class RingChart {
   constructor(selector, size) {
     this.selector = selector;
@@ -20,6 +22,7 @@ export default class RingChart {
       innerRadius: null,
       outerRadius: null,
       circleRadius: 12, // TODO: fixed for now
+      questionsRadius: 14,
       unit: 10,
     };
 
@@ -270,6 +273,67 @@ export default class RingChart {
     return this;
   }
 
+  drawQuestions(month) {
+    const { questionsRadius } = this.config;
+    const { internalFormat } = this.formats;
+    const n = this.parties.length;
+
+    const requests = [];
+    this.requests
+      .filter((d) => internalFormat(d.date) === month)
+      .forEach((d, i) => d.parties.forEach((party) => {
+        const cluster = this.parties.includes(party)
+          ? this.parties.findIndex((p) => p === party) : n;
+        const focusX = 110 * Math.cos((cluster / n) * Math.PI * 2) + Math.random() * 5;
+        const focusY = 110 * Math.sin((cluster / n) * Math.PI * 2) + Math.random() * 5;
+        requests.push({
+          requestId: i, party, cluster, focusX, focusY, x: focusX, y: focusY,
+        });
+      }));
+
+    const g = this.svg.append('g')
+      .attr('class', 'center center-requests')
+      .selectAll('g')
+      .data(requests)
+      .join('g');
+
+    const circle = g
+      .append('circle')
+      .attr('r', questionsRadius)
+      .attr('fill', 'none')
+      .attr('opacity', 1);
+
+    const text = g
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .attr('fill', (d) => (d.party === 'mixed' ? 'black' : this.color(d.party)))
+      .style('font-size', '1.9em')
+      .style('font-weight', 'bold')
+      .text('?');
+
+    const simulation = d3.forceSimulation()
+      .force('collide', forceClusterCollision()
+        .radius(questionsRadius + 1)
+        .strength(0.8)
+        .clusterPadding(10))
+      .force('x', d3.forceX().x((d) => d.focusX).strength(0.2))
+      .force('y', d3.forceY().y((d) => d.focusY).strength(0.2));
+
+    function ticked() {
+      circle
+        .attr('cx', (d) => d.x)
+        .attr('cy', (d) => d.y);
+      text
+        .attr('x', (d) => d.x)
+        .attr('y', (d) => d.y);
+    }
+
+    simulation.nodes(requests).on('tick', ticked);
+
+    return this;
+  }
+
   drawData() {
     const { x, y, c } = this.scales;
     const {
@@ -297,6 +361,8 @@ export default class RingChart {
           `L${d3.pointRadial(x(e.x), innerRadius - 3 * unit)}`,
         ].join(' '));
       d3.select(`.x-tick--arc-${d.month}`).attr('opacity', 1);
+
+      this.drawQuestions(d.month);
     };
 
     const ring = (r) => r
@@ -366,7 +432,8 @@ export default class RingChart {
     // hide arcs
     d3.selectAll('.x-tick--arc').attr('opacity', 0);
 
-    // d3.select(".g-inner").remove();
+    // hide requests
+    d3.select('.center-requests').remove();
   }
 
   mapRadialDate(date, forward = true) {

@@ -33,6 +33,10 @@ import { timeParse, timeFormat } from 'd3-time-format';
 
 import { format } from 'd3-format';
 
+import { forceSimulation, forceX, forceY } from 'd3-force';
+
+import { quadtree } from 'd3-quadtree';
+
 export default {
   csv,
 
@@ -69,4 +73,10 @@ export default {
   timeFormat,
 
   format,
+
+  forceSimulation,
+  forceX,
+  forceY,
+
+  quadtree,
 };
