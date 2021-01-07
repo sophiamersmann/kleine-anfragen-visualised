@@ -1,6 +1,6 @@
 import { csv } from 'd3-fetch';
 
-import { select } from 'd3-selection';
+import { select, selectAll } from 'd3-selection';
 
 import {
   group,
@@ -37,6 +37,7 @@ export default {
   csv,
 
   select,
+  selectAll,
 
   group,
   groups,

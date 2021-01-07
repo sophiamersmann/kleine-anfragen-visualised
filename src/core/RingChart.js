@@ -254,6 +254,44 @@ export default class RingChart {
     const { x, y, c } = this.scales;
     const { circleRadius } = this.config;
 
+    function reset() {
+      // d3.select(".text-info").attr("opacity", 0);
+
+      // reset the grid and ring
+      d3.selectAll('.grid-x circle').attr('opacity', 1);
+      d3.selectAll('.g-bin circle').attr('fill-opacity', 1);
+
+      // reset tick labels
+      d3.selectAll('.x-tick--label').style('font-weight', 'normal');
+      d3.selectAll('.x-tick--label-minor').attr('opacity', 0);
+
+      // reset tick lines
+      d3.selectAll('.x-tick--line-minor').attr('opacity', 0);
+      d3.select('.x-tick--line-origin').attr('opacity', 1);
+
+      // hide arcs
+      d3.selectAll('.x-tick--arc').attr('opacity', 0);
+
+      // d3.select(".g-inner").remove();
+    }
+
+    function onMouseOver(_, d) {
+      reset();
+
+      // d3.select(".text-info").attr("opacity", 1);
+
+      // make rest of the chart opacque
+      d3.selectAll('.grid-x circle').attr('opacity', 0.4);
+      d3.selectAll(`.g-bin:not(.g-bin-${d.month}) circle`).attr('fill-opacity', 0.4);
+
+      // show x label and lines
+      d3.select(`.x-tick--label-${d.month}`)
+        .attr('opacity', 1)
+        .style('font-weight', 'bold');
+      d3.select(`.x-tick--line-${d.month}`).attr('opacity', 1);
+      d3.select(`.x-tick--arc-${d.month}`).attr('opacity', 1);
+    }
+
     const ring = (r) => r
       .call((g) => g
         .selectAll('g')
@@ -265,6 +303,7 @@ export default class RingChart {
           .map(({ party, count }) => ({
             party,
             count,
+            month,
             point: d3.pointRadial(x(month), y(party)),
           })))
         .join('g')
@@ -274,7 +313,8 @@ export default class RingChart {
           .attr('cx', (d) => d.point[0])
           .attr('cy', (d) => d.point[1])
           .attr('r', (d) => (d.count === 0 ? 0 : circleRadius))
-          .attr('fill', (d) => this.lightColor(d.party)))
+          .attr('fill', (d) => this.lightColor(d.party))
+          .on('mouseover', onMouseOver))
         .call((overlayedCircles) => overlayedCircles
           .append('circle')
           .attr('class', 'circle-inner')
