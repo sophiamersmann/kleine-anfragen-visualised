@@ -1,5 +1,27 @@
 import d3 from '@/assets/d3';
 
+function resetInteractions() {
+  // hide info text
+  d3.select('.text-info').attr('opacity', 0);
+
+  // reset the grid and ring
+  d3.selectAll('.grid-x circle').attr('opacity', 1);
+  d3.selectAll('.g-bin circle').attr('fill-opacity', 1);
+
+  // reset tick labels
+  d3.selectAll('.x-tick--label').style('font-weight', 'normal');
+  d3.selectAll('.x-tick--label-minor').attr('opacity', 0);
+
+  // reset tick lines
+  d3.selectAll('.x-tick--line-minor').attr('opacity', 0);
+  d3.select('.x-tick--line-origin').attr('opacity', 1);
+
+  // hide arcs
+  d3.selectAll('.x-tick--arc').attr('opacity', 0);
+
+  // d3.select(".g-inner").remove();
+}
+
 export default class RingChart {
   constructor(selector, size) {
     this.selector = selector;
@@ -107,6 +129,7 @@ export default class RingChart {
       .setUpSVG()
       .setUpScales()
       .drawAxes()
+      .drawInfo()
       .prepareData()
       .drawData();
   }
@@ -122,7 +145,8 @@ export default class RingChart {
       .attr('width', this.width)
       .attr('height', this.height)
       .attr('stroke-linejoin', 'round')
-      .attr('stroke-linecap', 'round');
+      .attr('stroke-linecap', 'round')
+      .on('click', resetInteractions);
 
     this.svg.append('rect')
       .attr('x', -this.width / 2)
@@ -250,35 +274,49 @@ export default class RingChart {
     return this;
   }
 
+  drawInfo() {
+    const { innerRadius, unit } = this.config;
+
+    const infoText = (info) => info
+      .call((g) => g
+        .append('path')
+        .attr('id', 'path-info')
+        .attr('stroke', 'none')
+        .attr('fill', 'none')
+        .attr('d', () => {
+          const r = innerRadius - 4 * unit;
+          return [
+            `M${d3.pointRadial(-0.35, r)}`,
+            `A${r},${r} 0,0,1 ${d3.pointRadial(0.5, r)}`,
+          ].join(' ');
+        }))
+      .call((g) => g
+        .append('text')
+        .attr('class', 'text-info')
+        .attr('opacity', 0)
+        .attr('fill', '#000')
+        .style('font-size', '0.8em')
+        .style('font-style', 'italic')
+        .append('textPath')
+        .attr('xlink:href', '#path-info')
+        .text('Click anywhere to reset'));
+
+    this.svg.append('g')
+      .attr('class', 'info')
+      .call(infoText);
+
+    return this;
+  }
+
   drawData() {
     const { x, y, c } = this.scales;
     const { circleRadius } = this.config;
 
-    function reset() {
-      // d3.select(".text-info").attr("opacity", 0);
-
-      // reset the grid and ring
-      d3.selectAll('.grid-x circle').attr('opacity', 1);
-      d3.selectAll('.g-bin circle').attr('fill-opacity', 1);
-
-      // reset tick labels
-      d3.selectAll('.x-tick--label').style('font-weight', 'normal');
-      d3.selectAll('.x-tick--label-minor').attr('opacity', 0);
-
-      // reset tick lines
-      d3.selectAll('.x-tick--line-minor').attr('opacity', 0);
-      d3.select('.x-tick--line-origin').attr('opacity', 1);
-
-      // hide arcs
-      d3.selectAll('.x-tick--arc').attr('opacity', 0);
-
-      // d3.select(".g-inner").remove();
-    }
-
     function onMouseOver(_, d) {
-      reset();
+      resetInteractions();
 
-      // d3.select(".text-info").attr("opacity", 1);
+      // show info text
+      d3.select('.text-info').attr('opacity', 1);
 
       // make rest of the chart opacque
       d3.selectAll('.grid-x circle').attr('opacity', 0.4);
