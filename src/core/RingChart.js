@@ -1,27 +1,5 @@
 import d3 from '@/assets/d3';
 
-function resetInteractions() {
-  // hide info text
-  d3.select('.text-info').attr('opacity', 0);
-
-  // reset the grid and ring
-  d3.selectAll('.grid-x circle').attr('opacity', 1);
-  d3.selectAll('.g-bin circle').attr('fill-opacity', 1);
-
-  // reset tick labels
-  d3.selectAll('.x-tick--label').style('font-weight', 'normal');
-  d3.selectAll('.x-tick--label-minor').attr('opacity', 0);
-
-  // reset tick lines
-  d3.selectAll('.x-tick--line-minor').attr('opacity', 0);
-  d3.select('.x-tick--line-origin').attr('opacity', 1);
-
-  // hide arcs
-  d3.selectAll('.x-tick--arc').attr('opacity', 0);
-
-  // d3.select(".g-inner").remove();
-}
-
 export default class RingChart {
   constructor(selector, size) {
     this.selector = selector;
@@ -146,7 +124,7 @@ export default class RingChart {
       .attr('height', this.height)
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round')
-      .on('click', resetInteractions);
+      .on('click', () => this.resetInteractions());
 
     this.svg.append('rect')
       .attr('x', -this.width / 2)
@@ -256,7 +234,7 @@ export default class RingChart {
           .attr('d', (d) => {
             const startDate = this.mapRadialDate(d3.timeMonth.offset(d.date, -8));
             const endDate = this.mapRadialDate(d3.timeMonth.offset(d.date, 8), false);
-            const r = innerRadius - 2 * unit;
+            const r = innerRadius - 3 * unit;
             return [
               `M${d3.pointRadial(x(internalFormat(startDate)), r)}`,
               `A${r},${r} 0,0,1 ${d3.pointRadial(x(internalFormat(endDate)), r)}`,
@@ -284,7 +262,7 @@ export default class RingChart {
         .attr('stroke', 'none')
         .attr('fill', 'none')
         .attr('d', () => {
-          const r = innerRadius - 4 * unit;
+          const r = innerRadius - 2.5 * unit;
           return [
             `M${d3.pointRadial(-0.35, r)}`,
             `A${r},${r} 0,0,1 ${d3.pointRadial(0.5, r)}`,
@@ -310,10 +288,12 @@ export default class RingChart {
 
   drawData() {
     const { x, y, c } = this.scales;
-    const { circleRadius } = this.config;
+    const {
+      circleRadius, innerRadius, outerRadius, unit,
+    } = this.config;
 
-    function onMouseOver(_, d) {
-      resetInteractions();
+    const onMouseOver = (_, d) => {
+      this.resetInteractions();
 
       // show info text
       d3.select('.text-info').attr('opacity', 1);
@@ -326,9 +306,14 @@ export default class RingChart {
       d3.select(`.x-tick--label-${d.month}`)
         .attr('opacity', 1)
         .style('font-weight', 'bold');
-      d3.select(`.x-tick--line-${d.month}`).attr('opacity', 1);
+      d3.select(`.x-tick--line-${d.month}`)
+        .attr('opacity', 1)
+        .attr('d', (e, i) => [
+          `M${d3.pointRadial(x(e.x), outerRadius + e.offset + (i === 0 ? 2 * unit : 0))}`,
+          `L${d3.pointRadial(x(e.x), innerRadius - 3 * unit)}`,
+        ].join(' '));
       d3.select(`.x-tick--arc-${d.month}`).attr('opacity', 1);
-    }
+    };
 
     const ring = (r) => r
       .call((g) => g
@@ -367,6 +352,36 @@ export default class RingChart {
       .call(ring);
 
     return this;
+  }
+
+  resetInteractions() {
+    const { x } = this.scales;
+    const { innerRadius, outerRadius, unit } = this.config;
+
+    // hide info text
+    d3.select('.text-info').attr('opacity', 0);
+
+    // reset the grid and ring
+    d3.selectAll('.grid-x circle').attr('opacity', 1);
+    d3.selectAll('.g-bin circle').attr('fill-opacity', 1);
+
+    // reset tick labels
+    d3.selectAll('.x-tick--label').style('font-weight', 'normal');
+    d3.selectAll('.x-tick--label-minor').attr('opacity', 0);
+
+    // reset tick lines
+    d3.selectAll('.x-tick--line')
+      .attr('d', (e, i) => [
+        `M${d3.pointRadial(x(e.x), outerRadius + e.offset + (i === 0 ? 2 * unit : 0))}`,
+        `L${d3.pointRadial(x(e.x), innerRadius - 2 * unit)}`,
+      ].join(' '));
+    d3.selectAll('.x-tick--line-minor').attr('opacity', 0);
+    d3.select('.x-tick--line-origin').attr('opacity', 1);
+
+    // hide arcs
+    d3.selectAll('.x-tick--arc').attr('opacity', 0);
+
+    // d3.select(".g-inner").remove();
   }
 
   mapRadialDate(date, forward = true) {
