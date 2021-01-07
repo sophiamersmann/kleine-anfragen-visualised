@@ -175,7 +175,7 @@ export default class RingChart {
           isOrigin: i === 0,
           isVisible: i === 0 || date.getMonth() % 6 === 0,
           isMajor: date.getMonth() === 0,
-          offset: date.getMonth() === 0 ? 2 * unit : unit,
+          offset: date.getMonth() === 0 ? 3 * unit : unit,
         })))
         .join('g')
         .attr('font-size', 11)
@@ -187,6 +187,7 @@ export default class RingChart {
             `x-tick--line-${d.x}`,
           ].join(' '))
           .classed('x-tick--line-origin', (d) => d.isOrigin)
+          .classed('x-tick--line-visible', (d) => d.isVisible)
           .attr('stroke', '#000')
           .attr('stroke-opacity', 0.2)
           .attr('stroke-dasharray', '2 4')
@@ -215,6 +216,7 @@ export default class RingChart {
             `x-tick--label-${d.isMajor ? 'major' : 'minor'}`,
             `x-tick--label-${d.x}`,
           ].join(' '))
+          .classed('x-tick--label-visible', (d) => d.isVisible && !d.isOrigin)
           .attr('opacity', (d) => +(d.isVisible && !d.isOrigin))
           .append('textPath')
           .attr('startOffset', 5)
@@ -253,36 +255,18 @@ export default class RingChart {
   }
 
   drawInfo() {
-    const { innerRadius, unit } = this.config;
-
-    const infoText = (info) => info
-      .call((g) => g
-        .append('path')
-        .attr('id', 'path-info')
-        .attr('stroke', 'none')
-        .attr('fill', 'none')
-        .attr('d', () => {
-          const r = innerRadius - 2.5 * unit;
-          return [
-            `M${d3.pointRadial(-0.35, r)}`,
-            `A${r},${r} 0,0,1 ${d3.pointRadial(0.5, r)}`,
-          ].join(' ');
-        }))
-      .call((g) => g
-        .append('text')
-        .attr('class', 'text-info')
-        .attr('opacity', 0)
-        .attr('fill', '#000')
-        .style('font-size', '0.8em')
-        .style('font-style', 'italic')
-        .append('textPath')
-        .attr('xlink:href', '#path-info')
-        .text('Click anywhere to reset'));
-
     this.svg.append('g')
       .attr('class', 'info')
-      .call(infoText);
-
+      .append('text')
+      .attr('class', 'text-info')
+      .attr('x', this.width / 2 - 10)
+      .attr('y', -this.height / 2 + 10)
+      .attr('dominant-baseline', 'hanging')
+      .attr('text-anchor', 'end')
+      .attr('fill', '#000')
+      .style('font-size', '0.8em')
+      .style('font-style', 'italic')
+      .text('Click anywhere to reset');
     return this;
   }
 
@@ -309,7 +293,7 @@ export default class RingChart {
       d3.select(`.x-tick--line-${d.month}`)
         .attr('opacity', 1)
         .attr('d', (e, i) => [
-          `M${d3.pointRadial(x(e.x), outerRadius + e.offset + (i === 0 ? 2 * unit : 0))}`,
+          `M${d3.pointRadial(x(e.x), outerRadius + e.offset + (i.isOrigin ? 2 * unit : 0))}`,
           `L${d3.pointRadial(x(e.x), innerRadius - 3 * unit)}`,
         ].join(' '));
       d3.select(`.x-tick--arc-${d.month}`).attr('opacity', 1);
@@ -368,15 +352,16 @@ export default class RingChart {
     // reset tick labels
     d3.selectAll('.x-tick--label').style('font-weight', 'normal');
     d3.selectAll('.x-tick--label-minor').attr('opacity', 0);
+    d3.selectAll('.x-tick--label-visible').attr('opacity', 1);
 
     // reset tick lines
     d3.selectAll('.x-tick--line')
       .attr('d', (e, i) => [
-        `M${d3.pointRadial(x(e.x), outerRadius + e.offset + (i === 0 ? 2 * unit : 0))}`,
+        `M${d3.pointRadial(x(e.x), outerRadius + e.offset + (i.isOrigin ? 2 * unit : 0))}`,
         `L${d3.pointRadial(x(e.x), innerRadius - 2 * unit)}`,
       ].join(' '));
     d3.selectAll('.x-tick--line-minor').attr('opacity', 0);
-    d3.select('.x-tick--line-origin').attr('opacity', 1);
+    d3.selectAll('.x-tick--line-visible').attr('opacity', 1);
 
     // hide arcs
     d3.selectAll('.x-tick--arc').attr('opacity', 0);
