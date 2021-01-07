@@ -43,6 +43,7 @@
       class="overlay"
       @click="onFlat" />
   </transition>
+  <div class="tooltip" />
 </template>
 
 <script>
@@ -180,7 +181,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 main {
   padding: var(--spacing);
   transition: filter 0.2s ease;
@@ -262,6 +263,17 @@ main {
 .scale-enter-from,
 .scale-leave-to {
   transform: scale(0.9);
+  opacity: 0;
+}
+
+.tooltip {
+  position: absolute;
+  width: 250px;
+  background: lightsteelblue;
+  left: 10px;
+  top: 10px;
+  z-index: 3000;
+  pointer-events: none;
   opacity: 0;
 }
 </style>

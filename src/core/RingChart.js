@@ -287,7 +287,14 @@ export default class RingChart {
         const focusX = 110 * Math.cos((cluster / n) * Math.PI * 2) + Math.random() * 5;
         const focusY = 110 * Math.sin((cluster / n) * Math.PI * 2) + Math.random() * 5;
         requests.push({
-          requestId: i, party, cluster, focusX, focusY, x: focusX, y: focusY,
+          requestId: i,
+          data: d,
+          party,
+          cluster,
+          focusX,
+          focusY,
+          x: focusX,
+          y: focusY,
         });
       }));
 
@@ -295,13 +302,38 @@ export default class RingChart {
       .attr('class', 'center center-requests')
       .selectAll('g')
       .data(requests)
-      .join('g');
+      .join('g')
+      .attr('class', (d) => `question-mark question-mark--${d.requestId}`);
 
     const circle = g
       .append('circle')
       .attr('r', questionsRadius)
-      .attr('fill', 'none')
-      .attr('opacity', 1);
+      .attr('fill', 'lightsteelblue')
+      .attr('opacity', 0)
+      .on('mousemove', (event, d) => {
+        // highlight identical requests
+        d3.selectAll(`.question-mark--${d.requestId} circle`)
+          .attr('opacity', 1);
+
+        // show tooltip
+        d3.select('.tooltip')
+          .style('left', `${event.pageX}px`)
+          .style('top', `${event.pageY}px`)
+          .style('opacity', 1)
+          .html([
+            '<b>', d.data.title, '</b>',
+          ].join(''));
+      })
+      .on('mouseleave', () => {
+        d3.selectAll('.question-mark circle')
+          .attr('opacity', 0);
+
+        d3.select('.tooltip')
+          .style('opacity', 0);
+      })
+      .on('click', (event) => {
+        event.stopPropagation();
+      });
 
     const text = g
       .append('text')
@@ -310,6 +342,7 @@ export default class RingChart {
       .attr('fill', (d) => (d.party === 'mixed' ? 'black' : this.color(d.party)))
       .style('font-size', '1.9em')
       .style('font-weight', 'bold')
+      .style('pointer-events', 'none')
       .text('?');
 
     const simulation = d3.forceSimulation()
@@ -407,6 +440,9 @@ export default class RingChart {
   resetInteractions() {
     const { x } = this.scales;
     const { innerRadius, outerRadius, unit } = this.config;
+
+    // hide tooltip
+    d3.select('.tooltip').style('opacity', 0);
 
     // hide info text
     d3.select('.text-info').attr('opacity', 0);
