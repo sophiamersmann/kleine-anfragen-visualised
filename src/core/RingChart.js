@@ -40,18 +40,19 @@ export default class RingChart {
     };
   }
 
-  data(requests, dates) {
-    this.requests = requests;
+  reset() {
+    if (this.svg) d3.select(`${this.selector} svg`).remove();
+    return this;
+  }
 
+  data(parties, dates, requests, maxValue) {
+    this.parties = parties;
     this.dates = dates;
+    this.requests = requests;
+    this.maxValue = maxValue;
+
     this.months = d3.timeMonths(dates.start, dates.end);
     this.monthKeys = this.months.map(this.formats.internalFormat);
-
-    this.parties = d3
-      .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
-      .map(([party, count]) => ({ party, count }))
-      .sort((a, b) => d3.descending(a.count, b.count))
-      .map(({ party }) => party);
 
     const outerRadius = this.width / 2 - this.margin + 12; // * Magic value
     const innerRadius = outerRadius - 2 * this.config.circleRadius * this.parties.length;
@@ -83,8 +84,6 @@ export default class RingChart {
     this.bins = d3
       .groups(this.requests, (d) => internalFormat(d.date))
       .map(([month, requests]) => {
-        // ! This means some requests will be shown twice
-        // ? Connect question marks with a line ?
         const parties = requests.flatMap((d) => d.parties);
         const count = d3.rollup(parties, (v) => v.length, (d) => d);
         const values = [...new Set(parties)]
@@ -97,9 +96,8 @@ export default class RingChart {
         return { month, values };
       });
 
-    const max = d3.max(this.bins, (d) => d3.max(d.values, (e) => e.count));
     this.scales.c = d3.scaleSqrt()
-      .domain([1, max])
+      .domain([1, this.maxValue])
       .range([1, this.config.circleRadius]);
 
     return this;
@@ -107,6 +105,7 @@ export default class RingChart {
 
   draw() {
     return this
+      .reset()
       .setUpSVG()
       .setUpScales()
       .drawAxes()

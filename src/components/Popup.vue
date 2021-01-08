@@ -2,6 +2,10 @@
   <div class="popup">
     <div class="sidebar">
       <h2>{{ body }} ({{ years }})</h2>
+      <select-menu
+        :ministries=ministries
+        @selected=onSelected
+      />
       <div
         :id=parliamentChartId
         class="chart chart-parliament" />
@@ -13,13 +17,20 @@
 </template>
 
 <script>
-import ParliamentChart from '@/core/ParliamentChart';
-import RingChart from '@/core/RingChart';
+import d3 from '@/assets/d3';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
 
+import ParliamentChart from '@/core/ParliamentChart';
+import RingChart from '@/core/RingChart';
+
+import SelectMenu from './SelectMenu.vue';
+
 export default {
   name: 'Popup',
+  components: {
+    SelectMenu,
+  },
   props: {
     name: String,
     body: String,
@@ -33,7 +44,33 @@ export default {
     return {
       parliamentChart: null,
       ringChart: null,
+      ministries: null,
+      parties: null,
+      maxValue: null,
+      selectedMinistry: null,
     };
+  },
+  created() {
+    this.ministries = d3
+      .rollups(this.requests, (v) => v.length, (d) => d.ministries[0])
+      .sort((a, b) => d3.descending(a[1], b[1]))
+      .map(([ministry]) => ministry);
+    [this.selectedMinistry] = this.ministries;
+
+    this.parties = d3
+      .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
+      .map(([party, count]) => ({ party, count }))
+      .sort((a, b) => d3.descending(a.count, b.count))
+      .map(({ party }) => party);
+
+    const dateId = d3.timeFormat('%Y-%m');
+    this.maxValue = d3.max(d3
+      .groups(this.requests, (d) => `${d.ministries[0]}-${dateId(d.date)}`)
+      .map(([, requests]) => {
+        const parties = requests.flatMap((d) => d.parties);
+        const counts = d3.rollups(parties, (v) => v.length, (d) => d).map((d) => d[1]);
+        return d3.max(counts);
+      }));
   },
   mounted() {
     const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
@@ -42,10 +79,8 @@ export default {
       .draw(200);
 
     const ringChartDiv = this.$el.querySelector('.chart-ring');
-    // TODO: Hard-coded for development
-    const requests = this.requests.filter((d) => d.ministries[0] === 'Ministerium für Verkehr und Infrastruktur');
     this.ringChart = new RingChart(`#${ringChartDiv.id}`, ringChartDiv.clientHeight)
-      .data(requests, this.dates)
+      .data(this.parties, this.dates, this.selectedRequests, this.maxValue)
       .draw();
   },
   computed: {
@@ -58,25 +93,34 @@ export default {
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
     },
+    selectedRequests() {
+      return this.requests.filter((d) => d.ministries[0] === this.selectedMinistry);
+    },
+  },
+  methods: {
+    onSelected(ministry) {
+      this.selectedMinistry = ministry;
+      this.ringChart
+        .data(this.parties, this.dates, this.selectedRequests, this.maxValue)
+        .draw();
+    },
   },
 };
 </script>
 
 <style scoped>
 .popup {
-  --height: calc(100vh - 2 * var(--popup-offset));
-
   background-color: white;
 
   position: fixed;
   z-index: 2000;
   top: var(--popup-offset);
   left: calc(3 * var(--popup-offset));
-  width: calc(100vw - 6 * var(--popup-offset));
-  height: var(--height);
+  width: var(--popup-width);
+  height: var(--popup-height);
 
   display: grid;
-  grid-template-columns: 1fr var(--height);
+  grid-template-columns: 1fr var(--popup-height);
 }
 
 .sidebar {
@@ -84,7 +128,7 @@ export default {
 }
 
 .chart-ring {
-  height: var(--height);
-  width: var(--height);
+  height: var(--popup-height);
+  width: var(--popup-height);
 }
 </style>
