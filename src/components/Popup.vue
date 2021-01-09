@@ -2,10 +2,9 @@
   <div class="popup">
     <div class="sidebar">
       <h2>{{ body }} ({{ years }})</h2>
-      <select-menu
+      <ministry-button-group
         :ministries=ministries
-        @selected=onSelected
-      />
+        @selected=onSelected />
     </div>
     <div
       :id=ringChartId
@@ -20,12 +19,12 @@ import { getTermId, displayTimeRange } from '@/core/utils';
 
 import RingChart from '@/core/RingChart';
 
-import SelectMenu from './SelectMenu.vue';
+import MinistryButtonGroup from './MinistryButtonGroup.vue';
 
 export default {
   name: 'Popup',
   components: {
-    SelectMenu,
+    MinistryButtonGroup,
   },
   props: {
     name: String,
