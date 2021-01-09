@@ -18,6 +18,7 @@ export default {
     id: Number,
     value: String,
     active: Boolean,
+    requests: Array,
   },
   emits: ['clicked'],
   computed: {
@@ -33,7 +34,7 @@ export default {
   },
   mounted() {
     const chartDiv = this.$el.querySelector('.chart-ministry');
-    new MinistryChart(`#${chartDiv.id}`).draw();
+    new MinistryChart(`#${chartDiv.id}`, this.requests).draw();
   },
   methods: {
     onClick() {

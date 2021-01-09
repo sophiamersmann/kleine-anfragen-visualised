@@ -1,8 +1,9 @@
 import d3 from '@/assets/d3';
 
 export default class MinistryChart {
-  constructor(selector) {
+  constructor(selector, requests) {
     this.selector = selector;
+    this.requests = requests;
 
     this.svg = null;
     this.width = 200;

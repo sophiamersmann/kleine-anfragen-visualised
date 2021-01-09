@@ -46,10 +46,10 @@ export default {
   },
   created() {
     this.ministries = d3
-      .rollups(this.requests, (v) => v.length, (d) => d.ministries[0])
-      .sort((a, b) => d3.descending(a[1], b[1]))
-      .map(([ministry]) => ministry);
-    [this.selectedMinistry] = this.ministries;
+      .groups(this.requests, (d) => d.ministries[0])
+      .map(([ministry, requests]) => ({ name: ministry, requests }))
+      .sort((a, b) => d3.descending(a.requests.length, b.requests.length));
+    this.selectedMinistry = this.ministries[0].name;
 
     this.parties = d3
       .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)

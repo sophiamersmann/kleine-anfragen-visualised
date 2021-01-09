@@ -4,8 +4,9 @@
       v-for="(ministry, i) in ministries"
       :key=i
       :id=i
-      :value=ministry
-      :active="ministry === selectedMinistry"
+      :value=ministry.name
+      :active="ministry.name === selectedMinistry"
+      :requests=ministry.requests
       @clicked="onClick" />
   </div>
 </template>
@@ -28,7 +29,7 @@ export default {
     };
   },
   created() {
-    [this.selectedMinistry] = this.ministries;
+    this.selectedMinistry = this.ministries[0].name;
   },
   methods: {
     onClick(selectedMinistry) {
