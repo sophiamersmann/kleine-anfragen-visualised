@@ -79,9 +79,13 @@ export default {
       .draw(200);
 
     const ringChartDiv = this.$el.querySelector('.chart-ring');
-    this.ringChart = new RingChart(`#${ringChartDiv.id}`, ringChartDiv.clientHeight)
-      .data(this.parties, this.dates, this.selectedRequests, this.maxValue)
-      .draw();
+    const { dates, parties, maxValue } = this;
+    this.ringChart = new RingChart(
+      `#${ringChartDiv.id}`, ringChartDiv.clientHeight,
+      { dates, parties, maxValue },
+    )
+      .drawSkeleton()
+      .updateMinistry(this.selectedRequests);
   },
   computed: {
     parliamentChartId() {
@@ -100,9 +104,7 @@ export default {
   methods: {
     onSelected(ministry) {
       this.selectedMinistry = ministry;
-      this.ringChart
-        .data(this.parties, this.dates, this.selectedRequests, this.maxValue)
-        .draw();
+      this.ringChart.updateMinistry(this.selectedRequests);
     },
   },
 };

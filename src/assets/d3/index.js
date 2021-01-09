@@ -37,6 +37,8 @@ import { forceSimulation, forceX, forceY } from 'd3-force';
 
 import { quadtree } from 'd3-quadtree';
 
+import { transition } from 'd3-transition';
+
 export default {
   csv,
 
@@ -79,4 +81,6 @@ export default {
   forceY,
 
   quadtree,
+
+  transition,
 };

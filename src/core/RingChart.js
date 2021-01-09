@@ -3,15 +3,26 @@ import d3 from '@/assets/d3';
 import forceClusterCollision from '@/core/forceClusterCollision';
 
 export default class RingChart {
-  constructor(selector, size) {
+  constructor(selector, size, data) {
     this.selector = selector;
 
+    // formats
+    this.formats = {
+      internalFormat: d3.timeFormat('%Y-%m'),
+      shortFormat: d3.timeFormat('%b'),
+      longFormat: d3.timeFormat('%b %Y'),
+    };
+
     // data
+    this.dates = data.dates;
+    this.parties = data.parties;
+    this.maxValue = data.maxValue;
+
     this.requests = null;
-    this.dates = null;
-    this.months = null;
-    this.parties = null;
     this.bins = null;
+
+    this.months = d3.timeMonths(this.dates.start, this.dates.end);
+    this.monthKeys = this.months.map(this.formats.internalFormat);
 
     // options
     this.svg = null;
@@ -26,39 +37,15 @@ export default class RingChart {
       unit: 10,
     };
 
+    this.config.outerRadius = this.width / 2 - this.margin + 12; // * Magic value
+    this.config.innerRadius = this.config.outerRadius
+      - 2 * this.config.circleRadius * this.parties.length;
+
     // scales
     this.scales = {
       x: null,
       y: null,
     };
-
-    // formats
-    this.formats = {
-      internalFormat: d3.timeFormat('%Y-%m'),
-      shortFormat: d3.timeFormat('%b'),
-      longFormat: d3.timeFormat('%b %Y'),
-    };
-  }
-
-  reset() {
-    if (this.svg) d3.select(`${this.selector} svg`).remove();
-    return this;
-  }
-
-  data(parties, dates, requests, maxValue) {
-    this.parties = parties;
-    this.dates = dates;
-    this.requests = requests;
-    this.maxValue = maxValue;
-
-    this.months = d3.timeMonths(dates.start, dates.end);
-    this.monthKeys = this.months.map(this.formats.internalFormat);
-
-    const outerRadius = this.width / 2 - this.margin + 12; // * Magic value
-    const innerRadius = outerRadius - 2 * this.config.circleRadius * this.parties.length;
-
-    this.config.innerRadius = innerRadius;
-    this.config.outerRadius = outerRadius;
 
     // TODO: For now, random colors
     this.color = d3.scaleOrdinal()
@@ -68,8 +55,25 @@ export default class RingChart {
     this.lightColor = d3.scaleOrdinal()
       .domain(this.parties)
       .range(d3.schemePaired.filter((_, i) => i % 2 === 0));
+  }
 
-    return this;
+  drawSkeleton() {
+    return this
+      .setUpSVG()
+      .setUpScales()
+      .drawAxes()
+      .drawInfo()
+      .setUpGrid();
+  }
+
+  updateMinistry(requests) {
+    this.requests = requests;
+
+    this.resetInteractions();
+
+    return this
+      .prepareData()
+      .drawData();
   }
 
   prepareData() {
@@ -81,37 +85,22 @@ export default class RingChart {
       console.warn('Requests outside of election period', `[${outliers.length}]`, outliers);
     }
 
-    this.bins = d3
-      .groups(this.requests, (d) => internalFormat(d.date))
-      .map(([month, requests]) => {
-        const parties = requests.flatMap((d) => d.parties);
-        const count = d3.rollup(parties, (v) => v.length, (d) => d);
-        const values = [...new Set(parties)]
-          .map((party) => ({ party, count: count.has(party) ? count.get(party) : 0 }))
-          .sort((a, b) => d3.descending(a.count, b.count) || d3.ascending(
-            this.parties.findIndex((p) => p === a.party),
-            this.parties.findIndex((p) => p === b.party),
-          ));
+    const groupedRequests = d3.group(this.requests, (d) => internalFormat(d.date));
+    this.bins = new Map(this.monthKeys.map((month) => {
+      if (!groupedRequests.has(month)) {
+        return [month, this.parties.map((party) => ({ party, count: 0 }))];
+      }
 
-        return { month, values };
-      });
+      const requests = groupedRequests.get(month);
+      const parties = requests.flatMap((d) => d.parties);
+      const count = d3.rollup(parties, (v) => v.length, (d) => d);
+      const values = this.parties
+        .map((party) => ({ party, count: count.has(party) ? count.get(party) : 0 }));
 
-    this.scales.c = d3.scaleSqrt()
-      .domain([1, this.maxValue])
-      .range([1, this.config.circleRadius]);
+      return [month, values];
+    }));
 
     return this;
-  }
-
-  draw() {
-    return this
-      .reset()
-      .setUpSVG()
-      .setUpScales()
-      .drawAxes()
-      .drawInfo()
-      .prepareData()
-      .drawData();
   }
 
   setUpSVG() {
@@ -152,6 +141,10 @@ export default class RingChart {
     this.scales.y = d3.scaleBand()
       .domain(this.parties)
       .range([innerRadius, outerRadius]);
+
+    this.scales.c = d3.scaleSqrt()
+      .domain([1, this.maxValue])
+      .range([1, this.config.circleRadius]);
 
     return this;
   }
@@ -366,6 +359,17 @@ export default class RingChart {
     return this;
   }
 
+  setUpGrid() {
+    this.svg.append('g')
+      .attr('class', 'ring')
+      .selectAll('g')
+      .data(this.monthKeys)
+      .join('g')
+      .attr('class', (month) => `g-bin g-bin-${month}`);
+
+    return this;
+  }
+
   drawData() {
     const { x, y, c } = this.scales;
     const {
@@ -397,41 +401,39 @@ export default class RingChart {
       this.drawQuestions(d.month);
     };
 
-    const ring = (r) => r
-      .call((g) => g
-        .selectAll('g')
-        .data(this.bins)
-        .join('g')
-        .attr('class', (d) => `g-bin g-bin-${d.month}`)
-        .selectAll('g')
-        .data(({ month, values }) => values
-          .map(({ party, count }) => ({
-            party,
-            count,
-            month,
-            point: d3.pointRadial(x(month), y(party)),
-          })))
-        .join('g')
-        .call((overlayedCircles) => overlayedCircles
-          .append('circle')
-          .attr('class', 'circle-outer')
-          .attr('cx', (d) => d.point[0])
-          .attr('cy', (d) => d.point[1])
-          .attr('r', (d) => (d.count === 0 ? 0 : circleRadius))
-          .attr('fill', (d) => this.lightColor(d.party))
-          .on('mouseover', onMouseOver))
-        .call((overlayedCircles) => overlayedCircles
-          .append('circle')
-          .attr('class', 'circle-inner')
-          .attr('cx', (d) => d.point[0])
-          .attr('cy', (d) => d.point[1])
-          .attr('r', (d) => (d.count === 0 ? 0 : c(d.count)))
-          .attr('fill', (d) => this.color(d.party))
-          .style('pointer-events', 'none')));
+    this.monthKeys.forEach((month) => {
+      const bin = this.bins.get(month)
+        .map(({ party, count }) => ({
+          party,
+          count,
+          month,
+          point: d3.pointRadial(x(month), y(party)),
+        }));
 
-    this.svg.append('g')
-      .attr('class', 'ring')
-      .call(ring);
+      const outer = bin.map((d) => ({ ...d, ...{ isInner: false, r: circleRadius } }));
+      const inner = bin.map((d) => ({ ...d, ...{ isInner: true, r: c(d.count) } }));
+
+      this.svg
+        .select(`.ring .g-bin-${month}`)
+        .selectAll('circle')
+        .data(outer.concat(inner), (d) => `${d.party}-${d.isInner}`)
+        .join(
+          (enter) => enter
+            .append('circle')
+            .attr('class', (d) => `circle-${d.isInner ? 'inner' : 'outer'}`)
+            .attr('cx', (d) => d.point[0])
+            .attr('cy', (d) => d.point[1])
+            .attr('r', (d) => (d.count > 0 ? d.r : 0))
+            .attr('fill', (d) => (d.isInner ? this.color : this.lightColor)(d.party))
+            .style('pointer-events', (d) => (d.isInner ? 'none' : 'unset'))
+            .on('mouseover', onMouseOver),
+          (update) => update
+            .call((u) => u
+              .transition()
+              .duration(600)
+              .attr('r', (d) => (d.count > 0 ? d.r : 0))),
+        );
+    });
 
     return this;
   }
