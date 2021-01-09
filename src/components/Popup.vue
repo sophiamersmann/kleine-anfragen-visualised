@@ -6,9 +6,6 @@
         :ministries=ministries
         @selected=onSelected
       />
-      <div
-        :id=parliamentChartId
-        class="chart chart-parliament" />
     </div>
     <div
       :id=ringChartId
@@ -21,7 +18,6 @@ import d3 from '@/assets/d3';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
 
-import ParliamentChart from '@/core/ParliamentChart';
 import RingChart from '@/core/RingChart';
 
 import SelectMenu from './SelectMenu.vue';
@@ -42,7 +38,6 @@ export default {
   },
   data() {
     return {
-      parliamentChart: null,
       ringChart: null,
       ministries: null,
       parties: null,
@@ -73,11 +68,6 @@ export default {
       }));
   },
   mounted() {
-    const parliamentChartDiv = this.$el.querySelector('.chart-parliament');
-    this.parliamentChart = new ParliamentChart(`#${parliamentChartDiv.id}`)
-      .data(this.requests, this.elections, this.dates)
-      .draw(200);
-
     const ringChartDiv = this.$el.querySelector('.chart-ring');
     const { dates, parties, maxValue } = this;
     this.ringChart = new RingChart(
@@ -88,9 +78,6 @@ export default {
       .updateMinistry(this.selectedRequests);
   },
   computed: {
-    parliamentChartId() {
-      return `popup-chart-parliament-${getTermId(this.body, this.term)}`;
-    },
     ringChartId() {
       return `popup-chart-ring-${getTermId(this.body, this.term)}`;
     },
