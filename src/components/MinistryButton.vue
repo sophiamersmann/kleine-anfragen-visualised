@@ -3,7 +3,7 @@
     :class=classes
     @click="onClick"
     @mouseenter="chart.showColors"
-    @mouseleave="chart.hideColors" >
+    @mouseleave="updateChartColor" >
     <div class="label">
       {{ value }}
     </div>
@@ -49,10 +49,22 @@ export default {
       this.requests,
       this.maxValue,
     ).draw();
+
+    this.updateChartColor();
+  },
+  updated() {
+    this.updateChartColor();
   },
   methods: {
     onClick() {
       this.$emit('clicked', this.value);
+    },
+    updateChartColor() {
+      if (this.active) {
+        this.chart.showColors();
+      } else {
+        this.chart.hideColors();
+      }
     },
   },
 };
