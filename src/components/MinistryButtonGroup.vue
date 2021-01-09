@@ -32,7 +32,8 @@ export default {
   },
   created() {
     this.selectedMinistry = this.ministries[0].name;
-    this.nRequests = this.ministries[0].requests.length;
+    this.nRequests = this.ministries[0].requests
+      .flatMap((d) => d.parties).length;
   },
   methods: {
     onClick(selectedMinistry) {

@@ -1,5 +1,9 @@
 <template>
-  <button :class=classes @click="onClick">
+  <button
+    :class=classes
+    @click="onClick"
+    @mouseenter="chart.showColors"
+    @mouseleave="chart.hideColors" >
     <div class="label">
       {{ value }}
     </div>
@@ -22,6 +26,11 @@ export default {
     maxValue: Number,
   },
   emits: ['clicked'],
+  data() {
+    return {
+      chart: null,
+    };
+  },
   computed: {
     classes() {
       return {
@@ -35,7 +44,7 @@ export default {
   },
   mounted() {
     const chartDiv = this.$el.querySelector('.chart-ministry');
-    new MinistryChart(
+    this.chart = new MinistryChart(
       `#${chartDiv.id}`,
       this.requests,
       this.maxValue,
