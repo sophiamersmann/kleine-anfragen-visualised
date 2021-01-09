@@ -1,8 +1,9 @@
 <template>
   <div class="ministry-button-group">
     <ministry-button
-      v-for="ministry in ministries"
-      :key=ministry
+      v-for="(ministry, i) in ministries"
+      :key=i
+      :id=i
       :value=ministry
       :active="ministry === selectedMinistry"
       @clicked="onClick" />

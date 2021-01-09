@@ -3,16 +3,19 @@
     <div class="label">
       {{ value }}
     </div>
-    <div class="chart">
-      G
-    </div>
+    <div
+      :id=chartId
+      class="chart chart-ministry" />
   </button>
 </template>
 
 <script>
+import MinistryChart from '@/core/MinistryChart';
+
 export default {
   name: 'MinistryButton',
   props: {
+    id: Number,
     value: String,
     active: Boolean,
   },
@@ -24,6 +27,13 @@ export default {
         active: this.active,
       };
     },
+    chartId() {
+      return `chart-ministry-${this.id}`;
+    },
+  },
+  mounted() {
+    const chartDiv = this.$el.querySelector('.chart-ministry');
+    new MinistryChart(`#${chartDiv.id}`).draw();
   },
   methods: {
     onClick() {
