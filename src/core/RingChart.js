@@ -164,7 +164,7 @@ export default class RingChart {
 
     const xAxis = (grid) => grid
       .call((g) => g.selectAll('g')
-        .data(this.months.slice(0, -1).map((date, i) => ({
+        .data(this.months.map((date, i) => ({
           date,
           x: this.formats.internalFormat(date),
           isOrigin: i === 0,
