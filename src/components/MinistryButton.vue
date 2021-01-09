@@ -19,6 +19,7 @@ export default {
     value: String,
     active: Boolean,
     requests: Array,
+    maxValue: Number,
   },
   emits: ['clicked'],
   computed: {
@@ -34,7 +35,11 @@ export default {
   },
   mounted() {
     const chartDiv = this.$el.querySelector('.chart-ministry');
-    new MinistryChart(`#${chartDiv.id}`, this.requests).draw();
+    new MinistryChart(
+      `#${chartDiv.id}`,
+      this.requests,
+      this.maxValue,
+    ).draw();
   },
   methods: {
     onClick() {

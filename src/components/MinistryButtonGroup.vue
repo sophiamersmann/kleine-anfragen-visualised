@@ -7,6 +7,7 @@
       :value=ministry.name
       :active="ministry.name === selectedMinistry"
       :requests=ministry.requests
+      :maxValue=nRequests
       @clicked="onClick" />
   </div>
 </template>
@@ -26,10 +27,12 @@ export default {
   data() {
     return {
       selectedMinistry: null,
+      nRequests: null,
     };
   },
   created() {
     this.selectedMinistry = this.ministries[0].name;
+    this.nRequests = this.ministries[0].requests.length;
   },
   methods: {
     onClick(selectedMinistry) {
