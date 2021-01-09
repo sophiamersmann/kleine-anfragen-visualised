@@ -39,9 +39,9 @@ export default {
 </script>
 
 <style scoped>
-.data-button-group {
-  /* Magic value (popup height - heading height) */
-  height: calc(var(--popup-height) - 100px);
+.ministry-button-group {
+  /* Magic value (popup height - heading height - margins etc.) */
+  height: calc(var(--popup-height) - 150px);
   overflow-y: auto;
 }
 </style>
