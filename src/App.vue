@@ -1,6 +1,6 @@
 <template>
   <root
-    src-requests="./_requests_v0.1_bawu15.csv"
+    src-requests="./requests.csv"
     src-elections="./elections.csv" />
 </template>
 

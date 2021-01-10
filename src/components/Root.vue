@@ -152,14 +152,27 @@ export default {
     },
     fetchRequestsData() {
       const parseTime = d3.timeParse('%Y-%m-%d');
+      const toArray = (str) => str.split(';').map((s) => s.trim());
       return d3.csv(this.srcRequests, (d) => ({
         body: d.body,
         term: d.legislative_term,
+
+        reference: d.reference,
+        date: parseTime(d.published_at),
         title: d.title,
         type: d.interpellation_type,
-        date: parseTime(d.published_at),
-        parties: d.parties.split(';').map((s) => s.trim()),
-        ministries: d.ministries.split(';').map((s) => s.trim()),
+        url: d.html_url,
+        source: d.source_url,
+
+        parties: toArray(d.inquiring_parties_normalised),
+        inquiringPeople: toArray(d.inquiring_people),
+
+        ministries: toArray(d.answering_ministries),
+        ministriesUrl: toArray(d.answering_ministries_url),
+
+        pageCount: d.page_count,
+        containsClassifiedInformation: d.contains_classified_information === 'True',
+        related: toArray(d.related_references),
       }));
     },
     computeTiles(grouped) {
