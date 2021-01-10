@@ -28,18 +28,28 @@ export default class RingChart {
     this.svg = null;
     this.width = size;
     this.height = size;
-    this.margin = 40;
+    this.margin = 20;
     this.config = {
       innerRadius: null,
       outerRadius: null,
-      circleRadius: 12, // TODO: fixed for now
-      questionsRadius: 14,
+      circleRadius: 10,
+      questionsRadius: 6,
+      questionSize: '0.9em',
       unit: 10,
     };
 
-    this.config.outerRadius = this.width / 2 - this.margin + 12; // * Magic value
-    this.config.innerRadius = this.config.outerRadius
-      - 2 * this.config.circleRadius * this.parties.length;
+    this.config.outerRadius = this.width / 2 - 2 * this.margin;
+    this.config.innerRadius = Math.max(
+      this.config.outerRadius - 2 * this.config.circleRadius * this.parties.length,
+      200,
+    );
+
+    const trunc = (x) => Math.trunc(x * 100) / 100;
+    const cf = 2 * Math.PI * this.config.innerRadius;
+    this.config.circleRadius = Math.min(
+      trunc(cf / this.months.length / 2),
+      trunc(this.config.outerRadius - this.config.innerRadius) / (2 * this.parties.length),
+    );
 
     // scales
     this.scales = {
@@ -266,7 +276,7 @@ export default class RingChart {
   }
 
   drawQuestions(month) {
-    const { questionsRadius } = this.config;
+    const { questionsRadius, questionSize } = this.config;
     const { internalFormat } = this.formats;
     const n = this.parties.length;
 
@@ -314,6 +324,7 @@ export default class RingChart {
           .style('opacity', 1)
           .html([
             '<b>', d.data.title, '</b>',
+            '<p>', d.data.parties, '</p>',
           ].join(''));
       })
       .on('mouseleave', () => {
@@ -332,7 +343,7 @@ export default class RingChart {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('fill', (d) => (d.party === 'mixed' ? 'black' : this.color(d.party)))
-      .style('font-size', '1.9em')
+      .style('font-size', questionSize)
       .style('font-weight', 'bold')
       .style('pointer-events', 'none')
       .text('?');
@@ -379,6 +390,10 @@ export default class RingChart {
     const onMouseOver = (_, d) => {
       this.resetInteractions();
 
+      // disable interaction on circles of the same bin
+      d3.selectAll(`.circle-outer-${d.month}`)
+        .style('pointer-events', 'none');
+
       // show info text
       d3.select('.text-info').attr('opacity', 1);
 
@@ -420,7 +435,10 @@ export default class RingChart {
         .join(
           (enter) => enter
             .append('circle')
-            .attr('class', (d) => `circle-${d.isInner ? 'inner' : 'outer'}`)
+            .attr('class', (d) => {
+              const type = d.isInner ? 'inner' : 'outer';
+              return `circle-${type} circle-${type}-${d.month}`;
+            })
             .attr('cx', (d) => d.point[0])
             .attr('cy', (d) => d.point[1])
             .attr('r', (d) => (d.count > 0 ? d.r : 0))
@@ -441,6 +459,10 @@ export default class RingChart {
   resetInteractions() {
     const { x } = this.scales;
     const { innerRadius, outerRadius, unit } = this.config;
+
+    // enable interactions
+    d3.selectAll('.circle-outer')
+      .style('pointer-events', 'unset');
 
     // hide tooltip
     d3.select('.tooltip').style('opacity', 0);

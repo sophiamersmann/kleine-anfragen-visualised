@@ -141,7 +141,7 @@ export default {
         term: d.term,
         dates: {
           start: parseTime(d.start_date),
-          end: d.end_date ? parseTime(d.end_date) : new Date(2020, 12, 31),
+          end: d.end_date ? parseTime(d.end_date) : new Date(2020, 11, 31),
         },
         hasEnded: d.end_date !== '',
         periodNum: +d.period_num,

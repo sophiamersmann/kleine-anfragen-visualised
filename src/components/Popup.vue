@@ -102,8 +102,8 @@ export default {
 
   position: fixed;
   z-index: 2000;
-  top: var(--popup-offset);
-  left: calc(3 * var(--popup-offset));
+  top: calc(var(--popup-offset) / 2);
+  left: calc(2 * var(--popup-offset));
   width: var(--popup-width);
   height: var(--popup-height);
 
