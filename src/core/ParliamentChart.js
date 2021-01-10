@@ -20,7 +20,7 @@ export default class ParliamentChart {
     this.height = null;
     this.margin = 20;
     this.config = {
-      maxValue: 30,
+      maxValue: 600,
       nBands: 12,
       innerRadius: null,
       outerRadius: null,
@@ -208,15 +208,11 @@ export default class ParliamentChart {
   prepareData() {
     const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
 
-    const parties = this.requests
-      .flatMap((d) => d.parties)
-      .filter((party) => !IGNORE_PARTIES.includes(party));
+    const parties = this.requests.flatMap((d) => d.parties);
     const requestsMap = d3.rollup(parties, (v) => v.length, (d) => d);
-    const seatsMap = new Map(this.elections
-      .map(({ party, seats }) => [party, seats]));
 
     const partyDiff = d3.difference(
-      new Set(parties),
+      new Set(parties.filter((party) => !IGNORE_PARTIES.includes(party))),
       new Set(this.elections.map(({ party }) => party)),
     );
     if (partyDiff.size > 0) {
@@ -225,11 +221,8 @@ export default class ParliamentChart {
 
     this.nRequestsPerHead = this.elections.map((d) => {
       const nRequests = requestsMap.has(d.party) ? requestsMap.get(d.party) : 0;
-      const value = ((nRequests / nDays) * 365) / seatsMap.get(d.party);
-      let display = 0;
-      if (value > 0) {
-        display = value < 1 ? '<1' : Math.round(value);
-      }
+      const value = (nRequests / nDays) * 365;
+      const display = Math.round(value);
 
       return {
         party: d.party,
