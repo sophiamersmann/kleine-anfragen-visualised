@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import d3 from '@/assets/d3';
 
 import {
@@ -257,7 +258,7 @@ export default class ParliamentChart {
       .data((d, i) => d3.range(yTickSpacing, d.value + 1, yTickSpacing)
         .map((step) => ({ step, party: d.party, angle: i })))
       .join('path')
-      .attr('fill-opacity', (d, i) => (d.step > maxValue ? 0.1 : (i + 1) / nBands))
+      .attr('fill-opacity', (_, i) => (i + 1) / (nBands + 1))
       .attr('d', (d) => d3.arc()
         .innerRadius(y(d.step - yTickSpacing))
         .outerRadius(y(d.step))
