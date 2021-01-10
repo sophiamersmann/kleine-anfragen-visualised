@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import d3 from '@/assets/d3';
 
 import {
@@ -241,7 +240,7 @@ export default class ParliamentChart {
 
   drawParliament() {
     const { x, y } = this.scales;
-    const { maxValue, nBands } = this.config;
+    const { nBands } = this.config;
 
     const yTicks = y.ticks(nBands);
     const yTickSpacing = yTicks[1] - yTicks[0];
