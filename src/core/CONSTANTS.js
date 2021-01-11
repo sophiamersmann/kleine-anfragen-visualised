@@ -35,24 +35,3 @@ export const SORTED_PARTIES = [
   'SSW',
   'Die Linke',
 ];
-
-export const PARTY_NAMES = new Map([
-  ['CDU', 'CDU'],
-  ['CDU/CSU', 'CDU/CSU'],
-  ['CSU', 'CSU'],
-  ['SPD', 'SPD'],
-  ['BUNDNIS90/DIEGRUNEN', 'Grüne'],
-  ['DIELINKE', 'Linke'],
-  ['FDP', 'FDP'],
-  ['FDP/DVP', 'FDP/DVP'],
-  ['AFD', 'AfD'],
-  ['PIRATEN', 'Piraten'],
-  ['NPD', 'NPD'],
-  ['FW', 'FW'],
-  ['FREIEWAHLER', 'Freie Wähler'],
-  ['BVB/FW', 'BVB/FW'],
-  ['SSW', 'SSW'],
-  ['BIW', 'BIW'],
-]);
-
-export const IGNORE_PARTIES = ['FRAKTIONSLOS', 'MISSING'];
