@@ -1,8 +1,6 @@
 import d3 from '@/assets/d3';
 
-import {
-  PARTY_COLORS, PARTY_NAMES, SORTED_PARTIES, IGNORE_PARTIES,
-} from '@/core/CONSTANTS';
+import { PARTY_COLORS, SORTED_PARTIES } from '@/core/CONSTANTS';
 
 export default class ParliamentChart {
   constructor(selector) {
@@ -192,7 +190,7 @@ export default class ParliamentChart {
       .attr('startOffset', 5)
       .style('font-size', fontSize)
       .style('font-weight', (d) => (d.isOpposition ? 'bold' : 'normal'))
-      .text((d) => PARTY_NAMES.get(d.party));
+      .text((d) => d.party);
 
     this.svg.append('g')
       .attr('class', 'axis axis-x')
@@ -212,7 +210,7 @@ export default class ParliamentChart {
     const requestsMap = d3.rollup(parties, (v) => v.length, (d) => d);
 
     const partyDiff = d3.difference(
-      new Set(parties.filter((party) => !IGNORE_PARTIES.includes(party))),
+      new Set(parties),
       new Set(this.elections.map(({ party }) => party)),
     );
     if (partyDiff.size > 0) {
@@ -240,7 +238,7 @@ export default class ParliamentChart {
 
   drawParliament() {
     const { x, y } = this.scales;
-    const { nBands } = this.config;
+    const { nBands, maxValue } = this.config;
 
     const yTicks = y.ticks(nBands);
     const yTickSpacing = yTicks[1] - yTicks[0];
@@ -257,7 +255,7 @@ export default class ParliamentChart {
       .data((d, i) => d3.range(yTickSpacing, d.value + 1, yTickSpacing)
         .map((step) => ({ step, party: d.party, angle: i })))
       .join('path')
-      .attr('fill-opacity', (_, i) => (i + 1) / (nBands + 1))
+      .attr('fill-opacity', (d, i) => (d.step > maxValue ? 0.1 : (i + 1) / (nBands + 1)))
       .attr('d', (d) => d3.arc()
         .innerRadius(y(d.step - yTickSpacing))
         .outerRadius(y(d.step))
@@ -266,7 +264,7 @@ export default class ParliamentChart {
 
     this.svg.selectAll('.label textPath')
       .data(this.nRequestsPerHead, (d) => d.party)
-      .text((d) => `${PARTY_NAMES.get(d.party)} \u00A0 ${d.display}`);
+      .text((d) => `${d.party} \u00A0 ${d.display}`);
 
     return this;
   }
