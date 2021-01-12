@@ -5,11 +5,30 @@
       class="chart chart-seat" />
     <div>
       {{ body }} ({{ years }})
-      <p style="font-size: 0.8em">
-        {{ nRequests }} requests in total<br>
-        average {{ nRequestsPerHead }} requests per head (in a year)<br>
-        average {{ nRequestsPerOppositionHead }} requests per opposition head (in a year)<br>
-        top themen: todo
+      <p>
+        {{ nRequests }} Anfragen eingegangen (Anfragen pro Jahr und/oder Kopf)
+      </p>
+      <p>
+        Opposition:
+        <span
+          class="party"
+          v-for="(party, i) in oppositionParties"
+          :key=i
+          :style=party.style
+        >
+          {{ party.name }}
+        </span>
+      </p>
+      <p>
+        Ruling parties:
+        <span
+          class="party"
+          v-for="(party, i) in rulingParties"
+          :key=i
+          :style=party.style
+        >
+          {{ party.name }}
+        </span>
       </p>
     </div>
   </div>
@@ -20,6 +39,7 @@ import d3 from '@/assets/d3';
 
 import SeatChart from '@/core/SeatChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
+import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 
 export default {
   name: 'ElectionPeriod',
@@ -65,22 +85,11 @@ export default {
       if (this.requests === null) return '';
       return this.requests.length;
     },
-    nRequestsPerHead() {
-      if (this.requests === null) return '';
-
-      const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
-      const nSeats = d3.sum(this.elections, (d) => d.seats);
-      return Math.round(((this.requests.length / nDays) * 365) / nSeats);
+    oppositionParties() {
+      return this.prepareParties(this.elections.filter((d) => d.isOpposition));
     },
-    nRequestsPerOppositionHead() {
-      if (this.requests === null) return '';
-
-      const nDays = d3.timeDay.count(this.dates.start, this.dates.end);
-      const oppositionMap = new Map(this.elections
-        .map(({ party, isOpposition }) => [party, isOpposition]));
-      const nSeats = d3.sum(this.elections.filter((d) => d.isOpposition), (d) => d.seats);
-      const nRequests = this.requests.filter((d) => oppositionMap.get(d.party)).length;
-      return Math.round(((nRequests / nDays) * 365) / nSeats);
+    rulingParties() {
+      return this.prepareParties(this.elections.filter((d) => !d.isOpposition));
     },
   },
   methods: {
@@ -89,6 +98,20 @@ export default {
     },
     onClick() {
       this.$emit('top', this.name);
+    },
+    prepareParties(parties) {
+      return parties
+        .sort((a, b) => d3.ascending(
+          SORTED_PARTIES.findIndex((p) => p === a.party),
+          SORTED_PARTIES.findIndex((p) => p === b.party),
+        ))
+        .map((d) => ({
+          name: d.party,
+          style: {
+            color: COLOR.get(d.party),
+            backgroundColor: LIGHT_COLOR.get(d.party),
+          },
+        }));
     },
   },
 };
