@@ -1,6 +1,6 @@
 import d3 from '@/assets/d3';
 
-import { SORTED_PARTIES } from '@/core/CONSTANTS';
+import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import { computeSeatPositions } from '@/core/utils';
 
 export default class SeatChart {
@@ -20,7 +20,7 @@ export default class SeatChart {
     this.config = {
       innerRadius: 50,
       seatRadius: 6,
-      spacing: 0,
+      spacing: 1,
       minOpacity: 0.3,
     };
 
@@ -81,14 +81,6 @@ export default class SeatChart {
       ));
     this.nSeats = d3.sum(this.seatsPartition, (d) => d.seats);
 
-    this.color = d3.scaleOrdinal()
-      .domain(this.seatsPartition.map((d) => d.id))
-      .range(d3.schemePaired.filter((_, i) => i % 2 === 1));
-
-    this.lightColor = d3.scaleOrdinal()
-      .domain(this.seatsPartition.map((d) => d.id))
-      .range(d3.schemePaired.filter((_, i) => i % 2 === 0));
-
     return this;
   }
 
@@ -125,7 +117,7 @@ export default class SeatChart {
         return { party, circles: partyCircles };
       });
 
-    const { r } = this.scales;
+    const { r, o } = this.scales;
     const { seatRadius } = this.config;
 
     this.svg.append('g')
@@ -140,18 +132,21 @@ export default class SeatChart {
         .attr('cx', (d) => d.x)
         .attr('cy', (d) => d.y)
         .attr('r', seatRadius)
-        .attr('fill', (d) => this.lightColor(d.party))
+        .attr('fill', (d) => (
+          d.category === '0' || d.category === '<1 per year'
+            ? 'whitesmoke' : LIGHT_COLOR.get(d.party)))
         .attr('fill-opacity', 1))
       .call((g) => g
         .selectAll('.circle-inner')
         .data((d) => d.circles)
         .join('circle')
         .attr('class', 'circle-inner')
+        .attr('tmp', (d) => d.party)
         .attr('cx', (d) => d.x)
         .attr('cy', (d) => d.y)
         .attr('r', (d) => r(d.category))
-        .attr('fill-opacity', 1)
-        .attr('fill', (d) => this.color(d.party)));
+        .attr('fill-opacity', (d) => o(d.category))
+        .attr('fill', (d) => COLOR.get(d.party)));
 
     return this;
   }
@@ -173,7 +168,7 @@ export default class SeatChart {
     //   .attr('y', -this.height)
     //   .attr('width', this.width)
     //   .attr('height', this.height)
-    //   .attr('fill', 'steelblue')
+    //   .attr('fill', 'hsl(0, 0%, 46%)')
     //   .attr('fill-opacity', 0.1);
 
     return this;
