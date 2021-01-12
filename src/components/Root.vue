@@ -1,12 +1,37 @@
 <template>
   <main :class=classes>
-    <div class="row">
+    <section class="tiles tiles-bundestag">
+      <div
+        v-for="row in tiles.filter((d) => d.body === 'Bundestag')"
+        :key=row.body
+        class="row">
+      <div class="col-0">
+        <div class="inner rotate">{{ row.body }}</div>
+      </div>
+      <election-period
+        v-for="period in row.periods"
+        :key=period.name
+        :name=period.name
+        :body=period.body
+        :term=period.term
+        :dates=period.dates
+        :has-ended=period.hasEnded
+        :period-num=period.periodNum
+        :requests=period.requests
+        :requestsPerHead=period.requestsPerHead
+        :elections=period.elections
+        @top="onTop" />
+      </div>
+    </section>
+
+    <div class="tiles tiles-landtage">
+      <div class="row">
       <div class="col-1">Aktuelle Legislaturperiode</div>
       <div class="col-2">Letzte Legislaturperiode</div>
       <div class="col-3">Vorletzte Legislaturperiode</div>
     </div>
     <div
-      v-for="row in tiles"
+      v-for="row in tiles.filter((d) => d.body !== 'Bundestag')"
       :key=row.body
       class="row">
       <div class="col-0">
@@ -22,8 +47,10 @@
         :has-ended=period.hasEnded
         :period-num=period.periodNum
         :requests=period.requests
+        :requestsPerHead=period.requestsPerHead
         :elections=period.elections
         @top="onTop" />
+      </div>
     </div>
   </main>
   <transition name="scale">
@@ -63,6 +90,7 @@ export default {
   props: {
     srcRequests: String,
     srcElections: String,
+    srcRequestsPerHead: String,
   },
   computed: {
     classes() {
@@ -82,9 +110,11 @@ export default {
   },
   async created() {
     await this.fetchElectionsData();
+    await this.fetchRequestsPerHeadData();
 
     const keyFunc = (d) => getTermId(d.body, d.term);
     const electionsMap = d3.group(this.elections, keyFunc);
+    const requestsPerHeadMap = d3.group(this.requestsPerHead, keyFunc);
 
     const groupedElections = Array.from(electionsMap)
       .map(([key, electionResults]) => {
@@ -103,6 +133,11 @@ export default {
           elections: electionResults.map(({
             party, seats, isOpposition,
           }) => ({ party, seats, isOpposition })),
+          requestsPerHead: requestsPerHeadMap.get(key).map(({
+            name, party, isOpposition, nRequests, nRequestsPerDay,
+          }) => ({
+            name, party, isOpposition, nRequests, nRequestsPerDay,
+          })),
           requests: null,
         };
       });
@@ -134,6 +169,18 @@ export default {
     });
   },
   methods: {
+    async fetchRequestsPerHeadData() {
+      this.requestsPerHead = await d3.csv(this.srcRequestsPerHead, (d) => ({
+        body: d.body,
+        term: d.term,
+        periodNum: +d.period_num,
+        name: d.person,
+        party: d.party,
+        isOpposition: d.is_opposition === 'TRUE',
+        nRequests: +d.n_requests,
+        nRequestsPerDay: +d.n_requests_per_day,
+      }));
+    },
     async fetchElectionsData() {
       const parseTime = d3.timeParse('%d/%m/%Y');
       this.elections = await d3.csv(this.srcElections, (d) => ({
@@ -180,7 +227,7 @@ export default {
         .map(([body, periods]) => ({
           body,
           periods: periods
-            .sort((a, b) => d3.descending(a.dates.start, b.dates.start)),
+            .sort((a, b) => d3.ascending(a.periodNum, b.periodNum)),
         }))
         .sort((a, b) => d3.ascending(a.body, b.body));
     },
@@ -207,27 +254,34 @@ main {
   overflow: hidden;
 }
 
-.row {
+.tiles .row {
   background-color: khaki;
   margin: var(--spacing) 0;
   display: grid;
   grid-gap: calc(var(--spacing) / 2);
-  grid-template-columns: 100px repeat(3, 300px);
 }
 
-.col-1 {
+.tiles-landtage .row {
+  grid-template-columns: 100px repeat(3, 1fr);
+}
+
+.tiles-bundestag .row {
+  grid-template-columns: 100px repeat(2, 1fr);
+}
+
+.tiles-landtage .col-1 {
   grid-column: 2 / 3;
 }
 
-.col-2 {
+.tiles-landtage .col-2 {
   grid-column: 3 / 4;
 }
 
-.col-3 {
+.tiles-landtage .col-3 {
   grid-column: 4 / 5;
 }
 
-.col-0 {
+.tiles .col-0 {
   background-color: cornsilk;
   position: relative;
   display: inline-block;

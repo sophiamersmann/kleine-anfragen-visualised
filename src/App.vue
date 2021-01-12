@@ -1,6 +1,7 @@
 <template>
   <root
     src-requests="./requests.csv"
+    src-requests-per-head="./requests-per-head.csv"
     src-elections="./elections.csv" />
 </template>
 

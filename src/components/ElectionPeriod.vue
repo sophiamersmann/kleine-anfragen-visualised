@@ -1,5 +1,8 @@
 <template>
   <div :class=classes @click="onClick">
+    <div
+      :id=seatChartId
+      class="chart chart-seat" />
     <div>
       {{ body }} ({{ years }})
       <p style="font-size: 0.8em">
@@ -9,16 +12,13 @@
         top themen: todo
       </p>
     </div>
-    <div
-      :id=parliamentChartId
-      class="chart chart-parliament" />
   </div>
 </template>
 
 <script>
 import d3 from '@/assets/d3';
 
-import ParliamentChart from '@/core/ParliamentChart';
+import SeatChart from '@/core/SeatChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
 
 export default {
@@ -30,30 +30,21 @@ export default {
     dates: Object,
     hasEnded: Boolean,
     periodNum: Number,
-    requests: Object,
-    elections: Object,
+    requests: Array,
+    requestsPerHead: Array,
+    elections: Array,
   },
   emits: ['top'],
   data() {
     return {
-      parliamentChart: null,
+      seatChart: null,
     };
-  },
-  created() {
-    window.addEventListener('resize', this.onResize);
   },
   mounted() {
     const chartDiv = this.getChartDiv();
-    this.parliamentChart = new ParliamentChart(`#${chartDiv.id}`)
-      .data(this.requests, this.elections, this.dates)
+    this.seatChart = new SeatChart(`#${chartDiv.id}`)
+      .data(this.requestsPerHead)
       .draw(chartDiv.clientWidth);
-  },
-  updated() {
-    if (this.requests) {
-      this.parliamentChart
-        .requestsData(this.requests)
-        .drawData();
-    }
   },
   computed: {
     classes() {
@@ -64,8 +55,8 @@ export default {
       classes[`col-${this.periodNum}`] = true;
       return classes;
     },
-    parliamentChartId() {
-      return `chart-parliament-${getTermId(this.body, this.term)}`;
+    seatChartId() {
+      return `chart-seat-${getTermId(this.body, this.term)}`;
     },
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
@@ -94,12 +85,7 @@ export default {
   },
   methods: {
     getChartDiv() {
-      return this.$el.querySelector('.chart-parliament');
-    },
-    onResize() {
-      if (!this.parliamentChart) return;
-      const chartDiv = this.getChartDiv();
-      this.parliamentChart.draw(chartDiv.clientWidth);
+      return this.$el.querySelector('.chart-seat');
     },
     onClick() {
       this.$emit('top', this.name);
