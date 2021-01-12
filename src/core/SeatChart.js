@@ -19,8 +19,8 @@ export default class SeatChart {
     // this.margin = 20;
     this.config = {
       innerRadius: 50,
-      seatRadius: 5,
-      spacing: 2,
+      seatRadius: 6,
+      spacing: 0,
       minOpacity: 0.3,
     };
 

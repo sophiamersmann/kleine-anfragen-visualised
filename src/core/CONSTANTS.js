@@ -34,4 +34,5 @@ export const SORTED_PARTIES = [
   'Piraten',
   'SSW',
   'Die Linke',
+  'fraktionslos',
 ];
