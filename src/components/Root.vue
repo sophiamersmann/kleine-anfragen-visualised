@@ -1,28 +1,39 @@
 <template>
   <main :class=classes>
-    <section class="tiles tiles-bundestag">
-      <div
-        v-for="row in tiles.filter((d) => d.body === 'Bundestag')"
-        :key=row.body
-        class="row">
-      <div class="col-0">
-        <div class="inner rotate">{{ row.body }}</div>
-      </div>
-      <election-period
-        v-for="period in row.periods"
-        :key=period.name
-        :name=period.name
-        :body=period.body
-        :term=period.term
-        :dates=period.dates
-        :has-ended=period.hasEnded
-        :period-num=period.periodNum
-        :requests=period.requests
-        :requestsPerHead=period.requestsPerHead
-        :elections=period.elections
-        @top="onTop" />
-      </div>
-    </section>
+    <div class="wrapper">
+      <section class="main-text">
+        <h1>Kleine Anfragen visualisiert</h1>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </section>
+
+      <section class="bundestag">
+        <div
+          v-for="row in tiles.filter((d) => d.body === 'Bundestag')"
+          :key=row.body>
+        <election-period
+          v-for="period in row.periods"
+          :key=period.name
+          :name=period.name
+          :body=period.body
+          :term=period.term
+          :dates=period.dates
+          :has-ended=period.hasEnded
+          :period-num=period.periodNum
+          :requests=period.requests
+          :requestsPerHead=period.requestsPerHead
+          :elections=period.elections
+          @top="onTop" />
+        </div>
+      </section>
+    </div>
 
     <div class="tiles tiles-landtage">
       <div class="row">
@@ -34,9 +45,6 @@
       v-for="row in tiles.filter((d) => d.body !== 'Bundestag')"
       :key=row.body
       class="row">
-      <div class="col-0">
-        <div class="inner rotate">{{ row.body }}</div>
-      </div>
       <election-period
         v-for="period in row.periods"
         :key=period.name
@@ -244,7 +252,7 @@ export default {
 
 <style>
 main {
-  padding: var(--spacing);
+  padding: calc(2 * var(--spacing));
   transition: filter 0.2s ease;
 }
 
@@ -255,51 +263,40 @@ main {
   overflow: hidden;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--spacing);
+}
+
+h1 {
+  text-align: center;
+}
+
+.bundestag .election-period {
+  margin: var(--spacing);
+}
+
 .tiles .row {
-  background-color: khaki;
   margin: var(--spacing) 0;
   display: grid;
   grid-gap: calc(var(--spacing) / 2);
 }
 
 .tiles-landtage .row {
-  grid-template-columns: 100px repeat(3, 1fr);
-}
-
-.tiles-bundestag .row {
-  grid-template-columns: 100px repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .tiles-landtage .col-1 {
-  grid-column: 2 / 3;
+  grid-column: 1 / 2;
 }
 
 .tiles-landtage .col-2 {
-  grid-column: 3 / 4;
+  grid-column: 2 / 3;
 }
 
 .tiles-landtage .col-3 {
-  grid-column: 4 / 5;
-}
-
-.tiles .col-0 {
-  background-color: cornsilk;
-  position: relative;
-  display: inline-block;
-  text-align: center;
-}
-
-.inner {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: white;
-}
-
-.rotate {
-  -moz-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
-  transform:  translateX(-50%) translateY(-50%) rotate(-90deg);
+  grid-column: 3 / 4;
 }
 
 .overlay {

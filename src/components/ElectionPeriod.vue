@@ -3,12 +3,12 @@
     <div
       :id=seatChartId
       class="chart chart-seat" />
-    <div>
-      {{ body }} ({{ years }})
+    <div class="body">
+      <h3>{{ body }} <span>({{ years }})</span></h3>
       <p>
         {{ nRequests }} Anfragen eingegangen (Anfragen pro Jahr und/oder Kopf)
       </p>
-      <p>
+      <!-- <p>
         Opposition:
         <span
           class="party"
@@ -18,8 +18,8 @@
         >
           {{ party.name }}
         </span>
-      </p>
-      <p>
+      </p> -->
+      <!-- <p>
         Ruling parties:
         <span
           class="party"
@@ -29,7 +29,7 @@
         >
           {{ party.name }}
         </span>
-      </p>
+      </p> -->
     </div>
   </div>
 </template>
@@ -62,7 +62,19 @@ export default {
   },
   mounted() {
     const chartDiv = this.getChartDiv();
-    this.seatChart = new SeatChart(`#${chartDiv.id}`)
+
+    const config = {
+      innerRadius: 30,
+      seatRadius: 6,
+      spacing: 1,
+    };
+
+    if (this.body === 'Bundestag') {
+      config.innerRadius = 50;
+      config.seatRadius = 4;
+    }
+
+    this.seatChart = new SeatChart(`#${chartDiv.id}`, config)
       .data(this.requestsPerHead)
       .draw(chartDiv.clientWidth);
   },
@@ -120,9 +132,20 @@ export default {
 <style scoped>
 .election-period {
   background-color: white;
+  border-radius: 50px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: var(--spacing);
 }
 
 .election-period.disabled {
   pointer-events: none;
+}
+
+.body {
+  text-align: center;
+}
+
+.body h3 span {
+  font-weight: normal;
 }
 </style>

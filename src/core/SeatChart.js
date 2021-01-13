@@ -4,7 +4,7 @@ import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import { computeSeatPositions } from '@/core/utils';
 
 export default class SeatChart {
-  constructor(selector) {
+  constructor(selector, config) {
     this.selector = selector;
 
     // data
@@ -16,13 +16,7 @@ export default class SeatChart {
     this.svg = null;
     this.width = null;
     this.height = null;
-    // this.margin = 20;
-    this.config = {
-      innerRadius: 50,
-      seatRadius: 6,
-      spacing: 1,
-      minOpacity: 0.3,
-    };
+    this.config = config;
 
     // scales
     this.scales = {
@@ -246,6 +240,14 @@ export default class SeatChart {
       .attr('overflow', 'visible')
       .attr('width', this.width)
       .attr('height', this.height);
+
+    this.svg.append('line')
+      .attr('x1', -this.width / 2 + 20)
+      .attr('y1', 0)
+      .attr('x2', this.width / 2 - 20)
+      .attr('y2', 0)
+      .attr('stroke', '#000')
+      .attr('stroke-opacity', 0.2);
 
     // this.svg.append('rect')
     //   .attr('x', -this.width / 2)
