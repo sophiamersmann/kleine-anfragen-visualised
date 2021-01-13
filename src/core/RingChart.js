@@ -1,5 +1,6 @@
 import d3 from '@/assets/d3';
 
+import { COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import forceClusterCollision from '@/core/forceClusterCollision';
 
 export default class RingChart {
@@ -56,15 +57,6 @@ export default class RingChart {
       x: null,
       y: null,
     };
-
-    // TODO: For now, random colors
-    this.color = d3.scaleOrdinal()
-      .domain(this.parties)
-      .range(d3.schemePaired.filter((_, i) => i % 2 === 1));
-
-    this.lightColor = d3.scaleOrdinal()
-      .domain(this.parties)
-      .range(d3.schemePaired.filter((_, i) => i % 2 === 0));
   }
 
   drawSkeleton() {
@@ -170,7 +162,7 @@ export default class RingChart {
         .data(this.parties)
         .join('circle')
         .attr('r', (party) => y(party))
-        .attr('stroke', (party) => this.lightColor(party)));
+        .attr('stroke', (party) => LIGHT_COLOR.get(party)));
 
     const xAxis = (grid) => grid
       .call((g) => g.selectAll('g')
@@ -342,7 +334,7 @@ export default class RingChart {
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('fill', (d) => (d.party === 'mixed' ? 'black' : this.color(d.party)))
+      .attr('fill', (d) => (d.party === 'mixed' ? 'black' : COLOR.get(d.party)))
       .style('font-size', questionSize)
       .style('font-weight', 'bold')
       .style('pointer-events', 'none')
@@ -442,7 +434,7 @@ export default class RingChart {
             .attr('cx', (d) => d.point[0])
             .attr('cy', (d) => d.point[1])
             .attr('r', (d) => (d.count > 0 ? d.r : 0))
-            .attr('fill', (d) => (d.isInner ? this.color : this.lightColor)(d.party))
+            .attr('fill', (d) => (d.isInner ? COLOR : LIGHT_COLOR).get(d.party))
             .style('pointer-events', (d) => (d.isInner ? 'none' : 'unset'))
             .on('mouseover', onMouseOver),
           (update) => update
