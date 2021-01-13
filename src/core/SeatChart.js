@@ -34,7 +34,6 @@ export default class SeatChart {
       '>=1 per day',
       '>=1 per week',
       '>=1 per month',
-      '>=1 per half year',
       '>=1 per year',
       '<1 per year',
       '0',
@@ -164,13 +163,15 @@ export default class SeatChart {
           .sort((a, b) => d3.ascending(a.row, b.row) || d3.ascending(a.theta, b.theta))
           .map((d, i) => {
             const e = d;
-            e.person = counts[i].person;
-            const n = counts[i].nRequestsPerDay;
 
+            e.name = counts[i].name;
+            e.nRequests = counts[i].nRequests;
+            e.nRequestsPerDay = counts[i].nRequestsPerDay;
+
+            const n = counts[i].nRequestsPerDay;
             if (n >= 1) e.category = '>=1 per day';
             else if (n * 7 >= 1) e.category = '>=1 per week';
             else if (n * 30 >= 1) e.category = '>=1 per month';
-            else if (n * (365 / 2) >= 1) e.category = '>=1 per half year';
             else if (n * 365 >= 1) e.category = '>=1 per year';
             else if (n !== 0) e.category = '<1 per year';
             else e.category = '0';
@@ -199,7 +200,25 @@ export default class SeatChart {
         .attr('fill', (d) => (
           d.category === '0' || d.category === '<1 per year'
             ? 'whitesmoke' : LIGHT_COLOR.get(d.party)))
-        .attr('fill-opacity', 1))
+        .attr('fill-opacity', 1)
+        .on('mousemove', (event, d) => {
+          if (d.category === '0') return;
+
+          d3.select('.tooltip-seat')
+            .style('left', `${event.pageX}px`)
+            .style('top', `${event.pageY}px`)
+            .style('opacity', 1)
+            .html([
+              '<b>', d.name, '</b>',
+              '<p>', d.party, '</p>',
+              '<p>', d.nRequests, '</p>',
+              '<p>', d.category, '</p>',
+            ].join(''));
+        })
+        .on('mouseleave', () => {
+          d3.select('.tooltip-seat')
+            .style('opacity', 0);
+        }))
       .call((g) => g
         .selectAll('.circle-inner')
         .data((d) => d.circles)
@@ -210,7 +229,8 @@ export default class SeatChart {
         .attr('cy', (d) => d.y)
         .attr('r', (d) => r(d.category))
         .attr('fill-opacity', (d) => o(d.category))
-        .attr('fill', (d) => COLOR.get(d.party)));
+        .attr('fill', (d) => COLOR.get(d.party))
+        .style('pointer-events', 'none'));
 
     return this;
   }

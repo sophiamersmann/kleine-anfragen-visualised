@@ -318,7 +318,7 @@ export default class RingChart {
           .attr('opacity', 1);
 
         // show tooltip
-        d3.select('.tooltip')
+        d3.select('.tooltip-question')
           .style('left', `${event.pageX}px`)
           .style('top', `${event.pageY}px`)
           .style('opacity', 1)
@@ -331,7 +331,7 @@ export default class RingChart {
         d3.selectAll('.question-mark circle')
           .attr('opacity', 0);
 
-        d3.select('.tooltip')
+        d3.select('.tooltip-question')
           .style('opacity', 0);
       })
       .on('click', (event) => {
@@ -465,7 +465,7 @@ export default class RingChart {
       .style('pointer-events', 'unset');
 
     // hide tooltip
-    d3.select('.tooltip').style('opacity', 0);
+    d3.select('.tooltip-question').style('opacity', 0);
 
     // hide info text
     d3.select('.text-info').attr('opacity', 0);

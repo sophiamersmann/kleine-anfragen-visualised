@@ -70,7 +70,8 @@
       class="overlay"
       @click="onFlat" />
   </transition>
-  <div class="tooltip" />
+  <div class="tooltip tooltip-question" />
+  <div class="tooltip tooltip-seat" />
 </template>
 
 <script>
