@@ -8,6 +8,7 @@
       :active="ministry.name === selectedMinistry"
       :requests=ministry.requests
       :maxValue=nRequests
+      :sortedParties=sortedParties
       @clicked="onClick" />
   </div>
 </template>
@@ -22,6 +23,7 @@ export default {
   },
   props: {
     ministries: Array,
+    sortedParties: Array,
   },
   emits: ['selected'],
   data() {

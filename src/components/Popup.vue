@@ -4,6 +4,7 @@
       <h3>{{ body }} <span>({{ years }})</span></h3>
       <ministry-button-group
         :ministries=ministries
+        :sortedParties=parties
         @selected=onSelected />
     </div>
     <div

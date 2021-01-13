@@ -24,6 +24,7 @@ export default {
     active: Boolean,
     requests: Array,
     maxValue: Number,
+    sortedParties: Array,
   },
   emits: ['clicked'],
   data() {
@@ -48,6 +49,7 @@ export default {
       `#${chartDiv.id}`,
       this.requests,
       this.maxValue,
+      this.sortedParties,
     ).draw();
 
     this.updateChartColor();
@@ -87,7 +89,7 @@ button {
   background-color: white;
   transition: all .2s;
 
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 button:hover {

@@ -1,10 +1,13 @@
 import d3 from '@/assets/d3';
 
+import { COLOR } from '@/core/CONSTANTS';
+
 export default class MinistryChart {
-  constructor(selector, requests, maxRequests) {
+  constructor(selector, requests, maxRequests, sortedParties) {
     this.selector = selector;
     this.requests = requests;
     this.maxRequests = maxRequests;
+    this.sortedParties = sortedParties;
 
     this.svg = null;
     this.width = 200;
@@ -13,8 +16,6 @@ export default class MinistryChart {
     this.nRequests = null;
     this.parties = null;
     this.partyCount = null;
-
-    this.color = null;
   }
 
   draw() {
@@ -41,7 +42,7 @@ export default class MinistryChart {
 
   showColors() {
     this.svg.selectAll('.rect-party')
-      .attr('fill', (d) => this.color(d.party));
+      .attr('fill', (d) => COLOR.get(d.party));
     return this;
   }
 
@@ -58,7 +59,10 @@ export default class MinistryChart {
     this.partyCount = d3
       .rollups(this.parties, (v) => v.length, (d) => d)
       .map(([party, count]) => ({ party, count }))
-      .sort((a, b) => d3.descending(a.count, b.count));
+      .sort((a, b) => d3.ascending(
+        this.sortedParties.findIndex((p) => p === a.party),
+        this.sortedParties.findIndex((p) => p === b.party),
+      ));
     const cumsum = d3.cumsum(this.partyCount, (d) => d.count);
     this.partyCount = this.partyCount
       .map(({ party, count }, i) => ({
@@ -66,10 +70,6 @@ export default class MinistryChart {
         count,
         x: i === 0 ? 0 : cumsum[i - 1],
       }));
-
-    this.color = d3.scaleOrdinal()
-      .domain(this.partyCount.map((d) => d.party))
-      .range(d3.schemePaired.filter((_, i) => i % 2 === 1));
 
     return this;
   }
