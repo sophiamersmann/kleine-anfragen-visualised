@@ -114,6 +114,8 @@ export default {
 
 .sidebar {
   padding: var(--spacing);
+  background-color: #f4f0ff;
+  border-radius: 50px 0 0 50px;
 }
 
 .chart-ring {
@@ -123,6 +125,7 @@ export default {
 
 h3 {
   text-align: center;
+  margin-bottom: calc(0.5 * var(--spacing));
 }
 
 h3 span {

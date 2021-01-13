@@ -81,16 +81,24 @@ button {
 
   display: grid;
   grid-template-columns: 1fr 50px;
+  grid-gap: calc(0.5 * var(--spacing));
   align-items: center;
 
-  background-color: #f4f0ff;
+  background-color: white;
   transition: all .2s;
+
+  font-size: 0.8rem;
 }
 
-button:hover,
+button:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #cebdff;
+}
+
 button.active {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border-color: #cebdff;
+  font-weight: bold;
 }
 
 .label {
