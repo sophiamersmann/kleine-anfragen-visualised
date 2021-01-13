@@ -62,19 +62,8 @@ export default {
   },
   mounted() {
     const chartDiv = this.getChartDiv();
-
-    const config = {
-      innerRadius: 30,
-      seatRadius: 5,
-      spacing: 1,
-    };
-
-    if (this.body === 'Bundestag') {
-      config.innerRadius = 50;
-      config.seatRadius = 4;
-    }
-
-    this.seatChart = new SeatChart(`#${chartDiv.id}`, config)
+    const innerRadius = this.body === 'Bundestag' ? 50 : 30;
+    this.seatChart = new SeatChart(`#${chartDiv.id}`, innerRadius)
       .data(this.requestsPerHead)
       .draw(chartDiv.clientWidth);
   },
@@ -133,8 +122,15 @@ export default {
 .election-period {
   background-color: white;
   border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: var(--spacing);
+  border: 1px solid white;
+  transition: all .2s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.election-period:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #cebdff;
 }
 
 .election-period.disabled {
@@ -143,6 +139,7 @@ export default {
 
 .body {
   text-align: center;
+  margin-top: calc(0.5 * var(--spacing));
 }
 
 .body h3 span {

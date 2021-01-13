@@ -4,7 +4,7 @@ import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import { computeSeatPositions } from '@/core/utils';
 
 export default class SeatChart {
-  constructor(selector, config) {
+  constructor(selector, innerRadius) {
     this.selector = selector;
 
     // data
@@ -16,7 +16,11 @@ export default class SeatChart {
     this.svg = null;
     this.width = null;
     this.height = null;
-    this.config = config;
+    this.config = {
+      seatRadius: 5,
+      spacing: 1,
+      innerRadius,
+    };
 
     // scales
     this.scales = {

@@ -154,28 +154,28 @@ export default {
     this.computeTiles(groupedElections);
     this.tileMap = d3.rollup(groupedElections, (v) => v[0], (d) => d.name);
 
-    // this.fetchRequestsData().then((fetchedRequests) => {
-    //   this.requests = fetchedRequests;
+    this.fetchRequestsData().then((fetchedRequests) => {
+      this.requests = fetchedRequests;
 
-    //   // To do: This takes too long
-    //   const merged = d3.groups(this.requests, keyFunc)
-    //     .map(([key, requests]) => ({
-    //       key,
-    //       name: getTermId(requests[0].body, requests[0].term),
-    //       body: requests[0].body,
-    //       term: requests[0].term,
-    //       dates: electionsMap.get(key)[0].dates,
-    //       hasEnded: electionsMap.get(key)[0].hasEnded,
-    //       periodNum: electionsMap.get(key)[0].periodNum,
-    //       requests: requests.map(({ body, term, ...rest }) => rest),
-    //       elections: electionsMap.get(key).map(({
-    //         body, term, dates, hasEnded, periodNum, ...rest
-    //       }) => rest),
-    //     }));
+      // To do: This takes too long
+      const merged = d3.groups(this.requests, keyFunc)
+        .map(([key, requests]) => ({
+          key,
+          name: getTermId(requests[0].body, requests[0].term),
+          body: requests[0].body,
+          term: requests[0].term,
+          dates: electionsMap.get(key)[0].dates,
+          hasEnded: electionsMap.get(key)[0].hasEnded,
+          periodNum: electionsMap.get(key)[0].periodNum,
+          requests: requests.map(({ body, term, ...rest }) => rest),
+          elections: electionsMap.get(key).map(({
+            body, term, dates, hasEnded, periodNum, ...rest
+          }) => rest),
+        }));
 
-    //   this.computeTiles(merged);
-    //   this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
-    // });
+      this.computeTiles(merged);
+      this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
+    });
   },
   methods: {
     async fetchRequestsPerHeadData() {
@@ -254,6 +254,7 @@ export default {
 main {
   padding: calc(2 * var(--spacing));
   transition: filter 0.2s ease;
+  background-color: #f4f0ff;
 }
 
 .background {
@@ -265,7 +266,7 @@ main {
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 40% 60%;
   grid-gap: var(--spacing);
 }
 
