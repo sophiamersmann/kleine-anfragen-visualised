@@ -176,7 +176,7 @@ export default {
         periodNum: +d.period_num,
         name: d.person,
         party: d.party,
-        isOpposition: d.is_opposition === 'TRUE',
+        isOpposition: d.is_opposition.toLowerCase() === 'true',
         nRequests: +d.n_requests,
         nRequestsPerDay: +d.n_requests_per_day,
       }));
@@ -194,7 +194,7 @@ export default {
         periodNum: +d.period_num,
         party: d.party,
         seats: +d.seats,
-        isOpposition: d.opposition === 'TRUE',
+        isOpposition: d.opposition.toLowerCase() === 'true',
       }));
     },
     fetchRequestsData() {

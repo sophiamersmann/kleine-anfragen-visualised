@@ -65,21 +65,35 @@ export function computeSeatPositions(seatsPartition, nSeats, config) {
     seatsPlaced += seatsPlacedOnRow;
   }
 
-  // 2. Assign the right color to each seat
+  // 2. Assign the right color to each seat and determine "party zones" (for hover function)
+  const zones = [];
+  const outerRadius = rows[rows.length - 1].radius + config.seatRadius + config.spacing;
   // 2.1 Sort the list of seats by angle theta
-  seats.sort((a, b) => ((a.theta > b.theta) ? 1 : ((b.theta > a.theta) ? -1 : 0)));
+  // eslint-disable-next-line no-confusing-arrow
+  seats.sort((a, b) => (a.theta > b.theta) ? 1 : ((b.theta > a.theta) ? -1 : 0));
 
   // 2.2 Assign party id
   let seatsColored = 0;
   seatsPartition.forEach((party) => {
     if (party.id === 'turnout') return;
-    const nSeats = +party.seats;
+    const startAngle = seats[seatsColored].theta;
+    const nbSeats = +party.seats;
     const partyName = party.id;
-    for (let i = seatsColored; i < Math.min(n, seatsColored + nSeats); i += 1) {
+    for (let i = seatsColored; i < Math.min(n, seatsColored + nbSeats); i += 1) {
       seats[i].party = partyName;
     }
-    seatsColored += nSeats;
+    const endAngle = seats[Math.min(n, seatsColored + nbSeats) - 1].theta;
+    zones.push({
+      party: partyName,
+      nbSeats,
+      startAngle,
+      endAngle,
+      outerRadius,
+      innerRadius: config.innerRadius,
+      selected: false,
+    });
+    seatsColored += nbSeats;
   });
 
-  return seats;
+  return { seats, zones };
 }

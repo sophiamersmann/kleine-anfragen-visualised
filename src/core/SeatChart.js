@@ -55,6 +55,7 @@ export default class SeatChart {
       .setUpSVG()
       .setUpScales()
       .prepareData()
+      .drawAxis()
       .drawData();
   }
 
@@ -81,17 +82,50 @@ export default class SeatChart {
       ));
     this.nSeats = d3.sum(this.seatsPartition, (d) => d.seats);
 
+    this.isOpposition = new Map(this.requestsPerHead.map((d) => [d.party, d.isOpposition]));
+
+    const { seats: circles, zones } = computeSeatPositions(
+      this.seatsPartition, this.nSeats, this.config,
+    );
+
+    this.circles = circles;
+    this.zones = zones.filter((d) => d.party !== 'fraktionslos');
+
+    return this;
+  }
+
+  drawAxis() {
+    this.svg.append('g')
+      .attr('class', 'axis')
+      .selectAll('g')
+      .data(this.zones)
+      .join('g')
+      .call((g) => g
+        .append('path')
+        .attr('id', (_, i) => `${this.selector}--x-tick--text-path-${i}`)
+        .attr('stroke', 'none')
+        .attr('fill', 'none')
+        .attr('transform', 'rotate(90)')
+        .attr('d', (d) => {
+          const r = d.outerRadius + 5;
+          return [
+            `M${d3.pointRadial(d.startAngle, r)}`,
+            `A${r},${r} 0,0,1 ${d3.pointRadial(d.endAngle, r)}`,
+          ].join(' ');
+        }))
+      .call((g) => g
+        .append('text')
+        .attr('font-size', '0.8em')
+        .append('textPath')
+        .attr('xlink:href', (_, i) => `#${this.selector}--x-tick--text-path-${i}`)
+        .style('font-weight', (d) => (this.isOpposition.get(d.party) ? 'bold' : 'normal'))
+        .text((d) => (d.party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : d.party)));
+
     return this;
   }
 
   drawData() {
-    const circles = computeSeatPositions(
-      this.seatsPartition,
-      this.nSeats,
-      this.config,
-    );
-
-    const groupedCircles = d3.groups(circles, (d) => d.party)
+    const groupedCircles = d3.groups(this.circles, (d) => d.party)
       .map(([party, data]) => {
         const counts = this.requestsPerHeadMap.get(party)
           .sort((a, b) => d3.descending(a.nRequests, b.nRequests));
