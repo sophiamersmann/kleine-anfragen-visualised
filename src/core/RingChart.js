@@ -127,13 +127,13 @@ export default class RingChart {
       .attr('stroke-linecap', 'round')
       .on('click', () => this.resetInteractions());
 
-    this.svg.append('rect')
-      .attr('x', -this.width / 2)
-      .attr('y', -this.height / 2)
-      .attr('width', this.width)
-      .attr('height', this.height)
-      .attr('fill', 'steelblue')
-      .attr('fill-opacity', 0.1);
+    // this.svg.append('rect')
+    //   .attr('x', -this.width / 2)
+    //   .attr('y', -this.height / 2)
+    //   .attr('width', this.width)
+    //   .attr('height', this.height)
+    //   .attr('fill', 'steelblue')
+    //   .attr('fill-opacity', 0.1);
 
     return this;
   }

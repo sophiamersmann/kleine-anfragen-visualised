@@ -1,7 +1,7 @@
 <template>
   <div class="popup">
     <div class="sidebar">
-      <h2>{{ body }} ({{ years }})</h2>
+      <h3>{{ body }} <span>({{ years }})</span></h3>
       <ministry-button-group
         :ministries=ministries
         @selected=onSelected />
@@ -99,6 +99,7 @@ export default {
 <style scoped>
 .popup {
   background-color: white;
+  border-radius: 50px;
 
   position: fixed;
   z-index: 2000;
@@ -118,5 +119,13 @@ export default {
 .chart-ring {
   height: var(--popup-height);
   width: var(--popup-height);
+}
+
+h3 {
+  text-align: center;
+}
+
+h3 span {
+  font-weight: normal;
 }
 </style>

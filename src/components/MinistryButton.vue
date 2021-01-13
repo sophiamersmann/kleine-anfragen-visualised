@@ -74,15 +74,23 @@ export default {
 button {
   width: 100%;
   margin: calc(var(--spacing) / 4) 0;
-  border: 0;
+  padding: calc(0.25 * var(--spacing));
+
+  border: 1px solid white;
+  border-radius: 10px;
 
   display: grid;
   grid-template-columns: 1fr 50px;
   align-items: center;
+
+  background-color: #f4f0ff;
+  transition: all .2s;
 }
 
-.active {
-  background-color: cornflowerblue;
+button:hover,
+button.active {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #cebdff;
 }
 
 .label {
