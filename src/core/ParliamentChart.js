@@ -1,6 +1,6 @@
 import d3 from '@/assets/d3';
 
-import { PARTY_COLORS, SORTED_PARTIES } from '@/core/CONSTANTS';
+import { SORTED_PARTIES } from '@/core/CONSTANTS';
 
 export default class ParliamentChart {
   constructor(selector) {
@@ -250,7 +250,7 @@ export default class ParliamentChart {
       .data(this.nRequestsPerHead, (d) => d.party)
       .join('g')
       .attr('class', 'g-parliament-slice')
-      .attr('fill', (d) => PARTY_COLORS.get(d.party))
+      // .attr('fill', (d) => PARTY_COLORS.get(d.party))
       .selectAll('path')
       .data((d, i) => d3.range(yTickSpacing, d.value + 1, yTickSpacing)
         .map((step) => ({ step, party: d.party, angle: i })))

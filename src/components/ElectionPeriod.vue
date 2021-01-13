@@ -65,7 +65,7 @@ export default {
 
     const config = {
       innerRadius: 30,
-      seatRadius: 6,
+      seatRadius: 5,
       spacing: 1,
     };
 

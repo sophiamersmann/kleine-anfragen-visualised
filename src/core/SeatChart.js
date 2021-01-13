@@ -46,10 +46,37 @@ export default class SeatChart {
 
     return this
       .setUpSVG()
+      .createDefs()
       .setUpScales()
       .prepareData()
       .drawAxis()
       .drawData();
+  }
+
+  createDefs() {
+    this.svg.append('defs')
+      .selectAll('filter')
+      .data(SORTED_PARTIES)
+      .join('filter')
+      .attr('id', (_, i) => `bg-filter-${i}`)
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', 1)
+      .attr('height', 1)
+      .call((f) => f
+        .append('feFlood')
+        .attr('flood-color', (d) => LIGHT_COLOR.get(d))
+        .attr('result', 'bg'))
+      .call((f) => f
+        .append('feMerge')
+        .call((m) => m
+          .append('feMergeNode')
+          .attr('in', 'bg'))
+        .call((m) => m
+          .append('feMergeNode')
+          .attr('in', 'SourceGraphic')));
+
+    return this;
   }
 
   setUpScales() {
@@ -88,60 +115,32 @@ export default class SeatChart {
   }
 
   drawAxis() {
-    const smallZones = this.zones.filter((d) => (d.endAngle - d.startAngle <= 0.2)
-      || (d.party.length > 3 && d.endAngle - d.startAngle <= 0.35));
-    const smallParties = smallZones.map((d) => d.party);
-    const largeZones = this.zones.filter((d) => !smallParties.includes(d.party));
+    const data = this.zones.map((d) => {
+      const e = d;
+      e.middleAngle = (e.startAngle + e.endAngle) / 2;
+      e.point = d3.pointRadial(d.middleAngle + 0.5 * Math.PI, d.outerRadius + 10);
+      return e;
+    });
 
-    const axis = this.svg.append('g')
-      .attr('class', 'axis');
-
-    axis.selectAll('.g-axis-large')
-      .data(largeZones)
-      .join('g')
-      .attr('class', 'g-axis-large')
-      .call((g) => g
-        .append('path')
-        .attr('id', (_, i) => `${this.selector}--x-tick--text-path-${i}`)
-        .attr('stroke', 'none')
-        .attr('fill', 'none')
-        .attr('transform', 'rotate(90)')
-        .attr('d', (d) => {
-          const r = d.outerRadius + 5;
-          return [
-            `M${d3.pointRadial(d.startAngle, r)}`,
-            `A${r},${r} 0,0,1 ${d3.pointRadial(d.endAngle, r)}`,
-          ].join(' ');
-        }))
-      .call((g) => g
-        .append('text')
-        .attr('font-size', '0.8em')
-        .append('textPath')
-        .attr('xlink:href', (_, i) => `#${this.selector}--x-tick--text-path-${i}`)
-        .style('font-weight', (d) => (this.isOpposition.get(d.party) ? 'bold' : 'normal'))
-        .text((d) => (d.party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : d.party)));
-
-    axis.selectAll('.g-axis-small')
-      .data(smallZones)
+    this.svg.append('g')
+      .attr('class', 'axis')
+      .selectAll('.g-axis-small')
+      .data(data)
       .join('g')
       .attr('class', 'g-axis-small')
       .call((g) => g
-        .append('line')
-        .attr('x1', (d) => d3.pointRadial(d.startAngle, d.outerRadius + 2)[0])
-        .attr('y1', (d) => d3.pointRadial(d.startAngle, d.outerRadius + 2)[1])
-        .attr('x2', (d) => d3.pointRadial(d.startAngle, d.outerRadius + 10)[0])
-        .attr('y2', (d) => d3.pointRadial(d.startAngle, d.outerRadius + 10)[1])
-        .attr('transform', 'rotate(90)')
-        .attr('stroke', '#000')
-        .attr('stroke-opacity', 0.2))
-      .call((g) => g
         .append('text')
-        .attr('x', (d) => d3.pointRadial(d.startAngle + 0.5 * Math.PI, d.outerRadius + 12)[0])
-        .attr('y', (d) => d3.pointRadial(d.startAngle + 0.5 * Math.PI, d.outerRadius + 12)[1])
+        .attr('x', (d) => d.point[0])
+        .attr('y', (d) => d.point[1])
+        .attr('filter', (d) => {
+          const idx = SORTED_PARTIES.findIndex((p) => p === d.party);
+          return this.isOpposition.get(d.party) ? `url(#bg-filter-${idx})` : 'none';
+        })
         .attr('font-size', '0.8em')
         .style('font-weight', (d) => (this.isOpposition.get(d.party) ? 'bold' : 'normal'))
-        .attr('text-anchor', (d) => (d.startAngle + 0.5 * Math.PI < 0 ? 'end' : 'start'))
-        .attr('dominant-baseline', (d) => (Math.abs(d.startAngle + 0.5 * Math.PI) > 1 ? 'middle' : 'auto'))
+        .attr('text-anchor', (d) => (d.middleAngle + 0.5 * Math.PI < 0 ? 'end' : 'start'))
+        .attr('dominant-baseline', 'middle')
+        .attr('fill', (d) => COLOR.get(d.party))
         .text((d) => (d.party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : d.party)));
 
     return this;
