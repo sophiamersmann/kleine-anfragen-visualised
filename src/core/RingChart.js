@@ -65,7 +65,62 @@ export default class RingChart {
       .setUpScales()
       .drawAxes()
       .drawInfo()
+      .drawLegend()
       .setUpGrid();
+  }
+
+  drawLegend() {
+    const offset = 30;
+    const n = this.maxValue;
+    const labels = [1, 0.2 * n, 0.4 * n, 0.6 * n, 0.8 * n, this.maxValue]
+      .map((d, i) => ({
+        value: d,
+        dx: i * 1.25 * this.config.circleRadius,
+        label: i === 0 ? `Wenige [${d}]` : `Viele Anfragen [${d}]`,
+      }));
+
+    const legend = this.svg.append('g')
+      .attr('class', 'legend');
+
+    legend.selectAll('.g-label')
+      .data([labels[0], labels[labels.length - 1]])
+      .join('g')
+      .attr('class', 'g-label')
+      .attr('transform', (d) => `translate(${d.dx}, 0)`)
+      .call((g) => g
+        .append('line')
+        .attr('x1', -this.width / 2 + offset)
+        .attr('y1', -this.height / 2 + offset)
+        .attr('x2', -this.width / 2 + offset)
+        .attr('y2', -this.height / 2 + offset + 25)
+        .attr('stroke', 'black'))
+      .call((g) => g
+        .append('text')
+        .attr('x', -this.width / 2 + offset + 2)
+        .attr('y', -this.height / 2 + offset + 25)
+        .attr('dominant-baseline', 'auto')
+        .style('font-size', '0.7em')
+        .text((d) => d.label));
+
+    legend.selectAll('.g-marker')
+      .data(labels)
+      .join('g')
+      .attr('class', 'g-marker')
+      .attr('transform', (d) => `translate(${d.dx}, 0)`)
+      .call((g) => g
+        .append('circle')
+        .attr('cx', -this.width / 2 + offset)
+        .attr('cy', -this.height / 2 + offset)
+        .attr('r', this.config.circleRadius)
+        .attr('fill', 'lightgray'))
+      .call((g) => g
+        .append('circle')
+        .attr('cx', -this.width / 2 + offset)
+        .attr('cy', -this.height / 2 + offset)
+        .attr('r', (d) => this.scales.c(d.value))
+        .attr('fill', 'gray'));
+
+    return this;
   }
 
   updateMinistry(requests) {
