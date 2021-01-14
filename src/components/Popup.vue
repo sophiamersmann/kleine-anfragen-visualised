@@ -31,6 +31,7 @@
           </div>
           an folgende Instutionen gestellt:
       </div>
+      <div class="ministry-legend" />
       <ministry-button-group
         :ministries=ministries
         :sortedParties=parties
@@ -49,6 +50,7 @@ import { getTermId, displayTimeRange } from '@/core/utils';
 import { LIGHT_COLOR } from '@/core/CONSTANTS';
 
 import RingChart from '@/core/RingChart';
+import MinistryLegend from '@/core/MinistryLegend';
 
 import MinistryButtonGroup from './MinistryButtonGroup.vue';
 
@@ -98,6 +100,9 @@ export default {
       }));
   },
   mounted() {
+    const legendDiv = this.$el.querySelector('.ministry-legend');
+    new MinistryLegend(legendDiv, legendDiv.clientWidth).draw();
+
     const ringChartDiv = this.$el.querySelector('.chart-ring');
     const { dates, parties, maxValue } = this;
     this.ringChart = new RingChart(
@@ -210,5 +215,11 @@ h3 span {
   font-size: 0.9em;
   font-weight: bold;
   white-space: nowrap;
+}
+
+.ministry-legend {
+  width: 100%;
+  height: 30px;
+  margin-top: -30px;
 }
 </style>
