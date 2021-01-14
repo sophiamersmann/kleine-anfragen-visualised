@@ -90,15 +90,15 @@ export default class RingChart {
       .call((g) => g
         .append('line')
         .attr('x1', -this.width / 2 + offset)
-        .attr('y1', -this.height / 2 + offset)
+        .attr('y1', this.height / 2 - offset)
         .attr('x2', -this.width / 2 + offset)
-        .attr('y2', -this.height / 2 + offset + 25)
+        .attr('y2', this.height / 2 - offset - 25)
         .attr('stroke', 'black'))
       .call((g) => g
         .append('text')
         .attr('x', -this.width / 2 + offset + 2)
-        .attr('y', -this.height / 2 + offset + 25)
-        .attr('dominant-baseline', 'auto')
+        .attr('y', this.height / 2 - offset - 25)
+        .attr('dominant-baseline', 'hanging')
         .style('font-size', '0.7em')
         .text((d) => d.label));
 
@@ -110,13 +110,13 @@ export default class RingChart {
       .call((g) => g
         .append('circle')
         .attr('cx', -this.width / 2 + offset)
-        .attr('cy', -this.height / 2 + offset)
+        .attr('cy', this.height / 2 - offset)
         .attr('r', this.config.circleRadius)
         .attr('fill', 'lightgray'))
       .call((g) => g
         .append('circle')
         .attr('cx', -this.width / 2 + offset)
-        .attr('cy', -this.height / 2 + offset)
+        .attr('cy', this.height / 2 - offset)
         .attr('r', (d) => this.scales.c(d.value))
         .attr('fill', 'gray'));
 
