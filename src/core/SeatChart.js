@@ -201,15 +201,27 @@ export default class SeatChart {
         .on('mousemove', (event, d) => {
           if (d.category === '0') return;
 
+          const category = {
+            '>=1 per day': 'durchschnittlich <i>mehr als eine Anfrage am Tag</i>',
+            '>=1 per week': 'durchschnittlich <i>mehr als eine Anfrage in der Woche</i>',
+            '>=1 per month': 'durchschnittlich <i>mehr als eine Anfrage im Monat</i>',
+            '>=1 per year': 'durchschnittlich <i>mehr als eine Anfrage im Jahr</i>',
+            '<1 per year': 'durchschnittlich <i>weniger als eine Anfrage im Jahr</i>',
+          }[d.category];
+
+          const text = d.nRequests > 1
+            ? `<p>hat insgesamt <b>${d.nRequests}</b> Anfragen eingereicht, das sind ${category}</p>`
+            : `<p>hat eine Anfrage eingereicht, das ist ${category}</p>`;
+
           d3.select('.tooltip-seat')
             .style('left', `${event.pageX}px`)
             .style('top', `${event.pageY}px`)
             .style('opacity', 1)
+            .style('border-color', COLOR.get(d.party))
             .html([
-              '<b>', d.name, '</b>',
-              '<p>', d.party, '</p>',
-              '<p>', d.nRequests, '</p>',
-              '<p>', d.category, '</p>',
+              `<div class="above-title">${d.party}</div>`,
+              `<h4>${d.name}</h4>`,
+              text,
             ].join(''));
         })
         .on('mouseleave', () => {
