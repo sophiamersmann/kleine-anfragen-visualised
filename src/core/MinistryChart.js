@@ -48,7 +48,7 @@ export default class MinistryChart {
 
   hideColors() {
     this.svg.selectAll('.rect-party')
-      .attr('fill', 'lightsteelblue');
+      .attr('fill', 'lightgray');
     return this;
   }
 
@@ -75,12 +75,6 @@ export default class MinistryChart {
   }
 
   drawData() {
-    this.svg.append('rect')
-      .attr('y', this.height / 2)
-      .attr('width', (this.nRequests / this.maxRequests) * this.width)
-      .attr('height', this.height / 2)
-      .attr('fill', 'steelblue');
-
     this.svg.selectAll('.rect-party')
       .data(this.partyCount)
       .join('rect')
@@ -89,12 +83,13 @@ export default class MinistryChart {
       .attr('y', this.height / 2)
       .attr('width', (d) => (d.count / this.maxRequests) * this.width)
       .attr('height', this.height / 2)
-      .attr('fill', 'lightsteelblue');
+      .attr('fill', 'lightgray');
 
     this.svg.append('text')
       .attr('y', this.height / 2 - 5)
-      .attr('fill', 'lightsteelblue')
+      .attr('fill', 'black')
       .style('font-size', '3em')
+      .style('font-weight', 'bold')
       .text(this.nRequests);
 
     return this;

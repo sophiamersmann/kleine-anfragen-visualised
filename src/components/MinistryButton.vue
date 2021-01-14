@@ -92,14 +92,16 @@ button {
   font-size: 0.9rem;
 }
 
+button:first-of-type {
+  margin-top: 0;
+}
+
 button:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #cebdff;
+  border-color: var(--primary);
 }
 
 button.active {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  border-color: #cebdff;
+  border-color: var(--primary);
   font-weight: bold;
 }
 

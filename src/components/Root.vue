@@ -2,7 +2,7 @@
   <main :class=classes>
     <div class="wrapper">
       <section class="main-text">
-        <h1>Kleine Anfragen visualisiert</h1>
+        <h1><a href="https://kleineanfragen.de/" target="blank">kleineAnfragen.de</a> visualisiert</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -36,10 +36,10 @@
     </div>
 
     <div class="tiles tiles-landtage">
-      <div class="row">
-      <div class="col-1">Aktuelle Legislaturperiode</div>
-      <div class="col-2">Letzte Legislaturperiode</div>
-      <div class="col-3">Vorletzte Legislaturperiode</div>
+      <div class="row row-header">
+      <div class="col-1">AKTUELLE LEGISLATURPERIODE</div>
+      <div class="col-2">LETZTE LEGISLATURPERIODE</div>
+      <div class="col-3">VORLETZTE LEGISLATURPERIODE</div>
     </div>
     <div
       v-for="row in tiles.filter((d) => d.body !== 'Bundestag')"
@@ -254,7 +254,7 @@ export default {
 main {
   padding: calc(2 * var(--spacing));
   transition: filter 0.2s ease;
-  background-color: #f4f0ff;
+  background-color: var(--primary-light);
 }
 
 .background {
@@ -272,6 +272,7 @@ main {
 
 h1 {
   text-align: center;
+  border-bottom: 1px solid var(--black);
 }
 
 .bundestag .election-period {
@@ -282,6 +283,16 @@ h1 {
   margin: var(--spacing) 0;
   display: grid;
   grid-gap: calc(var(--spacing) / 2);
+}
+
+.tiles-landtage .row-header {
+  text-align: center;
+  position: sticky;
+  background-color: white;
+  padding: var(--spacing) 0;
+  border-radius: 10px;
+  top: 0;
+  font-weight: bold;
 }
 
 .tiles-landtage .row {

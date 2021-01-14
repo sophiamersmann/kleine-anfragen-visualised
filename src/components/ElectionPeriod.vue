@@ -4,42 +4,17 @@
       :id=seatChartId
       class="chart chart-seat" />
     <div class="body">
-      <h3>{{ body }} <span>({{ years }})</span></h3>
+      <h3>{{ body }}&nbsp; <span>({{ years }})</span></h3>
       <p>
-        {{ nRequests }} Anfragen eingegangen (Anfragen pro Jahr und/oder Kopf)
+        Durchsuche <b>{{ nRequests }}</b> gesammelte Anfragen
       </p>
-      <!-- <p>
-        Opposition:
-        <span
-          class="party"
-          v-for="(party, i) in oppositionParties"
-          :key=i
-          :style=party.style
-        >
-          {{ party.name }}
-        </span>
-      </p> -->
-      <!-- <p>
-        Ruling parties:
-        <span
-          class="party"
-          v-for="(party, i) in rulingParties"
-          :key=i
-          :style=party.style
-        >
-          {{ party.name }}
-        </span>
-      </p> -->
     </div>
   </div>
 </template>
 
 <script>
-import d3 from '@/assets/d3';
-
 import SeatChart from '@/core/SeatChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
-import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 
 export default {
   name: 'ElectionPeriod',
@@ -86,12 +61,6 @@ export default {
       if (this.requests === null) return '';
       return this.requests.length;
     },
-    oppositionParties() {
-      return this.prepareParties(this.elections.filter((d) => d.isOpposition));
-    },
-    rulingParties() {
-      return this.prepareParties(this.elections.filter((d) => !d.isOpposition));
-    },
   },
   methods: {
     getChartDiv() {
@@ -99,20 +68,6 @@ export default {
     },
     onClick() {
       this.$emit('top', this.name);
-    },
-    prepareParties(parties) {
-      return parties
-        .sort((a, b) => d3.ascending(
-          SORTED_PARTIES.findIndex((p) => p === a.party),
-          SORTED_PARTIES.findIndex((p) => p === b.party),
-        ))
-        .map((d) => ({
-          name: d.party,
-          style: {
-            color: COLOR.get(d.party),
-            backgroundColor: LIGHT_COLOR.get(d.party),
-          },
-        }));
     },
   },
 };
@@ -129,8 +84,8 @@ export default {
 }
 
 .election-period:hover {
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  border-color: #cebdff;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+  border-color: var(--primary);
 }
 
 .election-period.disabled {
@@ -144,5 +99,9 @@ export default {
 
 .body h3 span {
   font-weight: normal;
+}
+
+.body p {
+  font-size: 0.9rem;
 }
 </style>

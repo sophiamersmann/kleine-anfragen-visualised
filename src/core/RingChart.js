@@ -117,7 +117,8 @@ export default class RingChart {
       .attr('height', this.height)
       .attr('stroke-linejoin', 'round')
       .attr('stroke-linecap', 'round')
-      .on('click', () => this.resetInteractions());
+      .on('click', () => this.resetInteractions())
+      .on('mouseleave', () => this.resetInteractions());
 
     // this.svg.append('rect')
     //   .attr('x', -this.width / 2)
@@ -171,8 +172,8 @@ export default class RingChart {
           x: this.formats.internalFormat(date),
           isOrigin: i === 0,
           isVisible: i === 0 || date.getMonth() % 6 === 0,
-          isMajor: date.getMonth() === 0,
-          offset: date.getMonth() === 0 ? 3 * unit : unit,
+          isMajor: i === 0 || date.getMonth() === 0,
+          offset: date.getMonth() === 0 || i === 0 ? 3 * unit : unit,
         })))
         .join('g')
         .attr('font-size', 11)
@@ -187,7 +188,7 @@ export default class RingChart {
           .classed('x-tick--line-visible', (d) => d.isVisible)
           .attr('stroke', '#000')
           .attr('stroke-opacity', 0.2)
-          .attr('stroke-dasharray', '2 4')
+          .attr('stroke-dasharray', (d) => (d.isOrigin ? 'none' : '2 4'))
           .attr('opacity', (d) => +d.isVisible)
           .attr('d', (d, i) => [
             `M${d3.pointRadial(x(d.x), outerRadius + d.offset + (i === 0 ? 2 * unit : 0))}`,
@@ -213,8 +214,8 @@ export default class RingChart {
             `x-tick--label-${d.isMajor ? 'major' : 'minor'}`,
             `x-tick--label-${d.x}`,
           ].join(' '))
-          .classed('x-tick--label-visible', (d) => d.isVisible && !d.isOrigin)
-          .attr('opacity', (d) => +(d.isVisible && !d.isOrigin))
+          .classed('x-tick--label-visible', (d) => d.isVisible) // && !d.isOrigin
+          .attr('opacity', (d) => d.isVisible) // +( && !d.isOrigin)
           .append('textPath')
           .attr('startOffset', 5)
           .attr('xlink:href', (_, i) => `#x-tick--text-path-${i}`)
@@ -241,12 +242,12 @@ export default class RingChart {
           })));
 
     this.svg.append('g')
-      .attr('class', 'grid grid-x')
-      .call(xGrid);
-
-    this.svg.append('g')
       .attr('class', 'axis axis-x')
       .call(xAxis);
+
+    this.svg.append('g')
+      .attr('class', 'grid grid-x')
+      .call(xGrid);
 
     return this;
   }
@@ -256,7 +257,7 @@ export default class RingChart {
       .attr('class', 'info')
       .append('text')
       .attr('class', 'text-info')
-      .attr('x', this.width / 2 - 10)
+      .attr('x', this.width / 2 - 50)
       .attr('y', -this.height / 2 + 10)
       .attr('dominant-baseline', 'hanging')
       .attr('text-anchor', 'end')
