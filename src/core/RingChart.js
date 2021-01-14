@@ -213,12 +213,37 @@ export default class RingChart {
     const { internalFormat, shortFormat, longFormat } = this.formats;
 
     const xGrid = (grid) => grid
-      .attr('fill', 'transparent')
-      .call((g) => g.selectAll('circle')
-        .data(this.parties)
-        .join('circle')
+      .selectAll('g')
+      .data(this.parties)
+      .join('g')
+      .call((g) => g
+        .append('circle')
+        .attr('id', 'test')
         .attr('r', (party) => y(party))
-        .attr('stroke', (party) => LIGHT_COLOR.get(party)));
+        .attr('fill', 'transparent')
+        .attr('stroke-width', 1.5)
+        .attr('stroke', (party) => LIGHT_COLOR.get(party)))
+      .call((g) => g
+        .append('path')
+        .attr('id', (_, i) => `party-text-path-${i}`)
+        .attr('d', (party) => {
+          const r = y(party);
+          return [
+            `M${d3.pointRadial(x(this.monthKeys[0]), r)}`,
+            `A${r},${r} 0,0,1 ${d3.pointRadial(x(this.monthKeys[5]), r)}`,
+          ].join(' ');
+        })
+        .attr('stroke', 'none')
+        .attr('fill', 'none'))
+      .call((g) => g
+        .append('text')
+        .append('textPath')
+        .attr('xlink:href', (_, i) => `#party-text-path-${i}`)
+        .attr('fill', (party) => COLOR.get(party))
+        .attr('startOffset', 1)
+        .style('font-size', '0.8em')
+        .style('font-weight', 'bold')
+        .text((party) => (party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party)));
 
     const xAxis = (grid) => grid
       .call((g) => g.selectAll('g')
