@@ -219,7 +219,7 @@ h3 span {
 
 .ministry-legend {
   width: 100%;
-  height: 30px;
-  margin-top: -30px;
+  height: 20px;
+  margin-top: -20px;
 }
 </style>

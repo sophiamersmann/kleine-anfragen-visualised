@@ -6,7 +6,7 @@ export default class MinistryLegend {
 
     this.svg = null;
     this.width = width;
-    this.height = 30;
+    this.height = 20;
   }
 
   draw() {
