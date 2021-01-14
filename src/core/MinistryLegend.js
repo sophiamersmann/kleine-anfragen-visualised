@@ -19,7 +19,6 @@ export default class MinistryLegend {
         this.height])
       .attr('width', this.width)
       .attr('height', this.height)
-      .attr('transform', 'translate(0,9)')
       .attr('overflow', 'visible');
 
     const x = 0.86 * this.width;
