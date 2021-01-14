@@ -345,12 +345,27 @@ h1 {
 
 .tooltip {
   position: absolute;
-  width: 250px;
-  background: lightsteelblue;
+  width: 300px;
+  background: white;
   left: 10px;
   top: 10px;
   z-index: 3000;
   pointer-events: none;
   opacity: 0;
+
+  font-size: 0.9em;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: calc(0.25 * var(--spacing)) calc(0.5 * var(--spacing));
+
+  border-left: 5px solid var(--black);
+}
+
+.tooltip .above-title {
+  font-size: 0.8rem;
+}
+
+.tooltip p {
+  margin: calc(0.125 * var(--spacing)) 0;
 }
 </style>

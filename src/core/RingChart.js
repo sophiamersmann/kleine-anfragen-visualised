@@ -12,6 +12,7 @@ export default class RingChart {
       internalFormat: d3.timeFormat('%Y-%m'),
       shortFormat: d3.timeFormat('%b'),
       longFormat: d3.timeFormat('%b %Y'),
+      dateFormat: d3.timeFormat('%d %b %Y'),
     };
 
     // data
@@ -382,22 +383,51 @@ export default class RingChart {
 
     const circle = g
       .append('circle')
-      .attr('r', questionsRadius)
-      .attr('fill', 'lightsteelblue')
+      .attr('r', questionsRadius + 2)
+      .attr('fill', (d) => LIGHT_COLOR.get(d.party))
       .attr('opacity', 0)
       .on('mousemove', (event, d) => {
         // highlight identical requests
         d3.selectAll(`.question-mark--${d.requestId} circle`)
           .attr('opacity', 1);
 
+        let type = 'Anfrage';
+        if (['minor', 'major', 'written'].includes(d.data.type)) {
+          type = {
+            minor: 'Kleine Anfrage',
+            major: 'Große Anfrage',
+            written: 'Schriftliche Anfrage',
+          }[d.data.type];
+        }
+
+        let people = '<Unbekannt>';
+        if (d.data.inquiringPeople.length === 1) {
+          [people] = d.data.inquiringPeople;
+        } else if (d.data.inquiringPeople.length === 2) {
+          const [p1, p2] = d.data.inquiringPeople;
+          people = `${p1} und ${p2}`;
+        } else {
+          const ps = d.data.inquiringPeople.slice(0, d.data.inquiringPeople.length - 1);
+          const p = d.data.inquiringPeople[d.data.inquiringPeople.length - 1];
+          people = `${ps.join(', ')} und ${p}`;
+        }
+
+        let parties = '';
+        if (d.data.parties.length > 0) {
+          parties = `(${d.data.parties.join(', ')})`;
+        }
+
         // show tooltip
         d3.select('.tooltip-question')
           .style('left', `${event.pageX}px`)
           .style('top', `${event.pageY}px`)
+          .style('border-color', COLOR.get(d.party))
           .style('opacity', 1)
           .html([
-            '<b>', d.data.title, '</b>',
-            '<p>', d.data.parties, '</p>',
+            `<div class="above-title">${type}</div>`,
+            `<h4>${d.data.title}</h4>`,
+            `<p><i>eingereicht am </i>${this.formats.dateFormat(d.data.date)}</p>`,
+            `<p><i>von</i> ${people} ${parties}</p>`,
           ].join(''));
       })
       .on('mouseleave', () => {
@@ -416,6 +446,7 @@ export default class RingChart {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('fill', (d) => (d.party === 'mixed' ? 'black' : COLOR.get(d.party)))
+      .attr('transform', 'translate(0,2)') // * Magic value to center question mark
       .style('font-size', questionSize)
       .style('font-weight', 'bold')
       .style('pointer-events', 'none')
