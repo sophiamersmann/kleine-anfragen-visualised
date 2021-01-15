@@ -213,8 +213,9 @@ export default class SeatChart {
             ? `<p>hat insgesamt <b>${d.nRequests}</b> Anfragen eingereicht, das sind ${category}</p>`
             : `<p>hat eine Anfrage eingereicht, das ist ${category}</p>`;
 
+          const left = Math.min(window.innerWidth - 300, event.pageX);
           d3.select('.tooltip-seat')
-            .style('left', `${event.pageX}px`)
+            .style('left', `${left}px`)
             .style('top', `${event.pageY}px`)
             .style('opacity', 1)
             .style('border-color', COLOR.get(d.party))

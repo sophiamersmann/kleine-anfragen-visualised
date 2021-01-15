@@ -418,8 +418,9 @@ export default class RingChart {
         }
 
         // show tooltip
+        const left = Math.min(window.innerWidth - 300, event.pageX);
         d3.select('.tooltip-question')
-          .style('left', `${event.pageX}px`)
+          .style('left', `${left}px`)
           .style('top', `${event.pageY}px`)
           .style('border-color', COLOR.get(d.party))
           .style('opacity', 1)
