@@ -59,8 +59,6 @@ export default {
 
 <style scoped>
 .ministry-button-group {
-  /* Magic value (popup height - heading height - margins etc.) */
-  max-height: calc(var(--popup-height) - 350px);
   overflow-y: auto;
 }
 </style>

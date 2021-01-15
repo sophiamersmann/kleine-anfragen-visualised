@@ -242,9 +242,12 @@ export default {
 }
 
 .sidebar {
+  height: var(--popup-height);
   padding: var(--spacing);
   background-color: var(--primary-light);
   border-radius: 50px 0 0 50px;
+  display: flex;
+  flex-direction: column;
 }
 
 .chart-ring {
@@ -254,7 +257,6 @@ export default {
 
 h3 {
   text-align: center;
-  margin-bottom: calc(0.5 * var(--spacing));
   border-bottom: 1px solid var(--black);
 }
 
