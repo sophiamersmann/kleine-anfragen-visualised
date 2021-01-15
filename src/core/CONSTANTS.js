@@ -58,4 +58,7 @@ export const SORTED_PARTIES = [
   'SSW',
   'Die Linke',
   'fraktionslos',
+
+  'Freie Wähler/BMV',
+  'BMV',
 ];

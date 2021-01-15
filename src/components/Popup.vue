@@ -75,6 +75,7 @@ export default {
       parties: null,
       maxValue: null,
       selectedMinistry: null,
+      isOpposition: null,
     };
   },
   created() {
@@ -89,6 +90,8 @@ export default {
       .map(([party, count]) => ({ party, count }))
       .sort((a, b) => d3.descending(a.count, b.count))
       .map(({ party }) => party);
+
+    this.isOpposition = new Map(this.elections.map((d) => [d.party, d.isOpposition]));
 
     const dateId = d3.timeFormat('%Y-%m');
     this.maxValue = d3.max(d3
@@ -127,10 +130,12 @@ export default {
       return this.requests.length;
     },
     oppositionParties() {
-      return this.prepareParties(this.elections.filter((d) => d.isOpposition));
+      return this.prepareParties(this.parties.filter((party) => (this.isOpposition.has(party)
+        ? this.isOpposition.get(party) : true)));
     },
     rulingParties() {
-      return this.prepareParties(this.elections.filter((d) => !d.isOpposition));
+      return this.prepareParties(this.parties.filter((party) => (this.isOpposition.has(party)
+        ? !this.isOpposition.get(party) : false)));
     },
   },
   methods: {
@@ -140,14 +145,15 @@ export default {
     },
     prepareParties(parties) {
       return parties
+        .filter((party) => party !== 'fraktionslos')
         .sort((a, b) => d3.ascending(
-          this.parties.findIndex((p) => p === a.party),
-          this.parties.findIndex((p) => p === b.party),
+          this.parties.findIndex((p) => p === a),
+          this.parties.findIndex((p) => p === b),
         ))
-        .map((d) => ({
-          name: d.party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : d.party,
+        .map((party) => ({
+          name: party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party,
           style: {
-            backgroundColor: LIGHT_COLOR.get(d.party),
+            backgroundColor: LIGHT_COLOR.get(party),
           },
         }));
     },
