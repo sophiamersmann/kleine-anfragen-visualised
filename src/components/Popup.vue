@@ -121,7 +121,9 @@ export default {
     },
     selectedRequests() {
       if (this.requests === null || this.ministries === null) return '';
-      const selectedMinistry = this.selectedMinistry || this.ministries[0].name;
+      const selectedMinistry = this.selectedMinistry !== null
+        ? this.selectedMinistry : this.ministries[0].name;
+      console.log('sel', selectedMinistry);
       return this.requests.filter((d) => d.ministries[0] === selectedMinistry);
     },
     nRequests() {
