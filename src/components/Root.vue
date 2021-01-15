@@ -3,7 +3,7 @@
     <div class="wrapper">
       <section class="main-text">
         <h1><a href="https://kleineanfragen.de/" target="blank">kleineAnfragen.de</a> visualisiert</h1>
-        <p>
+        <div class="p">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
           sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -11,7 +11,20 @@
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        </div>
+        <div class="p">
+          Kategorien:
+          <div class="legend">
+            <div
+            class="legend-line"
+            v-for="(line, i) in legend"
+            :key=i
+            >
+            <div class="chart-legend" :id=line.chartId></div>
+              {{ line.label }}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="bundestag">
@@ -86,6 +99,7 @@
 import d3 from '@/assets/d3';
 
 import { getTermId } from '@/core/utils';
+import ParliamentLegend from '@/core/ParliamentLegend';
 
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
@@ -115,6 +129,14 @@ export default {
       tiles: [],
       tileMap: null,
       popup: null,
+      legend: [
+        { chartId: 'chart-legend-0', category: '0', label: 'keine Anfragen' },
+        { chartId: 'chart-legend-1', category: '<1 per year', label: 'weniger als eine Anfrage im Jahr' },
+        { chartId: 'chart-legend-2', category: '>=1 per year', label: 'mehr als eine Anfrage im Jahr' },
+        { chartId: 'chart-legend-3', category: '>=1 per month', label: 'mehr als eine Anfrage im Monat' },
+        { chartId: 'chart-legend-4', category: '>=1 per week', label: 'mehr als eine Anfrage in der Woche' },
+        { chartId: 'chart-legend-5', category: '>=1 per day', label: 'mehr als eine Anfrage am Tag' },
+      ],
     };
   },
   async created() {
@@ -175,6 +197,15 @@ export default {
 
       this.computeTiles(merged);
       this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
+    });
+  },
+  mounted() {
+    const scale = d3.scalePoint()
+      .domain(this.legend.map((d) => d.category))
+      .range([0, 5]);
+
+    this.legend.forEach((d) => {
+      new ParliamentLegend(`#${d.chartId}`, d.category, scale).draw();
     });
   },
   methods: {
@@ -273,6 +304,28 @@ main {
 h1 {
   text-align: center;
   border-bottom: 1px solid var(--black);
+}
+
+.main-text {
+  line-height: 1.5;
+}
+
+.main-text .p {
+  padding: calc(0.25 * var(--spacing));
+  border-radius: 10px;
+  text-align: justify;
+}
+
+.chart-legend {
+  display: inline-block;
+  margin-right: calc(0.5 * var(--spacing));
+}
+
+.main-text .legend {
+  background-color: white;
+  margin: calc(0.5 * var(--spacing)) 0;
+  padding: calc(0.25 * var(--spacing)) calc(var(--spacing) * 2);
+  border-radius: 10px;
 }
 
 .bundestag .election-period {
