@@ -43,6 +43,11 @@ export default {
       this.selectedMinistry = this.ministries[0].name;
     }
   },
+  updated() {
+    if (this.selectedMinistry === null && this.ministries !== null) {
+      this.selectedMinistry = this.ministries[0].name;
+    }
+  },
   methods: {
     onClick(selectedMinistry) {
       this.selectedMinistry = selectedMinistry;
