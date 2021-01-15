@@ -167,9 +167,9 @@ export default {
             party, seats, isOpposition,
           }) => ({ party, seats, isOpposition })),
           requestsPerHead: requestsPerHeadMap.get(key).map(({
-            name, party, isOpposition, nRequests, nRequestsPerDay,
+            name, party, isOpposition, nRequests, nRequestsPerDay, nRequestsPerMonth,
           }) => ({
-            name, party, isOpposition, nRequests, nRequestsPerDay,
+            name, party, isOpposition, nRequests, nRequestsPerDay, nRequestsPerMonth,
           })),
           srcRequests: `${this.srcRequests}/requests-${id}.csv`,
         };
@@ -204,6 +204,7 @@ export default {
         isOpposition: d.is_opposition.toLowerCase() === 'true',
         nRequests: +d.n_requests,
         nRequestsPerDay: +d.n_requests_per_day,
+        nRequestsPerMonth: +d.n_requests_per_month,
       }));
     },
     async fetchElectionsData() {

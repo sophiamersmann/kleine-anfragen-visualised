@@ -160,10 +160,7 @@ export default class SeatChart {
           .sort((a, b) => d3.ascending(a.row, b.row) || d3.ascending(a.theta, b.theta))
           .map((d, i) => {
             const e = d;
-
-            e.name = counts[i].name;
-            e.nRequests = counts[i].nRequests;
-            e.nRequestsPerDay = counts[i].nRequestsPerDay;
+            e.data = counts[i];
 
             const n = counts[i].nRequestsPerDay;
             if (n >= 1) e.category = '>=1 per day';
@@ -201,17 +198,16 @@ export default class SeatChart {
         .on('mousemove', (event, d) => {
           if (d.category === '0') return;
 
-          const category = {
-            '>=1 per day': 'durchschnittlich <i>mehr als eine Anfrage am Tag</i>',
-            '>=1 per week': 'durchschnittlich <i>mehr als eine Anfrage in der Woche</i>',
-            '>=1 per month': 'durchschnittlich <i>mehr als eine Anfrage im Monat</i>',
-            '>=1 per year': 'durchschnittlich <i>mehr als eine Anfrage im Jahr</i>',
-            '<1 per year': 'durchschnittlich <i>weniger als eine Anfrage im Jahr</i>',
-          }[d.category];
-
-          const text = d.nRequests > 1
-            ? `<p>hat insgesamt <b>${d.nRequests}</b> Anfragen eingereicht, das sind ${category}</p>`
-            : `<p>hat eine Anfrage eingereicht, das ist ${category}</p>`;
+          const nRequestsPerMonth = Math.round(d.data.nRequestsPerMonth);
+          let text = d.data.nRequests > 1
+            ? `<p>hat insgesamt <b>${d.data.nRequests}</b> Anfragen eingereicht`
+            : '<p>hat eine Anfrage eingereicht';
+          if (nRequestsPerMonth > 1) {
+            text += `, das sind ungefähr ${nRequestsPerMonth} im Monat`;
+          } else if (nRequestsPerMonth === 1) {
+            text += ', das ist ungefähr eine im Monat';
+          }
+          text += '</p>';
 
           const left = Math.min(window.innerWidth - 300, event.pageX);
           d3.select('.tooltip-seat')
@@ -221,7 +217,7 @@ export default class SeatChart {
             .style('border-color', COLOR.get(d.party))
             .html([
               `<div class="above-title">${d.party}</div>`,
-              `<h4>${d.name}</h4>`,
+              `<h4>${d.data.name}</h4>`,
               text,
             ].join(''));
         })
