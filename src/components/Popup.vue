@@ -1,15 +1,15 @@
 <template>
-  <div class="popup">
+  <div :class=classes>
     <div class="sidebar">
       <h3>{{ body }}&nbsp; <span>({{ years }})</span></h3>
       <div class="text">
         Die Oppositionsparteien
           <div class="text-wrapper">
             <span
-            class="party"
-            v-for="(party, i) in oppositionParties"
-            :key=i
-            :style=party.style
+              class="party"
+              v-for="(party, i) in oppositionParties"
+              :key=i
+              :style=party.style
             >
               {{ party.name }}
             </span>
@@ -17,17 +17,17 @@
           und Regierungparteien
           <div class="text-wrapper">
             <span
-            class="party"
-            v-for="(party, i) in rulingParties"
-            :key=i
-            :style=party.style
+              class="party"
+              v-for="(party, i) in rulingParties"
+              :key=i
+              :style=party.style
             >
               {{ party.name }}
             </span>
           </div>
           haben insgesamt
           <div class="text-wrapper">
-            <b class="number">{{ nRequests }}</b> Anfragen
+            <span class="number">{{ nRequests }}</span> Anfragen
           </div>
           an folgende Instutionen gestellt:
       </div>
@@ -94,7 +94,6 @@ export default {
     }
   },
   updated() {
-    console.log('updated', this.requests);
     const ringChartDiv = this.$el.querySelector('.chart-ring');
     const {
       dates, parties, maxValue, selectedRequests,
@@ -108,6 +107,12 @@ export default {
       .updateMinistry(selectedRequests);
   },
   computed: {
+    classes() {
+      return {
+        popup: true,
+        loading: this.requests === null,
+      };
+    },
     ringChartId() {
       return `popup-chart-ring-${getTermId(this.body, this.term)}`;
     },
@@ -124,12 +129,16 @@ export default {
       return this.requests.length;
     },
     oppositionParties() {
-      if (this.parties === null || this.isOpposition === null) return '';
+      if (this.parties === null || this.isOpposition === null) {
+        return Array(3).fill({ name: '', style: {} });
+      }
       return this.prepareParties(this.parties.filter((party) => (this.isOpposition.has(party)
         ? this.isOpposition.get(party) : true)));
     },
     rulingParties() {
-      if (this.parties === null || this.isOpposition === null) return '';
+      if (this.parties === null || this.isOpposition === null) {
+        return Array(2).fill({ name: '', style: {} });
+      }
       return this.prepareParties(this.parties.filter((party) => (this.isOpposition.has(party)
         ? !this.isOpposition.get(party) : false)));
     },
@@ -190,9 +199,7 @@ export default {
         ))
         .map((party) => ({
           name: party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party,
-          style: {
-            backgroundColor: LIGHT_COLOR.get(party),
-          },
+          style: { backgroundColor: LIGHT_COLOR.get(party) },
         }));
     },
   },
@@ -241,6 +248,8 @@ h3 {
 
 .number {
   font-size: 0.9em;
+  font-weight: bold;
+  line-height: 18px;
 }
 
 h3 span {
@@ -259,6 +268,27 @@ h3 span {
   font-size: 0.9em;
   font-weight: bold;
   white-space: nowrap;
+  line-height: 18px;
+}
+
+.popup.loading .party {
+  width: 80px;
+  height: 18px;
+  background-color: gray;
+  vertical-align: bottom;
+}
+
+.popup.loading .number {
+  display: inline-block;
+  width: 40px;
+  height: 18px;
+  background-color: gray;
+  vertical-align: bottom;
+  border-radius: 20px;
+}
+
+.popup.loading .ministry-legend {
+  visibility: hidden;
 }
 
 .ministry-legend {
