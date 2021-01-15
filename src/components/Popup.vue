@@ -153,24 +153,7 @@ export default {
     },
     parties() {
       if (this.requests === null) return null;
-
-      let parties = d3
-        .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
-        .map(([party, count]) => ({ party, count }));
-
-      PARTY_GROUPS.forEach((group) => {
-        const toGroup = parties.filter(({ party }) => group.includes(party));
-        const partiesToGroup = toGroup.map(({ party }) => party);
-        if (toGroup.length > 1) {
-          parties.push({
-            party: partiesToGroup.join(';'),
-            count: d3.sum(toGroup, (d) => d.count),
-          });
-          parties = parties.filter(({ party }) => !partiesToGroup.includes(party));
-        }
-      });
-
-      return parties
+      return this.getPartyCounts(this.requests)
         .sort((a, b) => d3.descending(a.count, b.count))
         .map(({ party }) => party);
     },
@@ -182,11 +165,7 @@ export default {
       const dateId = d3.timeFormat('%Y-%m');
       return d3.max(d3
         .groups(this.requests, (d) => `${d.ministries[0]}-${dateId(d.date)}`)
-        .map(([, requests]) => {
-          const parties = requests.flatMap((d) => d.parties);
-          const counts = d3.rollups(parties, (v) => v.length, (d) => d).map((d) => d[1]);
-          return d3.max(counts);
-        }));
+        .map(([, requests]) => d3.max(this.getPartyCounts(requests), (d) => d.count)));
     },
   },
   methods: {
@@ -206,6 +185,25 @@ export default {
     onSelected(ministry) {
       this.selectedMinistry = ministry;
       this.ringChart.updateMinistry(this.selectedRequests);
+    },
+    getPartyCounts(requests) {
+      let partyCounts = d3
+        .rollups(requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
+        .map(([party, count]) => ({ party, count }));
+
+      PARTY_GROUPS.forEach((group) => {
+        const toGroup = partyCounts.filter(({ party }) => group.includes(party));
+        const partiesToGroup = toGroup.map(({ party }) => party);
+        if (toGroup.length > 1) {
+          partyCounts.push({
+            party: partiesToGroup.join(';'),
+            count: d3.sum(toGroup, (d) => d.count),
+          });
+          partyCounts = partyCounts.filter(({ party }) => !partiesToGroup.includes(party));
+        }
+      });
+
+      return partyCounts;
     },
     prepareParties(parties) {
       return parties
