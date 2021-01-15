@@ -243,7 +243,6 @@ main {
 .background {
   filter: blur(4px);
   transition: filter 0.2s ease-in;
-  height: 100vh;
   overflow: hidden;
 }
 
