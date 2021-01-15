@@ -5,7 +5,7 @@
     @mouseenter="chart.showColors"
     @mouseleave="updateChartColor" >
     <div class="label">
-      {{ value }}
+      {{ value ? value : '(Nicht bekannt)' }}
     </div>
     <div
       :id=chartId
