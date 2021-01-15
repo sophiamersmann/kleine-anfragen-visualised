@@ -1,3 +1,31 @@
+export const SORTED_PARTIES = [
+  'NPD',
+  'BIW',
+  'Freie Wähler/BMV',
+  'BMV',
+  'ABW',
+  'AfD',
+  'BVB/FW',
+  'FW',
+  'Freie Wähler',
+  'FDP/DVP',
+  'FDP',
+  'CSU',
+  'CDU/CSU',
+  'CDU',
+  'SPD',
+  'SSW',
+  'Bündnis 90/Die Grünen',
+  'Piraten',
+  'Die Linke',
+  'fraktionslos',
+];
+
+export const PARTY_GROUPS = [
+  ['AfD', 'ABW', 'BMV', 'Freie Wähler/BMV'],
+  ['FDP', 'FDP/DVP'],
+];
+
 export const COLOR = new Map([
   ['BIW', 'hsl(0, 0%, 46%)'],
   ['NPD', 'hsl(36, 64%, 50%)'],
@@ -45,26 +73,3 @@ export const LIGHT_COLOR = new Map([
   ['Freie Wähler/BMV', 'hsl(0, 0%, 86%)'],
   ['BMV', 'hsl(0, 0%, 86%)'],
 ]);
-
-export const SORTED_PARTIES = [
-  'BIW',
-  'NPD',
-  'AfD',
-  'FW',
-  'Freie Wähler',
-  'BVB/FW',
-  'FDP',
-  'FDP/DVP',
-  'CDU',
-  'CDU/CSU',
-  'CSU',
-  'SPD',
-  'Bündnis 90/Die Grünen',
-  'Piraten',
-  'SSW',
-  'Die Linke',
-  'fraktionslos',
-
-  'Freie Wähler/BMV',
-  'BMV',
-];

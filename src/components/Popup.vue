@@ -47,7 +47,7 @@
 import d3 from '@/assets/d3';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
-import { LIGHT_COLOR } from '@/core/CONSTANTS';
+import { LIGHT_COLOR, PARTY_GROUPS } from '@/core/CONSTANTS';
 
 import RingChart from '@/core/RingChart';
 import MinistryLegend from '@/core/MinistryLegend';
@@ -151,9 +151,24 @@ export default {
     },
     parties() {
       if (this.requests === null) return null;
-      return d3
+
+      let parties = d3
         .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
-        .map(([party, count]) => ({ party, count }))
+        .map(([party, count]) => ({ party, count }));
+
+      PARTY_GROUPS.forEach((group) => {
+        const toGroup = parties.filter(({ party }) => group.includes(party));
+        const partiesToGroup = toGroup.map(({ party }) => party);
+        if (toGroup.length > 1) {
+          parties.push({
+            party: partiesToGroup.join(';'),
+            count: d3.sum(toGroup, (d) => d.count),
+          });
+          parties = parties.filter(({ party }) => !partiesToGroup.includes(party));
+        }
+      });
+
+      return parties
         .sort((a, b) => d3.descending(a.count, b.count))
         .map(({ party }) => party);
     },
@@ -198,8 +213,12 @@ export default {
           this.parties.findIndex((p) => p === b),
         ))
         .map((party) => ({
-          name: party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party,
-          style: { backgroundColor: LIGHT_COLOR.get(party) },
+          name: party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party.split(';').join('/'),
+          style: {
+            backgroundColor: party.includes(';')
+              ? LIGHT_COLOR.get(party.split(';')[0])
+              : LIGHT_COLOR.get(party),
+          },
         }));
     },
   },

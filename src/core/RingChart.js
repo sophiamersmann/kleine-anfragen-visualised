@@ -153,7 +153,10 @@ export default class RingChart {
       const parties = requests.flatMap((d) => d.parties);
       const count = d3.rollup(parties, (v) => v.length, (d) => d);
       const values = this.parties
-        .map((party) => ({ party, count: count.has(party) ? count.get(party) : 0 }));
+        .map((party) => {
+          const c = d3.sum(party.split(';').map((p) => (count.has(p) ? count.get(p) : 0)));
+          return { party, count: c };
+        });
 
       return [month, values];
     }));
@@ -222,7 +225,7 @@ export default class RingChart {
         .attr('r', (party) => y(party))
         .attr('fill', 'transparent')
         .attr('stroke-width', 1.5)
-        .attr('stroke', (party) => LIGHT_COLOR.get(party)))
+        .attr('stroke', (party) => LIGHT_COLOR.get(party.split(';')[0])))
       .call((g) => g
         .append('path')
         .attr('id', (_, i) => `party-text-path-${i}`)
@@ -239,7 +242,7 @@ export default class RingChart {
         .append('text')
         .append('textPath')
         .attr('xlink:href', (_, i) => `#party-text-path-${i}`)
-        .attr('fill', (party) => COLOR.get(party))
+        .attr('fill', (party) => COLOR.get(party.split(';')[0]))
         .attr('startOffset', 1)
         .style('font-size', '0.8em')
         .style('font-weight', 'bold')
@@ -386,7 +389,7 @@ export default class RingChart {
       .attr('target', '_blank')
       .append('circle')
       .attr('r', questionsRadius + 2)
-      .attr('fill', (d) => LIGHT_COLOR.get(d.party))
+      .attr('fill', (d) => LIGHT_COLOR.get(d.party.split(';')[0]))
       .attr('opacity', 0)
       .on('mousemove', (event, d) => {
         // highlight identical requests
@@ -424,7 +427,7 @@ export default class RingChart {
         d3.select('.tooltip-question')
           .style('left', `${left}px`)
           .style('top', `${event.pageY}px`)
-          .style('border-color', COLOR.get(d.party))
+          .style('border-color', COLOR.get(d.party.split(';')[0]))
           .style('opacity', 1)
           .html([
             `<div class="above-title">${type}</div>`,
@@ -449,7 +452,7 @@ export default class RingChart {
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('fill', (d) => (d.party === 'mixed' ? 'black' : COLOR.get(d.party)))
+      .attr('fill', (d) => (d.party === 'mixed' ? 'black' : COLOR.get(d.party.split(';')[0])))
       .attr('transform', 'translate(0,2)') // * Magic value to center question mark
       .style('font-size', questionSize)
       .style('font-weight', 'bold')
@@ -550,7 +553,7 @@ export default class RingChart {
             .attr('cx', (d) => d.point[0])
             .attr('cy', (d) => d.point[1])
             .attr('r', (d) => (d.count > 0 ? d.r : 0))
-            .attr('fill', (d) => (d.isInner ? COLOR : LIGHT_COLOR).get(d.party))
+            .attr('fill', (d) => (d.isInner ? COLOR : LIGHT_COLOR).get(d.party.split(';')[0]))
             .style('pointer-events', (d) => (d.isInner ? 'none' : 'unset'))
             .on('mouseover', onMouseOver),
           (update) => update
