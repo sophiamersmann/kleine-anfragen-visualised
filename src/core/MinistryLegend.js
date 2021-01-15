@@ -1,11 +1,11 @@
 import d3 from '@/assets/d3';
 
 export default class MinistryLegend {
-  constructor(selector, width) {
+  constructor(selector) {
     this.selector = selector;
 
     this.svg = null;
-    this.width = width;
+    this.width = 50;
     this.height = 20;
   }
 
@@ -21,7 +21,7 @@ export default class MinistryLegend {
       .attr('height', this.height)
       .attr('overflow', 'visible');
 
-    const x = 0.86 * this.width;
+    const x = 0;
 
     this.svg.append('line')
       .attr('x1', x)

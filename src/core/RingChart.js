@@ -4,7 +4,7 @@ import { COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import forceClusterCollision from '@/core/forceClusterCollision';
 
 export default class RingChart {
-  constructor(selector, size, data) {
+  constructor(selector, data) {
     this.selector = selector;
 
     // formats
@@ -28,8 +28,8 @@ export default class RingChart {
 
     // options
     this.svg = null;
-    this.width = size;
-    this.height = size;
+    this.width = null;
+    this.height = null;
     this.margin = 20;
     this.config = {
       innerRadius: null,
@@ -39,6 +39,17 @@ export default class RingChart {
       questionSize: '0.9em',
       unit: 10,
     };
+
+    // scales
+    this.scales = {
+      x: null,
+      y: null,
+    };
+  }
+
+  drawSkeleton(size) {
+    this.width = size;
+    this.height = size;
 
     this.config.outerRadius = this.width / 2 - 2 * this.margin;
     this.config.innerRadius = this.config.outerRadius
@@ -51,21 +62,19 @@ export default class RingChart {
       trunc(this.config.outerRadius - this.config.innerRadius) / (2 * this.parties.length),
     );
 
-    // scales
-    this.scales = {
-      x: null,
-      y: null,
-    };
-  }
-
-  drawSkeleton() {
     return this
+      .reset()
       .setUpSVG()
       .setUpScales()
       .drawAxes()
       .drawInfo()
       .drawLegend()
       .setUpGrid();
+  }
+
+  reset() {
+    if (this.svg) d3.select(`${this.selector} svg`).remove();
+    return this;
   }
 
   drawLegend() {

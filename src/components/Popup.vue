@@ -76,20 +76,21 @@ export default {
     };
   },
   async created() {
+    window.addEventListener('resize', this.onResize);
     await this.fetchRequestsData();
   },
   mounted() {
     const legendDiv = this.$el.querySelector('.ministry-legend');
-    new MinistryLegend(legendDiv, legendDiv.clientWidth).draw();
+    new MinistryLegend(legendDiv).draw();
 
     if (this.requests !== null) {
       const ringChartDiv = this.$el.querySelector('.chart-ring');
       const { dates, parties, maxValue } = this;
       this.ringChart = new RingChart(
-        `#${ringChartDiv.id}`, ringChartDiv.clientHeight,
+        `#${ringChartDiv.id}`,
         { dates, parties, maxValue },
       )
-        .drawSkeleton()
+        .drawSkeleton(ringChartDiv.clientHeight)
         .updateMinistry(this.selectedRequests);
     }
   },
@@ -100,10 +101,10 @@ export default {
     } = this;
 
     this.ringChart = new RingChart(
-      `#${ringChartDiv.id}`, ringChartDiv.clientHeight,
+      `#${ringChartDiv.id}`,
       { dates, parties, maxValue },
     )
-      .drawSkeleton()
+      .drawSkeleton(ringChartDiv.clientHeight)
       .updateMinistry(selectedRequests);
   },
   computed: {
@@ -185,6 +186,12 @@ export default {
     onSelected(ministry) {
       this.selectedMinistry = ministry;
       this.ringChart.updateMinistry(this.selectedRequests);
+    },
+    onResize() {
+      const ringChartDiv = this.$el.querySelector('.chart-ring');
+      this.ringChart
+        .drawSkeleton(ringChartDiv.clientHeight)
+        .updateMinistry(this.selectedRequests);
     },
     getPartyCounts(requests) {
       let partyCounts = d3
@@ -313,8 +320,9 @@ h3 span {
 }
 
 .ministry-legend {
-  width: 100%;
+  width: 50px;
   height: 20px;
   margin-top: -20px;
+  align-self: end;
 }
 </style>
