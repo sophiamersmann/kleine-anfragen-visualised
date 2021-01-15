@@ -41,10 +41,8 @@ export default class RingChart {
     };
 
     this.config.outerRadius = this.width / 2 - 2 * this.margin;
-    this.config.innerRadius = Math.max(
-      this.config.outerRadius - 2 * this.config.circleRadius * this.parties.length,
-      200,
-    );
+    this.config.innerRadius = this.config.outerRadius
+      - 2 * this.config.circleRadius * this.parties.length;
 
     const trunc = (x) => Math.trunc(x * 100) / 100;
     const cf = 2 * Math.PI * this.config.innerRadius;
@@ -352,7 +350,7 @@ export default class RingChart {
   }
 
   drawQuestions(month) {
-    const { questionsRadius, questionSize } = this.config;
+    const { innerRadius, questionsRadius, questionSize } = this.config;
     const { internalFormat } = this.formats;
     const n = this.parties.length;
 
@@ -362,8 +360,9 @@ export default class RingChart {
       .forEach((d, i) => d.parties.forEach((party) => {
         const cluster = this.parties.includes(party)
           ? this.parties.findIndex((p) => p === party) : n;
-        const focusX = 110 * Math.cos((cluster / n) * Math.PI * 2) + Math.random() * 5;
-        const focusY = 110 * Math.sin((cluster / n) * Math.PI * 2) + Math.random() * 5;
+        const angle = (cluster / n) * Math.PI * 2;
+        const focusX = (innerRadius / 4) * Math.cos(angle) + Math.random() * 5;
+        const focusY = (innerRadius / 4) * Math.sin(angle) + Math.random() * 5;
         requests.push({
           requestId: i,
           data: d,
