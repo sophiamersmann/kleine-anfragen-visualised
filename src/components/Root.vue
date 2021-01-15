@@ -370,6 +370,10 @@ h1 {
   font-size: 0.8rem;
 }
 
+.tooltip .note {
+  font-size: 0.7rem;
+}
+
 .tooltip p {
   margin: calc(0.125 * var(--spacing)) 0;
 }

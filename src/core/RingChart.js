@@ -219,7 +219,6 @@ export default class RingChart {
       .join('g')
       .call((g) => g
         .append('circle')
-        .attr('id', 'test')
         .attr('r', (party) => y(party))
         .attr('fill', 'transparent')
         .attr('stroke-width', 1.5)
@@ -382,6 +381,9 @@ export default class RingChart {
       .attr('class', (d) => `question-mark question-mark--${d.requestId}`);
 
     const circle = g
+      .append('a')
+      .attr('href', (d) => d.data.url)
+      .attr('target', '_blank')
       .append('circle')
       .attr('r', questionsRadius + 2)
       .attr('fill', (d) => LIGHT_COLOR.get(d.party))
@@ -429,6 +431,7 @@ export default class RingChart {
             `<h4>${d.data.title}</h4>`,
             `<p><i>eingereicht am </i>${this.formats.dateFormat(d.data.date)}</p>`,
             `<p><i>von</i> ${people} ${parties}</p>`,
+            '<p class="note"><i>Ein Klick bringt dich zum entsprechenden Eintrag auf kleineAnfragen.de</i></p>',
           ].join(''));
       })
       .on('mouseleave', () => {
