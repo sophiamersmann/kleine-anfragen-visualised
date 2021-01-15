@@ -65,55 +65,47 @@ export default {
     term: String,
     dates: Object,
     hasEnded: Boolean,
-    requests: Object,
+    srcRequests: String,
     elections: Object,
   },
   data() {
     return {
       ringChart: null,
-      ministries: null,
-      parties: null,
-      maxValue: null,
       selectedMinistry: null,
-      isOpposition: null,
+      requests: null,
     };
   },
-  created() {
-    this.ministries = d3
-      .groups(this.requests, (d) => d.ministries[0])
-      .map(([ministry, requests]) => ({ name: ministry, requests }))
-      .sort((a, b) => d3.descending(a.requests.length, b.requests.length));
-    this.selectedMinistry = this.ministries[0].name;
-
-    this.parties = d3
-      .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
-      .map(([party, count]) => ({ party, count }))
-      .sort((a, b) => d3.descending(a.count, b.count))
-      .map(({ party }) => party);
-
-    this.isOpposition = new Map(this.elections.map((d) => [d.party, d.isOpposition]));
-
-    const dateId = d3.timeFormat('%Y-%m');
-    this.maxValue = d3.max(d3
-      .groups(this.requests, (d) => `${d.ministries[0]}-${dateId(d.date)}`)
-      .map(([, requests]) => {
-        const parties = requests.flatMap((d) => d.parties);
-        const counts = d3.rollups(parties, (v) => v.length, (d) => d).map((d) => d[1]);
-        return d3.max(counts);
-      }));
+  async created() {
+    await this.fetchRequestsData();
   },
   mounted() {
     const legendDiv = this.$el.querySelector('.ministry-legend');
     new MinistryLegend(legendDiv, legendDiv.clientWidth).draw();
 
+    if (this.requests !== null) {
+      const ringChartDiv = this.$el.querySelector('.chart-ring');
+      const { dates, parties, maxValue } = this;
+      this.ringChart = new RingChart(
+        `#${ringChartDiv.id}`, ringChartDiv.clientHeight,
+        { dates, parties, maxValue },
+      )
+        .drawSkeleton()
+        .updateMinistry(this.selectedRequests);
+    }
+  },
+  updated() {
+    console.log('updated', this.requests);
     const ringChartDiv = this.$el.querySelector('.chart-ring');
-    const { dates, parties, maxValue } = this;
+    const {
+      dates, parties, maxValue, selectedRequests,
+    } = this;
+
     this.ringChart = new RingChart(
       `#${ringChartDiv.id}`, ringChartDiv.clientHeight,
       { dates, parties, maxValue },
     )
       .drawSkeleton()
-      .updateMinistry(this.selectedRequests);
+      .updateMinistry(selectedRequests);
   },
   computed: {
     ringChartId() {
@@ -123,22 +115,68 @@ export default {
       return displayTimeRange(this.dates, this.hasEnded);
     },
     selectedRequests() {
-      return this.requests.filter((d) => d.ministries[0] === this.selectedMinistry);
+      if (this.requests === null || this.ministries === null) return '';
+      const selectedMinistry = this.selectedMinistry || this.ministries[0].name;
+      return this.requests.filter((d) => d.ministries[0] === selectedMinistry);
     },
     nRequests() {
       if (this.requests === null) return '';
       return this.requests.length;
     },
     oppositionParties() {
+      if (this.parties === null || this.isOpposition === null) return '';
       return this.prepareParties(this.parties.filter((party) => (this.isOpposition.has(party)
         ? this.isOpposition.get(party) : true)));
     },
     rulingParties() {
+      if (this.parties === null || this.isOpposition === null) return '';
       return this.prepareParties(this.parties.filter((party) => (this.isOpposition.has(party)
         ? !this.isOpposition.get(party) : false)));
     },
+    ministries() {
+      if (this.requests === null) return null;
+      return d3
+        .groups(this.requests, (d) => d.ministries[0])
+        .map(([ministry, requests]) => ({ name: ministry, requests }))
+        .sort((a, b) => d3.descending(a.requests.length, b.requests.length));
+    },
+    parties() {
+      if (this.requests === null) return null;
+      return d3
+        .rollups(this.requests.flatMap((d) => d.parties), (v) => v.length, (d) => d)
+        .map(([party, count]) => ({ party, count }))
+        .sort((a, b) => d3.descending(a.count, b.count))
+        .map(({ party }) => party);
+    },
+    isOpposition() {
+      return new Map(this.elections.map((d) => [d.party, d.isOpposition]));
+    },
+    maxValue() {
+      if (this.requests === null) return null;
+      const dateId = d3.timeFormat('%Y-%m');
+      return d3.max(d3
+        .groups(this.requests, (d) => `${d.ministries[0]}-${dateId(d.date)}`)
+        .map(([, requests]) => {
+          const parties = requests.flatMap((d) => d.parties);
+          const counts = d3.rollups(parties, (v) => v.length, (d) => d).map((d) => d[1]);
+          return d3.max(counts);
+        }));
+    },
   },
   methods: {
+    async fetchRequestsData() {
+      const parseTime = d3.timeParse('%Y-%m-%d');
+      const asArray = (str) => str.split(';').map((s) => s.trim());
+      this.requests = await d3.csv(this.srcRequests, (d) => ({
+        date: parseTime(d.published_at.split('T')[0]),
+        title: d.title,
+        type: d.interpellation_type,
+        url: d.html_url,
+        parties: asArray(d.inquiring_parties),
+        inquiringPeople: asArray(d.inquiring_people_corr),
+        ministries: asArray(d.answering_ministries_corr),
+      }));
+    },
     onSelected(ministry) {
       this.selectedMinistry = ministry;
       this.ringChart.updateMinistry(this.selectedRequests);

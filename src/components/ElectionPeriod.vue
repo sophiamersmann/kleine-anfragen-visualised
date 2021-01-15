@@ -25,7 +25,7 @@ export default {
     dates: Object,
     hasEnded: Boolean,
     periodNum: Number,
-    requests: Array,
+    nRequests: Number,
     requestsPerHead: Array,
     elections: Array,
   },
@@ -44,10 +44,7 @@ export default {
   },
   computed: {
     classes() {
-      const classes = {
-        'election-period': true,
-        disabled: this.requests === null,
-      };
+      const classes = { 'election-period': true };
       classes[`col-${this.periodNum}`] = true;
       return classes;
     },
@@ -56,10 +53,6 @@ export default {
     },
     years() {
       return displayTimeRange(this.dates, this.hasEnded);
-    },
-    nRequests() {
-      if (this.requests === null) return '';
-      return this.requests.length;
     },
   },
   methods: {
@@ -86,10 +79,6 @@ export default {
 .election-period:hover {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
   border-color: var(--primary);
-}
-
-.election-period.disabled {
-  pointer-events: none;
 }
 
 .body {

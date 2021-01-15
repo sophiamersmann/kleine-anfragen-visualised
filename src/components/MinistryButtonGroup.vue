@@ -29,13 +29,19 @@ export default {
   data() {
     return {
       selectedMinistry: null,
-      nRequests: null,
     };
   },
+  computed: {
+    nRequests() {
+      if (this.ministries === null) return null;
+      return this.ministries[0].requests
+        .flatMap((d) => d.parties).length;
+    },
+  },
   created() {
-    this.selectedMinistry = this.ministries[0].name;
-    this.nRequests = this.ministries[0].requests
-      .flatMap((d) => d.parties).length;
+    if (this.ministries !== null) {
+      this.selectedMinistry = this.ministries[0].name;
+    }
   },
   methods: {
     onClick(selectedMinistry) {

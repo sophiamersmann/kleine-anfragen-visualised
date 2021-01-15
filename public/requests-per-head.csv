@@ -162,7 +162,7 @@
 18,Daniel Born,16,0.0093841642228739,SPD,True,1,Baden-Württemberg,16
 19,Gabriele Reich-Gutjahr,18,0.010557184750733138,FDP/DVP,True,1,Baden-Württemberg,16
 20,Carola Wolle,14,0.008211143695014663,AfD,True,1,Baden-Württemberg,16
-21,Stefan Herre,158,0.09266862170087976,ABW,True,1,Baden-Württemberg,16
+21,Stefan Herre,158,0.09266862170087976,AfD,True,1,Baden-Württemberg,16
 22,Stefan Teufel,4,0.002346041055718475,CDU,False,1,Baden-Württemberg,16
 23,Sabine Wölfle,12,0.007038123167155425,SPD,True,1,Baden-Württemberg,16
 24,Rainer Hinderer,4,0.002346041055718475,SPD,True,1,Baden-Württemberg,16
@@ -254,11 +254,11 @@
 110,Andreas Glück,37,0.021700879765395895,FDP/DVP,True,1,Baden-Württemberg,16
 111,Wolfgang Drexler,5,0.002932551319648094,SPD,True,1,Baden-Württemberg,16
 112,Dr. Nils Schmid,4,0.002346041055718475,SPD,True,1,Baden-Württemberg,16
-113,Thomas Palka,32,0.0187683284457478,ABW,True,1,Baden-Württemberg,16
+113,Thomas Palka,32,0.0187683284457478,AfD,True,1,Baden-Württemberg,16
 114,Guido Wolf,1,0.0005865102639296188,CDU,False,1,Baden-Württemberg,16
 115,Felix Schreiner,1,0.0005865102639296188,CDU,False,1,Baden-Württemberg,16
 116,Wolfgang Raufelder,2,0.0011730205278592375,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
-117,Daniel Rottmann,13,0.007624633431085044,ABW,True,1,Baden-Württemberg,16
+117,Daniel Rottmann,13,0.007624633431085044,AfD,True,1,Baden-Württemberg,16
 118,Barbara Saebel,1,0.0005865102639296188,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
 119,Dr. Wolfgang Gedeon,9,0.005278592375366569,fraktionslos,True,1,Baden-Württemberg,16
 120,Hans-Ulrich Sckerl,2,0.0011730205278592375,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
@@ -276,9 +276,9 @@
 132,,0,0.0,AfD,True,1,Baden-Württemberg,16
 133,,0,0.0,AfD,True,1,Baden-Württemberg,16
 134,,0,0.0,AfD,True,1,Baden-Württemberg,16
-135,,0,0.0,AfD,True,1,Baden-Württemberg,16
-136,,0,0.0,AfD,True,1,Baden-Württemberg,16
-137,,0,0.0,AfD,True,1,Baden-Württemberg,16
+135,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
+136,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
+137,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
 138,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
 139,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
 140,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
@@ -289,15 +289,12 @@
 145,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
 146,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
 147,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
-148,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
-149,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
-150,,0,0.0,Bündnis 90/Die Grünen,False,1,Baden-Württemberg,16
+148,,0,0.0,CDU,False,1,Baden-Württemberg,16
+149,,0,0.0,CDU,False,1,Baden-Württemberg,16
+150,,0,0.0,CDU,False,1,Baden-Württemberg,16
 151,,0,0.0,CDU,False,1,Baden-Württemberg,16
 152,,0,0.0,CDU,False,1,Baden-Württemberg,16
 153,,0,0.0,CDU,False,1,Baden-Württemberg,16
-154,,0,0.0,CDU,False,1,Baden-Württemberg,16
-155,,0,0.0,CDU,False,1,Baden-Württemberg,16
-156,,0,0.0,CDU,False,1,Baden-Württemberg,16
 0,Ulrike Müller,14,0.007551240560949299,Freie Wähler,True,2,Bayern,17
 1,Sepp Dürr,69,0.0372168284789644,Bündnis 90/Die Grünen,True,2,Bayern,17
 2,Dr. Leopold Herz,49,0.026429341963322545,Freie Wähler,True,2,Bayern,17
@@ -342,7 +339,7 @@
 41,Dr. Linus Förster,20,0.010787486515641856,SPD,True,2,Bayern,17
 42,Ludwig Hartmann,152,0.08198489751887811,Bündnis 90/Die Grünen,True,2,Bayern,17
 43,Bernhard Roos,47,0.02535059331175836,SPD,True,2,Bayern,17
-44,Alexander Muthmann,28,0.015102481121898598,Freie Wähler,True,2,Bayern,17
+44,Alexander Muthmann,28,0.015102481121898598,fraktionslos,True,2,Bayern,17
 45,Thomas Gehring,75,0.040453074433656956,Bündnis 90/Die Grünen,True,2,Bayern,17
 46,Bernhard Pohl,8,0.004314994606256742,Freie Wähler,True,2,Bayern,17
 47,Dr. Hans Jürgen Fahn,306,0.1650485436893204,Freie Wähler,True,2,Bayern,17
@@ -682,7 +679,7 @@
 35,Jürn Jakob Schultze-Berndt,58,0.03800786369593709,CDU,True,1,Berlin,18
 36,Melanie Kühnemann-Grunow,9,0.005897771952817824,SPD,False,1,Berlin,18
 37,Franziska Brychcy,8,0.005242463958060288,Die Linke,False,1,Berlin,18
-38,Andreas Wild,31,0.020314547837483616,AfD,True,1,Berlin,18
+38,Andreas Wild,31,0.020314547837483616,fraktionslos,True,1,Berlin,18
 39,Hanno Bachmann,84,0.05504587155963303,AfD,True,1,Berlin,18
 40,Dr. Dieter Neuendorf,31,0.020314547837483616,AfD,True,1,Berlin,18
 41,Stefan Förster,227,0.14875491480996067,FDP,True,1,Berlin,18
@@ -833,7 +830,7 @@
 17,Thomas Jung,426,0.2349696635410921,AfD,True,2,Brandenburg,6
 18,Dr. Saskia Ludwig,97,0.053502482073910645,CDU,True,2,Brandenburg,6
 19,Birgit Bessin,241,0.1329288472145615,AfD,True,2,Brandenburg,6
-20,Iris Schülzke,204,0.11252068394925538,fraktionslos,True,2,Brandenburg,6
+20,Iris Schülzke,204,0.11252068394925538,BVB/FW,True,2,Brandenburg,6
 21,Marco Büchel,16,0.00882515168229454,Die Linke,False,2,Brandenburg,6
 22,Henryk Wichmann,42,0.023166023166023165,CDU,True,2,Brandenburg,6
 23,Ralf Holzschuher,8,0.00441257584114727,SPD,False,2,Brandenburg,6
@@ -908,6 +905,8 @@
 92,Rainer Genilke,281,0.15499172642029785,CDU,True,2,Brandenburg,6
 93,Marie Luise von Halem,44,0.024269167126309985,Bündnis 90/Die Grünen,True,2,Brandenburg,6
 94,Dr. Volkmar Schöneburg,7,0.003861003861003861,Die Linke,False,2,Brandenburg,6
+95,,0,0.0,BVB/FW,True,2,Brandenburg,6
+96,,0,0.0,BVB/FW,True,2,Brandenburg,6
 0,Wolfgang Jägers,7,0.004794520547945206,SPD,False,3,Bremen,18
 1,Dr. Maike Schaefer,1,0.0006849315068493151,Bündnis 90/Die Grünen,False,3,Bremen,18
 2,Andreas Kottisch,7,0.004794520547945206,SPD,False,3,Bremen,18
@@ -1109,117 +1108,117 @@
 38,Dr. Franziska Brantner,66,0.045112781954887216,Bündnis 90/Die Grünen,True,2,Bundestag,18
 39,Manuel Sarrazin,9,0.006151742993848257,Bündnis 90/Die Grünen,True,2,Bundestag,18
 40,Martina Renner,159,0.10868079289131921,Die Linke,True,2,Bundestag,18
-41,weitererAbgeordneter,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-42,Corinna Rüffer,52,0.0355434039644566,Bündnis 90/Die Grünen,True,2,Bundestag,18
-43,Monika Lazar,34,0.02323991797676008,Bündnis 90/Die Grünen,True,2,Bundestag,18
-44,Ulla Jelpke,659,0.4504442925495557,Die Linke,True,2,Bundestag,18
-45,Marian Wendt,10,0.00683526999316473,CDU/CSU,False,2,Bundestag,18
-46,Marieluise Beck,34,0.02323991797676008,Bündnis 90/Die Grünen,True,2,Bundestag,18
-47,Dieter Janecek,14,0.009569377990430622,Bündnis 90/Die Grünen,True,2,Bundestag,18
-48,Kerstin Andreae,71,0.048530416951469584,Bündnis 90/Die Grünen,True,2,Bundestag,18
-49,Sven-Christian Kindler,49,0.03349282296650718,Bündnis 90/Die Grünen,True,2,Bundestag,18
-50,Inge Höger,82,0.056049213943950786,Die Linke,True,2,Bundestag,18
-51,Claudia Roth,43,0.02939166097060834,Bündnis 90/Die Grünen,True,2,Bundestag,18
-52,Kerstin Steinke,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-53,Britta Haßelmann,46,0.03144224196855776,Bündnis 90/Die Grünen,True,2,Bundestag,18
-54,Volker Beck,164,0.11209842788790157,Bündnis 90/Die Grünen,True,2,Bundestag,18
-55,Omid Nouripour,47,0.03212576896787423,Bündnis 90/Die Grünen,True,2,Bundestag,18
-56,Dr. Gesine Lötzsch,9,0.006151742993848257,Die Linke,True,2,Bundestag,18
-57,Heike Hänsel,117,0.07997265892002735,Die Linke,True,2,Bundestag,18
-58,Sabine Leidig,61,0.041695146958304855,Die Linke,True,2,Bundestag,18
-59,Dr. Petra Sitte,23,0.01572112098427888,Die Linke,True,2,Bundestag,18
-60,Dr. Valerie Wilms,227,0.15516062884483936,Bündnis 90/Die Grünen,True,2,Bundestag,18
-61,Nicole Gohlke,64,0.043745727956254275,Die Linke,True,2,Bundestag,18
-62,Ulle Schauws,53,0.036226930963773066,Bündnis 90/Die Grünen,True,2,Bundestag,18
-63,Caren Ley,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-64,Renate Künast,75,0.05126452494873548,Bündnis 90/Die Grünen,True,2,Bundestag,18
-65,Dr. André Hahn,174,0.11893369788106631,Die Linke,True,2,Bundestag,18
-66,Jutta Krellmann,87,0.059466848940533154,Die Linke,True,2,Bundestag,18
-67,Annalena Baerbock,321,0.21941216678058784,Bündnis 90/Die Grünen,True,2,Bundestag,18
-68,Wawzyniak,28,0.019138755980861243,Die Linke,True,2,Bundestag,18
-69,Kerstin Kassner,34,0.02323991797676008,Die Linke,True,2,Bundestag,18
-70,Hebert Behrens,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-71,Dr. Alexander S. Neu,54,0.03691045796308954,Die Linke,True,2,Bundestag,18
-72,Elisabeth Scharfenberg,38,0.025974025974025976,Bündnis 90/Die Grünen,True,2,Bundestag,18
-73,Harald Petzold,20,0.01367053998632946,Die Linke,True,2,Bundestag,18
-74,Özcan Mutlu,64,0.043745727956254275,Bündnis 90/Die Grünen,True,2,Bundestag,18
-75,Kathrin Vogler,59,0.04032809295967191,Die Linke,True,2,Bundestag,18
-76,Kersten Steinke,10,0.00683526999316473,Die Linke,True,2,Bundestag,18
-77,Michael Leutert,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-78,Franziska Brantner,67,0.04579630895420369,Bündnis 90/Die Grünen,True,2,Bundestag,18
-79,Katrin Kunert,97,0.06630211893369788,Die Linke,True,2,Bundestag,18
-80,Eva Bulling-Schröter,161,0.11004784688995216,Die Linke,True,2,Bundestag,18
-81,Hubert Hüppe,1,0.000683526999316473,CDU/CSU,False,2,Bundestag,18
-82,Dr. Dieter Dehm,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-83,Matthias W. Birkwald,92,0.06288448393711552,Die Linke,True,2,Bundestag,18
-84,Pia Zimmermann,8,0.005468215994531784,Die Linke,True,2,Bundestag,18
-85,Uwe Kekeritz,75,0.05126452494873548,Bündnis 90/Die Grünen,True,2,Bundestag,18
-86,Dr. Lars Castellucci,10,0.00683526999316473,SPD,False,2,Bundestag,18
-87,Hubertus Zdebel,63,0.0430622009569378,Die Linke,True,2,Bundestag,18
-88,Maria Klein-Schmeink,74,0.050580997949419004,Bündnis 90/Die Grünen,True,2,Bundestag,18
-89,Priska Hinz,1,0.000683526999316473,Bündnis 90/Die Grünen,True,2,Bundestag,18
-90,Halina Wawzyniak,27,0.01845522898154477,Die Linke,True,2,Bundestag,18
-91,Dr. Kirsten Tackmann,43,0.02939166097060834,Die Linke,True,2,Bundestag,18
-92,weiter Abgeordneter,1,0.000683526999316473,AfD,True,2,Bundestag,18
-93,Dr. Julia Verlinden,119,0.08133971291866028,Bündnis 90/Die Grünen,True,2,Bundestag,18
-94,Jörn Wunderlich,16,0.010936431989063569,Die Linke,True,2,Bundestag,18
-95,Kai Gehring,69,0.047163362952836636,Bündnis 90/Die Grünen,True,2,Bundestag,18
-96,Cem Özdemir,18,0.012303485987696514,Bündnis 90/Die Grünen,True,2,Bundestag,18
-97,Agnieszka Brugger,60,0.04101161995898838,Bündnis 90/Die Grünen,True,2,Bundestag,18
-98,Matthias Gastel,344,0.23513328776486672,Bündnis 90/Die Grünen,True,2,Bundestag,18
-99,Friedrich Ostendorff,75,0.05126452494873548,Bündnis 90/Die Grünen,True,2,Bundestag,18
-100,Caren Lay,256,0.1749829118250171,Die Linke,True,2,Bundestag,18
-101,Christian Kühn,60,0.04101161995898838,Bündnis 90/Die Grünen,True,2,Bundestag,18
-102,Thomas Lutze,13,0.00888585099111415,Die Linke,True,2,Bundestag,18
-103,Tom Koenigs,30,0.02050580997949419,Bündnis 90/Die Grünen,True,2,Bundestag,18
-104,Annette Groth,354,0.24196855775803144,Die Linke,True,2,Bundestag,18
-105,Karin Binder,67,0.04579630895420369,Die Linke,True,2,Bundestag,18
-106,Irene Mihalic,66,0.045112781954887216,Bündnis 90/Die Grünen,True,2,Bundestag,18
-107,Stephan Kühn,277,0.18933697881066303,Bündnis 90/Die Grünen,True,2,Bundestag,18
-108,Ralph Lenkert,50,0.03417634996582365,Die Linke,True,2,Bundestag,18
-109,Markus Tressel,108,0.07382091592617908,Bündnis 90/Die Grünen,True,2,Bundestag,18
-110,Christine Buchholz,358,0.24470266575529734,Die Linke,True,2,Bundestag,18
-111,Jan van Aken,351,0.23991797676008203,Die Linke,True,2,Bundestag,18
-112,Stephan Mayer,10,0.00683526999316473,CDU/CSU,False,2,Bundestag,18
-113,Oliver Krischer,296,0.20232399179767602,Bündnis 90/Die Grünen,True,2,Bundestag,18
-114,Heidrun Bluhm,25,0.017088174982911826,Die Linke,True,2,Bundestag,18
-115,Peter Meiwald,136,0.09295967190704033,Bündnis 90/Die Grünen,True,2,Bundestag,18
-116,Wolfgang Gehrke,3,0.002050580997949419,Die Linke,True,2,Bundestag,18
-117,Birgit Menz,16,0.010936431989063569,Die Linke,True,2,Bundestag,18
-118,Diana Golze,37,0.025290498974709502,Die Linke,True,2,Bundestag,18
-119,Armin Schuster,10,0.00683526999316473,CDU/CSU,False,2,Bundestag,18
-120,Katja Dörner,44,0.03007518796992481,Bündnis 90/Die Grünen,True,2,Bundestag,18
-121,Brigitte Pothmer,77,0.05263157894736842,Bündnis 90/Die Grünen,True,2,Bundestag,18
-122,Dr. Tobias Lindner,44,0.03007518796992481,Bündnis 90/Die Grünen,True,2,Bundestag,18
-123,Konstantin von Notz,77,0.05263157894736842,Bündnis 90/Die Grünen,True,2,Bundestag,18
-124,Kordula Schulz-Asche,62,0.04237867395762133,Bündnis 90/Die Grünen,True,2,Bundestag,18
-125,Alexander S. Neu,55,0.03759398496240601,Die Linke,True,2,Bundestag,18
-126,Susanne Karawanskij,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-127,Norbert Müller,14,0.009569377990430622,Die Linke,True,2,Bundestag,18
-128,Jan Korte,346,0.23650034176349966,Die Linke,True,2,Bundestag,18
-129,Dr. Harald Terpe,54,0.03691045796308954,Bündnis 90/Die Grünen,True,2,Bundestag,18
-130,Richard Pitterle,19,0.012987012987012988,Die Linke,True,2,Bundestag,18
-131,Dr. Gregor Gysi,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-132,Tabea Rößner,98,0.06698564593301436,Bündnis 90/Die Grünen,True,2,Bundestag,18
-133,Sylvia Kotting-Uhl,97,0.06630211893369788,Bündnis 90/Die Grünen,True,2,Bundestag,18
-134,Beate Müller-Gemmeke,70,0.04784688995215311,Bündnis 90/Die Grünen,True,2,Bundestag,18
-135,Sigrid Hupach,75,0.05126452494873548,Die Linke,True,2,Bundestag,18
-136,Dr. Diether Dehm,22,0.015037593984962405,Die Linke,True,2,Bundestag,18
-137,Katja Kipping,49,0.03349282296650718,Die Linke,True,2,Bundestag,18
-138,Dr. Gerhard Schick,59,0.04032809295967191,Bündnis 90/Die Grünen,True,2,Bundestag,18
-139,Klaus Ernst,179,0.12235133287764867,Die Linke,True,2,Bundestag,18
-140,Dr. Dietmar Bartsch,25,0.017088174982911826,Die Linke,True,2,Bundestag,18
-141,Alexander Ulrich,9,0.006151742993848257,Die Linke,True,2,Bundestag,18
-142,Katrin Göring-Eckardt,4,0.002734107997265892,Bündnis 90/Die Grünen,True,2,Bundestag,18
-143,Birgit Wöllert,26,0.0177717019822283,Die Linke,True,2,Bundestag,18
-144,Ekin Deligöz,10,0.00683526999316473,Bündnis 90/Die Grünen,True,2,Bundestag,18
-145,Harald Ebner,175,0.11961722488038277,Bündnis 90/Die Grünen,True,2,Bundestag,18
-146,Hans-Christian Ströbele,20,0.01367053998632946,Bündnis 90/Die Grünen,True,2,Bundestag,18
-147,Frank Tempel,328,0.22419685577580314,Die Linke,True,2,Bundestag,18
-148,Jan Aken,53,0.036226930963773066,Die Linke,True,2,Bundestag,18
-149,Beate Walter-Rosenheimer,55,0.03759398496240601,Bündnis 90/Die Grünen,True,2,Bundestag,18
-150,Anette Groth,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
-151,Niema Movassat,74,0.050580997949419004,Die Linke,True,2,Bundestag,18
+41,Corinna Rüffer,52,0.0355434039644566,Bündnis 90/Die Grünen,True,2,Bundestag,18
+42,Monika Lazar,34,0.02323991797676008,Bündnis 90/Die Grünen,True,2,Bundestag,18
+43,Ulla Jelpke,659,0.4504442925495557,Die Linke,True,2,Bundestag,18
+44,Marian Wendt,10,0.00683526999316473,CDU/CSU,False,2,Bundestag,18
+45,Marieluise Beck,34,0.02323991797676008,Bündnis 90/Die Grünen,True,2,Bundestag,18
+46,Dieter Janecek,14,0.009569377990430622,Bündnis 90/Die Grünen,True,2,Bundestag,18
+47,Kerstin Andreae,71,0.048530416951469584,Bündnis 90/Die Grünen,True,2,Bundestag,18
+48,Sven-Christian Kindler,49,0.03349282296650718,Bündnis 90/Die Grünen,True,2,Bundestag,18
+49,Inge Höger,82,0.056049213943950786,Die Linke,True,2,Bundestag,18
+50,Claudia Roth,43,0.02939166097060834,Bündnis 90/Die Grünen,True,2,Bundestag,18
+51,Kerstin Steinke,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+52,Britta Haßelmann,46,0.03144224196855776,Bündnis 90/Die Grünen,True,2,Bundestag,18
+53,Volker Beck,164,0.11209842788790157,Bündnis 90/Die Grünen,True,2,Bundestag,18
+54,Omid Nouripour,47,0.03212576896787423,Bündnis 90/Die Grünen,True,2,Bundestag,18
+55,Dr. Gesine Lötzsch,9,0.006151742993848257,Die Linke,True,2,Bundestag,18
+56,Heike Hänsel,117,0.07997265892002735,Die Linke,True,2,Bundestag,18
+57,Sabine Leidig,61,0.041695146958304855,Die Linke,True,2,Bundestag,18
+58,Dr. Petra Sitte,23,0.01572112098427888,Die Linke,True,2,Bundestag,18
+59,Dr. Valerie Wilms,227,0.15516062884483936,Bündnis 90/Die Grünen,True,2,Bundestag,18
+60,Nicole Gohlke,64,0.043745727956254275,Die Linke,True,2,Bundestag,18
+61,Ulle Schauws,53,0.036226930963773066,Bündnis 90/Die Grünen,True,2,Bundestag,18
+62,Caren Ley,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+63,Renate Künast,75,0.05126452494873548,Bündnis 90/Die Grünen,True,2,Bundestag,18
+64,Dr. André Hahn,174,0.11893369788106631,Die Linke,True,2,Bundestag,18
+65,Jutta Krellmann,87,0.059466848940533154,Die Linke,True,2,Bundestag,18
+66,Annalena Baerbock,321,0.21941216678058784,Bündnis 90/Die Grünen,True,2,Bundestag,18
+67,Wawzyniak,28,0.019138755980861243,Die Linke,True,2,Bundestag,18
+68,Kerstin Kassner,34,0.02323991797676008,Die Linke,True,2,Bundestag,18
+69,Hebert Behrens,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+70,Dr. Alexander S. Neu,54,0.03691045796308954,Die Linke,True,2,Bundestag,18
+71,Elisabeth Scharfenberg,38,0.025974025974025976,Bündnis 90/Die Grünen,True,2,Bundestag,18
+72,Harald Petzold,20,0.01367053998632946,Die Linke,True,2,Bundestag,18
+73,Özcan Mutlu,64,0.043745727956254275,Bündnis 90/Die Grünen,True,2,Bundestag,18
+74,Kathrin Vogler,59,0.04032809295967191,Die Linke,True,2,Bundestag,18
+75,Kersten Steinke,10,0.00683526999316473,Die Linke,True,2,Bundestag,18
+76,Michael Leutert,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+77,Franziska Brantner,67,0.04579630895420369,Bündnis 90/Die Grünen,True,2,Bundestag,18
+78,Katrin Kunert,97,0.06630211893369788,Die Linke,True,2,Bundestag,18
+79,Eva Bulling-Schröter,161,0.11004784688995216,Die Linke,True,2,Bundestag,18
+80,Hubert Hüppe,1,0.000683526999316473,CDU/CSU,False,2,Bundestag,18
+81,Dr. Dieter Dehm,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+82,Matthias W. Birkwald,92,0.06288448393711552,Die Linke,True,2,Bundestag,18
+83,Pia Zimmermann,8,0.005468215994531784,Die Linke,True,2,Bundestag,18
+84,Uwe Kekeritz,75,0.05126452494873548,Bündnis 90/Die Grünen,True,2,Bundestag,18
+85,Dr. Lars Castellucci,10,0.00683526999316473,SPD,False,2,Bundestag,18
+86,Hubertus Zdebel,63,0.0430622009569378,Die Linke,True,2,Bundestag,18
+87,Maria Klein-Schmeink,74,0.050580997949419004,Bündnis 90/Die Grünen,True,2,Bundestag,18
+88,Priska Hinz,1,0.000683526999316473,Bündnis 90/Die Grünen,True,2,Bundestag,18
+89,Halina Wawzyniak,27,0.01845522898154477,Die Linke,True,2,Bundestag,18
+90,Dr. Kirsten Tackmann,43,0.02939166097060834,Die Linke,True,2,Bundestag,18
+91,Dr. Julia Verlinden,119,0.08133971291866028,Bündnis 90/Die Grünen,True,2,Bundestag,18
+92,Jörn Wunderlich,16,0.010936431989063569,Die Linke,True,2,Bundestag,18
+93,Kai Gehring,69,0.047163362952836636,Bündnis 90/Die Grünen,True,2,Bundestag,18
+94,Cem Özdemir,18,0.012303485987696514,Bündnis 90/Die Grünen,True,2,Bundestag,18
+95,Agnieszka Brugger,60,0.04101161995898838,Bündnis 90/Die Grünen,True,2,Bundestag,18
+96,Matthias Gastel,344,0.23513328776486672,Bündnis 90/Die Grünen,True,2,Bundestag,18
+97,Friedrich Ostendorff,75,0.05126452494873548,Bündnis 90/Die Grünen,True,2,Bundestag,18
+98,Caren Lay,256,0.1749829118250171,Die Linke,True,2,Bundestag,18
+99,Christian Kühn,60,0.04101161995898838,Bündnis 90/Die Grünen,True,2,Bundestag,18
+100,Thomas Lutze,13,0.00888585099111415,Die Linke,True,2,Bundestag,18
+101,Tom Koenigs,30,0.02050580997949419,Bündnis 90/Die Grünen,True,2,Bundestag,18
+102,Annette Groth,354,0.24196855775803144,Die Linke,True,2,Bundestag,18
+103,Karin Binder,67,0.04579630895420369,Die Linke,True,2,Bundestag,18
+104,Irene Mihalic,66,0.045112781954887216,Bündnis 90/Die Grünen,True,2,Bundestag,18
+105,Stephan Kühn,277,0.18933697881066303,Bündnis 90/Die Grünen,True,2,Bundestag,18
+106,Ralph Lenkert,50,0.03417634996582365,Die Linke,True,2,Bundestag,18
+107,Markus Tressel,108,0.07382091592617908,Bündnis 90/Die Grünen,True,2,Bundestag,18
+108,Christine Buchholz,358,0.24470266575529734,Die Linke,True,2,Bundestag,18
+109,Jan van Aken,351,0.23991797676008203,Die Linke,True,2,Bundestag,18
+110,Stephan Mayer,10,0.00683526999316473,CDU/CSU,False,2,Bundestag,18
+111,Oliver Krischer,296,0.20232399179767602,Bündnis 90/Die Grünen,True,2,Bundestag,18
+112,Heidrun Bluhm,25,0.017088174982911826,Die Linke,True,2,Bundestag,18
+113,Peter Meiwald,136,0.09295967190704033,Bündnis 90/Die Grünen,True,2,Bundestag,18
+114,Wolfgang Gehrke,3,0.002050580997949419,Die Linke,True,2,Bundestag,18
+115,Birgit Menz,16,0.010936431989063569,Die Linke,True,2,Bundestag,18
+116,Diana Golze,37,0.025290498974709502,Die Linke,True,2,Bundestag,18
+117,Armin Schuster,10,0.00683526999316473,CDU/CSU,False,2,Bundestag,18
+118,Katja Dörner,44,0.03007518796992481,Bündnis 90/Die Grünen,True,2,Bundestag,18
+119,Brigitte Pothmer,77,0.05263157894736842,Bündnis 90/Die Grünen,True,2,Bundestag,18
+120,Dr. Tobias Lindner,44,0.03007518796992481,Bündnis 90/Die Grünen,True,2,Bundestag,18
+121,Konstantin von Notz,77,0.05263157894736842,Bündnis 90/Die Grünen,True,2,Bundestag,18
+122,Kordula Schulz-Asche,62,0.04237867395762133,Bündnis 90/Die Grünen,True,2,Bundestag,18
+123,Alexander S. Neu,55,0.03759398496240601,Die Linke,True,2,Bundestag,18
+124,Susanne Karawanskij,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+125,Norbert Müller,14,0.009569377990430622,Die Linke,True,2,Bundestag,18
+126,Jan Korte,346,0.23650034176349966,Die Linke,True,2,Bundestag,18
+127,Dr. Harald Terpe,54,0.03691045796308954,Bündnis 90/Die Grünen,True,2,Bundestag,18
+128,Richard Pitterle,19,0.012987012987012988,Die Linke,True,2,Bundestag,18
+129,Dr. Gregor Gysi,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+130,Tabea Rößner,98,0.06698564593301436,Bündnis 90/Die Grünen,True,2,Bundestag,18
+131,Sylvia Kotting-Uhl,97,0.06630211893369788,Bündnis 90/Die Grünen,True,2,Bundestag,18
+132,Beate Müller-Gemmeke,70,0.04784688995215311,Bündnis 90/Die Grünen,True,2,Bundestag,18
+133,Sigrid Hupach,75,0.05126452494873548,Die Linke,True,2,Bundestag,18
+134,Dr. Diether Dehm,22,0.015037593984962405,Die Linke,True,2,Bundestag,18
+135,Katja Kipping,49,0.03349282296650718,Die Linke,True,2,Bundestag,18
+136,Dr. Gerhard Schick,59,0.04032809295967191,Bündnis 90/Die Grünen,True,2,Bundestag,18
+137,Klaus Ernst,179,0.12235133287764867,Die Linke,True,2,Bundestag,18
+138,Dr. Dietmar Bartsch,25,0.017088174982911826,Die Linke,True,2,Bundestag,18
+139,Alexander Ulrich,9,0.006151742993848257,Die Linke,True,2,Bundestag,18
+140,Katrin Göring-Eckardt,4,0.002734107997265892,Bündnis 90/Die Grünen,True,2,Bundestag,18
+141,Birgit Wöllert,26,0.0177717019822283,Die Linke,True,2,Bundestag,18
+142,Ekin Deligöz,10,0.00683526999316473,Bündnis 90/Die Grünen,True,2,Bundestag,18
+143,Harald Ebner,175,0.11961722488038277,Bündnis 90/Die Grünen,True,2,Bundestag,18
+144,Hans-Christian Ströbele,20,0.01367053998632946,Bündnis 90/Die Grünen,True,2,Bundestag,18
+145,Frank Tempel,328,0.22419685577580314,Die Linke,True,2,Bundestag,18
+146,Jan Aken,53,0.036226930963773066,Die Linke,True,2,Bundestag,18
+147,Beate Walter-Rosenheimer,55,0.03759398496240601,Bündnis 90/Die Grünen,True,2,Bundestag,18
+148,Anette Groth,1,0.000683526999316473,Die Linke,True,2,Bundestag,18
+149,Niema Movassat,74,0.050580997949419004,Die Linke,True,2,Bundestag,18
+150,,0,0.0,CDU/CSU,False,2,Bundestag,18
+151,,0,0.0,CDU/CSU,False,2,Bundestag,18
 152,,0,0.0,CDU/CSU,False,2,Bundestag,18
 153,,0,0.0,CDU/CSU,False,2,Bundestag,18
 154,,0,0.0,CDU/CSU,False,2,Bundestag,18
@@ -1525,8 +1524,8 @@
 454,,0,0.0,CDU/CSU,False,2,Bundestag,18
 455,,0,0.0,CDU/CSU,False,2,Bundestag,18
 456,,0,0.0,CDU/CSU,False,2,Bundestag,18
-457,,0,0.0,CDU/CSU,False,2,Bundestag,18
-458,,0,0.0,CDU/CSU,False,2,Bundestag,18
+457,,0,0.0,SPD,False,2,Bundestag,18
+458,,0,0.0,SPD,False,2,Bundestag,18
 459,,0,0.0,SPD,False,2,Bundestag,18
 460,,0,0.0,SPD,False,2,Bundestag,18
 461,,0,0.0,SPD,False,2,Bundestag,18
@@ -1715,391 +1714,388 @@
 644,,0,0.0,SPD,False,2,Bundestag,18
 645,,0,0.0,SPD,False,2,Bundestag,18
 646,,0,0.0,SPD,False,2,Bundestag,18
-647,,0,0.0,SPD,False,2,Bundestag,18
-648,,0,0.0,SPD,False,2,Bundestag,18
 0,Stefan Gelbhaar,121,0.10395189003436427,Bündnis 90/Die Grünen,True,1,Bundestag,19
 1,Stephan Brandner,76,0.06529209621993128,AfD,True,1,Bundestag,19
 2,Dr. Gottfried Curio,75,0.06443298969072164,AfD,True,1,Bundestag,19
 3,Roman Johannes Reusch,14,0.012027491408934709,AfD,True,1,Bundestag,19
-4,weiterer abgeordneter,9,0.007731958762886598,AfD,True,1,Bundestag,19
-5,Corinna Miazga,246,0.211340206185567,AfD,True,1,Bundestag,19
-6,Bernd Reuther,75,0.06443298969072164,FDP,True,1,Bundestag,19
-7,Gero Hocker,2,0.001718213058419244,FDP,True,1,Bundestag,19
-8,Paul Viktor Podolay,22,0.018900343642611683,AfD,True,1,Bundestag,19
-9,Ulrich Oehme,63,0.05412371134020619,AfD,True,1,Bundestag,19
-10,Frank Magnitz,10,0.00859106529209622,AfD,True,1,Bundestag,19
-11,Ingrid Remmers,12,0.010309278350515464,Die Linke,True,1,Bundestag,19
-12,Mariana Iris Harder-Kühnel,10,0.00859106529209622,AfD,True,1,Bundestag,19
-13,Marcel Klinge,27,0.023195876288659795,FDP,True,1,Bundestag,19
-14,Sevim Dağdelen,119,0.10223367697594501,Die Linke,True,1,Bundestag,19
-15,Heidrun Bluhm-Förster,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-16,Lorenz Gösta Beutin,112,0.09621993127147767,Die Linke,True,1,Bundestag,19
-17,Katja Hessel,26,0.022336769759450172,FDP,True,1,Bundestag,19
-18,Cornelia Möhring,22,0.018900343642611683,Die Linke,True,1,Bundestag,19
-19,Stefan Schmidt,59,0.0506872852233677,Bündnis 90/Die Grünen,True,1,Bundestag,19
-20,Birke Bull-Bischoff,28,0.024054982817869417,Die Linke,True,1,Bundestag,19
-21,Gerold Otten,24,0.020618556701030927,AfD,True,1,Bundestag,19
-22,Grigorios Aggelidis,681,0.5850515463917526,FDP,True,1,Bundestag,19
-23,Prof. Dr. Lothar Maier,4,0.003436426116838488,AfD,True,1,Bundestag,19
-24,Thomas Nord,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
-25,Andreas Wagner,11,0.009450171821305841,Die Linke,True,1,Bundestag,19
-26,Torsten Herbst,98,0.08419243986254296,FDP,True,1,Bundestag,19
-27,Manuel Sarrazin,11,0.009450171821305841,Bündnis 90/Die Grünen,True,1,Bundestag,19
-28,Leif-Erik Holm,65,0.05584192439862543,AfD,True,1,Bundestag,19
-29,Uwe Schulz,141,0.1211340206185567,AfD,True,1,Bundestag,19
-30,Christian Wirth,62,0.05326460481099656,AfD,True,1,Bundestag,19
-31,Jens Maier,23,0.019759450171821305,AfD,True,1,Bundestag,19
-32,Nicole Westig,11,0.009450171821305841,FDP,True,1,Bundestag,19
-33,Martin Hess,58,0.04982817869415808,AfD,True,1,Bundestag,19
-34,Renata Alt und,1,0.000859106529209622,FDP,True,1,Bundestag,19
-35,Renata Alt,258,0.22164948453608246,FDP,True,1,Bundestag,19
-36,Dr. Manuela Rottmann,11,0.009450171821305841,Bündnis 90/Die Grünen,True,1,Bundestag,19
-37,Ulrike Schielke-Ziesing,60,0.05154639175257732,AfD,True,1,Bundestag,19
-38,Dr. Petra Sitte,268,0.23024054982817868,Die Linke,True,1,Bundestag,19
-39,Bettina Herlitzius,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-40,Dr. Roland Hartwig,31,0.02663230240549828,AfD,True,1,Bundestag,19
-41,Katharina Willkomm,41,0.0352233676975945,FDP,True,1,Bundestag,19
-42,Jochen Haug,26,0.022336769759450172,AfD,True,1,Bundestag,19
-43,Kerstin Kassner,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
-44,Dr. Florian Toncar,204,0.17525773195876287,FDP,True,1,Bundestag,19
-45,Martin Hohmann,1,0.000859106529209622,AfD,True,1,Bundestag,19
-46,Claudia Müller,38,0.03264604810996564,Bündnis 90/Die Grünen,True,1,Bundestag,19
-47,Thomas Seitz,263,0.2259450171821306,AfD,True,1,Bundestag,19
-48,Dr. Jens Brandenburg,81,0.06958762886597938,FDP,True,1,Bundestag,19
-49,Andreas Bleck,19,0.01632302405498282,AfD,True,1,Bundestag,19
-50,Ulla Jepke,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
-51,Canan Bayram,21,0.01804123711340206,Bündnis 90/Die Grünen,True,1,Bundestag,19
-52,Pascal Kober,12,0.010309278350515464,FDP,True,1,Bundestag,19
-53,Dr. Marcus Faber,14,0.012027491408934709,FDP,True,1,Bundestag,19
-54,Christoph Meyer,46,0.03951890034364261,FDP,True,1,Bundestag,19
-55,Dr. Bettina Hoffmann,68,0.058419243986254296,Bündnis 90/Die Grünen,True,1,Bundestag,19
-56,Dr. Heiko Wildberg,13,0.011168384879725086,AfD,True,1,Bundestag,19
-57,Kathrin Vogler,14,0.012027491408934709,Die Linke,True,1,Bundestag,19
-58,Dr. Birgit Malsack-Winkemann,1,0.000859106529209622,AfD,True,1,Bundestag,19
-59,Franziska Brantner,40,0.03436426116838488,Bündnis 90/Die Grünen,True,1,Bundestag,19
-60,Dr. Dieter Dehm,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-61,Uwe Kekeritz,49,0.04209621993127148,Bündnis 90/Die Grünen,True,1,Bundestag,19
-62,Dr. Irene Mihalic,41,0.0352233676975945,Bündnis 90/Die Grünen,True,1,Bundestag,19
-63,Jürgen Pohl,65,0.05584192439862543,AfD,True,1,Bundestag,19
-64,Kai Gehring,80,0.06872852233676977,Bündnis 90/Die Grünen,True,1,Bundestag,19
-65,Friedrich Ostendorff,33,0.028350515463917526,Bündnis 90/Die Grünen,True,1,Bundestag,19
-66,Christian Kühn,61,0.05240549828178694,Bündnis 90/Die Grünen,True,1,Bundestag,19
-67,Dr. Gero Hocker,1,0.000859106529209622,FDP,True,1,Bundestag,19
-68,Udo Theodor Hemmelgarn,18,0.015463917525773196,AfD,True,1,Bundestag,19
-69,Annette Groth,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-70,Stephan Kühn,152,0.13058419243986255,Bündnis 90/Die Grünen,True,1,Bundestag,19
-71,Sandra Weeser,18,0.015463917525773196,FDP,True,1,Bundestag,19
-72,Daniela Wagner,116,0.09965635738831616,Bündnis 90/Die Grünen,True,1,Bundestag,19
-73,Heidrun Bluhm,11,0.009450171821305841,Die Linke,True,1,Bundestag,19
-74,Johannes Huber,5,0.00429553264604811,AfD,True,1,Bundestag,19
-75,Katja Dörner,20,0.01718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-76,Thomas Kemmerich,2,0.001718213058419244,FDP,True,1,Bundestag,19
-77,Dr. Tobias Lindner,17,0.014604810996563574,Bündnis 90/Die Grünen,True,1,Bundestag,19
-78,Enrico Komning,49,0.04209621993127148,AfD,True,1,Bundestag,19
-79,Prof. Dr. Harald Weyel,11,0.009450171821305841,AfD,True,1,Bundestag,19
-80,Alexander Kulitz,11,0.009450171821305841,FDP,True,1,Bundestag,19
-81,Dr. Patrick Sensburg,1,0.000859106529209622,CDU/CSU,False,1,Bundestag,19
-82,Katjia Suding,1,0.000859106529209622,FDP,True,1,Bundestag,19
-83,Rüdiger Lucassen,35,0.03006872852233677,AfD,True,1,Bundestag,19
-84,Ulrich Lechte,7,0.006013745704467354,FDP,True,1,Bundestag,19
-85,Marie-Agnes Strack-Zimmermann,11,0.009450171821305841,FDP,True,1,Bundestag,19
-86,Wilhelm von Gottberg,9,0.007731958762886598,AfD,True,1,Bundestag,19
-87,Dr. Markus Faber,1,0.000859106529209622,FDP,True,1,Bundestag,19
-88,Dr. Michael Espendiller,133,0.11426116838487972,AfD,True,1,Bundestag,19
-89,Ekin Deligöz,12,0.010309278350515464,Bündnis 90/Die Grünen,True,1,Bundestag,19
-90,Sylvia Gabelmann,54,0.04639175257731959,Die Linke,True,1,Bundestag,19
-91,Martin Sichert,84,0.07216494845360824,AfD,True,1,Bundestag,19
-92,Beate Walter-Rosenheimer,17,0.014604810996563574,Bündnis 90/Die Grünen,True,1,Bundestag,19
-93,Niema Movassat,56,0.048109965635738834,Die Linke,True,1,Bundestag,19
-94,Dr. Götz Frömming,43,0.036941580756013746,AfD,True,1,Bundestag,19
-95,Dr. Christoph Hoffmann,21,0.01804123711340206,FDP,True,1,Bundestag,19
-96,Judith Skudelny,61,0.05240549828178694,FDP,True,1,Bundestag,19
-97,Dr. Konstantin von Notz,63,0.05412371134020619,Bündnis 90/Die Grünen,True,1,Bundestag,19
-98,Jürgen Trittin,14,0.012027491408934709,Bündnis 90/Die Grünen,True,1,Bundestag,19
-99,Dr. Johannes Fechner,1,0.000859106529209622,SPD,False,1,Bundestag,19
-100,Gyde Jensen,10,0.00859106529209622,FDP,True,1,Bundestag,19
-101,Dr. Robby Schlund,35,0.03006872852233677,AfD,True,1,Bundestag,19
-102,Ulla Ihnen,8,0.006872852233676976,FDP,True,1,Bundestag,19
-103,Reinhard Houben,68,0.058419243986254296,FDP,True,1,Bundestag,19
-104,Daniel Föst,67,0.05756013745704467,FDP,True,1,Bundestag,19
-105,Katrin Helling-Plahr,38,0.03264604810996564,FDP,True,1,Bundestag,19
-106,Steffi Lemke,63,0.05412371134020619,Bündnis 90/Die Grünen,True,1,Bundestag,19
-107,Lisa Badum,121,0.10395189003436427,Bündnis 90/Die Grünen,True,1,Bundestag,19
-108,Dr. Heiko Heßenkemper,11,0.009450171821305841,AfD,True,1,Bundestag,19
-109,Peter Heidt,1,0.000859106529209622,FDP,True,1,Bundestag,19
-110,weitere Abgeordnete,4,0.003436426116838488,FDP,True,1,Bundestag,19
-111,Matthias Höhn,20,0.01718213058419244,Die Linke,True,1,Bundestag,19
-112,Dr. Franziska Brantner,40,0.03436426116838488,Bündnis 90/Die Grünen,True,1,Bundestag,19
-113,Dr. Lukas Köhler,11,0.009450171821305841,FDP,True,1,Bundestag,19
-114,Dr. Marcel Kling,27,0.023195876288659795,FDP,True,1,Bundestag,19
-115,Kordula Schulze-Asche,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-116,Frank Sitta,457,0.39261168384879724,FDP,True,1,Bundestag,19
-117,Fabian Jacobi,4,0.003436426116838488,AfD,True,1,Bundestag,19
-118,Kay Gottschalk,20,0.01718213058419244,AfD,True,1,Bundestag,19
-119,Sven-Christian Kindler,50,0.0429553264604811,Bündnis 90/Die Grünen,True,1,Bundestag,19
-120,Dr. Stefan Ruppert,12,0.010309278350515464,FDP,True,1,Bundestag,19
-121,Britta Haßelmann,29,0.02491408934707904,Bündnis 90/Die Grünen,True,1,Bundestag,19
-122,Winfried Hermann,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-123,Dr. Gesine Lötzsch,150,0.12886597938144329,Die Linke,True,1,Bundestag,19
-124,Lorenz Gösta,113,0.09707903780068729,Die Linke,True,1,Bundestag,19
-125,Peter Felser,25,0.02147766323024055,AfD,True,1,Bundestag,19
-126,Dr. Valerie Wilms,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-127,Sebastian Münzenmeier,1,0.000859106529209622,AfD,True,1,Bundestag,19
-128,Nicole Gohlke,26,0.022336769759450172,Die Linke,True,1,Bundestag,19
-129,Renate Künast,31,0.02663230240549828,Bündnis 90/Die Grünen,True,1,Bundestag,19
-130,Martin Renner,6,0.005154639175257732,AfD,True,1,Bundestag,19
-131,Oliver Luksic,112,0.09621993127147767,FDP,True,1,Bundestag,19
-132,Dr. Birke Bull-Bischoff,12,0.010309278350515464,Die Linke,True,1,Bundestag,19
-133,Dietmar Friedhoff,79,0.06786941580756013,AfD,True,1,Bundestag,19
-134,Sven Lehmann,37,0.03178694158075601,Bündnis 90/Die Grünen,True,1,Bundestag,19
-135,Dr. Bettina Hoffman,68,0.058419243986254296,Bündnis 90/Die Grünen,True,1,Bundestag,19
-136,Hartmut Ebbing,46,0.03951890034364261,FDP,True,1,Bundestag,19
-137,Linda Teuteberg,26,0.022336769759450172,FDP,True,1,Bundestag,19
-138,Dr. Marcel Klinge,26,0.022336769759450172,FDP,True,1,Bundestag,19
-139,Kersten Steinke,7,0.006013745704467354,Die Linke,True,1,Bundestag,19
-140,Frank Pasemann,37,0.03178694158075601,AfD,True,1,Bundestag,19
-141,anderer Abgeordneter,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-142,Benjamin Strasser,39,0.03350515463917526,FDP,True,1,Bundestag,19
-143,Dr. Bruno Hollnagel,14,0.012027491408934709,AfD,True,1,Bundestag,19
-144,Dr. Ingrid Nestle,11,0.009450171821305841,Bündnis 90/Die Grünen,True,1,Bundestag,19
-145,Peter Boehringer,4,0.003436426116838488,AfD,True,1,Bundestag,19
-146,Wolfgang Wiehle,46,0.03951890034364261,AfD,True,1,Bundestag,19
-147,Maria Klein-Schmeink,55,0.04725085910652921,Bündnis 90/Die Grünen,True,1,Bundestag,19
-148,Dr. Danyal Bayaz,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
-149,Dr. Rainer Kraft,28,0.024054982817869417,AfD,True,1,Bundestag,19
-150,Grigorios,682,0.5859106529209622,FDP,True,1,Bundestag,19
-151,Dr. Kirsten Tackmann,37,0.03178694158075601,Die Linke,True,1,Bundestag,19
-152,Fank Sitta,1,0.000859106529209622,FDP,True,1,Bundestag,19
-153,Jürgen Martens,13,0.011168384879725086,FDP,True,1,Bundestag,19
-154,Dr. Wieland Schinnenburg,51,0.04381443298969072,FDP,True,1,Bundestag,19
-155,Christian Jung,65,0.05584192439862543,FDP,True,1,Bundestag,19
-156,Christian Lindner,3,0.002577319587628866,FDP,True,1,Bundestag,19
-157,Hagen Reinhold,39,0.03350515463917526,FDP,True,1,Bundestag,19
-158,Konstantin Elias Kuhle,1,0.000859106529209622,FDP,True,1,Bundestag,19
-159,Irene Mihalic,54,0.04639175257731959,Bündnis 90/Die Grünen,True,1,Bundestag,19
-160,Doris Achelwilm,84,0.07216494845360824,Die Linke,True,1,Bundestag,19
-161,Dr. Alexander Neu,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
-162,Matthias Büttner,45,0.03865979381443299,AfD,True,1,Bundestag,19
-163,Markus Tressel,60,0.05154639175257732,Bündnis 90/Die Grünen,True,1,Bundestag,19
-164,Martin Hebner,16,0.013745704467353952,AfD,True,1,Bundestag,19
-165,Dr. Christian Wirth,62,0.05326460481099656,AfD,True,1,Bundestag,19
-166,Prof. Dr. Andrew Ullmann,20,0.01718213058419244,FDP,True,1,Bundestag,19
-167,Kordula Schulz-Asche,39,0.03350515463917526,Bündnis 90/Die Grünen,True,1,Bundestag,19
-168,Jimmy Schulz,16,0.013745704467353952,FDP,True,1,Bundestag,19
-169,Karsten Hilse,23,0.019759450171821305,AfD,True,1,Bundestag,19
-170,Dr. Gregor Gysi,3,0.002577319587628866,Die Linke,True,1,Bundestag,19
-171,Tobias Pflüger,49,0.04209621993127148,Die Linke,True,1,Bundestag,19
-172,Jan Ralf Nolte,17,0.014604810996563574,AfD,True,1,Bundestag,19
-173,Sylvia Kotting-Uhl,35,0.03006872852233677,Bündnis 90/Die Grünen,True,1,Bundestag,19
-174,Dr. Marie-Agnes Strack-Zimmermann,11,0.009450171821305841,FDP,True,1,Bundestag,19
-175,Roman Müller-Böhm,58,0.04982817869415808,FDP,True,1,Bundestag,19
-176,Katja Kipping,8,0.006872852233676976,Die Linke,True,1,Bundestag,19
-177,Nicole Höchst,45,0.03865979381443299,AfD,True,1,Bundestag,19
-178,Dr. Gerhard Schick,26,0.022336769759450172,Bündnis 90/Die Grünen,True,1,Bundestag,19
-179,Stefan Ruppert,12,0.010309278350515464,FDP,True,1,Bundestag,19
-180,Dr. Christan Wirth,1,0.000859106529209622,AfD,True,1,Bundestag,19
-181,Dr. Dietmar Bartsch,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-182,Prof. Dr. Martin Neumann,21,0.01804123711340206,FDP,True,1,Bundestag,19
-183,Gero Clemens Hocker,72,0.061855670103092786,FDP,True,1,Bundestag,19
-184,weiterer Abgeorndeter,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-185,Ulla Jelpke Dr. André Hahn,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-186,Christoph Neumann,16,0.013745704467353952,AfD,True,1,Bundestag,19
-187,Eva-Maria Elisabeth Schreiber,15,0.01288659793814433,Die Linke,True,1,Bundestag,19
-188,Markus Kurth,40,0.03436426116838488,Bündnis 90/Die Grünen,True,1,Bundestag,19
-189,weiterer Ageordneter,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-190,Verena Hartmann,18,0.015463917525773196,AfD,True,1,Bundestag,19
-191,Anja Hajduk,46,0.03951890034364261,Bündnis 90/Die Grünen,True,1,Bundestag,19
-192,Marco Buschmann,14,0.012027491408934709,FDP,True,1,Bundestag,19
-193,Petr Bystron,38,0.03264604810996564,AfD,True,1,Bundestag,19
-194,Katharina Dröge,31,0.02663230240549828,Bündnis 90/Die Grünen,True,1,Bundestag,19
-195,Bettina Stark-Watzinger,58,0.04982817869415808,FDP,True,1,Bundestag,19
-196,Amira Mohamed Ali,19,0.01632302405498282,Die Linke,True,1,Bundestag,19
-197,Brigitte Freihold,19,0.01632302405498282,Die Linke,True,1,Bundestag,19
-198,Christine Aschenberg-Dugnus,40,0.03436426116838488,FDP,True,1,Bundestag,19
-199,Katrin Werner,13,0.011168384879725086,Die Linke,True,1,Bundestag,19
-200,Dr. Martin Neumann,22,0.018900343642611683,FDP,True,1,Bundestag,19
-201,Dr. Thomas Gambke,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-202,Christian Sauter,7,0.006013745704467354,FDP,True,1,Bundestag,19
-203,Siegbert Droese,5,0.00429553264604811,AfD,True,1,Bundestag,19
-204,Till Mansmann,24,0.020618556701030927,FDP,True,1,Bundestag,19
-205,Andrej Hunko,284,0.24398625429553264,Die Linke,True,1,Bundestag,19
-206,Karsten Klein,5,0.00429553264604811,FDP,True,1,Bundestag,19
-207,Alexander Graf Lambsdorff,120,0.10309278350515463,FDP,True,1,Bundestag,19
-208,Dr. Anna Christmann,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
-209,Dr. Anton Hofreiter,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-210,Danyal Bayaz,50,0.0429553264604811,Bündnis 90/Die Grünen,True,1,Bundestag,19
-211,Markus Frohnmaier,109,0.0936426116838488,AfD,True,1,Bundestag,19
-212,Katharina Kloke,3,0.002577319587628866,FDP,True,1,Bundestag,19
-213,Dr. Lothar Maier,6,0.005154639175257732,AfD,True,1,Bundestag,19
-214,Katja Keul,29,0.02491408934707904,Bündnis 90/Die Grünen,True,1,Bundestag,19
-215,Karlheinz Busen,57,0.04896907216494845,FDP,True,1,Bundestag,19
-216,Steffen Kotre,19,0.01632302405498282,AfD,True,1,Bundestag,19
-217,Michel Brandt,93,0.07989690721649484,Die Linke,True,1,Bundestag,19
-218,Anton Friesen,143,0.12285223367697594,AfD,True,1,Bundestag,19
-219,Christian Dürr,345,0.2963917525773196,FDP,True,1,Bundestag,19
-220,Corinna Rüffer,21,0.01804123711340206,Bündnis 90/Die Grünen,True,1,Bundestag,19
-221,Dr. Gero Clemens Hocker,72,0.061855670103092786,FDP,True,1,Bundestag,19
-222,Dieter Janecek,24,0.020618556701030927,Bündnis 90/Die Grünen,True,1,Bundestag,19
-223,Johannes Vogel,29,0.02491408934707904,FDP,True,1,Bundestag,19
-224,Kerstin Andreae,23,0.019759450171821305,Bündnis 90/Die Grünen,True,1,Bundestag,19
-225,Gesine Lötzsch,150,0.12886597938144329,Die Linke,True,1,Bundestag,19
-226,Dr. Jürgen Martens,13,0.011168384879725086,FDP,True,1,Bundestag,19
-227,Claudia Roth,27,0.023195876288659795,Bündnis 90/Die Grünen,True,1,Bundestag,19
-228,Omid Nouripour,29,0.02491408934707904,Bündnis 90/Die Grünen,True,1,Bundestag,19
-229,Heike Hänsel,246,0.211340206185567,Die Linke,True,1,Bundestag,19
-230,Andreas Mrosek,57,0.04896907216494845,AfD,True,1,Bundestag,19
-231,Otto Fricke,50,0.0429553264604811,FDP,True,1,Bundestag,19
-232,Fabio De Masi,101,0.08676975945017182,Die Linke,True,1,Bundestag,19
-233,und,57,0.04896907216494845,Die Linke,True,1,Bundestag,19
-234,Dr. André Hahn,508,0.436426116838488,Die Linke,True,1,Bundestag,19
-235,Jutta Krellmann,35,0.03006872852233677,Die Linke,True,1,Bundestag,19
-236,Victor Perli,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
-237,Dietmar Friedhof,79,0.06786941580756013,AfD,True,1,Bundestag,19
-238,Jens Kestner,10,0.00859106529209622,AfD,True,1,Bundestag,19
-239,Markus Herbrand,51,0.04381443298969072,FDP,True,1,Bundestag,19
-240,Dr. Dirk Spaniel,89,0.07646048109965636,AfD,True,1,Bundestag,19
-241,Marc Bernhard,30,0.02577319587628866,AfD,True,1,Bundestag,19
-242,Zaklin Nastic,34,0.029209621993127148,Die Linke,True,1,Bundestag,19
-243,Pia Zimmermann,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
-244,Dr. Hermann Otto Solms,1,0.000859106529209622,FDP,True,1,Bundestag,19
-245,Beatrix von Storch,34,0.029209621993127148,AfD,True,1,Bundestag,19
-246,Hubertus Zdebel,27,0.023195876288659795,Die Linke,True,1,Bundestag,19
-247,Dr. Achim Kessler,23,0.019759450171821305,Die Linke,True,1,Bundestag,19
-248,weiter Abgeordneter,9,0.007731958762886598,AfD,True,1,Bundestag,19
-249,Dr. Julia Verlinden,55,0.04725085910652921,Bündnis 90/Die Grünen,True,1,Bundestag,19
-250,Anke Domscheit-Berg,42,0.03608247422680412,Die Linke,True,1,Bundestag,19
-251,Caren Lay,16,0.013745704467353952,Die Linke,True,1,Bundestag,19
-252,Joana Eleonora Cotar,1,0.000859106529209622,AfD,True,1,Bundestag,19
-254,Prof. Dr. Heiko Heßenkemper,8,0.006872852233676976,AfD,True,1,Bundestag,19
-255,Uwe Witt,81,0.06958762886597938,AfD,True,1,Bundestag,19
-256,Christine Buchholz,148,0.12714776632302405,Die Linke,True,1,Bundestag,19
-257,Lars Herrmann,32,0.027491408934707903,AfD,True,1,Bundestag,19
-258,weiterer Abgeordnter,1,0.000859106529209622,FDP,True,1,Bundestag,19
-259,Konstantin Kuhle,31,0.02663230240549828,FDP,True,1,Bundestag,19
-260,Tabea Rößner,37,0.03178694158075601,Bündnis 90/Die Grünen,True,1,Bundestag,19
-261,Mario Brandenburg,48,0.041237113402061855,FDP,True,1,Bundestag,19
-262,Tino Chrupalla,24,0.020618556701030927,AfD,True,1,Bundestag,19
-263,Michael Espendiller,134,0.11512027491408934,AfD,True,1,Bundestag,19
-264,Frank Schäffler,156,0.13402061855670103,FDP,True,1,Bundestag,19
-265,Helin Evrim Sommer,23,0.019759450171821305,Die Linke,True,1,Bundestag,19
-266,Waldemar Herdt,19,0.01632302405498282,AfD,True,1,Bundestag,19
-267,Alexander Ulrich,10,0.00859106529209622,Die Linke,True,1,Bundestag,19
-268,Katrin Göring-Eckardt,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-269,Harald Ebner,49,0.04209621993127148,Bündnis 90/Die Grünen,True,1,Bundestag,19
-270,Manuel Höferlin,35,0.03006872852233677,FDP,True,1,Bundestag,19
-271,Nicola Beer,59,0.0506872852233677,FDP,True,1,Bundestag,19
-272,weiterer,19,0.01632302405498282,Bündnis 90/Die Grünen,True,1,Bundestag,19
-273,Dr. Wolfgang Strengmann-Kuhn,24,0.020618556701030927,Bündnis 90/Die Grünen,True,1,Bundestag,19
-274,Stefan Keuter,55,0.04725085910652921,AfD,True,1,Bundestag,19
-275,Dr. Frithjof Schmidt,13,0.011168384879725086,Bündnis 90/Die Grünen,True,1,Bundestag,19
-276,Gerald Ullrich,11,0.009450171821305841,FDP,True,1,Bundestag,19
-277,weiterer Abegordneter,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-278,Petra Pau,58,0.04982817869415808,Die Linke,True,1,Bundestag,19
-279,Dr. Christian Jung,57,0.04896907216494845,FDP,True,1,Bundestag,19
-280,Michael Theurer,272,0.23367697594501718,FDP,True,1,Bundestag,19
-281,Jessica Tatti,26,0.022336769759450172,Die Linke,True,1,Bundestag,19
-282,Uwe Kamann,14,0.012027491408934709,AfD,True,1,Bundestag,19
-283,Michael Theuer,1,0.000859106529209622,FDP,True,1,Bundestag,19
-284,Luise Amtsberg,45,0.03865979381443299,Bündnis 90/Die Grünen,True,1,Bundestag,19
-285,Jens Beeck,82,0.070446735395189,FDP,True,1,Bundestag,19
-286,Dr. Sahra Wagenknecht,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-287,Britta Katharina Dassler,26,0.022336769759450172,FDP,True,1,Bundestag,19
-288,Dr. Marc Jongen,40,0.03436426116838488,AfD,True,1,Bundestag,19
-289,Michael Georg Link,5,0.00429553264604811,FDP,True,1,Bundestag,19
-290,Thomas Ehrhorn,19,0.01632302405498282,AfD,True,1,Bundestag,19
-291,Sabine Zimmermann,17,0.014604810996563574,Die Linke,True,1,Bundestag,19
-292,Jürgen Braun,18,0.015463917525773196,AfD,True,1,Bundestag,19
-293,Annalena Baerbock Lisa Paus,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-294,Margit Stumpp,46,0.03951890034364261,Bündnis 90/Die Grünen,True,1,Bundestag,19
-295,Harald Weinberg,8,0.006872852233676976,Die Linke,True,1,Bundestag,19
-296,Sören Pellmann,13,0.011168384879725086,Die Linke,True,1,Bundestag,19
-297,Martin Reichardt,26,0.022336769759450172,AfD,True,1,Bundestag,19
-298,Marcus Bühl,7,0.006013745704467354,AfD,True,1,Bundestag,19
-299,Carl-Julius Cronenberg,9,0.007731958762886598,FDP,True,1,Bundestag,19
-300,Alexander Müller,9,0.007731958762886598,FDP,True,1,Bundestag,19
-301,Lisa Paus,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
-302,Martina Renner,128,0.10996563573883161,Die Linke,True,1,Bundestag,19
-303,Monika Lazar,23,0.019759450171821305,Bündnis 90/Die Grünen,True,1,Bundestag,19
-304,Ulla Jelpke,406,0.3487972508591065,Die Linke,True,1,Bundestag,19
-305,Berengar Elsner von Gronow,9,0.007731958762886598,AfD,True,1,Bundestag,19
-306,Simone Barrientos,81,0.06958762886597938,Die Linke,True,1,Bundestag,19
-307,Olaf in der Beek,40,0.03436426116838488,FDP,True,1,Bundestag,19
-308,Gökay Akbulut,393,0.33762886597938147,Die Linke,True,1,Bundestag,19
-309,Hansjörg Müller,2,0.001718213058419244,AfD,True,1,Bundestag,19
-310,Sabine Leidig,32,0.027491408934707903,Die Linke,True,1,Bundestag,19
-311,Gerhard Zickenheiner,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-312,Pascal Meiser,19,0.01632302405498282,Die Linke,True,1,Bundestag,19
-313,Erhard Grundl,20,0.01718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
-314,Matthias Seestern-Pauly,41,0.0352233676975945,FDP,True,1,Bundestag,19
-315,Frank Müller-Rosentritt,6,0.005154639175257732,FDP,True,1,Bundestag,19
-316,Stefan Thomae,7,0.006013745704467354,FDP,True,1,Bundestag,19
-317,Dr. Konstatin von Notz,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
-318,Ingrid Nestle,42,0.03608247422680412,Bündnis 90/Die Grünen,True,1,Bundestag,19
-319,Franziska Gminder,33,0.028350515463917526,AfD,True,1,Bundestag,19
-320,Albrecht Heinz Erhard Glaser,1,0.000859106529209622,AfD,True,1,Bundestag,19
-321,Ulle Schauws,25,0.02147766323024055,Bündnis 90/Die Grünen,True,1,Bundestag,19
-322,Dr. Marco Buschmann,14,0.012027491408934709,FDP,True,1,Bundestag,19
-323,Petra Sitte,268,0.23024054982817868,Die Linke,True,1,Bundestag,19
-324,Norbert Kleinwächter,14,0.012027491408934709,AfD,True,1,Bundestag,19
-325,Thomas L. Kemmerich,32,0.027491408934707903,FDP,True,1,Bundestag,19
-326,Filiz Polat,30,0.02577319587628866,Bündnis 90/Die Grünen,True,1,Bundestag,19
-327,Annalena Baerbock,84,0.07216494845360824,Bündnis 90/Die Grünen,True,1,Bundestag,19
-328,Thomas Hacker,39,0.03350515463917526,FDP,True,1,Bundestag,19
-329,Eva-Maria Schreiber,29,0.02491408934707904,Die Linke,True,1,Bundestag,19
-330,Dr. Alexander S. Neu,44,0.037800687285223365,Die Linke,True,1,Bundestag,19
-331,Dr. Harald Weyel,21,0.01804123711340206,AfD,True,1,Bundestag,19
-332,Bijan Djir-Sarai,3,0.002577319587628866,FDP,True,1,Bundestag,19
-333,Stephan Protschka,46,0.03951890034364261,AfD,True,1,Bundestag,19
-334,Joana Cotar,157,0.13487972508591065,AfD,True,1,Bundestag,19
-335,Michael Leutert,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
-336,Jörg Cezanne,82,0.070446735395189,Die Linke,True,1,Bundestag,19
-337,Dr. Bernd Baumann,64,0.054982817869415807,AfD,True,1,Bundestag,19
-338,Jörg Cezanne Klaus Ernst,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-339,Stephan Thomae,226,0.19415807560137457,FDP,True,1,Bundestag,19
-340,Matthias W. Birkwald,114,0.0979381443298969,Die Linke,True,1,Bundestag,19
-341,Jörg Schneider,64,0.054982817869415807,AfD,True,1,Bundestag,19
-342,Nicole Bauer,78,0.06701030927835051,FDP,True,1,Bundestag,19
-343,Carina Konrad,36,0.030927835051546393,FDP,True,1,Bundestag,19
-344,Dr. h. c. Thomas Sattelberger,24,0.020618556701030927,FDP,True,1,Bundestag,19
-345,Dr. Axel Gehrke,51,0.04381443298969072,AfD,True,1,Bundestag,19
-346,Dr. Kirsten Kappert-Gonther,72,0.061855670103092786,Bündnis 90/Die Grünen,True,1,Bundestag,19
-347,Sebastian Münzenmaier,62,0.05326460481099656,AfD,True,1,Bundestag,19
-348,Agnieszka Brugger,30,0.02577319587628866,Bündnis 90/Die Grünen,True,1,Bundestag,19
-349,Cem Özdemir,12,0.010309278350515464,Bündnis 90/Die Grünen,True,1,Bundestag,19
-350,Matthias Gastel,178,0.15292096219931273,Bündnis 90/Die Grünen,True,1,Bundestag,19
-351,Thomas Lutze,7,0.006013745704467354,Die Linke,True,1,Bundestag,19
-352,Friedrich Straetmanns,154,0.1323024054982818,Die Linke,True,1,Bundestag,19
-353,Detlev Spangenberg,22,0.018900343642611683,AfD,True,1,Bundestag,19
-354,Achim Kessler,24,0.020618556701030927,Die Linke,True,1,Bundestag,19
-355,Thomas Sattelberger,24,0.020618556701030927,FDP,True,1,Bundestag,19
-356,Stefan Liebich,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
-357,Volker Münz,5,0.00429553264604811,AfD,True,1,Bundestag,19
-358,Susanne Ferschl,143,0.12285223367697594,Die Linke,True,1,Bundestag,19
-359,Ralph Lenkert,22,0.018900343642611683,Die Linke,True,1,Bundestag,19
-360,Jan van Aken,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
-361,Oliver Krischer,134,0.11512027491408934,Bündnis 90/Die Grünen,True,1,Bundestag,19
-362,Albrecht Glaser,8,0.006872852233676976,AfD,True,1,Bundestag,19
-363,Manfred Todtenhausen,7,0.006013745704467354,FDP,True,1,Bundestag,19
-364,Daniela Kluckert,35,0.03006872852233677,FDP,True,1,Bundestag,19
-365,Margarete Bause,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
-366,Prof. Dr. Axel Gehrke,41,0.0352233676975945,AfD,True,1,Bundestag,19
-367,René Springer,191,0.1640893470790378,AfD,True,1,Bundestag,19
-368,Dr. Anton Friesen,142,0.12199312714776632,AfD,True,1,Bundestag,19
-369,Katja Suding,226,0.19415807560137457,FDP,True,1,Bundestag,19
-370,Dr. Andrew Ullmann,21,0.01804123711340206,FDP,True,1,Bundestag,19
-371,Konstantin von Notz,63,0.05412371134020619,Bündnis 90/Die Grünen,True,1,Bundestag,19
-372,Norbert Müller,14,0.012027491408934709,Die Linke,True,1,Bundestag,19
-373,Jan Korte,214,0.18384879725085912,Die Linke,True,1,Bundestag,19
-374,Rainer Kraft,29,0.02491408934707904,AfD,True,1,Bundestag,19
-375,Beate Müller-Gemmeke,41,0.0352233676975945,Bündnis 90/Die Grünen,True,1,Bundestag,19
-376,Tobias Matthias Peterka,16,0.013745704467353952,AfD,True,1,Bundestag,19
-377,Dr. Diether Dehm,18,0.015463917525773196,Die Linke,True,1,Bundestag,19
-378,Ottmar von Holtz,26,0.022336769759450172,Bündnis 90/Die Grünen,True,1,Bundestag,19
-379,Armin-Paulus Hampel,54,0.04639175257731959,AfD,True,1,Bundestag,19
-380,Jens Beck,1,0.000859106529209622,FDP,True,1,Bundestag,19
-381,Klaus Ernst,76,0.06529209621993128,Die Linke,True,1,Bundestag,19
-382,Jörn König,11,0.009450171821305841,AfD,True,1,Bundestag,19
-383,Martin Erwin Renner,258,0.22164948453608246,AfD,True,1,Bundestag,19
+4,Corinna Miazga,246,0.211340206185567,AfD,True,1,Bundestag,19
+5,Bernd Reuther,75,0.06443298969072164,FDP,True,1,Bundestag,19
+6,Gero Hocker,2,0.001718213058419244,FDP,True,1,Bundestag,19
+7,Paul Viktor Podolay,22,0.018900343642611683,AfD,True,1,Bundestag,19
+8,Ulrich Oehme,63,0.05412371134020619,AfD,True,1,Bundestag,19
+9,Frank Magnitz,10,0.00859106529209622,AfD,True,1,Bundestag,19
+10,Ingrid Remmers,12,0.010309278350515464,Die Linke,True,1,Bundestag,19
+11,Mariana Iris Harder-Kühnel,10,0.00859106529209622,AfD,True,1,Bundestag,19
+12,Marcel Klinge,27,0.023195876288659795,FDP,True,1,Bundestag,19
+13,Sevim Dağdelen,119,0.10223367697594501,Die Linke,True,1,Bundestag,19
+14,Heidrun Bluhm-Förster,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+15,Lorenz Gösta Beutin,112,0.09621993127147767,Die Linke,True,1,Bundestag,19
+16,Katja Hessel,26,0.022336769759450172,FDP,True,1,Bundestag,19
+17,Cornelia Möhring,22,0.018900343642611683,Die Linke,True,1,Bundestag,19
+18,Stefan Schmidt,59,0.0506872852233677,Bündnis 90/Die Grünen,True,1,Bundestag,19
+19,Birke Bull-Bischoff,28,0.024054982817869417,Die Linke,True,1,Bundestag,19
+20,Gerold Otten,24,0.020618556701030927,AfD,True,1,Bundestag,19
+21,Grigorios Aggelidis,681,0.5850515463917526,FDP,True,1,Bundestag,19
+22,Prof. Dr. Lothar Maier,4,0.003436426116838488,AfD,True,1,Bundestag,19
+23,Thomas Nord,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
+24,Andreas Wagner,11,0.009450171821305841,Die Linke,True,1,Bundestag,19
+25,Torsten Herbst,98,0.08419243986254296,FDP,True,1,Bundestag,19
+26,Manuel Sarrazin,11,0.009450171821305841,Bündnis 90/Die Grünen,True,1,Bundestag,19
+27,Leif-Erik Holm,65,0.05584192439862543,AfD,True,1,Bundestag,19
+28,Uwe Schulz,141,0.1211340206185567,AfD,True,1,Bundestag,19
+29,Christian Wirth,62,0.05326460481099656,AfD,True,1,Bundestag,19
+30,Jens Maier,23,0.019759450171821305,AfD,True,1,Bundestag,19
+31,Nicole Westig,11,0.009450171821305841,FDP,True,1,Bundestag,19
+32,Martin Hess,58,0.04982817869415808,AfD,True,1,Bundestag,19
+33,Renata Alt und,1,0.000859106529209622,FDP,True,1,Bundestag,19
+34,Renata Alt,258,0.22164948453608246,FDP,True,1,Bundestag,19
+35,Dr. Manuela Rottmann,11,0.009450171821305841,Bündnis 90/Die Grünen,True,1,Bundestag,19
+36,Ulrike Schielke-Ziesing,60,0.05154639175257732,AfD,True,1,Bundestag,19
+37,Dr. Petra Sitte,268,0.23024054982817868,Die Linke,True,1,Bundestag,19
+38,Bettina Herlitzius,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
+39,Dr. Roland Hartwig,31,0.02663230240549828,AfD,True,1,Bundestag,19
+40,Katharina Willkomm,41,0.0352233676975945,FDP,True,1,Bundestag,19
+41,Jochen Haug,26,0.022336769759450172,AfD,True,1,Bundestag,19
+42,Kerstin Kassner,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
+43,Dr. Florian Toncar,204,0.17525773195876287,FDP,True,1,Bundestag,19
+44,Martin Hohmann,1,0.000859106529209622,AfD,True,1,Bundestag,19
+45,Claudia Müller,38,0.03264604810996564,Bündnis 90/Die Grünen,True,1,Bundestag,19
+46,Thomas Seitz,263,0.2259450171821306,AfD,True,1,Bundestag,19
+47,Dr. Jens Brandenburg,81,0.06958762886597938,FDP,True,1,Bundestag,19
+48,Andreas Bleck,19,0.01632302405498282,AfD,True,1,Bundestag,19
+49,Ulla Jepke,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
+50,Canan Bayram,21,0.01804123711340206,Bündnis 90/Die Grünen,True,1,Bundestag,19
+51,Pascal Kober,12,0.010309278350515464,FDP,True,1,Bundestag,19
+52,Dr. Marcus Faber,14,0.012027491408934709,FDP,True,1,Bundestag,19
+53,Christoph Meyer,46,0.03951890034364261,FDP,True,1,Bundestag,19
+54,Dr. Bettina Hoffmann,68,0.058419243986254296,Bündnis 90/Die Grünen,True,1,Bundestag,19
+55,Dr. Heiko Wildberg,13,0.011168384879725086,AfD,True,1,Bundestag,19
+56,Kathrin Vogler,14,0.012027491408934709,Die Linke,True,1,Bundestag,19
+57,Dr. Birgit Malsack-Winkemann,1,0.000859106529209622,AfD,True,1,Bundestag,19
+58,Franziska Brantner,40,0.03436426116838488,Bündnis 90/Die Grünen,True,1,Bundestag,19
+59,Dr. Dieter Dehm,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+60,Uwe Kekeritz,49,0.04209621993127148,Bündnis 90/Die Grünen,True,1,Bundestag,19
+61,Dr. Irene Mihalic,41,0.0352233676975945,Bündnis 90/Die Grünen,True,1,Bundestag,19
+62,Jürgen Pohl,65,0.05584192439862543,AfD,True,1,Bundestag,19
+63,Kai Gehring,80,0.06872852233676977,Bündnis 90/Die Grünen,True,1,Bundestag,19
+64,Friedrich Ostendorff,33,0.028350515463917526,Bündnis 90/Die Grünen,True,1,Bundestag,19
+65,Christian Kühn,61,0.05240549828178694,Bündnis 90/Die Grünen,True,1,Bundestag,19
+66,Dr. Gero Hocker,1,0.000859106529209622,FDP,True,1,Bundestag,19
+67,Udo Theodor Hemmelgarn,18,0.015463917525773196,AfD,True,1,Bundestag,19
+68,Annette Groth,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+69,Stephan Kühn,152,0.13058419243986255,Bündnis 90/Die Grünen,True,1,Bundestag,19
+70,Sandra Weeser,18,0.015463917525773196,FDP,True,1,Bundestag,19
+71,Daniela Wagner,116,0.09965635738831616,Bündnis 90/Die Grünen,True,1,Bundestag,19
+72,Heidrun Bluhm,11,0.009450171821305841,Die Linke,True,1,Bundestag,19
+73,Johannes Huber,5,0.00429553264604811,AfD,True,1,Bundestag,19
+74,Katja Dörner,20,0.01718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
+75,Thomas Kemmerich,2,0.001718213058419244,FDP,True,1,Bundestag,19
+76,Dr. Tobias Lindner,17,0.014604810996563574,Bündnis 90/Die Grünen,True,1,Bundestag,19
+77,Enrico Komning,49,0.04209621993127148,AfD,True,1,Bundestag,19
+78,Prof. Dr. Harald Weyel,11,0.009450171821305841,AfD,True,1,Bundestag,19
+79,Alexander Kulitz,11,0.009450171821305841,FDP,True,1,Bundestag,19
+80,Dr. Patrick Sensburg,1,0.000859106529209622,CDU/CSU,False,1,Bundestag,19
+81,Katjia Suding,1,0.000859106529209622,FDP,True,1,Bundestag,19
+82,Rüdiger Lucassen,35,0.03006872852233677,AfD,True,1,Bundestag,19
+83,Ulrich Lechte,7,0.006013745704467354,FDP,True,1,Bundestag,19
+84,Marie-Agnes Strack-Zimmermann,11,0.009450171821305841,FDP,True,1,Bundestag,19
+85,Wilhelm von Gottberg,9,0.007731958762886598,AfD,True,1,Bundestag,19
+86,Dr. Markus Faber,1,0.000859106529209622,FDP,True,1,Bundestag,19
+87,Dr. Michael Espendiller,133,0.11426116838487972,AfD,True,1,Bundestag,19
+88,Ekin Deligöz,12,0.010309278350515464,Bündnis 90/Die Grünen,True,1,Bundestag,19
+89,Sylvia Gabelmann,54,0.04639175257731959,Die Linke,True,1,Bundestag,19
+90,Martin Sichert,84,0.07216494845360824,AfD,True,1,Bundestag,19
+91,Beate Walter-Rosenheimer,17,0.014604810996563574,Bündnis 90/Die Grünen,True,1,Bundestag,19
+92,Niema Movassat,56,0.048109965635738834,Die Linke,True,1,Bundestag,19
+93,Dr. Götz Frömming,43,0.036941580756013746,AfD,True,1,Bundestag,19
+94,Dr. Christoph Hoffmann,21,0.01804123711340206,FDP,True,1,Bundestag,19
+95,Judith Skudelny,61,0.05240549828178694,FDP,True,1,Bundestag,19
+96,Dr. Konstantin von Notz,63,0.05412371134020619,Bündnis 90/Die Grünen,True,1,Bundestag,19
+97,Jürgen Trittin,14,0.012027491408934709,Bündnis 90/Die Grünen,True,1,Bundestag,19
+98,Dr. Johannes Fechner,1,0.000859106529209622,SPD,False,1,Bundestag,19
+99,Gyde Jensen,10,0.00859106529209622,FDP,True,1,Bundestag,19
+100,Dr. Robby Schlund,35,0.03006872852233677,AfD,True,1,Bundestag,19
+101,Ulla Ihnen,8,0.006872852233676976,FDP,True,1,Bundestag,19
+102,Reinhard Houben,68,0.058419243986254296,FDP,True,1,Bundestag,19
+103,Daniel Föst,67,0.05756013745704467,FDP,True,1,Bundestag,19
+104,Katrin Helling-Plahr,38,0.03264604810996564,FDP,True,1,Bundestag,19
+105,Steffi Lemke,63,0.05412371134020619,Bündnis 90/Die Grünen,True,1,Bundestag,19
+106,Lisa Badum,121,0.10395189003436427,Bündnis 90/Die Grünen,True,1,Bundestag,19
+107,Dr. Heiko Heßenkemper,11,0.009450171821305841,AfD,True,1,Bundestag,19
+108,Peter Heidt,1,0.000859106529209622,FDP,True,1,Bundestag,19
+109,Matthias Höhn,20,0.01718213058419244,Die Linke,True,1,Bundestag,19
+110,Dr. Franziska Brantner,40,0.03436426116838488,Bündnis 90/Die Grünen,True,1,Bundestag,19
+111,Dr. Lukas Köhler,11,0.009450171821305841,FDP,True,1,Bundestag,19
+112,Dr. Marcel Kling,27,0.023195876288659795,FDP,True,1,Bundestag,19
+113,Kordula Schulze-Asche,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
+114,Frank Sitta,457,0.39261168384879724,FDP,True,1,Bundestag,19
+115,Fabian Jacobi,4,0.003436426116838488,AfD,True,1,Bundestag,19
+116,Kay Gottschalk,20,0.01718213058419244,AfD,True,1,Bundestag,19
+117,Sven-Christian Kindler,50,0.0429553264604811,Bündnis 90/Die Grünen,True,1,Bundestag,19
+118,Dr. Stefan Ruppert,12,0.010309278350515464,FDP,True,1,Bundestag,19
+119,Britta Haßelmann,29,0.02491408934707904,Bündnis 90/Die Grünen,True,1,Bundestag,19
+120,Winfried Hermann,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
+121,Dr. Gesine Lötzsch,150,0.12886597938144329,Die Linke,True,1,Bundestag,19
+122,Lorenz Gösta,113,0.09707903780068729,Die Linke,True,1,Bundestag,19
+123,Peter Felser,25,0.02147766323024055,AfD,True,1,Bundestag,19
+124,Dr. Valerie Wilms,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
+125,Sebastian Münzenmeier,1,0.000859106529209622,AfD,True,1,Bundestag,19
+126,Nicole Gohlke,26,0.022336769759450172,Die Linke,True,1,Bundestag,19
+127,Renate Künast,31,0.02663230240549828,Bündnis 90/Die Grünen,True,1,Bundestag,19
+128,Martin Renner,6,0.005154639175257732,AfD,True,1,Bundestag,19
+129,Oliver Luksic,112,0.09621993127147767,FDP,True,1,Bundestag,19
+130,Dr. Birke Bull-Bischoff,12,0.010309278350515464,Die Linke,True,1,Bundestag,19
+131,Dietmar Friedhoff,79,0.06786941580756013,AfD,True,1,Bundestag,19
+132,Sven Lehmann,37,0.03178694158075601,Bündnis 90/Die Grünen,True,1,Bundestag,19
+133,Dr. Bettina Hoffman,68,0.058419243986254296,Bündnis 90/Die Grünen,True,1,Bundestag,19
+134,Hartmut Ebbing,46,0.03951890034364261,FDP,True,1,Bundestag,19
+135,Linda Teuteberg,26,0.022336769759450172,FDP,True,1,Bundestag,19
+136,Dr. Marcel Klinge,26,0.022336769759450172,FDP,True,1,Bundestag,19
+137,Kersten Steinke,7,0.006013745704467354,Die Linke,True,1,Bundestag,19
+138,Frank Pasemann,37,0.03178694158075601,AfD,True,1,Bundestag,19
+139,Benjamin Strasser,39,0.03350515463917526,FDP,True,1,Bundestag,19
+140,Dr. Bruno Hollnagel,14,0.012027491408934709,AfD,True,1,Bundestag,19
+141,Dr. Ingrid Nestle,11,0.009450171821305841,Bündnis 90/Die Grünen,True,1,Bundestag,19
+142,Peter Boehringer,4,0.003436426116838488,AfD,True,1,Bundestag,19
+143,Wolfgang Wiehle,46,0.03951890034364261,AfD,True,1,Bundestag,19
+144,Maria Klein-Schmeink,55,0.04725085910652921,Bündnis 90/Die Grünen,True,1,Bundestag,19
+145,Dr. Danyal Bayaz,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
+146,Dr. Rainer Kraft,28,0.024054982817869417,AfD,True,1,Bundestag,19
+148,Dr. Kirsten Tackmann,37,0.03178694158075601,Die Linke,True,1,Bundestag,19
+149,Fank Sitta,1,0.000859106529209622,FDP,True,1,Bundestag,19
+150,Jürgen Martens,13,0.011168384879725086,FDP,True,1,Bundestag,19
+151,Dr. Wieland Schinnenburg,51,0.04381443298969072,FDP,True,1,Bundestag,19
+152,Christian Jung,65,0.05584192439862543,FDP,True,1,Bundestag,19
+153,Christian Lindner,3,0.002577319587628866,FDP,True,1,Bundestag,19
+154,Hagen Reinhold,39,0.03350515463917526,FDP,True,1,Bundestag,19
+155,Konstantin Elias Kuhle,1,0.000859106529209622,FDP,True,1,Bundestag,19
+156,Irene Mihalic,54,0.04639175257731959,Bündnis 90/Die Grünen,True,1,Bundestag,19
+157,Doris Achelwilm,84,0.07216494845360824,Die Linke,True,1,Bundestag,19
+158,Dr. Alexander Neu,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
+159,Matthias Büttner,45,0.03865979381443299,AfD,True,1,Bundestag,19
+160,Markus Tressel,60,0.05154639175257732,Bündnis 90/Die Grünen,True,1,Bundestag,19
+161,Martin Hebner,16,0.013745704467353952,AfD,True,1,Bundestag,19
+162,Dr. Christian Wirth,62,0.05326460481099656,AfD,True,1,Bundestag,19
+163,Prof. Dr. Andrew Ullmann,20,0.01718213058419244,FDP,True,1,Bundestag,19
+164,Kordula Schulz-Asche,39,0.03350515463917526,Bündnis 90/Die Grünen,True,1,Bundestag,19
+165,Jimmy Schulz,16,0.013745704467353952,FDP,True,1,Bundestag,19
+166,Karsten Hilse,23,0.019759450171821305,AfD,True,1,Bundestag,19
+167,Dr. Gregor Gysi,3,0.002577319587628866,Die Linke,True,1,Bundestag,19
+168,Tobias Pflüger,49,0.04209621993127148,Die Linke,True,1,Bundestag,19
+169,Jan Ralf Nolte,17,0.014604810996563574,AfD,True,1,Bundestag,19
+170,Sylvia Kotting-Uhl,35,0.03006872852233677,Bündnis 90/Die Grünen,True,1,Bundestag,19
+171,Dr. Marie-Agnes Strack-Zimmermann,11,0.009450171821305841,FDP,True,1,Bundestag,19
+172,Roman Müller-Böhm,58,0.04982817869415808,FDP,True,1,Bundestag,19
+173,Katja Kipping,8,0.006872852233676976,Die Linke,True,1,Bundestag,19
+174,Nicole Höchst,45,0.03865979381443299,AfD,True,1,Bundestag,19
+175,Dr. Gerhard Schick,26,0.022336769759450172,Bündnis 90/Die Grünen,True,1,Bundestag,19
+176,Stefan Ruppert,12,0.010309278350515464,FDP,True,1,Bundestag,19
+177,Dr. Christan Wirth,1,0.000859106529209622,AfD,True,1,Bundestag,19
+178,Dr. Dietmar Bartsch,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+179,Prof. Dr. Martin Neumann,21,0.01804123711340206,FDP,True,1,Bundestag,19
+180,Gero Clemens Hocker,72,0.061855670103092786,FDP,True,1,Bundestag,19
+181,Ulla Jelpke Dr. André Hahn,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+182,Christoph Neumann,16,0.013745704467353952,AfD,True,1,Bundestag,19
+183,Eva-Maria Elisabeth Schreiber,15,0.01288659793814433,Die Linke,True,1,Bundestag,19
+184,Markus Kurth,40,0.03436426116838488,Bündnis 90/Die Grünen,True,1,Bundestag,19
+185,Verena Hartmann,18,0.015463917525773196,AfD,True,1,Bundestag,19
+186,Anja Hajduk,46,0.03951890034364261,Bündnis 90/Die Grünen,True,1,Bundestag,19
+187,Marco Buschmann,14,0.012027491408934709,FDP,True,1,Bundestag,19
+188,Petr Bystron,38,0.03264604810996564,AfD,True,1,Bundestag,19
+189,Katharina Dröge,31,0.02663230240549828,Bündnis 90/Die Grünen,True,1,Bundestag,19
+190,Bettina Stark-Watzinger,58,0.04982817869415808,FDP,True,1,Bundestag,19
+191,Amira Mohamed Ali,19,0.01632302405498282,Die Linke,True,1,Bundestag,19
+192,Brigitte Freihold,19,0.01632302405498282,Die Linke,True,1,Bundestag,19
+193,Christine Aschenberg-Dugnus,40,0.03436426116838488,FDP,True,1,Bundestag,19
+194,Katrin Werner,13,0.011168384879725086,Die Linke,True,1,Bundestag,19
+195,Dr. Martin Neumann,22,0.018900343642611683,FDP,True,1,Bundestag,19
+196,Dr. Thomas Gambke,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
+197,Christian Sauter,7,0.006013745704467354,FDP,True,1,Bundestag,19
+198,Siegbert Droese,5,0.00429553264604811,AfD,True,1,Bundestag,19
+199,Till Mansmann,24,0.020618556701030927,FDP,True,1,Bundestag,19
+200,Andrej Hunko,284,0.24398625429553264,Die Linke,True,1,Bundestag,19
+201,Karsten Klein,5,0.00429553264604811,FDP,True,1,Bundestag,19
+202,Alexander Graf Lambsdorff,120,0.10309278350515463,FDP,True,1,Bundestag,19
+203,Dr. Anna Christmann,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
+204,Dr. Anton Hofreiter,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
+205,Danyal Bayaz,50,0.0429553264604811,Bündnis 90/Die Grünen,True,1,Bundestag,19
+206,Markus Frohnmaier,109,0.0936426116838488,AfD,True,1,Bundestag,19
+207,Katharina Kloke,3,0.002577319587628866,FDP,True,1,Bundestag,19
+208,Dr. Lothar Maier,6,0.005154639175257732,AfD,True,1,Bundestag,19
+209,Katja Keul,29,0.02491408934707904,Bündnis 90/Die Grünen,True,1,Bundestag,19
+210,Karlheinz Busen,57,0.04896907216494845,FDP,True,1,Bundestag,19
+211,Steffen Kotre,19,0.01632302405498282,AfD,True,1,Bundestag,19
+212,Michel Brandt,93,0.07989690721649484,Die Linke,True,1,Bundestag,19
+213,Anton Friesen,143,0.12285223367697594,AfD,True,1,Bundestag,19
+214,Christian Dürr,345,0.2963917525773196,FDP,True,1,Bundestag,19
+215,Corinna Rüffer,21,0.01804123711340206,Bündnis 90/Die Grünen,True,1,Bundestag,19
+216,Dr. Gero Clemens Hocker,72,0.061855670103092786,FDP,True,1,Bundestag,19
+217,Dieter Janecek,24,0.020618556701030927,Bündnis 90/Die Grünen,True,1,Bundestag,19
+218,Johannes Vogel,29,0.02491408934707904,FDP,True,1,Bundestag,19
+219,Kerstin Andreae,23,0.019759450171821305,Bündnis 90/Die Grünen,True,1,Bundestag,19
+220,Gesine Lötzsch,150,0.12886597938144329,Die Linke,True,1,Bundestag,19
+221,Dr. Jürgen Martens,13,0.011168384879725086,FDP,True,1,Bundestag,19
+222,Claudia Roth,27,0.023195876288659795,Bündnis 90/Die Grünen,True,1,Bundestag,19
+223,Omid Nouripour,29,0.02491408934707904,Bündnis 90/Die Grünen,True,1,Bundestag,19
+224,Heike Hänsel,246,0.211340206185567,Die Linke,True,1,Bundestag,19
+225,Andreas Mrosek,57,0.04896907216494845,AfD,True,1,Bundestag,19
+226,Otto Fricke,50,0.0429553264604811,FDP,True,1,Bundestag,19
+227,Fabio De Masi,101,0.08676975945017182,Die Linke,True,1,Bundestag,19
+228,und,57,0.04896907216494845,Die Linke,True,1,Bundestag,19
+229,Dr. André Hahn,508,0.436426116838488,Die Linke,True,1,Bundestag,19
+230,Jutta Krellmann,35,0.03006872852233677,Die Linke,True,1,Bundestag,19
+231,Victor Perli,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
+232,Dietmar Friedhof,79,0.06786941580756013,AfD,True,1,Bundestag,19
+233,Jens Kestner,10,0.00859106529209622,AfD,True,1,Bundestag,19
+234,Markus Herbrand,51,0.04381443298969072,FDP,True,1,Bundestag,19
+235,Dr. Dirk Spaniel,89,0.07646048109965636,AfD,True,1,Bundestag,19
+236,Marc Bernhard,30,0.02577319587628866,AfD,True,1,Bundestag,19
+237,Zaklin Nastic,34,0.029209621993127148,Die Linke,True,1,Bundestag,19
+238,Pia Zimmermann,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
+239,Dr. Hermann Otto Solms,1,0.000859106529209622,FDP,True,1,Bundestag,19
+240,Beatrix von Storch,34,0.029209621993127148,AfD,True,1,Bundestag,19
+241,Hubertus Zdebel,27,0.023195876288659795,Die Linke,True,1,Bundestag,19
+242,Dr. Achim Kessler,23,0.019759450171821305,Die Linke,True,1,Bundestag,19
+243,Dr. Julia Verlinden,55,0.04725085910652921,Bündnis 90/Die Grünen,True,1,Bundestag,19
+244,Anke Domscheit-Berg,42,0.03608247422680412,Die Linke,True,1,Bundestag,19
+245,Caren Lay,16,0.013745704467353952,Die Linke,True,1,Bundestag,19
+246,Joana Eleonora Cotar,1,0.000859106529209622,AfD,True,1,Bundestag,19
+248,Prof. Dr. Heiko Heßenkemper,8,0.006872852233676976,AfD,True,1,Bundestag,19
+249,Uwe Witt,81,0.06958762886597938,AfD,True,1,Bundestag,19
+250,Christine Buchholz,148,0.12714776632302405,Die Linke,True,1,Bundestag,19
+251,Lars Herrmann,32,0.027491408934707903,AfD,True,1,Bundestag,19
+252,Konstantin Kuhle,31,0.02663230240549828,FDP,True,1,Bundestag,19
+253,Tabea Rößner,37,0.03178694158075601,Bündnis 90/Die Grünen,True,1,Bundestag,19
+254,Mario Brandenburg,48,0.041237113402061855,FDP,True,1,Bundestag,19
+255,Tino Chrupalla,24,0.020618556701030927,AfD,True,1,Bundestag,19
+256,Michael Espendiller,134,0.11512027491408934,AfD,True,1,Bundestag,19
+257,Frank Schäffler,156,0.13402061855670103,FDP,True,1,Bundestag,19
+258,Helin Evrim Sommer,23,0.019759450171821305,Die Linke,True,1,Bundestag,19
+259,Waldemar Herdt,19,0.01632302405498282,AfD,True,1,Bundestag,19
+260,Alexander Ulrich,10,0.00859106529209622,Die Linke,True,1,Bundestag,19
+261,Katrin Göring-Eckardt,2,0.001718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
+262,Harald Ebner,49,0.04209621993127148,Bündnis 90/Die Grünen,True,1,Bundestag,19
+263,Manuel Höferlin,35,0.03006872852233677,FDP,True,1,Bundestag,19
+264,Nicola Beer,59,0.0506872852233677,FDP,True,1,Bundestag,19
+265,Dr. Wolfgang Strengmann-Kuhn,24,0.020618556701030927,Bündnis 90/Die Grünen,True,1,Bundestag,19
+266,Stefan Keuter,55,0.04725085910652921,AfD,True,1,Bundestag,19
+267,Dr. Frithjof Schmidt,13,0.011168384879725086,Bündnis 90/Die Grünen,True,1,Bundestag,19
+268,Gerald Ullrich,11,0.009450171821305841,FDP,True,1,Bundestag,19
+269,Petra Pau,58,0.04982817869415808,Die Linke,True,1,Bundestag,19
+270,Dr. Christian Jung,57,0.04896907216494845,FDP,True,1,Bundestag,19
+271,Michael Theurer,272,0.23367697594501718,FDP,True,1,Bundestag,19
+272,Jessica Tatti,26,0.022336769759450172,Die Linke,True,1,Bundestag,19
+273,Uwe Kamann,14,0.012027491408934709,AfD,True,1,Bundestag,19
+274,Michael Theuer,1,0.000859106529209622,FDP,True,1,Bundestag,19
+275,Luise Amtsberg,45,0.03865979381443299,Bündnis 90/Die Grünen,True,1,Bundestag,19
+276,Jens Beeck,82,0.070446735395189,FDP,True,1,Bundestag,19
+277,Dr. Sahra Wagenknecht,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+278,Britta Katharina Dassler,26,0.022336769759450172,FDP,True,1,Bundestag,19
+279,Dr. Marc Jongen,40,0.03436426116838488,AfD,True,1,Bundestag,19
+280,Michael Georg Link,5,0.00429553264604811,FDP,True,1,Bundestag,19
+281,Thomas Ehrhorn,19,0.01632302405498282,AfD,True,1,Bundestag,19
+282,Sabine Zimmermann,17,0.014604810996563574,Die Linke,True,1,Bundestag,19
+283,Jürgen Braun,18,0.015463917525773196,AfD,True,1,Bundestag,19
+284,Margit Stumpp,46,0.03951890034364261,Bündnis 90/Die Grünen,True,1,Bundestag,19
+285,Harald Weinberg,8,0.006872852233676976,Die Linke,True,1,Bundestag,19
+286,Sören Pellmann,13,0.011168384879725086,Die Linke,True,1,Bundestag,19
+287,Martin Reichardt,26,0.022336769759450172,AfD,True,1,Bundestag,19
+288,Marcus Bühl,7,0.006013745704467354,AfD,True,1,Bundestag,19
+289,Carl-Julius Cronenberg,9,0.007731958762886598,FDP,True,1,Bundestag,19
+290,Alexander Müller,9,0.007731958762886598,FDP,True,1,Bundestag,19
+291,Lisa Paus,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
+292,Martina Renner,128,0.10996563573883161,Die Linke,True,1,Bundestag,19
+293,Monika Lazar,23,0.019759450171821305,Bündnis 90/Die Grünen,True,1,Bundestag,19
+294,Ulla Jelpke,406,0.3487972508591065,Die Linke,True,1,Bundestag,19
+295,Berengar Elsner von Gronow,9,0.007731958762886598,AfD,True,1,Bundestag,19
+296,Simone Barrientos,81,0.06958762886597938,Die Linke,True,1,Bundestag,19
+297,Olaf in der Beek,40,0.03436426116838488,FDP,True,1,Bundestag,19
+298,Gökay Akbulut,393,0.33762886597938147,Die Linke,True,1,Bundestag,19
+299,Hansjörg Müller,2,0.001718213058419244,AfD,True,1,Bundestag,19
+300,Sabine Leidig,32,0.027491408934707903,Die Linke,True,1,Bundestag,19
+301,Gerhard Zickenheiner,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
+302,Pascal Meiser,19,0.01632302405498282,Die Linke,True,1,Bundestag,19
+303,Erhard Grundl,20,0.01718213058419244,Bündnis 90/Die Grünen,True,1,Bundestag,19
+304,Matthias Seestern-Pauly,41,0.0352233676975945,FDP,True,1,Bundestag,19
+305,Frank Müller-Rosentritt,6,0.005154639175257732,FDP,True,1,Bundestag,19
+306,Stefan Thomae,7,0.006013745704467354,FDP,True,1,Bundestag,19
+307,Dr. Konstatin von Notz,1,0.000859106529209622,Bündnis 90/Die Grünen,True,1,Bundestag,19
+308,Ingrid Nestle,42,0.03608247422680412,Bündnis 90/Die Grünen,True,1,Bundestag,19
+309,Franziska Gminder,33,0.028350515463917526,AfD,True,1,Bundestag,19
+310,Albrecht Heinz Erhard Glaser,1,0.000859106529209622,AfD,True,1,Bundestag,19
+311,Ulle Schauws,25,0.02147766323024055,Bündnis 90/Die Grünen,True,1,Bundestag,19
+312,Dr. Marco Buschmann,14,0.012027491408934709,FDP,True,1,Bundestag,19
+313,Petra Sitte,268,0.23024054982817868,Die Linke,True,1,Bundestag,19
+314,Norbert Kleinwächter,14,0.012027491408934709,AfD,True,1,Bundestag,19
+315,Thomas L. Kemmerich,32,0.027491408934707903,FDP,True,1,Bundestag,19
+316,Filiz Polat,30,0.02577319587628866,Bündnis 90/Die Grünen,True,1,Bundestag,19
+317,Annalena Baerbock,84,0.07216494845360824,Bündnis 90/Die Grünen,True,1,Bundestag,19
+318,Thomas Hacker,39,0.03350515463917526,FDP,True,1,Bundestag,19
+319,Eva-Maria Schreiber,29,0.02491408934707904,Die Linke,True,1,Bundestag,19
+320,Dr. Alexander S. Neu,44,0.037800687285223365,Die Linke,True,1,Bundestag,19
+321,Dr. Harald Weyel,21,0.01804123711340206,AfD,True,1,Bundestag,19
+322,Bijan Djir-Sarai,3,0.002577319587628866,FDP,True,1,Bundestag,19
+323,Stephan Protschka,46,0.03951890034364261,AfD,True,1,Bundestag,19
+324,Joana Cotar,157,0.13487972508591065,AfD,True,1,Bundestag,19
+325,Michael Leutert,2,0.001718213058419244,Die Linke,True,1,Bundestag,19
+326,Jörg Cezanne,82,0.070446735395189,Die Linke,True,1,Bundestag,19
+327,Dr. Bernd Baumann,64,0.054982817869415807,AfD,True,1,Bundestag,19
+328,Jörg Cezanne Klaus Ernst,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+329,Stephan Thomae,226,0.19415807560137457,FDP,True,1,Bundestag,19
+330,Matthias W. Birkwald,114,0.0979381443298969,Die Linke,True,1,Bundestag,19
+331,Jörg Schneider,64,0.054982817869415807,AfD,True,1,Bundestag,19
+332,Nicole Bauer,78,0.06701030927835051,FDP,True,1,Bundestag,19
+333,Carina Konrad,36,0.030927835051546393,FDP,True,1,Bundestag,19
+334,Dr. h. c. Thomas Sattelberger,24,0.020618556701030927,FDP,True,1,Bundestag,19
+335,Dr. Axel Gehrke,51,0.04381443298969072,AfD,True,1,Bundestag,19
+336,Dr. Kirsten Kappert-Gonther,72,0.061855670103092786,Bündnis 90/Die Grünen,True,1,Bundestag,19
+337,Sebastian Münzenmaier,62,0.05326460481099656,AfD,True,1,Bundestag,19
+338,Agnieszka Brugger,30,0.02577319587628866,Bündnis 90/Die Grünen,True,1,Bundestag,19
+339,Cem Özdemir,12,0.010309278350515464,Bündnis 90/Die Grünen,True,1,Bundestag,19
+340,Matthias Gastel,178,0.15292096219931273,Bündnis 90/Die Grünen,True,1,Bundestag,19
+341,Thomas Lutze,7,0.006013745704467354,Die Linke,True,1,Bundestag,19
+342,Friedrich Straetmanns,154,0.1323024054982818,Die Linke,True,1,Bundestag,19
+343,Detlev Spangenberg,22,0.018900343642611683,AfD,True,1,Bundestag,19
+344,Achim Kessler,24,0.020618556701030927,Die Linke,True,1,Bundestag,19
+345,Thomas Sattelberger,24,0.020618556701030927,FDP,True,1,Bundestag,19
+346,Stefan Liebich,9,0.007731958762886598,Die Linke,True,1,Bundestag,19
+347,Volker Münz,5,0.00429553264604811,AfD,True,1,Bundestag,19
+348,Susanne Ferschl,143,0.12285223367697594,Die Linke,True,1,Bundestag,19
+349,Ralph Lenkert,22,0.018900343642611683,Die Linke,True,1,Bundestag,19
+350,Jan van Aken,1,0.000859106529209622,Die Linke,True,1,Bundestag,19
+351,Oliver Krischer,134,0.11512027491408934,Bündnis 90/Die Grünen,True,1,Bundestag,19
+352,Albrecht Glaser,8,0.006872852233676976,AfD,True,1,Bundestag,19
+353,Manfred Todtenhausen,7,0.006013745704467354,FDP,True,1,Bundestag,19
+354,Daniela Kluckert,35,0.03006872852233677,FDP,True,1,Bundestag,19
+355,Margarete Bause,48,0.041237113402061855,Bündnis 90/Die Grünen,True,1,Bundestag,19
+356,Prof. Dr. Axel Gehrke,41,0.0352233676975945,AfD,True,1,Bundestag,19
+357,René Springer,191,0.1640893470790378,AfD,True,1,Bundestag,19
+358,Dr. Anton Friesen,142,0.12199312714776632,AfD,True,1,Bundestag,19
+359,Katja Suding,226,0.19415807560137457,FDP,True,1,Bundestag,19
+360,Dr. Andrew Ullmann,21,0.01804123711340206,FDP,True,1,Bundestag,19
+361,Konstantin von Notz,63,0.05412371134020619,Bündnis 90/Die Grünen,True,1,Bundestag,19
+362,Norbert Müller,14,0.012027491408934709,Die Linke,True,1,Bundestag,19
+363,Jan Korte,214,0.18384879725085912,Die Linke,True,1,Bundestag,19
+364,Rainer Kraft,29,0.02491408934707904,AfD,True,1,Bundestag,19
+365,Beate Müller-Gemmeke,41,0.0352233676975945,Bündnis 90/Die Grünen,True,1,Bundestag,19
+366,Tobias Matthias Peterka,16,0.013745704467353952,AfD,True,1,Bundestag,19
+367,Dr. Diether Dehm,18,0.015463917525773196,Die Linke,True,1,Bundestag,19
+368,Ottmar von Holtz,26,0.022336769759450172,Bündnis 90/Die Grünen,True,1,Bundestag,19
+369,Armin-Paulus Hampel,54,0.04639175257731959,AfD,True,1,Bundestag,19
+370,Jens Beck,1,0.000859106529209622,FDP,True,1,Bundestag,19
+371,Klaus Ernst,76,0.06529209621993128,Die Linke,True,1,Bundestag,19
+372,Jörn König,11,0.009450171821305841,AfD,True,1,Bundestag,19
+373,Martin Erwin Renner,258,0.22164948453608246,AfD,True,1,Bundestag,19
+374,,0,0.0,CDU/CSU,False,1,Bundestag,19
+375,,0,0.0,CDU/CSU,False,1,Bundestag,19
+376,,0,0.0,CDU/CSU,False,1,Bundestag,19
+377,,0,0.0,CDU/CSU,False,1,Bundestag,19
+378,,0,0.0,CDU/CSU,False,1,Bundestag,19
+379,,0,0.0,CDU/CSU,False,1,Bundestag,19
+380,,0,0.0,CDU/CSU,False,1,Bundestag,19
+381,,0,0.0,CDU/CSU,False,1,Bundestag,19
+382,,0,0.0,CDU/CSU,False,1,Bundestag,19
+383,,0,0.0,CDU/CSU,False,1,Bundestag,19
 384,,0,0.0,CDU/CSU,False,1,Bundestag,19
 385,,0,0.0,CDU/CSU,False,1,Bundestag,19
 386,,0,0.0,CDU/CSU,False,1,Bundestag,19
@@ -2335,16 +2331,16 @@
 616,,0,0.0,CDU/CSU,False,1,Bundestag,19
 617,,0,0.0,CDU/CSU,False,1,Bundestag,19
 618,,0,0.0,CDU/CSU,False,1,Bundestag,19
-619,,0,0.0,CDU/CSU,False,1,Bundestag,19
-620,,0,0.0,CDU/CSU,False,1,Bundestag,19
-621,,0,0.0,CDU/CSU,False,1,Bundestag,19
-622,,0,0.0,CDU/CSU,False,1,Bundestag,19
-623,,0,0.0,CDU/CSU,False,1,Bundestag,19
-624,,0,0.0,CDU/CSU,False,1,Bundestag,19
-625,,0,0.0,CDU/CSU,False,1,Bundestag,19
-626,,0,0.0,CDU/CSU,False,1,Bundestag,19
-627,,0,0.0,CDU/CSU,False,1,Bundestag,19
-628,,0,0.0,CDU/CSU,False,1,Bundestag,19
+619,,0,0.0,SPD,False,1,Bundestag,19
+620,,0,0.0,SPD,False,1,Bundestag,19
+621,,0,0.0,SPD,False,1,Bundestag,19
+622,,0,0.0,SPD,False,1,Bundestag,19
+623,,0,0.0,SPD,False,1,Bundestag,19
+624,,0,0.0,SPD,False,1,Bundestag,19
+625,,0,0.0,SPD,False,1,Bundestag,19
+626,,0,0.0,SPD,False,1,Bundestag,19
+627,,0,0.0,SPD,False,1,Bundestag,19
+628,,0,0.0,SPD,False,1,Bundestag,19
 629,,0,0.0,SPD,False,1,Bundestag,19
 630,,0,0.0,SPD,False,1,Bundestag,19
 631,,0,0.0,SPD,False,1,Bundestag,19
@@ -2487,16 +2483,6 @@
 768,,0,0.0,SPD,False,1,Bundestag,19
 769,,0,0.0,SPD,False,1,Bundestag,19
 770,,0,0.0,SPD,False,1,Bundestag,19
-771,,0,0.0,SPD,False,1,Bundestag,19
-772,,0,0.0,SPD,False,1,Bundestag,19
-773,,0,0.0,SPD,False,1,Bundestag,19
-774,,0,0.0,SPD,False,1,Bundestag,19
-775,,0,0.0,SPD,False,1,Bundestag,19
-776,,0,0.0,SPD,False,1,Bundestag,19
-777,,0,0.0,SPD,False,1,Bundestag,19
-778,,0,0.0,SPD,False,1,Bundestag,19
-779,,0,0.0,SPD,False,1,Bundestag,19
-780,,0,0.0,SPD,False,1,Bundestag,19
 0,Andrea Ypsilanti,15,0.00821917808219178,SPD,True,2,Hessen,19
 1,Birgit Heitland,3,0.0016438356164383563,CDU,False,2,Hessen,19
 2,Ismail Tipi,28,0.015342465753424657,CDU,False,2,Hessen,19
@@ -2696,7 +2682,7 @@
 4,Bert Obereiner,37,0.023886378308586184,AfD,True,1,Mecklenburg-Vorpommern,7
 5,Prof. Dr. Ralph Weber,199,0.12846998063266624,AfD,True,1,Mecklenburg-Vorpommern,7
 6,Dirk Lerche,61,0.039380245319561004,AfD,True,1,Mecklenburg-Vorpommern,7
-7,Christel Weißig,110,0.07101355713363461,AfD,True,1,Mecklenburg-Vorpommern,7
+7,Christel Weißig,110,0.07101355713363461,Freie Wähler/BMV,True,1,Mecklenburg-Vorpommern,7
 8,Nikolaus Kramer,180,0.11620400258231117,AfD,True,1,Mecklenburg-Vorpommern,7
 9,Leif-Erik Holm,3,0.001936733376371853,AfD,True,1,Mecklenburg-Vorpommern,7
 10,Helmut Holter,16,0.010329244673983214,Die Linke,True,1,Mecklenburg-Vorpommern,7
@@ -2715,15 +2701,15 @@
 23,Jacqueline Bernhardt,223,0.14396384764364106,Die Linke,True,1,Mecklenburg-Vorpommern,7
 24,Ralf Borschke,106,0.0684312459651388,AfD,True,1,Mecklenburg-Vorpommern,7
 25,Sandro Hersel,87,0.05616526791478373,AfD,True,1,Mecklenburg-Vorpommern,7
-26,Bernhard Wildt,93,0.06003873466752744,AfD,True,1,Mecklenburg-Vorpommern,7
-27,Dr. Matthias Manthei,372,0.24015493867010976,AfD,True,1,Mecklenburg-Vorpommern,7
+26,Bernhard Wildt,93,0.06003873466752744,Freie Wähler/BMV,True,1,Mecklenburg-Vorpommern,7
+27,Dr. Matthias Manthei,372,0.24015493867010976,Freie Wähler/BMV,True,1,Mecklenburg-Vorpommern,7
 28,Dr. Gunter Jess,55,0.035506778566817304,AfD,True,1,Mecklenburg-Vorpommern,7
 29,Eva-Maria Kröger,73,0.04712717882504842,Die Linke,True,1,Mecklenburg-Vorpommern,7
 30,Simone Oldenburg,367,0.23692704970949,Die Linke,True,1,Mecklenburg-Vorpommern,7
 31,Karsten Kolbe,54,0.03486120077469335,Die Linke,True,1,Mecklenburg-Vorpommern,7
 32,Torsten Koplin,171,0.1103938024531956,Die Linke,True,1,Mecklenburg-Vorpommern,7
 33,Dr. Mignon Schwenke,81,0.052291801162040026,Die Linke,True,1,Mecklenburg-Vorpommern,7
-34,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
+34,,0,0.0,AfD,True,1,Mecklenburg-Vorpommern,7
 35,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
 36,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
 37,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
@@ -2737,6 +2723,7 @@
 45,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
 46,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
 47,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
+48,,0,0.0,CDU,False,1,Mecklenburg-Vorpommern,7
 0,Johann-Heinrich Ahlers,18,0.01060070671378092,CDU,True,2,Niedersachsen,17
 1,Karin Bertholdes-Sandrock,41,0.024146054181389872,CDU,True,2,Niedersachsen,17
 2,Holger Ansmann,17,0.010011778563015312,SPD,False,2,Niedersachsen,17
@@ -3121,7 +3108,7 @@
 100,Dr. Ingo Wolf,39,0.02135815991237678,FDP,True,2,Nordrhein-Westfalen,16
 101,Klaus Kaiser,25,0.013691128148959474,CDU,True,2,Nordrhein-Westfalen,16
 102,Stefan Fricke,3,0.0016429353778751369,Piraten,True,2,Nordrhein-Westfalen,16
-103,Daniel Schwerd,380,0.20810514786418402,Piraten,True,2,Nordrhein-Westfalen,16
+103,Daniel Schwerd,380,0.20810514786418402,fraktionslos,True,2,Nordrhein-Westfalen,16
 104,Marc Olejak,16,0.008762322015334063,Piraten,True,2,Nordrhein-Westfalen,16
 105,Dr. Anette Bunse,24,0.013143483023001095,CDU,True,2,Nordrhein-Westfalen,16
 106,Andreas Terhaag,16,0.008762322015334063,FDP,True,2,Nordrhein-Westfalen,16
@@ -3170,7 +3157,7 @@
 149,,0,0.0,Bündnis 90/Die Grünen,False,2,Nordrhein-Westfalen,16
 150,,0,0.0,Bündnis 90/Die Grünen,False,2,Nordrhein-Westfalen,16
 151,,0,0.0,Bündnis 90/Die Grünen,False,2,Nordrhein-Westfalen,16
-152,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
+152,,0,0.0,Piraten,True,2,Nordrhein-Westfalen,16
 153,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
 154,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
 155,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
@@ -3265,6 +3252,7 @@
 244,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
 245,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
 246,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
+247,,0,0.0,SPD,False,2,Nordrhein-Westfalen,16
 0,Armin Jahr,1,0.0007639419404125286,SPD,True,1,Nordrhein-Westfalen,17
 1,Andreas Keith,108,0.0825057295645531,AfD,True,1,Nordrhein-Westfalen,17
 2,Ralf Jäger,13,0.009931245225362872,SPD,True,1,Nordrhein-Westfalen,17
@@ -3287,7 +3275,7 @@
 19,Gordan Dudas,68,0.05194805194805195,SPD,True,1,Nordrhein-Westfalen,17
 20,Stefan Engstfeld,26,0.019862490450725745,Bündnis 90/Die Grünen,True,1,Nordrhein-Westfalen,17
 21,André Stinka,22,0.01680672268907563,SPD,True,1,Nordrhein-Westfalen,17
-22,Alexander Langguth,167,0.12757830404889228,AfD,True,1,Nordrhein-Westfalen,17
+22,Alexander Langguth,167,0.12757830404889228,fraktionslos,True,1,Nordrhein-Westfalen,17
 23,Stefan Zimkeit,52,0.03972498090145149,SPD,True,1,Nordrhein-Westfalen,17
 24,Carsten Löcker,53,0.04048892284186402,SPD,True,1,Nordrhein-Westfalen,17
 25,Berivan Aymaz,34,0.025974025974025976,Bündnis 90/Die Grünen,True,1,Nordrhein-Westfalen,17
@@ -3312,7 +3300,7 @@
 44,Sigrid Beer,108,0.0825057295645531,Bündnis 90/Die Grünen,True,1,Nordrhein-Westfalen,17
 45,Thomas Kutschaty,90,0.06875477463712758,SPD,True,1,Nordrhein-Westfalen,17
 46,Frank Börner,28,0.0213903743315508,SPD,True,1,Nordrhein-Westfalen,17
-47,Marcus Pretzell,77,0.058823529411764705,AfD,True,1,Nordrhein-Westfalen,17
+47,Marcus Pretzell,77,0.058823529411764705,fraktionslos,True,1,Nordrhein-Westfalen,17
 48,Exa Lux,1,0.0007639419404125286,SPD,True,1,Nordrhein-Westfalen,17
 49,Iris Dworeck-Danielowski,44,0.03361344537815126,AfD,True,1,Nordrhein-Westfalen,17
 50,Christian Löcker,1,0.0007639419404125286,SPD,True,1,Nordrhein-Westfalen,17
@@ -3336,7 +3324,7 @@
 68,Regina Kopp-Herr,20,0.015278838808250574,SPD,True,1,Nordrhein-Westfalen,17
 69,Elisabeth Müller-Witt,39,0.029793735676088617,SPD,True,1,Nordrhein-Westfalen,17
 70,Angela Lück,48,0.03666921313980138,SPD,True,1,Nordrhein-Westfalen,17
-71,Frank Neppe,104,0.07944996180290298,AfD,True,1,Nordrhein-Westfalen,17
+71,Frank Neppe,104,0.07944996180290298,fraktionslos,True,1,Nordrhein-Westfalen,17
 72,Christina Kampmann,32,0.024446142093200916,SPD,True,1,Nordrhein-Westfalen,17
 73,Markus Weske,3,0.002291825821237586,SPD,True,1,Nordrhein-Westfalen,17
 74,Anja Butschkau,51,0.03896103896103896,SPD,True,1,Nordrhein-Westfalen,17
@@ -3399,6 +3387,7 @@
 131,Markus Wagner,109,0.08326967150496563,AfD,True,1,Nordrhein-Westfalen,17
 132,Guido van den Berg,127,0.09702062643239114,SPD,True,1,Nordrhein-Westfalen,17
 133,Norwich Rüße,175,0.13368983957219252,Bündnis 90/Die Grünen,True,1,Nordrhein-Westfalen,17
+134,,0,0.0,AfD,True,1,Nordrhein-Westfalen,17
 0,Hannelore Klamm,7,0.0038335158817086527,SPD,False,2,Rheinland-Pfalz,16
 1,Benedikt Oster,10,0.00547645125958379,SPD,False,2,Rheinland-Pfalz,16
 2,Marcus Klein,154,0.08433734939759036,CDU,True,2,Rheinland-Pfalz,16
@@ -3803,7 +3792,7 @@
 54,Volkmar Zschocke,374,0.2047071702244116,Bündnis 90/Die Grünen,True,2,Sachsen,6
 55,Klaus Bartl,204,0.1116584564860427,Die Linke,True,2,Sachsen,6
 56,Kerstin Nicolaus,1,0.0005473453749315818,CDU,False,2,Sachsen,6
-57,Gunter Wild,107,0.05856595511767926,AfD,True,2,Sachsen,6
+57,Gunter Wild,107,0.05856595511767926,fraktionslos,True,2,Sachsen,6
 58,René Jalaß,90,0.04926108374384237,Die Linke,True,2,Sachsen,6
 59,Carsten Hütter,546,0.2988505747126437,AfD,True,2,Sachsen,6
 60,Henning Homann,2,0.0010946907498631637,SPD,False,2,Sachsen,6
@@ -4004,7 +3993,7 @@
 5,Cornelia Lüddemann,45,0.026102088167053363,Bündnis 90/Die Grünen,False,1,Sachsen-Anhalt,7
 6,Raue,6,0.0034802784222737818,AfD,True,1,Sachsen-Anhalt,7
 7,Volker Olenicak,29,0.016821345707656612,AfD,True,1,Sachsen-Anhalt,7
-8,Gottfried Backhaus,7,0.004060324825986079,AfD,True,1,Sachsen-Anhalt,7
+8,Gottfried Backhaus,7,0.004060324825986079,fraktionslos,True,1,Sachsen-Anhalt,7
 9,Markus Kurze,1,0.000580046403712297,CDU,False,1,Sachsen-Anhalt,7
 10,Holger Hövelmann,4,0.002320185614849188,SPD,False,1,Sachsen-Anhalt,7
 11,Mario Lehmann,41,0.023781902552204175,AfD,True,1,Sachsen-Anhalt,7
@@ -4240,14 +4229,14 @@
 0,Corinna Herold,78,0.0417558886509636,AfD,True,2,Thüringen,6
 1,Dirk Adams,13,0.006959314775160599,Bündnis 90/Die Grünen,False,2,Thüringen,6
 2,André Blechschmidt,5,0.0026766595289079227,Die Linke,False,2,Thüringen,6
-3,Jürgen Reinholz,5,0.0026766595289079227,CDU,True,2,Thüringen,6
+3,Jürgen Reinholz,5,0.0026766595289079227,fraktionslos,True,2,Thüringen,6
 4,Stephan Brandner,363,0.1943254817987152,AfD,True,2,Thüringen,6
 5,Wolfgang Fiedler,36,0.019271948608137045,CDU,True,2,Thüringen,6
 6,Dr. Werner Pidde,1,0.0005353319057815846,SPD,False,2,Thüringen,6
 7,Roberto Kobelt,14,0.007494646680942184,Bündnis 90/Die Grünen,False,2,Thüringen,6
 8,Dr. Falk Thomas Hartung,1,0.0005353319057815846,SPD,False,2,Thüringen,6
 9,Volker Emde,9,0.004817987152034261,CDU,True,2,Thüringen,6
-10,Siegfried Gentele,115,0.06156316916488223,AfD,True,2,Thüringen,6
+10,Siegfried Gentele,115,0.06156316916488223,fraktionslos,True,2,Thüringen,6
 11,Madeleine Henfling,56,0.029978586723768737,Bündnis 90/Die Grünen,False,2,Thüringen,6
 12,Eleonore Mühlbauer,38,0.020342612419700215,SPD,False,2,Thüringen,6
 13,Jörg Henke,293,0.15685224839400427,AfD,True,2,Thüringen,6
@@ -4258,7 +4247,7 @@
 18,Kati Grund,1,0.0005353319057815846,Die Linke,False,2,Thüringen,6
 19,Steffen Harzer,20,0.010706638115631691,Die Linke,False,2,Thüringen,6
 20,Dr. Thadäus Rudolf König,4,0.0021413276231263384,CDU,True,2,Thüringen,6
-21,Marion Rosin,58,0.031049250535331904,SPD,False,2,Thüringen,6
+21,Marion Rosin,58,0.031049250535331904,CDU,True,2,Thüringen,6
 22,Maik Kowalleck,162,0.0867237687366167,CDU,True,2,Thüringen,6
 23,Christoph Matschie,8,0.004282655246252677,SPD,False,2,Thüringen,6
 24,Mario Voigt,106,0.056745182012847964,CDU,True,2,Thüringen,6
@@ -4283,12 +4272,12 @@
 43,Sabine Berninger,21,0.011241970021413276,Die Linke,False,2,Thüringen,6
 44,Dieter Hausold,5,0.0026766595289079227,Die Linke,False,2,Thüringen,6
 45,Kati Engel,11,0.005888650963597431,Die Linke,False,2,Thüringen,6
-46,Oskar Helmerich,3,0.0016059957173447537,AfD,True,2,Thüringen,6
+46,Oskar Helmerich,3,0.0016059957173447537,fraktionslos,True,2,Thüringen,6
 47,Ronald Hande,13,0.006959314775160599,Die Linke,False,2,Thüringen,6
 48,Prof. Dr. Mario Voigt,26,0.013918629550321198,CDU,True,2,Thüringen,6
 49,Frank Kuschel,219,0.11723768736616702,Die Linke,False,2,Thüringen,6
 50,Dr. Johanna Scheringer-Wright,4,0.0021413276231263384,Die Linke,False,2,Thüringen,6
-51,Jens Krumpe,179,0.09582441113490364,AfD,True,2,Thüringen,6
+51,Jens Krumpe,179,0.09582441113490364,fraktionslos,True,2,Thüringen,6
 52,Gudrun Holbe,28,0.014989293361884369,CDU,True,2,Thüringen,6
 53,Stefan Möller,90,0.048179871520342615,AfD,True,2,Thüringen,6
 54,Olaf Müller,10,0.0053533190578158455,Bündnis 90/Die Grünen,False,2,Thüringen,6
@@ -4336,3 +4325,6 @@
 96,Klaus Jörg Kubitzki,1,0.0005353319057815846,Die Linke,False,2,Thüringen,6
 97,Gerold Wucherpfennig,10,0.0053533190578158455,CDU,True,2,Thüringen,6
 98,Jörg Thamm,22,0.011777301927194861,CDU,True,2,Thüringen,6
+99,,0,0.0,AfD,True,2,Thüringen,6
+100,,0,0.0,AfD,True,2,Thüringen,6
+101,,0,0.0,SPD,False,2,Thüringen,6

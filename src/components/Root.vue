@@ -40,7 +40,7 @@
           :dates=period.dates
           :has-ended=period.hasEnded
           :period-num=period.periodNum
-          :requests=period.requests
+          :n-requests=period.nRequests
           :requestsPerHead=period.requestsPerHead
           :elections=period.elections
           @top="onTop" />
@@ -67,7 +67,7 @@
         :dates=period.dates
         :has-ended=period.hasEnded
         :period-num=period.periodNum
-        :requests=period.requests
+        :n-requests=period.nRequests
         :requestsPerHead=period.requestsPerHead
         :elections=period.elections
         @top="onTop" />
@@ -82,7 +82,7 @@
       :term=popup.term
       :dates=popup.dates
       :has-ended=popup.hasEnded
-      :requests=popup.requests
+      :srcRequests=popup.srcRequests
       :elections=popup.elections />
   </transition>
   <transition name="fade">
@@ -150,17 +150,19 @@ export default {
     const groupedElections = Array.from(electionsMap)
       .map(([key, electionResults]) => {
         const {
-          body, term, dates, hasEnded, periodNum,
+          body, term, dates, hasEnded, periodNum, nRequests: total,
         } = electionResults[0];
+        const id = getTermId(body, term);
 
         return {
           key,
-          name: getTermId(body, term),
+          name: id,
           body,
           term,
           dates,
           hasEnded,
           periodNum,
+          nRequests: total,
           elections: electionResults.map(({
             party, seats, isOpposition,
           }) => ({ party, seats, isOpposition })),
@@ -169,35 +171,18 @@ export default {
           }) => ({
             name, party, isOpposition, nRequests, nRequestsPerDay,
           })),
-          requests: null,
+          srcRequests: `${this.srcRequests}/requests-${id}.csv`,
         };
       });
 
-    this.computeTiles(groupedElections);
+    this.tiles = d3.groups(groupedElections, (d) => d.body)
+      .map(([body, periods]) => ({
+        body,
+        periods: periods
+          .sort((a, b) => d3.ascending(a.periodNum, b.periodNum)),
+      }))
+      .sort((a, b) => d3.ascending(a.body, b.body));
     this.tileMap = d3.rollup(groupedElections, (v) => v[0], (d) => d.name);
-
-    this.fetchRequestsData().then((fetchedRequests) => {
-      this.requests = fetchedRequests;
-
-      // To do: This takes too long
-      const merged = d3.groups(this.requests, keyFunc)
-        .map(([key, requests]) => ({
-          key,
-          name: getTermId(requests[0].body, requests[0].term),
-          body: requests[0].body,
-          term: requests[0].term,
-          dates: electionsMap.get(key)[0].dates,
-          hasEnded: electionsMap.get(key)[0].hasEnded,
-          periodNum: electionsMap.get(key)[0].periodNum,
-          requests: requests.map(({ body, term, ...rest }) => rest),
-          elections: electionsMap.get(key).map(({
-            body, term, dates, hasEnded, periodNum, ...rest
-          }) => rest),
-        }));
-
-      this.computeTiles(merged);
-      this.tileMap = d3.rollup(merged, (v) => v[0], (d) => d.name);
-    });
   },
   mounted() {
     const scale = d3.scalePoint()
@@ -235,41 +220,8 @@ export default {
         party: d.party,
         seats: +d.seats,
         isOpposition: d.opposition.toLowerCase() === 'true',
+        nRequests: +d.n_requests,
       }));
-    },
-    fetchRequestsData() {
-      const parseTime = d3.timeParse('%Y-%m-%d');
-      const asArray = (str) => str.split(';').map((s) => s.trim());
-      return d3.csv(this.srcRequests, (d) => ({
-        body: d.body,
-        term: d.legislative_term,
-
-        reference: d.reference,
-        rawDate: d.published_at,
-        date: parseTime(d.published_at.split('T')[0]),
-        title: d.title,
-        type: d.interpellation_type,
-        url: d.html_url,
-        source: d.source_url,
-
-        parties: asArray(d.inquiring_parties),
-        inquiringPeople: asArray(d.inquiring_people_corr),
-
-        ministries: asArray(d.answering_ministries_corr),
-        ministriesUrl: asArray(d.answering_ministries_url),
-
-        pageCount: d.page_count,
-        containsClassifiedInformation: d.contains_classified_information === 'True',
-      }));
-    },
-    computeTiles(grouped) {
-      this.tiles = d3.groups(grouped, (d) => d.body)
-        .map(([body, periods]) => ({
-          body,
-          periods: periods
-            .sort((a, b) => d3.ascending(a.periodNum, b.periodNum)),
-        }))
-        .sort((a, b) => d3.ascending(a.body, b.body));
     },
     onTop(key) {
       this.popup = this.tileMap.get(key);

@@ -17,6 +17,9 @@ export const COLOR = new Map([
   ['SSW', 'hsl(0, 0%, 46%)'],
   ['Die Linke', 'hsl(4, 81%, 26%)'],
   ['fraktionslos', 'hsl(0, 0%, 46%)'],
+
+  ['Freie Wähler/BMV', 'hsl(0, 0%, 46%)'],
+  ['BMV', 'hsl(0, 0%, 46%)'],
 ]);
 
 export const LIGHT_COLOR = new Map([
@@ -38,6 +41,9 @@ export const LIGHT_COLOR = new Map([
   ['SSW', 'hsl(0, 0%, 86%)'],
   ['Die Linke', 'hsl(4, 81%, 86%)'],
   ['fraktionslos', 'hsl(0, 0%, 86%)'],
+
+  ['Freie Wähler/BMV', 'hsl(0, 0%, 86%)'],
+  ['BMV', 'hsl(0, 0%, 86%)'],
 ]);
 
 export const SORTED_PARTIES = [
