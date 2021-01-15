@@ -47,7 +47,7 @@
 import d3 from '@/assets/d3';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
-import { LIGHT_COLOR, PARTY_GROUPS } from '@/core/CONSTANTS';
+import { COLOR, LIGHT_COLOR, PARTY_GROUPS } from '@/core/CONSTANTS';
 
 import RingChart from '@/core/RingChart';
 import MinistryLegend from '@/core/MinistryLegend';
@@ -222,9 +222,8 @@ export default {
         .map((party) => ({
           name: party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party.split(';').join('/'),
           style: {
-            backgroundColor: party.includes(';')
-              ? LIGHT_COLOR.get(party.split(';')[0])
-              : LIGHT_COLOR.get(party),
+            backgroundColor: LIGHT_COLOR.get(party.split(';')[0]),
+            color: COLOR.get(party.split(';')[0]),
           },
         }));
     },
