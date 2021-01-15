@@ -230,7 +230,7 @@ export default class RingChart {
         .append('path')
         .attr('id', (_, i) => `party-text-path-${i}`)
         .attr('d', (party) => {
-          const r = y(party);
+          const r = y(party) + 2;
           return [
             `M${d3.pointRadial(x(this.monthKeys[0]), r)}`,
             `A${r},${r} 0,0,1 ${d3.pointRadial(x(this.monthKeys[5]), r)}`,
@@ -243,7 +243,7 @@ export default class RingChart {
         .append('textPath')
         .attr('xlink:href', (_, i) => `#party-text-path-${i}`)
         .attr('fill', (party) => COLOR.get(party.split(';')[0]))
-        .attr('startOffset', 1)
+        .attr('startOffset', 0.5)
         .style('font-size', '0.8em')
         .style('font-weight', 'bold')
         .text((party) => (party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party)));
