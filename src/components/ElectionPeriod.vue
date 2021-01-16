@@ -41,7 +41,7 @@ export default {
     const innerRadius = this.body === 'Bundestag' ? 50 : 30;
     this.seatChart = new SeatChart(`#${chartDiv.id}`, innerRadius)
       .data(this.requestsPerHead)
-      .draw(chartDiv.clientWidth);
+      .draw();
   },
   computed: {
     classes() {
@@ -80,6 +80,12 @@ export default {
   border: 1px solid white;
   box-shadow: $box-shadow-weak;
   transition: all 0.2s;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
 
   &:hover {
     box-shadow: $box-shadow-strong;
@@ -93,6 +99,7 @@ export default {
 
   h3 span {
     font-weight: normal;
+    white-space: nowrap;
   }
 
   p {

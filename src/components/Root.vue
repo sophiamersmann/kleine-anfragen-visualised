@@ -3,25 +3,27 @@
     <div class="top">
       <div class="introduction">
         <h1><a href="https://kleineanfragen.de/" target="blank">kleineAnfragen.de</a> visualisiert</h1>
-        <div class="p">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </div>
-        <div class="p">
-          Kategorien:
-          <div class="legend legend-seat-chart">
-            <div
-            class="legend-line"
-            v-for="(line, i) in legend"
-            :key=i
-            >
-            <div class="legend-line--chart" :id=line.chartId></div>
-              {{ line.label }}
+        <div class="text">
+          <div class="p">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+          <div class="p">
+            Kategorien:
+            <div class="legend legend-seat-chart">
+              <div
+              class="legend-line"
+              v-for="(line, i) in legend"
+              :key=i
+              >
+              <div class="legend-line--chart" :id=line.chartId />
+              <div class="legend-line--label">{{ line.label }}</div>
+              </div>
             </div>
           </div>
         </div>
@@ -256,22 +258,72 @@ main {
   padding: 2 * $spacing;
   background-color: $primary-light;
   transition: filter 0.8s ease;
+  max-width: $bp-2xl;
+  margin: 0 auto;
 
   &.background {
     filter: blur(4px);
     transition: filter 0.8s ease;
     overflow: hidden;
   }
+
+  @include max-width($bp-md) {
+    padding: $spacing;
+  }
+
+  @include max-width($bp-2sm) {
+    padding: 0.5 * $spacing;
+  }
+
+  // @include max-width($bp-2xl) {
+  //   background-color: red;
+  // }
+
+  // @include max-width($bp-xl) {
+  //   background-color: orangered;
+  // }
+
+  // @include max-width($bp-lg) {
+  //   background-color: orange;
+  // }
+
+  // @include max-width($bp-md) {
+  //   background-color: gold;
+  // }
+
+  // @include max-width($bp-sm) {
+  //   background-color: khaki;
+  // }
+
+  // @include max-width($bp-2sm) {
+  //   background-color: lightgreen;
+  // }
 }
 
 .top {
   display: grid;
   grid-template-columns: 2fr 3fr;
   grid-gap: $spacing;
+
+  @include max-width($bp-xl) {
+    display: block;
+  }
 }
 
 .introduction {
   line-height: 1.5;
+
+  .text {
+    @include max-width($bp-xl) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: $spacing;
+    }
+
+    @include max-width($bp-lg) {
+      display: block;
+    }
+  }
 
   h1 {
     border-bottom: 1px solid $black;
@@ -285,13 +337,22 @@ main {
 
   .legend {
     margin: 0.5 * $spacing 0;
-    padding: 0.5 * $spacing $spacing * 2;
+    padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing 2 * $spacing;
     background-color: white;
     border-radius: $border-radius-weak;
 
-    .legend-line--chart {
-      display: inline-block;
-      margin-right: 0.5 * $spacing;
+    @include max-width($bp-sm) {
+      padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing $spacing;
+    }
+
+    .legend-line {
+      display: flex;
+      gap: 0.5 * $spacing;
+      align-items: baseline;
+    }
+
+    .legend-line--label {
+      line-height: 1.25;
     }
   }
 }
@@ -299,6 +360,10 @@ main {
 .tiles-bundestag {
   .election-period {
     margin: $spacing;
+
+    @include max-width($bp-xl) {
+      margin: $spacing 0;
+    }
   }
 }
 
@@ -314,6 +379,10 @@ main {
     font-weight: bold;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+
+    @include max-width($bp-xl) {
+      display: none;
+    }
   }
 
   .tiles-landtage {
@@ -322,15 +391,32 @@ main {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: $spacing;
 
+    @include max-width($bp-xl) {
+      grid-template-rows: auto;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    }
+
+    @include max-width($bp-2sm) {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
     @for $i from 1 through 3 {
       .col-#{$i} {
         grid-column: #{$i};
+
+        @include max-width($bp-xl) {
+          grid-column: auto;
+        }
       }
     }
 
     @for $i from 1 through 15 {
       .row-#{$i} {
         grid-row: #{$i};
+
+        @include max-width($bp-xl) {
+          grid-row: auto;
+        }
       }
     }
   }

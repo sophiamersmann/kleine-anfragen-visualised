@@ -16,7 +16,7 @@ export default class SeatChart {
     this.svg = null;
     this.width = null;
     this.height = null;
-    // this.marginTop = 20;
+    this.marginTop = 20;
     this.config = {
       seatRadius: 5,
       spacing: 1,
@@ -45,15 +45,12 @@ export default class SeatChart {
     return this;
   }
 
-  draw(width) {
-    this.width = width;
-    this.height = width / 2;
-
+  draw() {
     return this
-      .setUpSVG()
-      .createDefs()
       .setUpScales()
       .prepareData()
+      .setUpSVG()
+      .createDefs()
       .drawAxis()
       .drawData();
   }
@@ -116,10 +113,10 @@ export default class SeatChart {
     this.circles = circles;
     this.zones = zones.filter((d) => d.party !== 'fraktionslos');
 
-    // const nRows = d3.max(this.circles, (d) => d.row);
-    // this.height = this.config.innerRadius + this.marginTop
-    //   + nRows * (2 * this.config.seatRadius + 2 * this.config.spacing);
-    // this.width = this.height * 2;
+    const nRows = d3.max(this.circles, (d) => d.row);
+    this.height = this.config.innerRadius + this.marginTop
+      + nRows * (2 * this.config.seatRadius + 2 * this.config.spacing);
+    this.width = this.height * 2;
 
     return this;
   }

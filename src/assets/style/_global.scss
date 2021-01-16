@@ -14,3 +14,17 @@ $border-radius-tag: 2 * $border-radius-weak;
 
 $box-shadow-weak: 0 4px 12px rgba(0, 0, 0, 0.08);
 $box-shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.08);
+
+// breakpoints
+$bp-2sm: 425px;
+$bp-sm: 640px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1538px;
+
+@mixin max-width($bp) {
+  @media screen and (max-width: $bp) {
+    @content;
+  }
+}
