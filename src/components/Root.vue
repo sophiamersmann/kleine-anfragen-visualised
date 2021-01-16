@@ -29,7 +29,7 @@
 
       <div class="tiles tiles-bundestag">
         <election-period
-          v-for="period in tilesBundestag.periods"
+          v-for="period in tilesBundestag"
           :key=period.name
           :name=period.name
           :body=period.body
@@ -44,29 +44,27 @@
       </div>
     </div>
 
-    <div class="tiles tiles-landtage">
-      <div class="row row-header">
-      <div class="col-1">AKTUELLE LEGISLATURPERIODE</div>
-      <div class="col-2">LETZTE LEGISLATURPERIODE</div>
-      <div class="col-3">VORLETZTE LEGISLATURPERIODE</div>
-    </div>
-    <div
-      v-for="row in tilesLandtage"
-      :key=row.body
-      class="row">
-      <election-period
-        v-for="period in row.periods"
-        :key=period.name
-        :name=period.name
-        :body=period.body
-        :term=period.term
-        :dates=period.dates
-        :has-ended=period.hasEnded
-        :period-num=period.periodNum
-        :n-requests=period.nRequests
-        :requestsPerHead=period.requestsPerHead
-        :elections=period.elections
-        @top="onTop" />
+    <div class="grid-landtage">
+      <div class="row-header">
+        <div>AKTUELLE LEGISLATURPERIODE</div>
+        <div>LETZTE LEGISLATURPERIODE</div>
+        <div>VORLETZTE LEGISLATURPERIODE</div>
+      </div>
+      <div class="tiles tiles-landtage">
+        <election-period
+          v-for="period in tilesLandtage"
+          :key=period.name
+          :cell=period.cell
+          :name=period.name
+          :body=period.body
+          :term=period.term
+          :dates=period.dates
+          :has-ended=period.hasEnded
+          :period-num=period.periodNum
+          :n-requests=period.nRequests
+          :requestsPerHead=period.requestsPerHead
+          :elections=period.elections
+          @top="onTop" />
       </div>
     </div>
   </main>
@@ -190,8 +188,14 @@ export default {
       .sort((a, b) => d3.ascending(a.body, b.body));
     this.tileMap = d3.rollup(groupedElections, (v) => v[0], (d) => d.name);
 
-    [this.tilesBundestag] = this.tiles.filter((d) => d.body === 'Bundestag');
-    this.tilesLandtage = this.tiles.filter((d) => d.body !== 'Bundestag');
+    this.tilesBundestag = this.tiles.filter((d) => d.body === 'Bundestag')[0].periods;
+    this.tilesLandtage = this.tiles
+      .filter((d) => d.body !== 'Bundestag')
+      .map(({ periods }, row) => periods.map((d) => {
+        const tile = d;
+        tile.cell = { row: row + 1, col: tile.periodNum };
+        return tile;
+      })).flat();
   },
   mounted() {
     const scale = d3.scalePoint()
@@ -298,34 +302,37 @@ main {
   }
 }
 
-.tiles-landtage {
+.grid-landtage {
   .row-header {
     position: sticky;
     top: 0;
+    margin: $spacing 0;
     padding: $spacing 0;
     background-color: white;
     border-radius: $border-radius-weak;
     text-align: center;
     font-weight: bold;
-  }
-
-  .row {
-    margin: $spacing 0;
     display: grid;
-    grid-gap: $spacing;
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .col-1 {
-    grid-column: 1 / 2;
-  }
+  .tiles-landtage {
+    display: grid;
+    grid-template-rows: repeat(15, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: $spacing;
 
-  .col-2 {
-    grid-column: 2 / 3;
-  }
+    @for $i from 1 through 3 {
+      .col-#{$i} {
+        grid-column: #{$i};
+      }
+    }
 
-  .col-3 {
-    grid-column: 3 / 4;
+    @for $i from 1 through 15 {
+      .row-#{$i} {
+        grid-row: #{$i};
+      }
+    }
   }
 }
 

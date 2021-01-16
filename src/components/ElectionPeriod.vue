@@ -19,6 +19,7 @@ import { getTermId, displayTimeRange } from '@/core/utils';
 export default {
   name: 'ElectionPeriod',
   props: {
+    cell: Object,
     name: String,
     body: String,
     term: String,
@@ -45,7 +46,10 @@ export default {
   computed: {
     classes() {
       const classes = { 'election-period': true };
-      classes[`col-${this.periodNum}`] = this.body !== 'Bundestag';
+      if (this.cell !== undefined) {
+        classes[`row-${this.cell.row}`] = true;
+        classes[`col-${this.cell.col}`] = true;
+      }
       return classes;
     },
     seatChartId() {
