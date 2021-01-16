@@ -1,0 +1,9 @@
+$spacing: 2rem;
+
+$popup-offset: $spacing * 2;
+$popup-width: calc(100vw - 4 * #{$popup-offset});
+$popup-height: calc(100vh - #{$popup-offset});
+
+$black: hsl(210, 11%, 15%);
+$primary: hsl(254, 41%, 64%);
+$primary-light: hsl(252, 100%, 98%);

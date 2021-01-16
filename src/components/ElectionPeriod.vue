@@ -3,7 +3,7 @@
     <div
       :id=seatChartId
       class="chart chart-seat" />
-    <div class="body">
+    <div class="caption">
       <h3>{{ body }}&nbsp; <span>({{ years }})</span></h3>
       <p>
         Durchsuche <b>{{ nRequests }}</b> gesammelte Anfragen
@@ -45,7 +45,7 @@ export default {
   computed: {
     classes() {
       const classes = { 'election-period': true };
-      classes[`col-${this.periodNum}`] = true;
+      classes[`col-${this.periodNum}`] = this.body !== 'Bundestag';
       return classes;
     },
     seatChartId() {
@@ -83,16 +83,16 @@ export default {
   border-color: $primary;
 }
 
-.body {
+.caption {
   text-align: center;
   margin-top: 0.5 * $spacing;
 }
 
-.body h3 span {
+.caption h3 span {
   font-weight: normal;
 }
 
-.body p {
+.caption p {
   font-size: 0.9rem;
 }
 </style>

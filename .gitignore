@@ -1,9 +1,6 @@
 .DS_Store
 node_modules
 /dist
-*.numbers
-_*.*
-
 
 # local env files
 .env.local

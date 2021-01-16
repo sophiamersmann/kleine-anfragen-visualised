@@ -1,7 +1,7 @@
 <template>
   <main :class=classes>
-    <div class="wrapper">
-      <section class="main-text">
+    <div class="top">
+      <div class="introduction">
         <h1><a href="https://kleineanfragen.de/" target="blank">kleineAnfragen.de</a> visualisiert</h1>
         <div class="p">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -14,25 +14,22 @@
         </div>
         <div class="p">
           Kategorien:
-          <div class="legend">
+          <div class="legend legend-seat-chart">
             <div
             class="legend-line"
             v-for="(line, i) in legend"
             :key=i
             >
-            <div class="chart-legend" :id=line.chartId></div>
+            <div class="legend-line--chart" :id=line.chartId></div>
               {{ line.label }}
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <section class="bundestag">
-        <div
-          v-for="row in tiles.filter((d) => d.body === 'Bundestag')"
-          :key=row.body>
+      <div class="tiles tiles-bundestag">
         <election-period
-          v-for="period in row.periods"
+          v-for="period in tilesBundestag.periods"
           :key=period.name
           :name=period.name
           :body=period.body
@@ -44,8 +41,7 @@
           :requestsPerHead=period.requestsPerHead
           :elections=period.elections
           @top="onTop" />
-        </div>
-      </section>
+      </div>
     </div>
 
     <div class="tiles tiles-landtage">
@@ -55,7 +51,7 @@
       <div class="col-3">VORLETZTE LEGISLATURPERIODE</div>
     </div>
     <div
-      v-for="row in tiles.filter((d) => d.body !== 'Bundestag')"
+      v-for="row in tilesLandtage"
       :key=row.body
       class="row">
       <election-period
@@ -127,15 +123,17 @@ export default {
       requests: [],
       elections: [],
       tiles: [],
+      tilesBundestag: [],
+      tilesLandtage: [],
       tileMap: null,
       popup: null,
       legend: [
-        { chartId: 'chart-legend-0', category: '0', label: 'keine Anfragen' },
-        { chartId: 'chart-legend-1', category: '<1 per year', label: 'weniger als eine Anfrage im Jahr' },
-        { chartId: 'chart-legend-2', category: '>=1 per year', label: 'mehr als eine Anfrage im Jahr' },
-        { chartId: 'chart-legend-3', category: '>=1 per month', label: 'mehr als eine Anfrage im Monat' },
-        { chartId: 'chart-legend-4', category: '>=1 per week', label: 'mehr als eine Anfrage in der Woche' },
-        { chartId: 'chart-legend-5', category: '>=1 per day', label: 'mehr als eine Anfrage am Tag' },
+        { chartId: 'legend-line--chart-0', category: '0', label: 'keine Anfragen' },
+        { chartId: 'legend-line--chart-1', category: '<1 per year', label: 'weniger als eine Anfrage im Jahr' },
+        { chartId: 'legend-line--chart-2', category: '>=1 per year', label: 'mehr als eine Anfrage im Jahr' },
+        { chartId: 'legend-line--chart-3', category: '>=1 per month', label: 'mehr als eine Anfrage im Monat' },
+        { chartId: 'legend-line--chart-4', category: '>=1 per week', label: 'mehr als eine Anfrage in der Woche' },
+        { chartId: 'legend-line--chart-5', category: '>=1 per day', label: 'mehr als eine Anfrage am Tag' },
       ],
     };
   },
@@ -191,6 +189,9 @@ export default {
       }))
       .sort((a, b) => d3.ascending(a.body, b.body));
     this.tileMap = d3.rollup(groupedElections, (v) => v[0], (d) => d.name);
+
+    [this.tilesBundestag] = this.tiles.filter((d) => d.body === 'Bundestag');
+    this.tilesLandtage = this.tiles.filter((d) => d.body !== 'Bundestag');
   },
   mounted() {
     const scale = d3.scalePoint()
@@ -259,7 +260,7 @@ main {
   overflow: hidden;
 }
 
-.wrapper {
+.top {
   display: grid;
   grid-template-columns: 40% 60%;
   grid-gap: $spacing;
@@ -270,29 +271,29 @@ h1 {
   border-bottom: 1px solid $black;
 }
 
-.main-text {
+.introduction {
   line-height: 1.5;
 }
 
-.main-text .p {
+.introduction .p {
   padding: 0.25 * $spacing;
   border-radius: 10px;
   text-align: justify;
 }
 
-.chart-legend {
+.legend-line--chart {
   display: inline-block;
   margin-right: 0.5 * $spacing;
 }
 
-.main-text .legend {
+.introduction .legend {
   background-color: white;
   margin: 0.5 * $spacing 0;
   padding: 0.25 * $spacing $spacing * 2;
   border-radius: 10px;
 }
 
-.bundestag .election-period {
+.tiles-bundestag .election-period {
   margin: $spacing;
 }
 
