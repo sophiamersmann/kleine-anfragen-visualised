@@ -217,7 +217,7 @@ export default class SeatChart {
 
           let line2 = '';
           if (d.data.topMinistry) {
-            if (d.data.nRequests >= 10) {
+            if (d.data.nRequests > 10) {
               const f = d3.format('.0%');
               const topMinistryPercentage = d.data.topMinistryCount / d.data.nRequests;
               line2 = `<p><i>Am häufigsten angefragt:</i> ${d.data.topMinistry} (${f(topMinistryPercentage)} aller Anfragen)</p>`;
