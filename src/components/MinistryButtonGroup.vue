@@ -57,7 +57,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .ministry-button-group {
   overflow-y: auto;
 }

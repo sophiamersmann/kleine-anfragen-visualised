@@ -244,11 +244,13 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
+@import '@/assets/style/global';
+
 main {
-  padding: calc(2 * var(--spacing));
+  padding: 2 * $spacing;
   transition: filter 0.2s ease;
-  background-color: var(--primary-light);
+  background-color: $primary-light;
 }
 
 .background {
@@ -260,12 +262,12 @@ main {
 .wrapper {
   display: grid;
   grid-template-columns: 40% 60%;
-  grid-gap: var(--spacing);
+  grid-gap: $spacing;
 }
 
 h1 {
   text-align: center;
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid $black;
 }
 
 .main-text {
@@ -273,38 +275,38 @@ h1 {
 }
 
 .main-text .p {
-  padding: calc(0.25 * var(--spacing));
+  padding: 0.25 * $spacing;
   border-radius: 10px;
   text-align: justify;
 }
 
 .chart-legend {
   display: inline-block;
-  margin-right: calc(0.5 * var(--spacing));
+  margin-right: 0.5 * $spacing;
 }
 
 .main-text .legend {
   background-color: white;
-  margin: calc(0.5 * var(--spacing)) 0;
-  padding: calc(0.25 * var(--spacing)) calc(var(--spacing) * 2);
+  margin: 0.5 * $spacing 0;
+  padding: 0.25 * $spacing $spacing * 2;
   border-radius: 10px;
 }
 
 .bundestag .election-period {
-  margin: var(--spacing);
+  margin: $spacing;
 }
 
 .tiles .row {
-  margin: var(--spacing) 0;
+  margin: $spacing 0;
   display: grid;
-  grid-gap: calc(var(--spacing) / 2);
+  grid-gap: $spacing / 2;
 }
 
 .tiles-landtage .row-header {
   text-align: center;
   position: sticky;
   background-color: white;
-  padding: var(--spacing) 0;
+  padding: $spacing 0;
   border-radius: 10px;
   top: 0;
   font-weight: bold;
@@ -371,9 +373,9 @@ h1 {
   font-size: 0.9em;
 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: calc(0.25 * var(--spacing)) calc(0.5 * var(--spacing));
+  padding: 0.25 * $spacing 0.5 * $spacing;
 
-  border-left: 5px solid var(--black);
+  border-left: 5px solid $black;
 }
 
 .tooltip .above-title {
@@ -385,6 +387,6 @@ h1 {
 }
 
 .tooltip p {
-  margin: calc(0.125 * var(--spacing)) 0;
+  margin: 0.125 * $spacing 0;
 }
 </style>

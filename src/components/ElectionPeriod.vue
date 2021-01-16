@@ -66,11 +66,13 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/style/global';
+
 .election-period {
   background-color: white;
   border-radius: 50px;
-  padding: var(--spacing);
+  padding: $spacing;
   border: 1px solid white;
   transition: all .2s;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -78,12 +80,12 @@ export default {
 
 .election-period:hover {
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-  border-color: var(--primary);
+  border-color: $primary;
 }
 
 .body {
   text-align: center;
-  margin-top: calc(0.5 * var(--spacing));
+  margin-top: 0.5 * $spacing;
 }
 
 .body h3 span {

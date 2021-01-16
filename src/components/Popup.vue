@@ -100,6 +100,8 @@ export default {
       dates, parties, maxValue, selectedRequests,
     } = this;
 
+    console.log('h', ringChartDiv.clientHeight);
+
     this.ringChart = new RingChart(
       `#${ringChartDiv.id}`,
       { dates, parties, maxValue },
@@ -231,46 +233,48 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/style/global';
+
 .popup {
   background-color: white;
   border-radius: 50px;
 
   position: fixed;
   z-index: 2000;
-  top: calc(var(--popup-offset) / 2);
-  left: calc(2 * var(--popup-offset));
-  width: var(--popup-width);
-  height: var(--popup-height);
+  top: $popup-offset / 2;
+  left: 2 * $popup-offset;
+  width: $popup-width;
+  height: $popup-height;
 
   display: grid;
-  grid-template-columns: 1fr var(--popup-height);
+  grid-template-columns: 1fr $popup-height;
 }
 
 .sidebar {
-  height: var(--popup-height);
-  padding: var(--spacing);
-  background-color: var(--primary-light);
+  height: $popup-height;
+  padding: $spacing;
+  background-color: $primary-light;
   border-radius: 50px 0 0 50px;
   display: flex;
   flex-direction: column;
 }
 
 .chart-ring {
-  height: var(--popup-height);
-  width: var(--popup-height);
+  height: $popup-height;
+  width: $popup-height;
 }
 
 h3 {
   text-align: center;
-  border-bottom: 1px solid var(--black);
+  border-bottom: 1px solid $black;
 }
 
 .text {
-  border: 1px solid var(--primary-light);
-  padding: calc(0.25 * var(--spacing));
+  border: 1px solid $primary-light;
+  padding: 0.25 * $spacing;
   line-height: 1.25;
-  margin: calc(0.5 * var(--spacing)) 0;
+  margin: 0.5 * $spacing 0;
 }
 
 .number {
@@ -284,8 +288,8 @@ h3 span {
 }
 
 .text-wrapper {
-  margin-left: calc(0.5 * var(--spacing));
-  padding: 2px 0 calc(0.25 * var(--spacing)) 0
+  margin-left: 0.5 * $spacing;
+  padding: 2px 0 0.25 * $spacing 0
 }
 
 .party {

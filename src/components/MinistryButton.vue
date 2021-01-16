@@ -72,18 +72,20 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/assets/style/global';
+
 button {
   width: 100%;
-  margin: calc(var(--spacing) / 4) 0;
-  padding: calc(0.25 * var(--spacing));
+  margin: $spacing / 4 0;
+  padding: 0.25 * $spacing;
 
   border: 1px solid white;
   border-radius: 10px;
 
   display: grid;
   grid-template-columns: 1fr 50px;
-  grid-gap: calc(0.5 * var(--spacing));
+  grid-gap: 0.5 * $spacing;
   align-items: center;
 
   background-color: white;
@@ -97,11 +99,11 @@ button:first-of-type {
 }
 
 button:hover {
-  border-color: var(--primary);
+  border-color: $primary;
 }
 
 button.active {
-  border-color: var(--primary);
+  border-color: $primary;
   font-weight: bold;
 }
 
