@@ -16,6 +16,7 @@ export default class SeatChart {
     this.svg = null;
     this.width = null;
     this.height = null;
+    // this.marginTop = 20;
     this.config = {
       seatRadius: 5,
       spacing: 1,
@@ -115,6 +116,11 @@ export default class SeatChart {
     this.circles = circles;
     this.zones = zones.filter((d) => d.party !== 'fraktionslos');
 
+    // const nRows = d3.max(this.circles, (d) => d.row);
+    // this.height = this.config.innerRadius + this.marginTop
+    //   + nRows * (2 * this.config.seatRadius + 2 * this.config.spacing);
+    // this.width = this.height * 2;
+
     return this;
   }
 
@@ -199,15 +205,28 @@ export default class SeatChart {
           if (d.category === '0') return;
 
           const nRequestsPerMonth = Math.round(d.data.nRequestsPerMonth);
-          let text = d.data.nRequests > 1
+          let line1 = d.data.nRequests > 1
             ? `<p>hat insgesamt <b>${d.data.nRequests}</b> Anfragen eingereicht`
             : '<p>hat eine Anfrage eingereicht';
           if (nRequestsPerMonth > 1) {
-            text += `, das sind ungefähr ${nRequestsPerMonth} im Monat`;
+            line1 += `, das sind ungefähr ${nRequestsPerMonth} im Monat`;
           } else if (nRequestsPerMonth === 1) {
-            text += ', das ist ungefähr eine im Monat';
+            line1 += ', das ist ungefähr eine im Monat';
           }
-          text += '</p>';
+          line1 += '</p>';
+
+          let line2 = '';
+          if (d.data.topMinistry) {
+            if (d.data.nRequests >= 10) {
+              const f = d3.format('.0%');
+              const topMinistryPercentage = d.data.topMinistryCount / d.data.nRequests;
+              line2 = `<p><i>Am häufigsten angefragt:</i> ${d.data.topMinistry} (${f(topMinistryPercentage)} aller Anfragen)</p>`;
+            } else if (d.data.nRequests > 1) {
+              line2 = `<p><i>Am häufigsten angefragt:</i> ${d.data.topMinistry} (${d.data.topMinistryCount} von ${d.data.nRequests} Anfragen)</p>`;
+            } else if (d.data.nRequests === 1) {
+              line2 = `<p><i>Angefragt:</i> ${d.data.topMinistry}</p>`;
+            }
+          }
 
           const left = Math.min(window.innerWidth - 300, event.pageX);
           d3.select('.tooltip-seat')
@@ -218,7 +237,8 @@ export default class SeatChart {
             .html([
               `<div class="above-title">${d.party}</div>`,
               `<h4>${d.data.name}</h4>`,
-              text,
+              line1,
+              line2,
             ].join(''));
         })
         .on('mouseleave', () => {
