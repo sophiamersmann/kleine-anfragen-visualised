@@ -4,9 +4,9 @@
       <h3>{{ body }}&nbsp; <span>({{ years }})</span></h3>
       <div class="text">
         Die Oppositionsparteien
-          <div class="text-wrapper">
+          <div class="tag-group">
             <span
-              class="party"
+              class="tag"
               v-for="(party, i) in oppositionParties"
               :key=i
               :style=party.style
@@ -15,9 +15,9 @@
             </span>
           </div>
           und Regierungparteien
-          <div class="text-wrapper">
+          <div class="tag-group">
             <span
-              class="party"
+              class="tag"
               v-for="(party, i) in rulingParties"
               :key=i
               :style=party.style
@@ -26,8 +26,8 @@
             </span>
           </div>
           haben insgesamt
-          <div class="text-wrapper">
-            <span class="number">{{ nRequests }}</span> Anfragen
+          <div class="tag-group">
+            <span class="highlight">{{ nRequests }}</span> Anfragen
           </div>
           an folgende Instutionen gestellt:
       </div>
@@ -236,28 +236,42 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/style/global';
 
-.popup {
-  background-color: white;
-  border-radius: 50px;
+$line-height: 18px;
 
+.popup {
   position: fixed;
   z-index: 2000;
   top: $popup-offset / 2;
   left: 2 * $popup-offset;
   width: $popup-width;
   height: $popup-height;
+  background-color: white;
+  border-radius: $border-radius-strong;
 
   display: grid;
   grid-template-columns: 1fr $popup-height;
-}
 
-.sidebar {
-  height: $popup-height;
-  padding: $spacing;
-  background-color: $primary-light;
-  border-radius: 50px 0 0 50px;
-  display: flex;
-  flex-direction: column;
+  &.loading {
+    .tag {
+      width: 80px;
+      height: $line-height;
+      background-color: gray;
+      vertical-align: bottom;
+    }
+
+    .highlight {
+      display: inline-block;
+      width: 40px;
+      height: $line-height;
+      background-color: gray;
+      vertical-align: bottom;
+      border-radius: $border-radius-tag;
+    }
+
+    .ministry-legend {
+      visibility: hidden;
+    }
+  }
 }
 
 .chart-ring {
@@ -265,61 +279,49 @@ export default {
   width: $popup-height;
 }
 
-h3 {
-  text-align: center;
-  border-bottom: 1px solid $black;
+.sidebar {
+  height: $popup-height;
+  padding: $spacing;
+  background-color: $primary-light;
+  border-radius: $border-radius-strong 0 0 $border-radius-strong;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    text-align: center;
+    border-bottom: 1px solid $black;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  .text {
+    border: 1px solid $primary-light;
+    line-height: 1.25;
+    margin: $spacing 0;
+  }
 }
 
-.text {
-  border: 1px solid $primary-light;
-  padding: 0.25 * $spacing;
-  line-height: 1.25;
-  margin: 0.5 * $spacing 0;
-}
-
-.number {
-  font-size: 0.9em;
-  font-weight: bold;
-  line-height: 18px;
-}
-
-h3 span {
-  font-weight: normal;
-}
-
-.text-wrapper {
+.tag-group {
   margin-left: 0.5 * $spacing;
-  padding: 2px 0 0.25 * $spacing 0
-}
+  padding: 2px 0 0.25 * $spacing 0;
 
-.party {
-  display: inline-block;
-  padding: 0 5px;
-  border-radius: 20px;
-  font-size: 0.9em;
-  font-weight: bold;
-  white-space: nowrap;
-  line-height: 18px;
-}
+  .tag {
+    display: inline-block;
+    padding: 0 5px;
+    border-radius: 2 * $border-radius-tag;
+    font-size: 0.9rem;
+    font-weight: bold;
+    white-space: nowrap;
+    line-height: $line-height;
+  }
 
-.popup.loading .party {
-  width: 80px;
-  height: 18px;
-  background-color: gray;
-  vertical-align: bottom;
-}
-
-.popup.loading .number {
-  display: inline-block;
-  width: 40px;
-  height: 18px;
-  background-color: gray;
-  vertical-align: bottom;
-  border-radius: 20px;
-}
-
-.popup.loading .ministry-legend {
-  visibility: hidden;
+  .highlight {
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: $line-height;
+  }
 }
 
 .ministry-legend {

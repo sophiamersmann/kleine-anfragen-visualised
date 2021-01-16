@@ -7,3 +7,10 @@ $popup-height: calc(100vh - #{$popup-offset});
 $black: hsl(210, 11%, 15%);
 $primary: hsl(254, 41%, 64%);
 $primary-light: hsl(252, 100%, 98%);
+
+$border-radius-weak: 10px;
+$border-radius-strong: 50px;
+$border-radius-tag: 2 * $border-radius-weak;
+
+$box-shadow-weak: 0 4px 12px rgba(0, 0, 0, 0.08);
+$box-shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.08);

@@ -250,83 +250,105 @@ export default {
 
 main {
   padding: 2 * $spacing;
-  transition: filter 0.2s ease;
   background-color: $primary-light;
-}
+  transition: filter 0.8s ease;
 
-.background {
-  filter: blur(4px);
-  transition: filter 0.2s ease-in;
-  overflow: hidden;
+  &.background {
+    filter: blur(4px);
+    transition: filter 0.8s ease;
+    overflow: hidden;
+  }
 }
 
 .top {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 2fr 3fr;
   grid-gap: $spacing;
-}
-
-h1 {
-  text-align: center;
-  border-bottom: 1px solid $black;
 }
 
 .introduction {
   line-height: 1.5;
+
+  h1 {
+    border-bottom: 1px solid $black;
+    text-align: center;
+  }
+
+  .p {
+    padding: 0.5 * $spacing 0;
+    text-align: justify;
+  }
+
+  .legend {
+    margin: 0.5 * $spacing 0;
+    padding: 0.5 * $spacing $spacing * 2;
+    background-color: white;
+    border-radius: $border-radius-weak;
+
+    .legend-line--chart {
+      display: inline-block;
+      margin-right: 0.5 * $spacing;
+    }
+  }
 }
 
-.introduction .p {
-  padding: 0.25 * $spacing;
-  border-radius: 10px;
-  text-align: justify;
+.tiles-bundestag {
+  .election-period {
+    margin: $spacing;
+  }
 }
 
-.legend-line--chart {
-  display: inline-block;
-  margin-right: 0.5 * $spacing;
+.tiles-landtage {
+  .row-header {
+    position: sticky;
+    top: 0;
+    padding: $spacing 0;
+    background-color: white;
+    border-radius: $border-radius-weak;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .row {
+    margin: $spacing 0;
+    display: grid;
+    grid-gap: $spacing;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .col-1 {
+    grid-column: 1 / 2;
+  }
+
+  .col-2 {
+    grid-column: 2 / 3;
+  }
+
+  .col-3 {
+    grid-column: 3 / 4;
+  }
 }
 
-.introduction .legend {
-  background-color: white;
-  margin: 0.5 * $spacing 0;
-  padding: 0.25 * $spacing $spacing * 2;
-  border-radius: 10px;
-}
+.tooltip {
+  position: absolute;
+  width: 300px;
+  background: white;
+  z-index: 3000;
+  pointer-events: none;
+  opacity: 0;
+  padding: 0.25 * $spacing 0.5 * $spacing;
+  box-shadow: $box-shadow-weak;
+  border-left: 5px solid $black;
+  font-size: 0.9rem;
 
-.tiles-bundestag .election-period {
-  margin: $spacing;
-}
+  .above-title,
+  .note {
+    font-size: 0.7rem;
+  }
 
-.tiles .row {
-  margin: $spacing 0;
-  display: grid;
-  grid-gap: $spacing / 2;
-}
-
-.tiles-landtage .row-header {
-  text-align: center;
-  position: sticky;
-  background-color: white;
-  padding: $spacing 0;
-  border-radius: 10px;
-  top: 0;
-  font-weight: bold;
-}
-
-.tiles-landtage .row {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.tiles-landtage .col-1 {
-  grid-column: 1 / 2;
-}
-
-.tiles-landtage .col-2 {
-  grid-column: 2 / 3;
-}
-
-.tiles-landtage .col-3 {
-  grid-column: 3 / 4;
+  p {
+    margin: 0.125 * $spacing 0;
+  }
 }
 
 .overlay {
@@ -359,35 +381,5 @@ h1 {
 .scale-leave-to {
   transform: scale(0.9);
   opacity: 0;
-}
-
-.tooltip {
-  position: absolute;
-  width: 300px;
-  background: white;
-  left: 10px;
-  top: 10px;
-  z-index: 3000;
-  pointer-events: none;
-  opacity: 0;
-
-  font-size: 0.9em;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  padding: 0.25 * $spacing 0.5 * $spacing;
-
-  border-left: 5px solid $black;
-}
-
-.tooltip .above-title {
-  font-size: 0.8rem;
-}
-
-.tooltip .note {
-  font-size: 0.7rem;
-}
-
-.tooltip p {
-  margin: 0.125 * $spacing 0;
 }
 </style>

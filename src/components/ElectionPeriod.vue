@@ -71,28 +71,28 @@ export default {
 
 .election-period {
   background-color: white;
-  border-radius: 50px;
+  border-radius: $border-radius-strong;
   padding: $spacing;
   border: 1px solid white;
-  transition: all .2s;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
+  box-shadow: $box-shadow-weak;
+  transition: all 0.2s;
 
-.election-period:hover {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-  border-color: $primary;
+  &:hover {
+    box-shadow: $box-shadow-strong;
+    border-color: $primary;
+  }
 }
 
 .caption {
-  text-align: center;
   margin-top: 0.5 * $spacing;
-}
+  text-align: center;
 
-.caption h3 span {
-  font-weight: normal;
-}
+  h3 span {
+    font-weight: normal;
+  }
 
-.caption p {
-  font-size: 0.9rem;
+  p {
+    font-size: 0.9rem;
+  }
 }
 </style>

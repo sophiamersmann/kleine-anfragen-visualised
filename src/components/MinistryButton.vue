@@ -75,13 +75,13 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/style/global';
 
-button {
+.ministry-button {
   width: 100%;
   margin: $spacing / 4 0;
   padding: 0.25 * $spacing;
 
   border: 1px solid white;
-  border-radius: 10px;
+  border-radius: $border-radius-weak;
 
   display: grid;
   grid-template-columns: 1fr 50px;
@@ -92,27 +92,27 @@ button {
   transition: all .2s;
 
   font-size: 0.9rem;
-}
 
-button:first-of-type {
-  margin-top: 0;
-}
+  &:first-of-type {
+    margin-top: 0;
+  }
 
-button:hover {
-  border-color: $primary;
-}
+  &:hover {
+    border-color: $primary;
+  }
 
-button.active {
-  border-color: $primary;
-  font-weight: bold;
-}
+  &.active {
+    border-color: $primary;
+    font-weight: bold;
+  }
 
-.label {
-  justify-self: start;
-  text-align: left;
-}
+  .label {
+    justify-self: start;
+    text-align: left;
+  }
 
-.chart {
-  justify-self: end;
+  .chart {
+    justify-self: end;
+  }
 }
 </style>
