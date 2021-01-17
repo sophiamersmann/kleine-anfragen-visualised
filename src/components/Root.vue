@@ -393,7 +393,7 @@ main {
 
     @include max-width($bp-xl) {
       grid-template-rows: auto;
-      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     }
 
     @include max-width($bp-2sm) {
