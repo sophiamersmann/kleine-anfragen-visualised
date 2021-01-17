@@ -36,17 +36,17 @@ export const COLOR = new Map([
   ['BVB/FW', 'hsl(28, 97%, 48%)'],
   ['FW', 'hsl(28, 97%, 48%)'],
   ['Freie Wähler', 'hsl(28, 97%, 48%)'],
-  ['FDP/DVP', 'hsl(43, 91%, 68%)'],
-  ['FDP', 'hsl(48, 81%, 62%)'],
+  ['FDP/DVP', 'hsl(53, 94%, 45%)'],
+  ['FDP', 'hsl(53, 94%, 45%)'],
   ['CSU', 'hsl(0, 0%, 30%)'],
   ['CDU/CSU', 'hsl(0, 0%, 30%)'],
   ['CDU', 'hsl(0, 0%, 30%)'],
   ['SPD', 'hsl(4, 61%, 45%)'],
-  ['SSW', 'hsl(242, 13%, 45%)'],
+  ['SSW', 'hsl(215, 19%, 35%)'],
   ['Bündnis 90/Die Grünen', 'hsl(107, 44%, 45%)'],
   ['Piraten', 'hsl(28, 97%, 48%)'],
   ['Die Linke', 'hsl(283, 30%, 48%)'],
-  ['fraktionslos', 'hsl(242, 13%, 45%)'],
+  ['fraktionslos', 'hsl(215, 19%, 35%)'],
 ]);
 
 export const LIGHT_COLOR = new Map([
@@ -59,17 +59,17 @@ export const LIGHT_COLOR = new Map([
   ['BVB/FW', 'hsl(28, 97%, 86%)'],
   ['FW', 'hsl(28, 97%, 86%)'],
   ['Freie Wähler', 'hsl(28, 97%, 86%)'],
-  ['FDP/DVP', 'hsl(43, 91%, 86%)'],
-  ['FDP', 'hsl(48, 87%, 91%)'],
+  ['FDP/DVP', 'hsl(52, 94%, 86%)'],
+  ['FDP', 'hsl(52, 94%, 86%)'],
   ['CSU', 'hsl(0, 0%, 86%)'],
   ['CDU/CSU', 'hsl(0, 0%, 86%)'],
   ['CDU', 'hsl(0, 0%, 86%)'],
   ['SPD', 'hsl(4, 81%, 86%)'],
-  ['SSW', 'hsl(245, 13%, 81%)'],
+  ['SSW', 'hsl(214, 32%, 91%)'],
   ['Bündnis 90/Die Grünen', 'hsl(106, 44%, 86%)'],
   ['Piraten', 'hsl(28, 97%, 86%)'],
   ['Die Linke', 'hsl(281, 31%, 86%)'],
-  ['fraktionslos', 'hsl(245, 13%, 81%)'],
+  ['fraktionslos', 'hsl(214, 32%, 91%)'],
 ]);
 
 export const LABEL_POSITIONS = new Map([
