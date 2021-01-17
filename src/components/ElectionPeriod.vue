@@ -4,7 +4,8 @@
       :id=seatChartId
       class="chart chart-seat" />
     <div class="caption">
-      <h3>{{ body }} {{ term }}&nbsp; <span>({{ years }})</span></h3>
+      <span class="body">{{ body }}</span>&nbsp;
+      <span class="years">({{ years }})</span>
       <p>
         Durchsuche <b>{{ nRequests }}</b> gesammelte Anfragen
       </p>
@@ -104,8 +105,11 @@ export default {
   margin-top: 0.5 * $spacing;
   text-align: center;
 
-  h3 span {
-    font-weight: normal;
+  .body {
+    font-weight: bold;
+  }
+
+  .years {
     white-space: nowrap;
   }
 
