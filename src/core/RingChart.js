@@ -232,28 +232,7 @@ export default class RingChart {
         .attr('r', (party) => y(party))
         .attr('fill', 'transparent')
         .attr('stroke-width', 1.5)
-        .attr('stroke', (party) => LIGHT_COLOR.get(party.split(';')[0])))
-      .call((g) => g
-        .append('path')
-        .attr('id', (_, i) => `party-text-path-${i}`)
-        .attr('d', (party) => {
-          const r = y(party) + 2;
-          return [
-            `M${d3.pointRadial(x(this.monthKeys[0]), r)}`,
-            `A${r},${r} 0,0,1 ${d3.pointRadial(x(this.monthKeys[5]), r)}`,
-          ].join(' ');
-        })
-        .attr('stroke', 'none')
-        .attr('fill', 'none'))
-      .call((g) => g
-        .append('text')
-        .append('textPath')
-        .attr('xlink:href', (_, i) => `#party-text-path-${i}`)
-        .attr('fill', (party) => COLOR.get(party.split(';')[0]))
-        .attr('startOffset', 0.5)
-        .style('font-size', '0.8em')
-        .style('font-weight', 'bold')
-        .text((party) => (party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party)));
+        .attr('stroke', (party) => LIGHT_COLOR.get(party.split(';')[0])));
 
     const xAxis = (grid) => grid
       .call((g) => g.selectAll('g')
@@ -304,8 +283,8 @@ export default class RingChart {
             `x-tick--label-${d.isMajor ? 'major' : 'minor'}`,
             `x-tick--label-${d.x}`,
           ].join(' '))
-          .classed('x-tick--label-visible', (d) => d.isVisible) // && !d.isOrigin
-          .attr('opacity', (d) => d.isVisible) // +( && !d.isOrigin)
+          .classed('x-tick--label-visible', (d) => d.isVisible)
+          .attr('opacity', (d) => d.isVisible)
           .append('textPath')
           .attr('startOffset', 5)
           .attr('xlink:href', (_, i) => `#x-tick--text-path-${i}`)
