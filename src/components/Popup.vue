@@ -100,8 +100,6 @@ export default {
       dates, parties, maxValue, selectedRequests,
     } = this;
 
-    console.log('h', ringChartDiv.clientHeight);
-
     this.ringChart = new RingChart(
       `#${ringChartDiv.id}`,
       { dates, parties, maxValue },
@@ -126,7 +124,6 @@ export default {
       if (this.requests === null || this.ministries === null) return '';
       const selectedMinistry = this.selectedMinistry !== null
         ? this.selectedMinistry : this.ministries[0].name;
-      console.log('sel', selectedMinistry);
       return this.requests.filter((d) => d.ministries[0] === selectedMinistry);
     },
     nRequests() {
