@@ -80,18 +80,33 @@ export default class RingChart {
   drawLegend() {
     const offset = 30;
     const n = this.maxValue;
-    const labels = [1, 0.2 * n, 0.4 * n, 0.6 * n, 0.8 * n, this.maxValue]
-      .map((d, i) => ({
-        value: d,
-        dx: i * 1.25 * this.config.circleRadius,
-        label: i === 0 ? `Wenige [${d}]` : `Viele Anfragen [${d}]`,
-      }));
+
+    const steps = n < 5 ? d3.range(1, n + 1) : [1, 0.25 * n, 0.5 * n, 0.75 * n, n];
+    const markers = steps.map((d, i) => ({
+      value: d,
+      dx: i * 1.5 * this.config.circleRadius,
+    }));
+
+    let labels = markers
+      .map((d, i) => {
+        const e = d;
+        if (n < 5) {
+          e.label = i === n - 1 ? `${i + 1} Anfragen` : i + 1;
+        } else {
+          e.label = i === 0 ? `Wenige (${e.value})` : `Viele Anfragen (${e.value})`;
+        }
+        return e;
+      });
+
+    if (n >= 5) {
+      labels = [labels[0], labels[labels.length - 1]];
+    }
 
     const legend = this.svg.append('g')
       .attr('class', 'legend');
 
     legend.selectAll('.g-label')
-      .data([labels[0], labels[labels.length - 1]])
+      .data(labels)
       .join('g')
       .attr('class', 'g-label')
       .attr('transform', (d) => `translate(${d.dx}, 0)`)
@@ -107,11 +122,11 @@ export default class RingChart {
         .attr('x', -this.width / 2 + offset + 2)
         .attr('y', this.height / 2 - offset - 25)
         .attr('dominant-baseline', 'hanging')
-        .style('font-size', '0.7em')
+        .style('font-size', '0.7rem')
         .text((d) => d.label));
 
     legend.selectAll('.g-marker')
-      .data(labels)
+      .data(markers)
       .join('g')
       .attr('class', 'g-marker')
       .attr('transform', (d) => `translate(${d.dx}, 0)`)
