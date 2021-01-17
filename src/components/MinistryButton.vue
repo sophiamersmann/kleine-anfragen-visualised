@@ -85,7 +85,7 @@ export default {
 
   display: grid;
   grid-template-columns: 1fr 50px;
-  grid-gap: 0.5 * $spacing;
+  gap: 0.5 * $spacing;
   align-items: center;
 
   background-color: white;

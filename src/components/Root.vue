@@ -308,7 +308,7 @@ main {
 .top {
   display: grid;
   grid-template-columns: 2fr 3fr;
-  grid-gap: $spacing;
+  gap: $spacing;
 
   @include max-width($bp-xl) {
     display: block;
@@ -328,7 +328,7 @@ main {
     @include max-width($bp-xl) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-gap: $spacing;
+      gap: $spacing;
     }
 
     @include max-width($bp-lg) {
@@ -406,7 +406,7 @@ main {
     display: grid;
     grid-template-rows: repeat(15, 1fr);
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: $spacing;
+    gap: $spacing;
 
     @include max-width($bp-xl) {
       grid-template-rows: auto;

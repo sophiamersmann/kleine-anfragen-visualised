@@ -12,8 +12,8 @@ export default class MinistryChart {
     this.sortedParties = sortedParties;
 
     this.svg = null;
-    this.width = 200;
-    this.height = 100;
+    this.width = 50;
+    this.height = 25;
 
     this.nRequests = null;
     this.parties = null;
@@ -31,7 +31,10 @@ export default class MinistryChart {
   setUpSVG() {
     this.svg = d3.select(this.selector)
       .append('svg')
-      .attr('viewBox', [0, 0, this.width, this.height]);
+      .attr('viewBox', [0, 0, this.width, this.height])
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .attr('overlap', 'visible');
     return this;
   }
 
@@ -88,9 +91,9 @@ export default class MinistryChart {
       .attr('fill', color['gray-300']);
 
     this.svg.append('text')
-      .attr('y', this.height / 2 - 5)
-      .attr('fill', 'black')
-      .style('font-size', '3rem')
+      .attr('y', this.height / 2 - 2)
+      .attr('fill', color.black)
+      .style('font-size', '0.7rem')
       .style('font-weight', 'bold')
       .text(this.nRequests);
 
