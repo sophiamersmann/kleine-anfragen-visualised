@@ -4,7 +4,7 @@
       :id=seatChartId
       class="chart chart-seat" />
     <div class="caption">
-      <h3>{{ body }}&nbsp; <span>({{ years }})</span></h3>
+      <h3>{{ body }} {{ term }}&nbsp; <span>({{ years }})</span></h3>
       <p>
         Durchsuche <b>{{ nRequests }}</b> gesammelte Anfragen
       </p>
@@ -15,6 +15,7 @@
 <script>
 import SeatChart from '@/core/SeatChart';
 import { getTermId, displayTimeRange } from '@/core/utils';
+import { LABEL_POSITIONS } from '@/core/CONSTANTS';
 
 export default {
   name: 'ElectionPeriod',
@@ -39,7 +40,13 @@ export default {
   mounted() {
     const chartDiv = this.getChartDiv();
     const innerRadius = this.body === 'Bundestag' ? 50 : 30;
-    this.seatChart = new SeatChart(`#${chartDiv.id}`, innerRadius)
+
+    let labelPositions;
+    if (LABEL_POSITIONS.has(this.name)) {
+      labelPositions = LABEL_POSITIONS.get(this.name);
+    }
+
+    this.seatChart = new SeatChart(`#${chartDiv.id}`, innerRadius, labelPositions)
       .data(this.requestsPerHead)
       .draw();
   },

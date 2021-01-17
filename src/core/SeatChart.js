@@ -4,7 +4,7 @@ import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import { computeSeatPositions } from '@/core/utils';
 
 export default class SeatChart {
-  constructor(selector, innerRadius) {
+  constructor(selector, innerRadius, labelPositions) {
     this.selector = selector;
 
     // data
@@ -22,6 +22,7 @@ export default class SeatChart {
       spacing: 1,
       innerRadius,
     };
+    this.labelPositions = labelPositions;
 
     // scales
     this.scales = {
@@ -42,6 +43,12 @@ export default class SeatChart {
   data(requestsPerHead) {
     this.requestsPerHead = requestsPerHead;
     this.requestsPerHeadMap = d3.group(this.requestsPerHead, (d) => d.party);
+
+    if (this.labelPositions === undefined) {
+      this.labelPositions = Array.from(this.requestsPerHeadMap.keys())
+        .map((party) => ({ party, row: 0 }));
+    }
+
     return this;
   }
 
@@ -122,32 +129,50 @@ export default class SeatChart {
   }
 
   drawAxis() {
-    const data = this.zones.map((d) => {
-      const e = d;
-      e.middleAngle = (e.startAngle + e.endAngle) / 2;
-      e.point = d3.pointRadial(d.middleAngle + 0.5 * Math.PI, d.outerRadius + 10);
-      return e;
-    });
+    const parties = this.labelPositions.map((d) => d.party);
+    const row = new Map(this.labelPositions.map((d) => [d.party, d.row]));
+    const data = this.zones
+      .filter((d) => parties.includes(d.party))
+      .map((d, i) => {
+        const e = d;
+        e.labelStartAngle = i === 0 ? -Math.PI + 0.01 : d.startAngle;
+        e.labelRadius = d.outerRadius + 5 + row.get(d.party) * 12;
+        return e;
+      });
 
     this.svg.append('g')
       .attr('class', 'axis')
-      .selectAll('.g-axis-small')
+      .selectAll('g')
       .data(data)
       .join('g')
-      .attr('class', 'g-axis-small')
+      .call((g) => g
+        .append('line')
+        .attr('transform', 'rotate(90)')
+        .attr('x1', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.outerRadius)[0])
+        .attr('y1', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.outerRadius)[1])
+        .attr('x2', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.labelRadius + 8)[0])
+        .attr('y2', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.labelRadius + 8)[1])
+        .attr('stroke', '#000')
+        .attr('stroke-opacity', 0.2))
+      .call((g) => g
+        .append('path')
+        .attr('id', (_, i) => `${this.selector}--x-tick--text-path-${i}`)
+        .attr('stroke', 'none')
+        .attr('fill', 'none')
+        .attr('transform', 'rotate(90)')
+        .attr('d', (d) => {
+          const r = d.labelRadius;
+          return [
+            `M${d3.pointRadial(d.labelStartAngle, r)}`,
+            `A${r},${r} 0,0,1 ${d3.pointRadial(0, r)}`,
+          ].join(' ');
+        }))
       .call((g) => g
         .append('text')
-        .attr('x', (d) => d.point[0])
-        .attr('y', (d) => d.point[1])
-        .attr('filter', (d) => {
-          const idx = SORTED_PARTIES.findIndex((p) => p === d.party);
-          return this.isOpposition.get(d.party) ? `url(#bg-filter-${idx})` : 'none';
-        })
-        .attr('font-size', '0.8em')
+        .attr('font-size', '0.7rem')
+        .append('textPath')
+        .attr('xlink:href', (_, i) => `#${this.selector}--x-tick--text-path-${i}`)
         .style('font-weight', (d) => (this.isOpposition.get(d.party) ? 'bold' : 'normal'))
-        .attr('text-anchor', (d) => (d.middleAngle + 0.5 * Math.PI < 0 ? 'end' : 'start'))
-        .attr('dominant-baseline', 'middle')
-        .attr('fill', (d) => COLOR.get(d.party))
         .text((d) => (d.party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : d.party)));
 
     return this;
