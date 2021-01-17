@@ -287,6 +287,7 @@ $line-height: 18px;
   h3 {
     text-align: center;
     border-bottom: 1px solid $black;
+    padding-bottom: 0.5 * $spacing;
 
     span {
       font-weight: normal;
@@ -325,6 +326,6 @@ $line-height: 18px;
   width: 50px;
   height: 20px;
   margin-top: -20px;
-  align-self: end;
+  align-self: flex-end;
 }
 </style>

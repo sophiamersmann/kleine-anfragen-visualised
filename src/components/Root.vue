@@ -363,8 +363,11 @@ main {
 
     .legend-line {
       display: flex;
-      gap: 0.5 * $spacing;
       align-items: baseline;
+    }
+
+    .legend-line--chart {
+      margin-right: 0.5 * $spacing;
     }
 
     .legend-line--label {
