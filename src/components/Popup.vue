@@ -78,6 +78,7 @@ export default {
   async created() {
     window.addEventListener('resize', this.onResize);
     await this.fetchRequestsData();
+    this.requests = null;
   },
   mounted() {
     const legendDiv = this.$el.querySelector('.ministry-legend');
@@ -252,7 +253,7 @@ $line-height: 18px;
     .tag {
       width: 80px;
       height: $line-height;
-      background-color: gray;
+      background-color: $gray-300;
       vertical-align: bottom;
     }
 
@@ -260,7 +261,7 @@ $line-height: 18px;
       display: inline-block;
       width: 40px;
       height: $line-height;
-      background-color: gray;
+      background-color: $gray-300;
       vertical-align: bottom;
       border-radius: $border-radius-tag;
     }

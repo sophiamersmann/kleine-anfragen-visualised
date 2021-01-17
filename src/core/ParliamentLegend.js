@@ -1,5 +1,7 @@
 import d3 from '@/assets/d3';
 
+import color from '@/assets/style/_global.scss';
+
 export default class ParliamentLegend {
   constructor(selector, category, scale) {
     this.selector = selector;
@@ -22,18 +24,17 @@ export default class ParliamentLegend {
         this.width,
         this.height])
       .attr('width', this.width)
-      .attr('height', this.height)
-      .attr('overflow', 'visible');
+      .attr('height', this.height);
 
     const { category: c } = this;
 
     this.svg.append('circle')
       .attr('r', this.radius)
-      .attr('fill', (c === '0' || c === '<1 per year' ? 'whitesmoke' : 'lightgray'));
+      .attr('fill', color['gray-200']);
 
     this.svg.append('circle')
       .attr('r', this.scale(c))
-      .attr('fill', 'gray');
+      .attr('fill', color['gray-500']);
 
     return this;
   }

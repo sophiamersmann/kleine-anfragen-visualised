@@ -1,5 +1,7 @@
 import d3 from '@/assets/d3';
 
+import color from '@/assets/style/_global.scss';
+
 export default class MinistryLegend {
   constructor(selector) {
     this.selector = selector;
@@ -22,34 +24,35 @@ export default class MinistryLegend {
       .attr('overflow', 'visible');
 
     const x = 0;
+    const c = color.black;
 
     this.svg.append('line')
       .attr('x1', x)
       .attr('y1', 0.35 * this.height)
       .attr('x2', x)
       .attr('y2', this.height)
-      .attr('stroke', 'gray');
+      .attr('stroke', c);
 
     this.svg.append('line')
       .attr('x1', x - 3)
       .attr('y1', this.height - 5)
       .attr('x2', x)
       .attr('y2', this.height)
-      .attr('stroke', 'gray');
+      .attr('stroke', c);
 
     this.svg.append('line')
       .attr('x1', x + 3)
       .attr('y1', this.height - 5)
       .attr('x2', x)
       .attr('y2', this.height)
-      .attr('stroke', 'gray');
+      .attr('stroke', c);
 
     this.svg.append('text')
       .attr('x', x)
       .attr('y', 0.3 * this.height - 2)
-      .attr('fill', 'gray')
+      .attr('fill', c)
       .attr('text-anchor', 'middle')
-      .style('font-size', '0.7em')
+      .style('font-size', '0.7rem')
       .text('Anzahl der Anfragen');
 
     return this;

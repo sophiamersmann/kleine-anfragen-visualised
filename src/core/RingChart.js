@@ -3,6 +3,8 @@ import d3 from '@/assets/d3';
 import { COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import forceClusterCollision from '@/core/forceClusterCollision';
 
+import color from '@/assets/style/_global.scss';
+
 export default class RingChart {
   constructor(selector, data) {
     this.selector = selector;
@@ -120,7 +122,7 @@ export default class RingChart {
         .attr('y1', this.height / 2 - offset)
         .attr('x2', -this.width / 2 + offset)
         .attr('y2', this.height / 2 - offset - 25)
-        .attr('stroke', 'black'))
+        .attr('stroke', color.black))
       .call((g) => g
         .append('text')
         .attr('x', -this.width / 2 + offset + 2)
@@ -139,13 +141,13 @@ export default class RingChart {
         .attr('cx', -this.width / 2 + offset)
         .attr('cy', this.height / 2 - offset)
         .attr('r', this.config.circleRadius)
-        .attr('fill', 'lightgray'))
+        .attr('fill', color['gray-200']))
       .call((g) => g
         .append('circle')
         .attr('cx', -this.width / 2 + offset)
         .attr('cy', this.height / 2 - offset)
         .attr('r', (d) => this.scales.c(d.value))
-        .attr('fill', 'gray'));
+        .attr('fill', color['gray-500']));
 
     return this;
   }
@@ -205,14 +207,6 @@ export default class RingChart {
       .on('click', () => this.resetInteractions())
       .on('mouseleave', () => this.resetInteractions());
 
-    // this.svg.append('rect')
-    //   .attr('x', -this.width / 2)
-    //   .attr('y', -this.height / 2)
-    //   .attr('width', this.width)
-    //   .attr('height', this.height)
-    //   .attr('fill', 'steelblue')
-    //   .attr('fill-opacity', 0.1);
-
     return this;
   }
 
@@ -250,8 +244,7 @@ export default class RingChart {
       .call((g) => g
         .append('circle')
         .attr('r', (party) => y(party))
-        .attr('fill', 'transparent')
-        .attr('stroke-width', 1.5)
+        .attr('fill', 'none')
         .attr('stroke', (party) => LIGHT_COLOR.get(party.split(';')[0])));
 
     const xAxis = (grid) => grid
@@ -265,7 +258,7 @@ export default class RingChart {
           offset: date.getMonth() === 0 || i === 0 ? 3 * unit : unit,
         })))
         .join('g')
-        .attr('font-size', 11)
+        .attr('font-size', '0.7rem')
         .call((tick) => tick
           .append('path')
           .attr('class', (d) => [
@@ -275,8 +268,7 @@ export default class RingChart {
           ].join(' '))
           .classed('x-tick--line-origin', (d) => d.isOrigin)
           .classed('x-tick--line-visible', (d) => d.isVisible)
-          .attr('stroke', '#000')
-          .attr('stroke-opacity', 0.2)
+          .attr('stroke', color['gray-300'])
           .attr('stroke-dasharray', (d) => (d.isOrigin ? 'none' : '2 4'))
           .attr('opacity', (d) => +d.isVisible)
           .attr('d', (d, i) => [
@@ -315,9 +307,8 @@ export default class RingChart {
             'x-tick--arc',
             `x-tick--arc-${d.x}`,
           ].join(' '))
-          .attr('fill', 'transparent')
-          .attr('stroke', '#000')
-          .attr('stroke-opacity', 0.2)
+          .attr('fill', 'none')
+          .attr('stroke', color['gray-300'])
           .attr('stroke-dasharray', '2 4')
           .attr('opacity', 0)
           .attr('d', (d) => {
@@ -354,9 +345,8 @@ export default class RingChart {
       .attr('x', -this.width / 2 + 10)
       .attr('y', -this.height / 2 + 10)
       .attr('dominant-baseline', 'hanging')
-      .attr('fill', '#000')
       .attr('opacity', (d) => +(d.type === 'interact'))
-      .style('font-size', '0.8em')
+      .style('font-size', '0.8rem')
       .style('font-style', 'italic')
       .text((d) => d.text);
     return this;
@@ -465,7 +455,7 @@ export default class RingChart {
       .append('text')
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
-      .attr('fill', (d) => (d.party === 'mixed' ? 'black' : COLOR.get(d.party.split(';')[0])))
+      .attr('fill', (d) => COLOR.get(d.party.split(';')[0]))
       .attr('transform', 'translate(0,2)') // * Magic value to center question mark
       .style('font-size', questionSize)
       .style('font-weight', 'bold')

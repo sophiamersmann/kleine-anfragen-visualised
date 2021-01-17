@@ -2,6 +2,8 @@ import d3 from '@/assets/d3';
 
 import { COLOR } from '@/core/CONSTANTS';
 
+import color from '@/assets/style/_global.scss';
+
 export default class MinistryChart {
   constructor(selector, requests, maxRequests, sortedParties) {
     this.selector = selector;
@@ -48,7 +50,7 @@ export default class MinistryChart {
 
   hideColors() {
     this.svg.selectAll('.rect-party')
-      .attr('fill', 'lightgray');
+      .attr('fill', color['gray-300']);
     return this;
   }
 
@@ -83,12 +85,12 @@ export default class MinistryChart {
       .attr('y', this.height / 2)
       .attr('width', (d) => (d.count / this.maxRequests) * this.width)
       .attr('height', this.height / 2)
-      .attr('fill', 'lightgray');
+      .attr('fill', color['gray-300']);
 
     this.svg.append('text')
       .attr('y', this.height / 2 - 5)
       .attr('fill', 'black')
-      .style('font-size', '3em')
+      .style('font-size', '3rem')
       .style('font-weight', 'bold')
       .text(this.nRequests);
 

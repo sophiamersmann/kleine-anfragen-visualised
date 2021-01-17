@@ -8,6 +8,18 @@ $black: hsl(210, 11%, 15%);
 $primary: hsl(254, 41%, 64%);
 $primary-light: hsl(252, 100%, 98%);
 
+// grays (from tailwind)
+$gray-50: #FAFAFA;
+$gray-100: #F4F4F5;
+$gray-200: #E4E4E7;
+$gray-300: #D4D4D8;
+$gray-400: #A1A1AA;
+$gray-500: #71717A;
+$gray-600: #52525B;
+$gray-700: #3F3F46;
+$gray-800: #27272A;
+$gray-900: #18181B;
+
 $border-radius-weak: 10px;
 $border-radius-strong: 50px;
 $border-radius-tag: 2 * $border-radius-weak;
@@ -27,4 +39,18 @@ $bp-2xl: 1538px;
   @media screen and (max-width: $bp) {
     @content;
   }
+}
+
+:export {
+  black: $black;
+  gray-50: $gray-50;
+  gray-100: $gray-100;
+  gray-200: $gray-200;
+  gray-300: $gray-300;
+  gray-400: $gray-400;
+  gray-500: $gray-500;
+  gray-600: $gray-600;
+  gray-700: $gray-700;
+  gray-800: $gray-800;
+  gray-900: $gray-900;
 }

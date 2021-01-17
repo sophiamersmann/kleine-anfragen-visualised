@@ -3,6 +3,8 @@ import d3 from '@/assets/d3';
 import { SORTED_PARTIES, COLOR, LIGHT_COLOR } from '@/core/CONSTANTS';
 import { computeSeatPositions } from '@/core/utils';
 
+import color from '@/assets/style/_global.scss';
+
 export default class SeatChart {
   constructor(selector, innerRadius, labelPositions) {
     this.selector = selector;
@@ -57,35 +59,8 @@ export default class SeatChart {
       .setUpScales()
       .prepareData()
       .setUpSVG()
-      .createDefs()
       .drawAxis()
       .drawData();
-  }
-
-  createDefs() {
-    this.svg.append('defs')
-      .selectAll('filter')
-      .data(SORTED_PARTIES)
-      .join('filter')
-      .attr('id', (_, i) => `bg-filter-${i}`)
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('width', 1)
-      .attr('height', 1)
-      .call((f) => f
-        .append('feFlood')
-        .attr('flood-color', (d) => LIGHT_COLOR.get(d))
-        .attr('result', 'bg'))
-      .call((f) => f
-        .append('feMerge')
-        .call((m) => m
-          .append('feMergeNode')
-          .attr('in', 'bg'))
-        .call((m) => m
-          .append('feMergeNode')
-          .attr('in', 'SourceGraphic')));
-
-    return this;
   }
 
   setUpScales() {
@@ -152,8 +127,7 @@ export default class SeatChart {
         .attr('y1', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.outerRadius)[1])
         .attr('x2', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.labelRadius + 8)[0])
         .attr('y2', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.labelRadius + 8)[1])
-        .attr('stroke', '#000')
-        .attr('stroke-opacity', 0.2))
+        .attr('stroke', color['gray-300']))
       .call((g) => g
         .append('path')
         .attr('id', (_, i) => `${this.selector}--x-tick--text-path-${i}`)
@@ -221,7 +195,7 @@ export default class SeatChart {
         .attr('r', seatRadius)
         .attr('fill', (d) => (
           d.category === '0' || d.category === '<1 per year'
-            ? 'whitesmoke' : LIGHT_COLOR.get(d.party)))
+            ? color['gray-100'] : LIGHT_COLOR.get(d.party)))
         .attr('fill-opacity', 1)
         .on('mousemove', (event, d) => {
           if (d.category === '0') return;
@@ -300,16 +274,7 @@ export default class SeatChart {
       .attr('y1', 0)
       .attr('x2', this.width / 2 - 20)
       .attr('y2', 0)
-      .attr('stroke', '#000')
-      .attr('stroke-opacity', 0.2);
-
-    // this.svg.append('rect')
-    //   .attr('x', -this.width / 2)
-    //   .attr('y', -this.height)
-    //   .attr('width', this.width)
-    //   .attr('height', this.height)
-    //   .attr('fill', 'hsl(0, 0%, 46%)')
-    //   .attr('fill-opacity', 0.1);
+      .attr('stroke', color['gray-300']);
 
     return this;
   }

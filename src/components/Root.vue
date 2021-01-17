@@ -445,7 +445,8 @@ main {
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: $gray-500;
+  opacity: 0.2;
 
   position: fixed;
   z-index: 1000;
