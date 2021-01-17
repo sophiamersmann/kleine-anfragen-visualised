@@ -78,7 +78,6 @@ export default {
   async created() {
     window.addEventListener('resize', this.onResize);
     await this.fetchRequestsData();
-    this.requests = null;
   },
   mounted() {
     const legendDiv = this.$el.querySelector('.ministry-legend');
