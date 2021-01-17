@@ -97,10 +97,18 @@ export default {
   justify-content: flex-end;
   align-items: center;
 
+  @include max-width($bp-lg) {
+    pointer-events: none;
+  }
+
   &:hover {
     box-shadow: $box-shadow-strong;
     border-color: $primary;
     cursor: pointer;
+
+    @include max-width($bp-lg) {
+      cursor: auto;
+    }
   }
 }
 

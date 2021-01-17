@@ -248,6 +248,11 @@ $line-height: 18px;
   display: grid;
   grid-template-columns: 1fr $popup-height;
 
+  @include max-width($bp-xl) {
+    width: calc(100vw - #{$popup-offset});
+    left: $popup-offset / 2;
+  }
+
   &.loading {
     .tag {
       width: 80px;
