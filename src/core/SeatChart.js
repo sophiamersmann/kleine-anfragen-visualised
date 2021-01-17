@@ -127,7 +127,7 @@ export default class SeatChart {
         .attr('y1', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.outerRadius)[1])
         .attr('x2', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.labelRadius + 8)[0])
         .attr('y2', (d) => d3.pointRadial(d.labelStartAngle - 0.01, d.labelRadius + 8)[1])
-        .attr('stroke', color['gray-300']))
+        .attr('stroke', color.gray300))
       .call((g) => g
         .append('path')
         .attr('id', (_, i) => `${this.selector}--x-tick--text-path-${i}`)
@@ -195,7 +195,7 @@ export default class SeatChart {
         .attr('r', seatRadius)
         .attr('fill', (d) => (
           d.category === '0' || d.category === '<1 per year'
-            ? color['gray-100'] : LIGHT_COLOR.get(d.party)))
+            ? color.gray100 : LIGHT_COLOR.get(d.party)))
         .attr('fill-opacity', 1)
         .on('mousemove', (event, d) => {
           if (d.category === '0') return;
@@ -274,7 +274,7 @@ export default class SeatChart {
       .attr('y1', 0)
       .attr('x2', this.width / 2 - 20)
       .attr('y2', 0)
-      .attr('stroke', color['gray-300']);
+      .attr('stroke', color.gray300);
 
     return this;
   }

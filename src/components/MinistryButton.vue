@@ -104,6 +104,7 @@ export default {
   &.active {
     border-color: $primary;
     font-weight: bold;
+    outline: none;
   }
 
   .label {

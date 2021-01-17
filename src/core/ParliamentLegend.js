@@ -30,11 +30,11 @@ export default class ParliamentLegend {
 
     this.svg.append('circle')
       .attr('r', this.radius)
-      .attr('fill', color['gray-200']);
+      .attr('fill', color.gray200);
 
     this.svg.append('circle')
       .attr('r', this.scale(c))
-      .attr('fill', color['gray-500']);
+      .attr('fill', color.gray500);
 
     return this;
   }

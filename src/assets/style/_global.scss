@@ -4,6 +4,13 @@ $popup-offset: $spacing * 2;
 $popup-width: calc(100vw - 4 * #{$popup-offset});
 $popup-height: calc(100vh - #{$popup-offset});
 
+$border-radius-weak: 10px;
+$border-radius-strong: 50px;
+$border-radius-tag: 2 * $border-radius-weak;
+
+$box-shadow-weak: 0 4px 12px rgba(0, 0, 0, 0.08);
+$box-shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.08);
+
 $black: hsl(210, 11%, 15%);
 $primary: hsl(254, 41%, 64%);
 $primary-light: hsl(252, 100%, 98%);
@@ -20,12 +27,25 @@ $gray-700: #3F3F46;
 $gray-800: #27272A;
 $gray-900: #18181B;
 
-$border-radius-weak: 10px;
-$border-radius-strong: 50px;
-$border-radius-tag: 2 * $border-radius-weak;
-
-$box-shadow-weak: 0 4px 12px rgba(0, 0, 0, 0.08);
-$box-shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.08);
+// party colors
+$pol-brown: hsl(37, 64%, 45%);
+$pol-brown-light: hsl(36, 64%, 86%);
+$pol-blue: hsl(208, 61%, 45%);
+$pol-blue-light: hsl(208, 60%, 86%);
+$pol-orange: hsl(28, 97%, 48%);
+$pol-orange-light: hsl(28, 97%, 86%);
+$pol-yellow: hsl(53, 94%, 45%);
+$pol-yellow-light: hsl(52, 94%, 86%);
+$pol-black: hsl(0, 0%, 30%);
+$pol-black-light: hsl(0, 0%, 86%);
+$pol-red: hsl(4, 61%, 45%);
+$pol-red-light: hsl(4, 81%, 86%);
+$pol-gray: hsl(215, 19%, 35%);
+$pol-gray-light: hsl(214, 32%, 91%);
+$pol-green: hsl(107, 44%, 45%);
+$pol-green-light: hsl(106, 44%, 86%);
+$pol-purple: hsl(283, 30%, 48%);
+$pol-purple-light: hsl(281, 31%, 86%);
 
 // breakpoints
 $bp-2sm: 425px;
@@ -43,14 +63,34 @@ $bp-2xl: 1538px;
 
 :export {
   black: $black;
-  gray-50: $gray-50;
-  gray-100: $gray-100;
-  gray-200: $gray-200;
-  gray-300: $gray-300;
-  gray-400: $gray-400;
-  gray-500: $gray-500;
-  gray-600: $gray-600;
-  gray-700: $gray-700;
-  gray-800: $gray-800;
-  gray-900: $gray-900;
+  
+  gray50: $gray-50;
+  gray100: $gray-100;
+  gray200: $gray-200;
+  gray300: $gray-300;
+  gray400: $gray-400;
+  gray500: $gray-500;
+  gray600: $gray-600;
+  gray700: $gray-700;
+  gray800: $gray-800;
+  gray900: $gray-900;
+  
+  polBrown: $pol-brown;
+  polBrownLight: $pol-brown-light;
+  polBlue: $pol-blue;
+  polBlueLight: $pol-blue-light;
+  polOrange: $pol-orange;
+  polOrangeLight: $pol-orange-light;
+  polYellow: $pol-yellow;
+  polYellowLight: $pol-yellow-light;
+  polBlack: $pol-black;
+  polBlackLight: $pol-black-light;
+  polRed: $pol-red;
+  polRedLight: $pol-red-light;
+  polGray: $pol-gray;
+  polGrayLight: $pol-gray-light;
+  polGreen: $pol-green;
+  polGreenLight: $pol-green-light;
+  polPurple: $pol-purple;
+  polPurpleLight: $pol-purple-light;
 }

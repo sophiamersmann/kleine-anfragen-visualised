@@ -100,6 +100,7 @@ export default {
   &:hover {
     box-shadow: $box-shadow-strong;
     border-color: $primary;
+    cursor: pointer;
   }
 }
 

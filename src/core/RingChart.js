@@ -141,13 +141,13 @@ export default class RingChart {
         .attr('cx', -this.width / 2 + offset)
         .attr('cy', this.height / 2 - offset)
         .attr('r', this.config.circleRadius)
-        .attr('fill', color['gray-200']))
+        .attr('fill', color.gray200))
       .call((g) => g
         .append('circle')
         .attr('cx', -this.width / 2 + offset)
         .attr('cy', this.height / 2 - offset)
         .attr('r', (d) => this.scales.c(d.value))
-        .attr('fill', color['gray-500']));
+        .attr('fill', color.gray500));
 
     return this;
   }
@@ -268,7 +268,7 @@ export default class RingChart {
           ].join(' '))
           .classed('x-tick--line-origin', (d) => d.isOrigin)
           .classed('x-tick--line-visible', (d) => d.isVisible)
-          .attr('stroke', color['gray-300'])
+          .attr('stroke', color.gray300)
           .attr('stroke-dasharray', (d) => (d.isOrigin ? 'none' : '2 4'))
           .attr('opacity', (d) => +d.isVisible)
           .attr('d', (d, i) => [
@@ -308,7 +308,7 @@ export default class RingChart {
             `x-tick--arc-${d.x}`,
           ].join(' '))
           .attr('fill', 'none')
-          .attr('stroke', color['gray-300'])
+          .attr('stroke', color.gray300)
           .attr('stroke-dasharray', '2 4')
           .attr('opacity', 0)
           .attr('d', (d) => {
