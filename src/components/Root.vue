@@ -2,7 +2,12 @@
   <main :class=classes>
     <div class="top">
       <div class="introduction">
-        <h1><a href="https://kleineanfragen.de/" target="blank">kleineAnfragen.de</a> visualisiert</h1>
+        <h1>
+          <a class="kleine-anfragen" href="https://kleineanfragen.de/" target="blank">
+            kleineAnfragen
+          </a>
+          <span class="visualised"> visualisiert</span>
+        </h1>
         <div class="text">
           <div class="p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -313,6 +318,12 @@ main {
 .introduction {
   line-height: 1.5;
 
+  .kleine-anfragen {
+    font-family: 'Raleway', sans-serif;
+    text-decoration: none;
+    color: inherit;
+  }
+
   .text {
     @include max-width($bp-xl) {
       display: grid;
@@ -328,6 +339,10 @@ main {
   h1 {
     border-bottom: 1px solid $black;
     text-align: center;
+
+    .visualised {
+      font-family: 'Quicksand', sans-serif;
+    }
   }
 
   .p {
@@ -340,6 +355,7 @@ main {
     padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing 2 * $spacing;
     background-color: white;
     border-radius: $border-radius-weak;
+    font-size: 0.9rem;
 
     @include max-width($bp-sm) {
       padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing $spacing;
@@ -376,6 +392,7 @@ main {
     background-color: white;
     border-radius: $border-radius-weak;
     text-align: center;
+    font-family: 'Quicksand', Helvetica, Arial, sans-serif;
     font-weight: bold;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

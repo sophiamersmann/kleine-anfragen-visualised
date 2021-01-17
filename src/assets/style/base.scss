@@ -1,8 +1,10 @@
 @import 'global';
 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Raleway&family=Roboto:wght@400;700&display=swap');
+
 html {
   box-sizing: border-box;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $black;
@@ -14,4 +16,8 @@ html {
   box-sizing: inherit;
   margin: 0;
   padding: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Quicksand', Helvetica, Arial, sans-serif;
 }
