@@ -339,16 +339,21 @@ export default class RingChart {
   drawInfo() {
     this.svg.append('g')
       .attr('class', 'info')
-      .append('text')
-      .attr('class', 'text-info')
-      .attr('x', this.width / 2 - 50)
+      .selectAll('text')
+      .data([
+        { type: 'interact', text: 'Interact with the chart to explore individual requests' },
+        { type: 'reset', text: 'Click anywhere to reset' },
+      ])
+      .join('text')
+      .attr('class', (d) => `text-info--${d.type}`)
+      .attr('x', -this.width / 2 + 10)
       .attr('y', -this.height / 2 + 10)
       .attr('dominant-baseline', 'hanging')
-      .attr('text-anchor', 'end')
       .attr('fill', '#000')
+      .attr('opacity', (d) => +(d.type === 'interact'))
       .style('font-size', '0.8em')
       .style('font-style', 'italic')
-      .text('Click anywhere to reset');
+      .text((d) => d.text);
     return this;
   }
 
@@ -507,8 +512,9 @@ export default class RingChart {
       d3.selectAll(`.circle-outer-${d.month}`)
         .style('pointer-events', 'none');
 
-      // show info text
-      d3.select('.text-info').attr('opacity', 1);
+      // info text
+      d3.select('.text-info--interact').attr('opacity', 0);
+      d3.select('.text-info--reset').attr('opacity', 1);
 
       // make rest of the chart opacque
       d3.selectAll('.grid-x circle').attr('opacity', 0.4);
@@ -580,8 +586,9 @@ export default class RingChart {
     // hide tooltip
     d3.select('.tooltip-question').style('opacity', 0);
 
-    // hide info text
-    d3.select('.text-info').attr('opacity', 0);
+    // info text
+    d3.select('.text-info--interact').attr('opacity', 1);
+    d3.select('.text-info--reset').attr('opacity', 0);
 
     // reset the grid and ring
     d3.selectAll('.grid-x circle').attr('opacity', 1);
