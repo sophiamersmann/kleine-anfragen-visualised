@@ -10,9 +10,13 @@ export default class RingChart {
     // formats
     this.formats = {
       internalFormat: d3.timeFormat('%Y-%m'),
-      shortFormat: d3.timeFormat('%b'),
-      longFormat: d3.timeFormat('%b %Y'),
-      dateFormat: d3.timeFormat('%d %b %Y'),
+    };
+
+    // date format options
+    this.dateOptions = {
+      short: { month: 'short' },
+      long: { month: 'short', year: 'numeric' },
+      date: { day: 'numeric', month: 'short', year: 'numeric' },
     };
 
     // data
@@ -236,7 +240,8 @@ export default class RingChart {
   drawAxes() {
     const { x, y } = this.scales;
     const { innerRadius, outerRadius, unit } = this.config;
-    const { internalFormat, shortFormat, longFormat } = this.formats;
+    const { internalFormat } = this.formats;
+    const { short, long } = this.dateOptions;
 
     const xGrid = (grid) => grid
       .selectAll('g')
@@ -255,7 +260,7 @@ export default class RingChart {
           date,
           x: this.formats.internalFormat(date),
           isOrigin: i === 0,
-          isVisible: i === 0 || date.getMonth() % 6 === 0,
+          isVisible: i === 0 || date.getMonth() % 3 === 0,
           isMajor: i === 0 || date.getMonth() === 0,
           offset: date.getMonth() === 0 || i === 0 ? 3 * unit : unit,
         })))
@@ -303,7 +308,7 @@ export default class RingChart {
           .append('textPath')
           .attr('startOffset', 5)
           .attr('xlink:href', (_, i) => `#x-tick--text-path-${i}`)
-          .text((d) => (d.isMajor ? longFormat(d.date) : shortFormat(d.date))))
+          .text((d) => d.date.toLocaleDateString('de-DE', d.isMajor ? long : short)))
         .call((tick) => tick
           .append('path')
           .attr('class', (d) => [
@@ -431,6 +436,7 @@ export default class RingChart {
 
         // show tooltip
         const left = Math.min(window.innerWidth - 300, event.pageX);
+        const date = d.data.date.toLocaleDateString('de-DE', this.dateOptions.date);
         d3.select('.tooltip-question')
           .style('left', `${left}px`)
           .style('top', `${event.pageY}px`)
@@ -439,7 +445,7 @@ export default class RingChart {
           .html([
             `<div class="above-title">${type}</div>`,
             `<h4>${d.data.title}</h4>`,
-            `<p><i>eingereicht am </i>${this.formats.dateFormat(d.data.date)}</p>`,
+            `<p><i>eingereicht am </i>${date}</p>`,
             `<p><i>von</i> ${people} ${parties}</p>`,
             '<p class="note"><i>Ein Klick bringt dich zum entsprechenden Eintrag auf kleineAnfragen.de</i></p>',
           ].join(''));
