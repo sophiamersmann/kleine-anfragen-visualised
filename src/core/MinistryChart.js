@@ -88,12 +88,14 @@ export default class MinistryChart {
       .attr('y', this.height / 2)
       .attr('width', (d) => (d.count / this.maxRequests) * this.width)
       .attr('height', this.height / 2)
+      .attr('rx', 1)
+      .attr('ry', 1)
       .attr('fill', color.gray300);
 
     this.svg.append('text')
       .attr('y', this.height / 2 - 2)
       .attr('fill', color.black)
-      .style('font-size', '0.7rem')
+      .style('font-size', '0.8rem')
       .style('font-weight', 'bold')
       .text(this.nRequests);
 

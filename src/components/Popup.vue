@@ -47,7 +47,7 @@
 import d3 from '@/assets/d3';
 
 import { getTermId, displayTimeRange } from '@/core/utils';
-import { COLOR, LIGHT_COLOR, PARTY_GROUPS } from '@/core/CONSTANTS';
+import { COLOR, PARTY_GROUPS } from '@/core/CONSTANTS';
 
 import RingChart from '@/core/RingChart';
 import MinistryLegend from '@/core/MinistryLegend';
@@ -85,10 +85,14 @@ export default {
 
     if (this.requests !== null) {
       const ringChartDiv = this.$el.querySelector('.chart-ring');
-      const { dates, parties, maxValue } = this;
+      const {
+        dates, parties, maxValue, term,
+      } = this;
       this.ringChart = new RingChart(
         `#${ringChartDiv.id}`,
-        { dates, parties, maxValue },
+        {
+          dates, parties, maxValue, term,
+        },
       )
         .drawSkeleton(ringChartDiv.clientHeight)
         .updateMinistry(this.selectedRequests);
@@ -97,12 +101,14 @@ export default {
   updated() {
     const ringChartDiv = this.$el.querySelector('.chart-ring');
     const {
-      dates, parties, maxValue, selectedRequests,
+      dates, parties, maxValue, term, selectedRequests,
     } = this;
 
     this.ringChart = new RingChart(
       `#${ringChartDiv.id}`,
-      { dates, parties, maxValue },
+      {
+        dates, parties, maxValue, term,
+      },
     )
       .drawSkeleton(ringChartDiv.clientHeight)
       .updateMinistry(selectedRequests);
@@ -171,15 +177,16 @@ export default {
   methods: {
     async fetchRequestsData() {
       const parseTime = d3.timeParse('%Y-%m-%d');
-      const asArray = (str) => str.split(';').map((s) => s.trim());
+      const asArray = (str) => (str ? str.split(';').map((s) => s.trim()) : []);
       this.requests = await d3.csv(this.srcRequests, (d) => ({
-        date: parseTime(d.published_at.split('T')[0]),
+        reference: d.reference,
+        date: parseTime(d.published_at),
         title: d.title,
         type: d.interpellation_type,
         url: d.html_url,
-        parties: asArray(d.inquiring_parties),
-        inquiringPeople: asArray(d.inquiring_people_corr),
-        ministries: asArray(d.answering_ministries_corr),
+        parties: asArray(d.inquiring_parties_wikidata),
+        inquiringPeople: asArray(d.inquiring_people_wikidata),
+        ministries: asArray(d.answering_ministries_wikidata),
       }));
     },
     onSelected(ministry) {
@@ -219,10 +226,9 @@ export default {
           this.parties.findIndex((p) => p === b),
         ))
         .map((party) => ({
-          name: party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : party.split(';').join('/'),
+          name: party.split(';').join('/'),
           style: {
-            backgroundColor: LIGHT_COLOR.get(party.split(';')[0]),
-            color: COLOR.get(party.split(';')[0]),
+            backgroundColor: COLOR.get(party.split(';')[0]),
           },
         }));
     },
@@ -233,7 +239,11 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/style/global';
 
-$line-height: 18px;
+$popup-offset: $spacing * 2;
+$popup-width: calc(100vw - 4 * #{$popup-offset});
+$popup-height: calc(100vh - #{$popup-offset});
+
+$line-height: 20px;
 
 .popup {
   position: fixed;
@@ -267,7 +277,7 @@ $line-height: 18px;
       height: $line-height;
       background-color: $gray-300;
       vertical-align: bottom;
-      border-radius: $border-radius-tag;
+      border-radius: $border-radius-weak;
     }
 
     .ministry-legend {
@@ -301,27 +311,26 @@ $line-height: 18px;
 
   .text {
     border: 1px solid $primary-light;
-    line-height: 1.25;
     margin: $spacing 0;
   }
 }
 
 .tag-group {
   margin-left: 0.5 * $spacing;
-  padding: 2px 0 0.25 * $spacing 0;
+  padding: 2px 0 0.5 * $spacing 0;
 
   .tag {
     display: inline-block;
     padding: 0 5px;
-    border-radius: 2 * $border-radius-tag;
+    border-radius: $border-radius-weak;
     font-size: 0.9rem;
     font-weight: bold;
     white-space: nowrap;
     line-height: $line-height;
+    color: white;
   }
 
   .highlight {
-    font-size: 0.9rem;
     font-weight: bold;
     line-height: $line-height;
   }

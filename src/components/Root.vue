@@ -262,13 +262,13 @@ export default {
 main {
   padding: 2 * $spacing;
   background-color: $primary-light;
-  transition: filter 0.8s ease;
+  transition: filter 0.2s ease;
   max-width: $bp-2xl;
   margin: 0 auto;
 
   &.background {
     filter: blur(4px);
-    transition: filter 0.8s ease;
+    transition: filter 0.2s ease;
     overflow: hidden;
   }
 
@@ -356,6 +356,7 @@ main {
     background-color: white;
     border-radius: $border-radius-weak;
     font-size: 0.9rem;
+    line-height: 1.75;
 
     @include max-width($bp-sm) {
       padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing $spacing;
@@ -368,10 +369,6 @@ main {
 
     .legend-line--chart {
       margin-right: 0.5 * $spacing;
-    }
-
-    .legend-line--label {
-      line-height: 1.25;
     }
   }
 }
@@ -453,6 +450,7 @@ main {
   box-shadow: $box-shadow-weak;
   border-left: 5px solid $black;
   font-size: 0.9rem;
+  border-radius: 0 $border-radius-weak $border-radius-weak 0;
 
   .above-title,
   .note {

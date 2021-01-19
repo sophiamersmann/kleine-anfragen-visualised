@@ -147,7 +147,7 @@ export default class SeatChart {
         .append('textPath')
         .attr('xlink:href', (_, i) => `#${this.selector}--x-tick--text-path-${i}`)
         .style('font-weight', (d) => (this.isOpposition.get(d.party) ? 'bold' : 'normal'))
-        .text((d) => (d.party === 'Bündnis 90/Die Grünen' ? 'Die Grünen' : d.party)));
+        .text((d) => d.party));
 
     return this;
   }
@@ -202,8 +202,8 @@ export default class SeatChart {
 
           const nRequestsPerMonth = Math.round(d.data.nRequestsPerMonth);
           let line1 = d.data.nRequests > 1
-            ? `<p>ist insgesamt an <b>${d.data.nRequests}</b> Anfragen beteiligt`
-            : '<p>ist an einer Anfrage beteiligt';
+            ? `<p>war insgesamt an <b>${d.data.nRequests}</b> Anfragen beteiligt`
+            : '<p>war an einer Anfrage beteiligt';
           if (nRequestsPerMonth > 1) {
             line1 += `, das sind ungefähr ${nRequestsPerMonth} im Monat`;
           } else if (nRequestsPerMonth === 1) {

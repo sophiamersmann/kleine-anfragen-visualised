@@ -58,7 +58,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/style/global';
+
 .ministry-button-group {
   overflow-y: auto;
+  margin-bottom: 0.5 * $spacing;
 }
 </style>

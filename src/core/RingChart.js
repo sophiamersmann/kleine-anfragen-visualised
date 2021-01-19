@@ -25,6 +25,7 @@ export default class RingChart {
     this.dates = data.dates;
     this.parties = data.parties;
     this.maxValue = data.maxValue;
+    this.term = data.term;
 
     this.requests = null;
     this.bins = null;
@@ -42,7 +43,7 @@ export default class RingChart {
       outerRadius: null,
       circleRadius: 10,
       questionsRadius: 6,
-      questionSize: '0.9em',
+      questionSize: '0.9rem',
       unit: 10,
     };
 
@@ -141,20 +142,19 @@ export default class RingChart {
         .attr('cx', -this.width / 2 + offset)
         .attr('cy', this.height / 2 - offset)
         .attr('r', this.config.circleRadius)
-        .attr('fill', color.gray200))
+        .attr('fill', color.polGrayLight))
       .call((g) => g
         .append('circle')
         .attr('cx', -this.width / 2 + offset)
         .attr('cy', this.height / 2 - offset)
         .attr('r', (d) => this.scales.c(d.value))
-        .attr('fill', color.gray500));
+        .attr('fill', color.polGray));
 
     return this;
   }
 
   updateMinistry(requests) {
     this.requests = requests;
-
     this.resetInteractions();
 
     return this
@@ -237,16 +237,6 @@ export default class RingChart {
     const { internalFormat } = this.formats;
     const { short, long } = this.dateOptions;
 
-    const xGrid = (grid) => grid
-      .selectAll('g')
-      .data(this.parties)
-      .join('g')
-      .call((g) => g
-        .append('circle')
-        .attr('r', (party) => y(party))
-        .attr('fill', 'none')
-        .attr('stroke', (party) => LIGHT_COLOR.get(party.split(';')[0])));
-
     const xAxis = (grid) => grid
       .call((g) => g.selectAll('g')
         .data(this.months.map((date, i) => ({
@@ -320,6 +310,16 @@ export default class RingChart {
               `A${r},${r} 0,0,1 ${d3.pointRadial(x(internalFormat(endDate)), r)}`,
             ].join(' ');
           })));
+
+    const xGrid = (grid) => grid
+      .selectAll('g')
+      .data(this.parties)
+      .join('g')
+      .call((g) => g
+        .append('circle')
+        .attr('r', (party) => y(party))
+        .attr('fill', 'none')
+        .attr('stroke', (party) => LIGHT_COLOR.get(party.split(';')[0])));
 
     this.svg.append('g')
       .attr('class', 'axis axis-x')
@@ -407,13 +407,13 @@ export default class RingChart {
           }[d.data.type];
         }
 
-        let people = '<Unbekannt>';
+        let people = '';
         if (d.data.inquiringPeople.length === 1) {
           [people] = d.data.inquiringPeople;
         } else if (d.data.inquiringPeople.length === 2) {
           const [p1, p2] = d.data.inquiringPeople;
           people = `${p1} und ${p2}`;
-        } else {
+        } else if (d.data.inquiringPeople.length > 2) {
           const ps = d.data.inquiringPeople.slice(0, d.data.inquiringPeople.length - 1);
           const p = d.data.inquiringPeople[d.data.inquiringPeople.length - 1];
           people = `${ps.join(', ')} und ${p}`;
@@ -421,7 +421,7 @@ export default class RingChart {
 
         let parties = '';
         if (d.data.parties.length > 0) {
-          parties = `(${d.data.parties.join(', ')})`;
+          parties = d.data.parties.join(', ');
         }
 
         // show tooltip
@@ -433,10 +433,10 @@ export default class RingChart {
           .style('border-color', COLOR.get(d.party.split(';')[0]))
           .style('opacity', 1)
           .html([
-            `<div class="above-title">${type}</div>`,
+            `<div class="above-title">${type} (${this.term}/${d.data.reference})</div>`,
             `<h4>${d.data.title}</h4>`,
             `<p><i>eingereicht am </i>${date}</p>`,
-            `<p><i>von</i> ${people} ${parties}</p>`,
+            people ? `<p><i>von</i> ${people} (${parties})</p>` : `<p><i>von</i> ${parties}</p>`,
             '<p class="note"><i>Ein Klick bringt dich zum entsprechenden Eintrag auf kleineAnfragen.de</i></p>',
           ].join(''));
       })
@@ -456,7 +456,6 @@ export default class RingChart {
       .attr('text-anchor', 'middle')
       .attr('dominant-baseline', 'middle')
       .attr('fill', (d) => COLOR.get(d.party.split(';')[0]))
-      .attr('transform', 'translate(0,2)') // * Magic value to center question mark
       .style('font-size', questionSize)
       .style('font-weight', 'bold')
       .style('pointer-events', 'none')

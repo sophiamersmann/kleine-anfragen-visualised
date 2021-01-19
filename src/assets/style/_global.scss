@@ -1,12 +1,7 @@
 $spacing: 2rem;
 
-$popup-offset: $spacing * 2;
-$popup-width: calc(100vw - 4 * #{$popup-offset});
-$popup-height: calc(100vh - #{$popup-offset});
-
 $border-radius-weak: 10px;
 $border-radius-strong: 50px;
-$border-radius-tag: 2 * $border-radius-weak;
 
 $box-shadow-weak: 0 4px 12px rgba(0, 0, 0, 0.08);
 $box-shadow-strong: 0 16px 48px rgba(0, 0, 0, 0.08);
@@ -27,25 +22,26 @@ $gray-700: #3F3F46;
 $gray-800: #27272A;
 $gray-900: #18181B;
 
-// party colors
+// political colors
 $pol-brown: hsl(37, 64%, 45%);
-$pol-brown-light: hsl(36, 64%, 86%);
-$pol-blue: hsl(208, 61%, 45%);
-$pol-blue-light: hsl(208, 60%, 86%);
+$pol-blue: rgb(52, 163, 210);
 $pol-orange: hsl(28, 97%, 48%);
-$pol-orange-light: hsl(28, 97%, 86%);
-$pol-yellow: hsl(53, 94%, 45%);
-$pol-yellow-light: hsl(52, 94%, 86%);
-$pol-black: hsl(0, 0%, 30%);
-$pol-black-light: hsl(0, 0%, 86%);
-$pol-red: hsl(4, 61%, 45%);
-$pol-red-light: hsl(4, 81%, 86%);
-$pol-gray: hsl(215, 19%, 35%);
-$pol-gray-light: hsl(214, 32%, 91%);
-$pol-green: hsl(107, 44%, 45%);
-$pol-green-light: hsl(106, 44%, 86%);
-$pol-purple: hsl(283, 30%, 48%);
-$pol-purple-light: hsl(281, 31%, 86%);
+$pol-yellow: rgb(246, 187, 0);
+$pol-black: rgb(55, 55, 55);
+$pol-red: rgb(219, 66, 64);
+$pol-gray: #64748B;
+$pol-green: rgb(75, 163, 69);
+$pol-purple: rgb(150, 39, 110);
+
+$pol-brown-light: mix($pol-brown, white, 35);
+$pol-blue-light: mix($pol-blue, white, 35);
+$pol-orange-light: mix($pol-orange, white, 35);
+$pol-yellow-light: mix($pol-yellow, white, 35);
+$pol-black-light: mix($pol-black, white, 35);
+$pol-red-light: mix($pol-red, white, 35);
+$pol-gray-light: mix($pol-gray, white, 35);
+$pol-green-light: mix($pol-green, white, 35);
+$pol-purple-light: mix($pol-purple, white, 35);
 
 // breakpoints
 $bp-2sm: 425px;
