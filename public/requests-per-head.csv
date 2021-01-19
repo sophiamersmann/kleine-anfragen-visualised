@@ -1782,7 +1782,7 @@
 88,Christian Lindner,3,0.002577319587628866,0.07731958762886598,FDP,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",1,1,Bundestag,19
 89,Wieland Schinnenburg,51,0.04381443298969072,1.3144329896907216,FDP,True,Bundesministerium für Gesundheit,34,1,Bundestag,19
 90,Uwe Witt,81,0.06958762886597938,2.0876288659793816,AfD,True,Bundesministerium für Arbeit und Soziales,65,1,Bundestag,19
-91,Grigorios Aggelidis,681,0.5850515463917526,17.551546391752577,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",116,1,Bundestag,19
+91,Grigorios Aggelidis,682,0.5859106529209622,17.577319587628867,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",116,1,Bundestag,19
 92,Alexander Graf Lambsdorff,120,0.10309278350515463,3.092783505154639,FDP,True,Auswärtiges Amt,39,1,Bundestag,19
 93,Gregor Gysi,3,0.002577319587628866,0.07731958762886598,Die Linke,True,Beauftr. der Bundesregierung für Kultur und Medien,1,1,Bundestag,19
 94,Katharine Willkomm,44,0.037800687285223365,1.134020618556701,FDP,True,Bundesministerium der Justiz und für Verbraucherschutz,12,1,Bundestag,19
@@ -1820,205 +1820,205 @@
 126,Renate Künast,31,0.02663230240549828,0.7989690721649484,Die Grünen,True,Bundesministerium für Ernährung und Landwirtschaft,13,1,Bundestag,19
 127,Michael Theurer,272,0.23367697594501718,7.010309278350515,FDP,True,Bundesministerium für Wirtschaft und Energie,86,1,Bundestag,19
 128,Sebastian Münzenmaier,63,0.05412371134020619,1.6237113402061856,AfD,True,Bundesministerium für Arbeit und Soziales,32,1,Bundestag,19
-129,Grigorios,682,0.5859106529209622,17.577319587628867,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",116,1,Bundestag,19
-130,Andreas Mrosek,57,0.04896907216494845,1.4690721649484535,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,38,1,Bundestag,19
-131,Friedrich Straetmanns,154,0.1323024054982818,3.9690721649484537,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",26,1,Bundestag,19
-132,Jörg Schneider,64,0.054982817869415807,1.6494845360824741,AfD,True,Bundesministerium für Arbeit und Soziales,38,1,Bundestag,19
-133,Fabian Jacobi,4,0.003436426116838488,0.10309278350515463,AfD,True,Beauftr. der Bundesregierung für Kultur und Medien,1,1,Bundestag,19
-134,Daniela Wagner,116,0.09965635738831616,2.9896907216494846,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,67,1,Bundestag,19
-135,Sahra Wagenknecht,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
-136,Prem Bajaj,1,0.000859106529209622,0.02577319587628866,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",1,1,Bundestag,19
-137,Till Mansmann,24,0.020618556701030927,0.6185567010309279,FDP,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,13,1,Bundestag,19
-138,Uwe Schulz,141,0.1211340206185567,3.634020618556701,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",22,1,Bundestag,19
-139,Dirk Spaniel,89,0.07646048109965636,2.293814432989691,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,73,1,Bundestag,19
-140,Fabio Valeriano Lanfranco De Masi,101,0.08676975945017182,2.6030927835051547,Die Linke,True,Bundesministerium der Finanzen,39,1,Bundestag,19
-141,Hubertus Zdebel,27,0.023195876288659795,0.6958762886597938,Die Linke,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",13,1,Bundestag,19
-142,Heidrun Bluhm,11,0.009450171821305841,0.28350515463917525,Die Linke,True,Bundesministerium für Wirtschaft und Energie,4,1,Bundestag,19
-143,Armin-Paul Hampel,1,0.000859106529209622,0.02577319587628866,AfD,True,Auswärtiges Amt,1,1,Bundestag,19
-144,Daniela Kluckert,35,0.03006872852233677,0.9020618556701031,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,21,1,Bundestag,19
-145,Stefan Schmidt,59,0.0506872852233677,1.5206185567010309,Die Grünen,True,Bundesministerium der Finanzen,21,1,Bundestag,19
-146,Johannes Huber,5,0.00429553264604811,0.1288659793814433,AfD,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",2,1,Bundestag,19
-147,Sabine Zimmermann,17,0.014604810996563574,0.4381443298969072,Die Linke,True,Bundesministerium für Arbeit und Soziales,9,1,Bundestag,19
-148,Roman Müller-Böhm,58,0.04982817869415808,1.4948453608247423,FDP,True,Bundesministerium der Justiz und für Verbraucherschutz,23,1,Bundestag,19
-149,Tino Chrupalla,24,0.020618556701030927,0.6185567010309279,AfD,True,Bundesministerium für Wirtschaft und Energie,17,1,Bundestag,19
-150,Petra Pau,58,0.04982817869415808,1.4948453608247423,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",46,1,Bundestag,19
-151,Dietmar Bartsch,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium für Arbeit und Soziales,1,1,Bundestag,19
-152,Jürgen Trittin,14,0.012027491408934709,0.36082474226804123,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,7,1,Bundestag,19
-153,Matthias Birkwald,114,0.0979381443298969,2.938144329896907,Die Linke,True,Bundesministerium für Arbeit und Soziales,65,1,Bundestag,19
-154,Gyde Jensen,10,0.00859106529209622,0.2577319587628866,FDP,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",2,1,Bundestag,19
-155,Markus Tressel,60,0.05154639175257732,1.5463917525773194,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,27,1,Bundestag,19
-156,Wolfgang Wiehle,46,0.03951890034364261,1.1855670103092784,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,34,1,Bundestag,19
-157,Gerald Ullrich,11,0.009450171821305841,0.28350515463917525,FDP,True,Auswärtiges Amt,3,1,Bundestag,19
-158,Judith Skudelny,61,0.05240549828178694,1.5721649484536082,FDP,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",45,1,Bundestag,19
-159,Frank Magnitz,10,0.00859106529209622,0.2577319587628866,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,3,1,Bundestag,19
-160,Gesine Lötzsch,150,0.12886597938144329,3.8659793814432986,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,55,1,Bundestag,19
-161,Stephan Protschka,46,0.03951890034364261,1.1855670103092784,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,29,1,Bundestag,19
-162,Hagen Reinhold,39,0.03350515463917526,1.0051546391752577,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,11,1,Bundestag,19
-163,Steffen Kotré,19,0.01632302405498282,0.4896907216494846,AfD,True,Bundesministerium für Wirtschaft und Energie,13,1,Bundestag,19
-164,Konstantin Kuhle,31,0.02663230240549828,0.7989690721649484,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",19,1,Bundestag,19
-165,Brigitte Freihold,19,0.01632302405498282,0.4896907216494846,Die Linke,True,Auswärtiges Amt,5,1,Bundestag,19
-166,Annette Groth,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium der Verteidigung,1,1,Bundestag,19
-167,Lothar Maier,6,0.005154639175257732,0.15463917525773196,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",3,1,Bundestag,19
-168,Tabea Rößner,37,0.03178694158075601,0.9536082474226804,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",8,1,Bundestag,19
-169,Luise Amtsberg,45,0.03865979381443299,1.1597938144329898,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",24,1,Bundestag,19
-170,André Hahn,508,0.436426116838488,13.092783505154639,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",281,1,Bundestag,19
-171,Ulrich Lechte,7,0.006013745704467354,0.18041237113402062,FDP,True,Auswärtiges Amt,4,1,Bundestag,19
-172,Sylvia Gabelmann,54,0.04639175257731959,1.3917525773195876,Die Linke,True,Bundesministerium für Gesundheit,27,1,Bundestag,19
-173,Lukas Köhler,11,0.009450171821305841,0.28350515463917525,FDP,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",8,1,Bundestag,19
-174,Alexander Neu,44,0.037800687285223365,1.134020618556701,Die Linke,True,Bundesministerium der Verteidigung,24,1,Bundestag,19
-175,Enak Ferlemann,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,Bundesregierung,1,1,Bundestag,19
-176,Cem Özdemir,12,0.010309278350515464,0.30927835051546393,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,9,1,Bundestag,19
-177,Cornelia Möhring,22,0.018900343642611683,0.5670103092783505,Die Linke,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",8,1,Bundestag,19
-178,Jochen Haug,26,0.022336769759450172,0.6701030927835052,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",14,1,Bundestag,19
-179,Waldemar Herdt,19,0.01632302405498282,0.4896907216494846,AfD,True,Auswärtiges Amt,10,1,Bundestag,19
-180,Sören Pellmann,13,0.011168384879725086,0.3350515463917526,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",6,1,Bundestag,19
-181,Bernd Reuther,75,0.06443298969072164,1.9329896907216493,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,59,1,Bundestag,19
-182,Achim Kessler,24,0.020618556701030927,0.6185567010309279,Die Linke,True,Bundesministerium für Gesundheit,18,1,Bundestag,19
-183,Marcus Bühl,7,0.006013745704467354,0.18041237113402062,AfD,True,Bundesministerium der Finanzen,2,1,Bundestag,19
-184,Rita Hagl-Kehl,1,0.000859106529209622,0.02577319587628866,SPD,False,Bundesministerium der Justiz und für Verbraucherschutz,1,1,Bundestag,19
-185,Stephan Holthoff-Pförtner,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
-186,Amira Mohamed Ali,19,0.01632302405498282,0.4896907216494846,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",6,1,Bundestag,19
-187,Monika Lazar,23,0.019759450171821305,0.5927835051546392,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",20,1,Bundestag,19
-188,Katja Suding,226,0.19415807560137457,5.824742268041237,FDP,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",77,1,Bundestag,19
-189,Gerhard Zickenheiner,1,0.000859106529209622,0.02577319587628866,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
-190,Peter Beuth,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,"Bundesministerium des Innern, für Bau und Heimat",1,1,Bundestag,19
-191,Dr. Harald Weyel,13,0.011168384879725086,0.3350515463917526,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,5,1,Bundestag,19
-192,Anton Hofreiter,2,0.001718213058419244,0.05154639175257732,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,2,1,Bundestag,19
-193,Paul Podolay,22,0.018900343642611683,0.5670103092783505,AfD,True,Bundesministerium für Gesundheit,16,1,Bundestag,19
-194,Marcel Klinge,28,0.024054982817869417,0.7216494845360825,FDP,True,Bundesministerium für Wirtschaft und Energie,13,1,Bundestag,19
-195,Frank Schäffler,156,0.13402061855670103,4.020618556701031,FDP,True,Bundesministerium der Finanzen,141,1,Bundestag,19
-196,Alexander Müller,9,0.007731958762886598,0.23195876288659795,FDP,True,Bundesministerium der Verteidigung,6,1,Bundestag,19
-197,Alexander Ulrich,10,0.00859106529209622,0.2577319587628866,Die Linke,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",3,1,Bundestag,19
-198,Tobias Peterka,16,0.013745704467353952,0.41237113402061853,AfD,True,Bundesministerium der Justiz und für Verbraucherschutz,5,1,Bundestag,19
-199,Manfred Todtenhausen,7,0.006013745704467354,0.18041237113402062,FDP,True,Bundesministerium für Wirtschaft und Energie,4,1,Bundestag,19
-200,Lisa Paus,48,0.041237113402061855,1.2371134020618557,Die Grünen,True,Bundesministerium der Finanzen,36,1,Bundestag,19
-201,Irene Mihalic,54,0.04639175257731959,1.3917525773195876,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",44,1,Bundestag,19
-202,Manuela Rottmann,11,0.009450171821305841,0.28350515463917525,Die Grünen,True,Bundesministerium der Justiz und für Verbraucherschutz,6,1,Bundestag,19
-203,Simone Barrientos Krauss,81,0.06958762886597938,2.0876288659793816,Die Linke,True,Bundesministerium für Bildung und Forschung,17,1,Bundestag,19
-204,Lorenz Beutin,113,0.09707903780068729,2.9123711340206184,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,33,1,Bundestag,19
-205,Andrej Hunko,284,0.24398625429553264,7.319587628865979,Die Linke,True,Auswärtiges Amt,91,1,Bundestag,19
-206,Harald Weinberg,8,0.006872852233676976,0.20618556701030927,Die Linke,True,Bundesministerium für Gesundheit,5,1,Bundestag,19
-207,Ingrid Remmers,12,0.010309278350515464,0.30927835051546393,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,12,1,Bundestag,19
-208,Kerstin Kassner,9,0.007731958762886598,0.23195876288659795,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",3,1,Bundestag,19
-209,Anna Christmann,48,0.041237113402061855,1.2371134020618557,Die Grünen,True,Bundesministerium für Bildung und Forschung,26,1,Bundestag,19
-210,Anton Friesen,143,0.12285223367697594,3.685567010309278,AfD,True,Auswärtiges Amt,62,1,Bundestag,19
-211,Danyal Bayaz,50,0.0429553264604811,1.288659793814433,Die Grünen,True,Bundesministerium der Finanzen,33,1,Bundestag,19
-212,Thomas Ehrhorn,19,0.01632302405498282,0.4896907216494846,AfD,True,Beauftr. der Bundesregierung für Kultur und Medien,5,1,Bundestag,19
-213,Stephan Brandner,76,0.06529209621993128,1.9587628865979383,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",25,1,Bundestag,19
-214,Pia-Beate Zimmermann,9,0.007731958762886598,0.23195876288659795,Die Linke,True,Bundesministerium für Gesundheit,7,1,Bundestag,19
-215,Tobias Pflüger,49,0.04209621993127148,1.2628865979381445,Die Linke,True,Bundesministerium der Verteidigung,31,1,Bundestag,19
-216,Ekin Deligöz,12,0.010309278350515464,0.30927835051546393,Die Grünen,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",5,1,Bundestag,19
-217,Kirsten Tackmann,37,0.03178694158075601,0.9536082474226804,Die Linke,True,Bundesministerium für Ernährung und Landwirtschaft,28,1,Bundestag,19
-218,Erhard Grundl,20,0.01718213058419244,0.5154639175257733,Die Grünen,True,Beauftr. der Bundesregierung für Kultur und Medien,13,1,Bundestag,19
-219,Katja Keul,29,0.02491408934707904,0.7474226804123711,Die Grünen,True,Bundesministerium der Justiz und für Verbraucherschutz,7,1,Bundestag,19
-220,Stefan Keuter,55,0.04725085910652921,1.4175257731958761,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,14,1,Bundestag,19
-221,Götz Frömming,43,0.036941580756013746,1.1082474226804124,AfD,True,Bundesministerium für Bildung und Forschung,13,1,Bundestag,19
-222,Axel Gehrke,51,0.04381443298969072,1.3144329896907216,AfD,True,Bundesministerium für Gesundheit,29,1,Bundestag,19
-223,Dieter Janecek,24,0.020618556701030927,0.6185567010309279,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,9,1,Bundestag,19
-224,Wilhelm von Gottberg,9,0.007731958762886598,0.23195876288659795,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,8,1,Bundestag,19
-225,Manuel Höferlin,35,0.03006872852233677,0.9020618556701031,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",19,1,Bundestag,19
-226,Gottfried Curio,75,0.06443298969072164,1.9329896907216493,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",63,1,Bundestag,19
-227,Sabine Leidig,32,0.027491408934707903,0.8247422680412371,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,28,1,Bundestag,19
-228,Dr. Marc Jongen,40,0.03436426116838488,1.0309278350515465,AfD,True,Beauftr. der Bundesregierung für Kultur und Medien,15,1,Bundestag,19
-229,Albrecht Glaser,8,0.006872852233676976,0.20618556701030927,AfD,True,Bundesministerium der Finanzen,8,1,Bundestag,19
-230,Stephan Kühn,152,0.13058419243986255,3.9175257731958766,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,132,1,Bundestag,19
-231,Alexander Kulitz,11,0.009450171821305841,0.28350515463917525,FDP,True,Bundesministerium für Wirtschaft und Energie,8,1,Bundestag,19
-232,Heiko Wildberg,13,0.011168384879725086,0.3350515463917526,AfD,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",7,1,Bundestag,19
-233,Elisabeth Winkelmeier-Becker,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
-234,Michael Leutert,2,0.001718213058419244,0.05154639175257732,Die Linke,True,Bundesministerium der Finanzen,1,1,Bundestag,19
-235,Victor Perli,9,0.007731958762886598,0.23195876288659795,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,6,1,Bundestag,19
-236,Christoph Neumann,16,0.013745704467353952,0.41237113402061853,AfD,True,Bundesministerium für Wirtschaft und Energie,6,1,Bundestag,19
-237,Udo Hemmelgarn,18,0.015463917525773196,0.4639175257731959,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",6,1,Bundestag,19
-238,Karsten Hilse,23,0.019759450171821305,0.5927835051546392,AfD,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",16,1,Bundestag,19
-239,Heike Hänsel,246,0.211340206185567,6.34020618556701,Die Linke,True,Auswärtiges Amt,92,1,Bundestag,19
-240,Jimmy Schulz,16,0.013745704467353952,0.41237113402061853,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",8,1,Bundestag,19
-241,Rüdiger Lucassen,35,0.03006872852233677,0.9020618556701031,AfD,True,Bundesministerium der Verteidigung,32,1,Bundestag,19
-242,Caren Lay,16,0.013745704467353952,0.41237113402061853,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",7,1,Bundestag,19
-243,Canan Bayram,21,0.01804123711340206,0.5412371134020618,Die Grünen,True,Bundesministerium der Justiz und für Verbraucherschutz,7,1,Bundestag,19
-244,Kerstin Andreae,23,0.019759450171821305,0.5927835051546392,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,13,1,Bundestag,19
-245,Karlheinz Busen,57,0.04896907216494845,1.4690721649484535,FDP,True,Bundesministerium für Ernährung und Landwirtschaft,32,1,Bundestag,19
-246,Annalena Baerbock,84,0.07216494845360824,2.1649484536082473,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,23,1,Bundestag,19
-247,Christian Jung,65,0.05584192439862543,1.675257731958763,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,57,1,Bundestag,19
-248,Katja Hessel,26,0.022336769759450172,0.6701030927835052,FDP,True,Bundesministerium der Finanzen,22,1,Bundestag,19
-249,Harald Weyel,21,0.01804123711340206,0.5412371134020618,AfD,True,Auswärtiges Amt,5,1,Bundestag,19
-250,Nicole Bauer,78,0.06701030927835051,2.0103092783505154,FDP,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",24,1,Bundestag,19
-251,Pascal Meiser,19,0.01632302405498282,0.4896907216494846,Die Linke,True,Bundesministerium für Arbeit und Soziales,10,1,Bundestag,19
-252,Ulla Ihnen,8,0.006872852233676976,0.20618556701030927,FDP,True,Bundesministerium der Finanzen,3,1,Bundestag,19
-253,Jürgen Braun,18,0.015463917525773196,0.4639175257731959,AfD,True,Auswärtiges Amt,11,1,Bundestag,19
-254,Leif-Erik Holm,65,0.05584192439862543,1.675257731958763,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,34,1,Bundestag,19
-255,Ingrid Nestle,42,0.03608247422680412,1.0824742268041236,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,30,1,Bundestag,19
-256,Jörn König,11,0.009450171821305841,0.28350515463917525,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",4,1,Bundestag,19
-257,Uwe Kamann,14,0.012027491408934709,0.36082474226804123,AfD,True,Bundesministerium der Justiz und für Verbraucherschutz,3,1,Bundestag,19
-258,Jessica Tatti,26,0.022336769759450172,0.6701030927835052,Die Linke,True,Bundesministerium für Arbeit und Soziales,20,1,Bundestag,19
-259,Torsten Herbst,98,0.08419243986254296,2.525773195876289,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,76,1,Bundestag,19
-260,Benjamin Strasser,39,0.03350515463917526,1.0051546391752577,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",33,1,Bundestag,19
-261,Hansjörg Gerhard Georg Müller,2,0.001718213058419244,0.05154639175257732,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,1,1,Bundestag,19
-262,Ottmar von Holtz,26,0.022336769759450172,0.6701030927835052,Die Grünen,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,14,1,Bundestag,19
-263,Jan Nolte,17,0.014604810996563574,0.4381443298969072,AfD,True,Bundesministerium der Verteidigung,14,1,Bundestag,19
-264,Bettina Stark-Watzinger,58,0.04982817869415808,1.4948453608247423,FDP,True,Bundesministerium der Finanzen,48,1,Bundestag,19
-265,Rainer Kraft,29,0.02491408934707904,0.7474226804123711,AfD,True,Bundesministerium für Wirtschaft und Energie,8,1,Bundestag,19
-266,Julia Verlinden,55,0.04725085910652921,1.4175257731958761,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,36,1,Bundestag,19
-267,Stefan Gelbhaar,121,0.10395189003436427,3.118556701030928,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,110,1,Bundestag,19
-268,Katrin Werner,13,0.011168384879725086,0.3350515463917526,Die Linke,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",10,1,Bundestag,19
-269,Detlev Spangenberg,22,0.018900343642611683,0.5670103092783505,AfD,True,Bundesministerium für Gesundheit,17,1,Bundestag,19
-270,Marc Bernhard,30,0.02577319587628866,0.7731958762886597,AfD,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",13,1,Bundestag,19
-271,Michael Georg Link,5,0.00429553264604811,0.1288659793814433,FDP,True,Auswärtiges Amt,2,1,Bundestag,19
-272,Johannes Vogel,29,0.02491408934707904,0.7474226804123711,FDP,True,Bundesministerium für Arbeit und Soziales,21,1,Bundestag,19
-273,Corinna Miazga,246,0.211340206185567,6.34020618556701,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,62,1,Bundestag,19
-274,Bijan Djir-Sarai,3,0.002577319587628866,0.07731958762886598,FDP,True,Auswärtiges Amt,3,1,Bundestag,19
-275,Jens Beeck,83,0.07130584192439862,2.1391752577319587,FDP,True,Bundesministerium für Arbeit und Soziales,35,1,Bundestag,19
-276,Thomas Seitz,263,0.2259450171821306,6.778350515463917,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,66,1,Bundestag,19
-277,Peter Felser,25,0.02147766323024055,0.6443298969072165,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,16,1,Bundestag,19
-278,Friedrich Ostendorff,33,0.028350515463917526,0.8505154639175257,Die Grünen,True,Bundesministerium für Ernährung und Landwirtschaft,26,1,Bundestag,19
-279,Katrin Göring-Eckardt,2,0.001718213058419244,0.05154639175257732,Die Grünen,True,Beauftr. der Bundesregierung für Kultur und Medien,1,1,Bundestag,19
-280,Kay Gottschalk,20,0.01718213058419244,0.5154639175257733,AfD,True,Bundesministerium der Finanzen,14,1,Bundestag,19
-281,Christoph Hoffmann,21,0.01804123711340206,0.5412371134020618,FDP,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,12,1,Bundestag,19
-282,Jörg Cézanne,82,0.070446735395189,2.11340206185567,Die Linke,True,Bundesministerium der Finanzen,33,1,Bundestag,19
-283,Frithjof Schmidt,13,0.011168384879725086,0.3350515463917526,Die Grünen,True,Auswärtiges Amt,10,1,Bundestag,19
-284,Siegbert Droese,5,0.00429553264604811,0.1288659793814433,AfD,True,Auswärtiges Amt,3,1,Bundestag,19
-285,Matthias Höhn,20,0.01718213058419244,0.5154639175257733,Die Linke,True,Bundesministerium der Verteidigung,10,1,Bundestag,19
-286,Dietmar Friedhoff,79,0.06786941580756013,2.036082474226804,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,53,1,Bundestag,19
-287,Katja Dörner,20,0.01718213058419244,0.5154639175257733,Die Grünen,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",11,1,Bundestag,19
-288,Bettina Hoffmann,68,0.058419243986254296,1.7525773195876289,Die Grünen,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",40,1,Bundestag,19
-289,Ulle Schauws,25,0.02147766323024055,0.6443298969072165,Die Grünen,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",9,1,Bundestag,19
-290,Claudia Müller,38,0.03264604810996564,0.9793814432989691,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,15,1,Bundestag,19
-291,Andreas Wagner,11,0.009450171821305841,0.28350515463917525,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,9,1,Bundestag,19
-292,Ulla Jelpke,408,0.35051546391752575,10.515463917525773,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",204,1,Bundestag,19
-293,Frank Sitta,458,0.39347079037800686,11.804123711340205,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,178,1,Bundestag,19
-294,Gero Clemens Hocker,73,0.0627147766323024,1.8814432989690721,FDP,True,Bundesministerium für Ernährung und Landwirtschaft,47,1,Bundestag,19
-295,Uwe Kekeritz,49,0.04209621993127148,1.2628865979381445,Die Grünen,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,21,1,Bundestag,19
-296,Kai Gehring,80,0.06872852233676977,2.061855670103093,Die Grünen,True,Bundesministerium für Bildung und Forschung,33,1,Bundestag,19
-297,Hartmut Ebbing,46,0.03951890034364261,1.1855670103092784,FDP,True,Beauftr. der Bundesregierung für Kultur und Medien,39,1,Bundestag,19
-298,Beate Müller-Gemmeke,41,0.0352233676975945,1.056701030927835,Die Grünen,True,Bundesministerium für Arbeit und Soziales,28,1,Bundestag,19
-299,Verena Hartmann,18,0.015463917525773196,0.4639175257731959,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,10,1,Bundestag,19
-300,Christine Buchholz,148,0.12714776632302405,3.8144329896907214,Die Linke,True,Bundesministerium der Verteidigung,59,1,Bundestag,19
-301,Matthias Gastel,178,0.15292096219931273,4.587628865979382,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,161,1,Bundestag,19
-302,Kathrin Vogler,14,0.012027491408934709,0.36082474226804123,Die Linke,True,Auswärtiges Amt,9,1,Bundestag,19
-303,Martin Hess,58,0.04982817869415808,1.4948453608247423,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",41,1,Bundestag,19
-304,Sven Lehmann,37,0.03178694158075601,0.9536082474226804,Die Grünen,True,Bundesministerium für Arbeit und Soziales,24,1,Bundestag,19
-305,Mario Brandenburg,48,0.041237113402061855,1.2371134020618557,FDP,True,Bundesministerium für Bildung und Forschung,32,1,Bundestag,19
-306,Martin Hebner,16,0.013745704467353952,0.41237113402061853,AfD,True,Auswärtiges Amt,6,1,Bundestag,19
-307,Maria Klein-Schmeink,55,0.04725085910652921,1.4175257731958761,Die Grünen,True,Bundesministerium für Gesundheit,44,1,Bundestag,19
-308,Thomas Lutze,7,0.006013745704467354,0.18041237113402062,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,3,1,Bundestag,19
-309,Andrew Ullmann,21,0.01804123711340206,0.5412371134020618,FDP,True,Bundesministerium für Gesundheit,20,1,Bundestag,19
-310,Pascal Kober,12,0.010309278350515464,0.30927835051546393,FDP,True,Bundesministerium für Arbeit und Soziales,9,1,Bundestag,19
-311,Ulrich Oehme,63,0.05412371134020619,1.6237113402061856,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,43,1,Bundestag,19
-312,Linda Teuteberg,26,0.022336769759450172,0.6701030927835052,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",12,1,Bundestag,19
-313,Eva Schreiber,43,0.036941580756013746,1.1082474226804124,Die Linke,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,21,1,Bundestag,19
-314,Norbert Kleinwächter,14,0.012027491408934709,0.36082474226804123,AfD,True,Bundesministerium für Arbeit und Soziales,8,1,Bundestag,19
-315,Martin Renner,259,0.22250859106529208,6.675257731958762,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,66,1,Bundestag,19
-316,Tobias Lindner,17,0.014604810996563574,0.4381443298969072,Die Grünen,True,Bundesministerium der Verteidigung,11,1,Bundestag,19
-317,Zaklin Nastic,34,0.029209621993127148,0.8762886597938144,Die Linke,True,Auswärtiges Amt,18,1,Bundestag,19
-318,Florian Toncar,204,0.17525773195876287,5.257731958762887,FDP,True,Bundesministerium der Finanzen,184,1,Bundestag,19
-319,Anke Domscheit-Berg,42,0.03608247422680412,1.0824742268041236,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",16,1,Bundestag,19
-320,Markus Herbrand,51,0.04381443298969072,1.3144329896907216,FDP,True,Bundesministerium der Finanzen,39,1,Bundestag,19
-321,Omid Nouripour,29,0.02491408934707904,0.7474226804123711,Die Grünen,True,Auswärtiges Amt,18,1,Bundestag,19
-322,Joana Cotar,158,0.13573883161512026,4.072164948453608,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",26,1,Bundestag,19
-323,Bruno Hollnagel,14,0.012027491408934709,0.36082474226804123,AfD,True,Bundesministerium der Finanzen,8,1,Bundestag,19
-324,Jörg Cezanne,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium der Finanzen,1,1,Bundestag,19
-325,Gerold Otten,24,0.020618556701030927,0.6185567010309279,AfD,True,Bundesministerium der Verteidigung,24,1,Bundestag,19
+129,Andreas Mrosek,57,0.04896907216494845,1.4690721649484535,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,38,1,Bundestag,19
+130,Friedrich Straetmanns,154,0.1323024054982818,3.9690721649484537,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",26,1,Bundestag,19
+131,Jörg Schneider,64,0.054982817869415807,1.6494845360824741,AfD,True,Bundesministerium für Arbeit und Soziales,38,1,Bundestag,19
+132,Fabian Jacobi,4,0.003436426116838488,0.10309278350515463,AfD,True,Beauftr. der Bundesregierung für Kultur und Medien,1,1,Bundestag,19
+133,Daniela Wagner,116,0.09965635738831616,2.9896907216494846,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,67,1,Bundestag,19
+134,Sahra Wagenknecht,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
+135,Prem Bajaj,1,0.000859106529209622,0.02577319587628866,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",1,1,Bundestag,19
+136,Till Mansmann,24,0.020618556701030927,0.6185567010309279,FDP,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,13,1,Bundestag,19
+137,Uwe Schulz,141,0.1211340206185567,3.634020618556701,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",22,1,Bundestag,19
+138,Dirk Spaniel,89,0.07646048109965636,2.293814432989691,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,73,1,Bundestag,19
+139,Fabio Valeriano Lanfranco De Masi,101,0.08676975945017182,2.6030927835051547,Die Linke,True,Bundesministerium der Finanzen,39,1,Bundestag,19
+140,Hubertus Zdebel,27,0.023195876288659795,0.6958762886597938,Die Linke,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",13,1,Bundestag,19
+141,Heidrun Bluhm,11,0.009450171821305841,0.28350515463917525,Die Linke,True,Bundesministerium für Wirtschaft und Energie,4,1,Bundestag,19
+142,Armin-Paul Hampel,1,0.000859106529209622,0.02577319587628866,AfD,True,Auswärtiges Amt,1,1,Bundestag,19
+143,Daniela Kluckert,35,0.03006872852233677,0.9020618556701031,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,21,1,Bundestag,19
+144,Stefan Schmidt,59,0.0506872852233677,1.5206185567010309,Die Grünen,True,Bundesministerium der Finanzen,21,1,Bundestag,19
+145,Johannes Huber,5,0.00429553264604811,0.1288659793814433,AfD,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",2,1,Bundestag,19
+146,Sabine Zimmermann,17,0.014604810996563574,0.4381443298969072,Die Linke,True,Bundesministerium für Arbeit und Soziales,9,1,Bundestag,19
+147,Roman Müller-Böhm,58,0.04982817869415808,1.4948453608247423,FDP,True,Bundesministerium der Justiz und für Verbraucherschutz,23,1,Bundestag,19
+148,Tino Chrupalla,24,0.020618556701030927,0.6185567010309279,AfD,True,Bundesministerium für Wirtschaft und Energie,17,1,Bundestag,19
+149,Petra Pau,58,0.04982817869415808,1.4948453608247423,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",46,1,Bundestag,19
+150,Dietmar Bartsch,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium für Arbeit und Soziales,1,1,Bundestag,19
+151,Jürgen Trittin,14,0.012027491408934709,0.36082474226804123,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,7,1,Bundestag,19
+152,Matthias Birkwald,114,0.0979381443298969,2.938144329896907,Die Linke,True,Bundesministerium für Arbeit und Soziales,65,1,Bundestag,19
+153,Gyde Jensen,10,0.00859106529209622,0.2577319587628866,FDP,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",2,1,Bundestag,19
+154,Markus Tressel,60,0.05154639175257732,1.5463917525773194,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,27,1,Bundestag,19
+155,Wolfgang Wiehle,46,0.03951890034364261,1.1855670103092784,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,34,1,Bundestag,19
+156,Gerald Ullrich,11,0.009450171821305841,0.28350515463917525,FDP,True,Auswärtiges Amt,3,1,Bundestag,19
+157,Judith Skudelny,61,0.05240549828178694,1.5721649484536082,FDP,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",45,1,Bundestag,19
+158,Frank Magnitz,10,0.00859106529209622,0.2577319587628866,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,3,1,Bundestag,19
+159,Gesine Lötzsch,150,0.12886597938144329,3.8659793814432986,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,55,1,Bundestag,19
+160,Stephan Protschka,46,0.03951890034364261,1.1855670103092784,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,29,1,Bundestag,19
+161,Hagen Reinhold,39,0.03350515463917526,1.0051546391752577,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,11,1,Bundestag,19
+162,Steffen Kotré,19,0.01632302405498282,0.4896907216494846,AfD,True,Bundesministerium für Wirtschaft und Energie,13,1,Bundestag,19
+163,Konstantin Kuhle,31,0.02663230240549828,0.7989690721649484,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",19,1,Bundestag,19
+164,Brigitte Freihold,19,0.01632302405498282,0.4896907216494846,Die Linke,True,Auswärtiges Amt,5,1,Bundestag,19
+165,Annette Groth,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium der Verteidigung,1,1,Bundestag,19
+166,Lothar Maier,6,0.005154639175257732,0.15463917525773196,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",3,1,Bundestag,19
+167,Tabea Rößner,37,0.03178694158075601,0.9536082474226804,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",8,1,Bundestag,19
+168,Luise Amtsberg,45,0.03865979381443299,1.1597938144329898,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",24,1,Bundestag,19
+169,André Hahn,508,0.436426116838488,13.092783505154639,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",281,1,Bundestag,19
+170,Ulrich Lechte,7,0.006013745704467354,0.18041237113402062,FDP,True,Auswärtiges Amt,4,1,Bundestag,19
+171,Sylvia Gabelmann,54,0.04639175257731959,1.3917525773195876,Die Linke,True,Bundesministerium für Gesundheit,27,1,Bundestag,19
+172,Lukas Köhler,11,0.009450171821305841,0.28350515463917525,FDP,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",8,1,Bundestag,19
+173,Alexander Neu,44,0.037800687285223365,1.134020618556701,Die Linke,True,Bundesministerium der Verteidigung,24,1,Bundestag,19
+174,Enak Ferlemann,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,Bundesregierung,1,1,Bundestag,19
+175,Cem Özdemir,12,0.010309278350515464,0.30927835051546393,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,9,1,Bundestag,19
+176,Cornelia Möhring,22,0.018900343642611683,0.5670103092783505,Die Linke,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",8,1,Bundestag,19
+177,Jochen Haug,26,0.022336769759450172,0.6701030927835052,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",14,1,Bundestag,19
+178,Waldemar Herdt,19,0.01632302405498282,0.4896907216494846,AfD,True,Auswärtiges Amt,10,1,Bundestag,19
+179,Sören Pellmann,13,0.011168384879725086,0.3350515463917526,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",6,1,Bundestag,19
+180,Bernd Reuther,75,0.06443298969072164,1.9329896907216493,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,59,1,Bundestag,19
+181,Achim Kessler,24,0.020618556701030927,0.6185567010309279,Die Linke,True,Bundesministerium für Gesundheit,18,1,Bundestag,19
+182,Marcus Bühl,7,0.006013745704467354,0.18041237113402062,AfD,True,Bundesministerium der Finanzen,2,1,Bundestag,19
+183,Rita Hagl-Kehl,1,0.000859106529209622,0.02577319587628866,SPD,False,Bundesministerium der Justiz und für Verbraucherschutz,1,1,Bundestag,19
+184,Stephan Holthoff-Pförtner,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
+185,Amira Mohamed Ali,19,0.01632302405498282,0.4896907216494846,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",6,1,Bundestag,19
+186,Monika Lazar,23,0.019759450171821305,0.5927835051546392,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",20,1,Bundestag,19
+187,Katja Suding,226,0.19415807560137457,5.824742268041237,FDP,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",77,1,Bundestag,19
+188,Gerhard Zickenheiner,1,0.000859106529209622,0.02577319587628866,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
+189,Peter Beuth,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,"Bundesministerium des Innern, für Bau und Heimat",1,1,Bundestag,19
+190,Dr. Harald Weyel,13,0.011168384879725086,0.3350515463917526,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,5,1,Bundestag,19
+191,Anton Hofreiter,2,0.001718213058419244,0.05154639175257732,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,2,1,Bundestag,19
+192,Paul Podolay,22,0.018900343642611683,0.5670103092783505,AfD,True,Bundesministerium für Gesundheit,16,1,Bundestag,19
+193,Marcel Klinge,28,0.024054982817869417,0.7216494845360825,FDP,True,Bundesministerium für Wirtschaft und Energie,13,1,Bundestag,19
+194,Frank Schäffler,156,0.13402061855670103,4.020618556701031,FDP,True,Bundesministerium der Finanzen,141,1,Bundestag,19
+195,Alexander Müller,9,0.007731958762886598,0.23195876288659795,FDP,True,Bundesministerium der Verteidigung,6,1,Bundestag,19
+196,Alexander Ulrich,10,0.00859106529209622,0.2577319587628866,Die Linke,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",3,1,Bundestag,19
+197,Tobias Peterka,16,0.013745704467353952,0.41237113402061853,AfD,True,Bundesministerium der Justiz und für Verbraucherschutz,5,1,Bundestag,19
+198,Manfred Todtenhausen,7,0.006013745704467354,0.18041237113402062,FDP,True,Bundesministerium für Wirtschaft und Energie,4,1,Bundestag,19
+199,Lisa Paus,48,0.041237113402061855,1.2371134020618557,Die Grünen,True,Bundesministerium der Finanzen,36,1,Bundestag,19
+200,Irene Mihalic,54,0.04639175257731959,1.3917525773195876,Die Grünen,True,"Bundesministerium des Innern, für Bau und Heimat",44,1,Bundestag,19
+201,Manuela Rottmann,11,0.009450171821305841,0.28350515463917525,Die Grünen,True,Bundesministerium der Justiz und für Verbraucherschutz,6,1,Bundestag,19
+202,Simone Barrientos Krauss,81,0.06958762886597938,2.0876288659793816,Die Linke,True,Bundesministerium für Bildung und Forschung,17,1,Bundestag,19
+203,Lorenz Beutin,113,0.09707903780068729,2.9123711340206184,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,33,1,Bundestag,19
+204,Andrej Hunko,284,0.24398625429553264,7.319587628865979,Die Linke,True,Auswärtiges Amt,91,1,Bundestag,19
+205,Harald Weinberg,8,0.006872852233676976,0.20618556701030927,Die Linke,True,Bundesministerium für Gesundheit,5,1,Bundestag,19
+206,Ingrid Remmers,12,0.010309278350515464,0.30927835051546393,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,12,1,Bundestag,19
+207,Kerstin Kassner,9,0.007731958762886598,0.23195876288659795,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",3,1,Bundestag,19
+208,Anna Christmann,48,0.041237113402061855,1.2371134020618557,Die Grünen,True,Bundesministerium für Bildung und Forschung,26,1,Bundestag,19
+209,Anton Friesen,143,0.12285223367697594,3.685567010309278,AfD,True,Auswärtiges Amt,62,1,Bundestag,19
+210,Danyal Bayaz,50,0.0429553264604811,1.288659793814433,Die Grünen,True,Bundesministerium der Finanzen,33,1,Bundestag,19
+211,Thomas Ehrhorn,19,0.01632302405498282,0.4896907216494846,AfD,True,Beauftr. der Bundesregierung für Kultur und Medien,5,1,Bundestag,19
+212,Stephan Brandner,76,0.06529209621993128,1.9587628865979383,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",25,1,Bundestag,19
+213,Pia-Beate Zimmermann,9,0.007731958762886598,0.23195876288659795,Die Linke,True,Bundesministerium für Gesundheit,7,1,Bundestag,19
+214,Tobias Pflüger,49,0.04209621993127148,1.2628865979381445,Die Linke,True,Bundesministerium der Verteidigung,31,1,Bundestag,19
+215,Ekin Deligöz,12,0.010309278350515464,0.30927835051546393,Die Grünen,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",5,1,Bundestag,19
+216,Kirsten Tackmann,37,0.03178694158075601,0.9536082474226804,Die Linke,True,Bundesministerium für Ernährung und Landwirtschaft,28,1,Bundestag,19
+217,Erhard Grundl,20,0.01718213058419244,0.5154639175257733,Die Grünen,True,Beauftr. der Bundesregierung für Kultur und Medien,13,1,Bundestag,19
+218,Katja Keul,29,0.02491408934707904,0.7474226804123711,Die Grünen,True,Bundesministerium der Justiz und für Verbraucherschutz,7,1,Bundestag,19
+219,Stefan Keuter,55,0.04725085910652921,1.4175257731958761,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,14,1,Bundestag,19
+220,Götz Frömming,43,0.036941580756013746,1.1082474226804124,AfD,True,Bundesministerium für Bildung und Forschung,13,1,Bundestag,19
+221,Axel Gehrke,51,0.04381443298969072,1.3144329896907216,AfD,True,Bundesministerium für Gesundheit,29,1,Bundestag,19
+222,Dieter Janecek,24,0.020618556701030927,0.6185567010309279,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,9,1,Bundestag,19
+223,Wilhelm von Gottberg,9,0.007731958762886598,0.23195876288659795,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,8,1,Bundestag,19
+224,Manuel Höferlin,35,0.03006872852233677,0.9020618556701031,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",19,1,Bundestag,19
+225,Gottfried Curio,75,0.06443298969072164,1.9329896907216493,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",63,1,Bundestag,19
+226,Sabine Leidig,32,0.027491408934707903,0.8247422680412371,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,28,1,Bundestag,19
+227,Dr. Marc Jongen,40,0.03436426116838488,1.0309278350515465,AfD,True,Beauftr. der Bundesregierung für Kultur und Medien,15,1,Bundestag,19
+228,Albrecht Glaser,8,0.006872852233676976,0.20618556701030927,AfD,True,Bundesministerium der Finanzen,8,1,Bundestag,19
+229,Stephan Kühn,152,0.13058419243986255,3.9175257731958766,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,132,1,Bundestag,19
+230,Alexander Kulitz,11,0.009450171821305841,0.28350515463917525,FDP,True,Bundesministerium für Wirtschaft und Energie,8,1,Bundestag,19
+231,Heiko Wildberg,13,0.011168384879725086,0.3350515463917526,AfD,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",7,1,Bundestag,19
+232,Elisabeth Winkelmeier-Becker,1,0.000859106529209622,0.02577319587628866,CDU/CSU,False,Bundesministerium für Wirtschaft und Energie,1,1,Bundestag,19
+233,Michael Leutert,2,0.001718213058419244,0.05154639175257732,Die Linke,True,Bundesministerium der Finanzen,1,1,Bundestag,19
+234,Victor Perli,9,0.007731958762886598,0.23195876288659795,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,6,1,Bundestag,19
+235,Christoph Neumann,16,0.013745704467353952,0.41237113402061853,AfD,True,Bundesministerium für Wirtschaft und Energie,6,1,Bundestag,19
+236,Udo Hemmelgarn,18,0.015463917525773196,0.4639175257731959,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",6,1,Bundestag,19
+237,Karsten Hilse,23,0.019759450171821305,0.5927835051546392,AfD,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",16,1,Bundestag,19
+238,Heike Hänsel,246,0.211340206185567,6.34020618556701,Die Linke,True,Auswärtiges Amt,92,1,Bundestag,19
+239,Jimmy Schulz,16,0.013745704467353952,0.41237113402061853,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",8,1,Bundestag,19
+240,Rüdiger Lucassen,35,0.03006872852233677,0.9020618556701031,AfD,True,Bundesministerium der Verteidigung,32,1,Bundestag,19
+241,Caren Lay,16,0.013745704467353952,0.41237113402061853,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",7,1,Bundestag,19
+242,Canan Bayram,21,0.01804123711340206,0.5412371134020618,Die Grünen,True,Bundesministerium der Justiz und für Verbraucherschutz,7,1,Bundestag,19
+243,Kerstin Andreae,23,0.019759450171821305,0.5927835051546392,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,13,1,Bundestag,19
+244,Karlheinz Busen,57,0.04896907216494845,1.4690721649484535,FDP,True,Bundesministerium für Ernährung und Landwirtschaft,32,1,Bundestag,19
+245,Annalena Baerbock,84,0.07216494845360824,2.1649484536082473,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,23,1,Bundestag,19
+246,Christian Jung,65,0.05584192439862543,1.675257731958763,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,57,1,Bundestag,19
+247,Katja Hessel,26,0.022336769759450172,0.6701030927835052,FDP,True,Bundesministerium der Finanzen,22,1,Bundestag,19
+248,Harald Weyel,21,0.01804123711340206,0.5412371134020618,AfD,True,Auswärtiges Amt,5,1,Bundestag,19
+249,Nicole Bauer,78,0.06701030927835051,2.0103092783505154,FDP,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",24,1,Bundestag,19
+250,Pascal Meiser,19,0.01632302405498282,0.4896907216494846,Die Linke,True,Bundesministerium für Arbeit und Soziales,10,1,Bundestag,19
+251,Ulla Ihnen,8,0.006872852233676976,0.20618556701030927,FDP,True,Bundesministerium der Finanzen,3,1,Bundestag,19
+252,Jürgen Braun,18,0.015463917525773196,0.4639175257731959,AfD,True,Auswärtiges Amt,11,1,Bundestag,19
+253,Leif-Erik Holm,65,0.05584192439862543,1.675257731958763,AfD,True,Bundesministerium für Verkehr und digitale Infrastruktur,34,1,Bundestag,19
+254,Ingrid Nestle,42,0.03608247422680412,1.0824742268041236,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,30,1,Bundestag,19
+255,Jörn König,11,0.009450171821305841,0.28350515463917525,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",4,1,Bundestag,19
+256,Uwe Kamann,14,0.012027491408934709,0.36082474226804123,AfD,True,Bundesministerium der Justiz und für Verbraucherschutz,3,1,Bundestag,19
+257,Jessica Tatti,26,0.022336769759450172,0.6701030927835052,Die Linke,True,Bundesministerium für Arbeit und Soziales,20,1,Bundestag,19
+258,Torsten Herbst,98,0.08419243986254296,2.525773195876289,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,76,1,Bundestag,19
+259,Benjamin Strasser,39,0.03350515463917526,1.0051546391752577,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",33,1,Bundestag,19
+260,Hansjörg Gerhard Georg Müller,2,0.001718213058419244,0.05154639175257732,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,1,1,Bundestag,19
+261,Ottmar von Holtz,26,0.022336769759450172,0.6701030927835052,Die Grünen,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,14,1,Bundestag,19
+262,Jan Nolte,17,0.014604810996563574,0.4381443298969072,AfD,True,Bundesministerium der Verteidigung,14,1,Bundestag,19
+263,Bettina Stark-Watzinger,58,0.04982817869415808,1.4948453608247423,FDP,True,Bundesministerium der Finanzen,48,1,Bundestag,19
+264,Rainer Kraft,29,0.02491408934707904,0.7474226804123711,AfD,True,Bundesministerium für Wirtschaft und Energie,8,1,Bundestag,19
+265,Julia Verlinden,55,0.04725085910652921,1.4175257731958761,Die Grünen,True,Bundesministerium für Wirtschaft und Energie,36,1,Bundestag,19
+266,Stefan Gelbhaar,121,0.10395189003436427,3.118556701030928,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,110,1,Bundestag,19
+267,Katrin Werner,13,0.011168384879725086,0.3350515463917526,Die Linke,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",10,1,Bundestag,19
+268,Detlev Spangenberg,22,0.018900343642611683,0.5670103092783505,AfD,True,Bundesministerium für Gesundheit,17,1,Bundestag,19
+269,Marc Bernhard,30,0.02577319587628866,0.7731958762886597,AfD,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",13,1,Bundestag,19
+270,Michael Georg Link,5,0.00429553264604811,0.1288659793814433,FDP,True,Auswärtiges Amt,2,1,Bundestag,19
+271,Johannes Vogel,29,0.02491408934707904,0.7474226804123711,FDP,True,Bundesministerium für Arbeit und Soziales,21,1,Bundestag,19
+272,Corinna Miazga,246,0.211340206185567,6.34020618556701,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,62,1,Bundestag,19
+273,Bijan Djir-Sarai,3,0.002577319587628866,0.07731958762886598,FDP,True,Auswärtiges Amt,3,1,Bundestag,19
+274,Jens Beeck,83,0.07130584192439862,2.1391752577319587,FDP,True,Bundesministerium für Arbeit und Soziales,35,1,Bundestag,19
+275,Thomas Seitz,263,0.2259450171821306,6.778350515463917,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,66,1,Bundestag,19
+276,Peter Felser,25,0.02147766323024055,0.6443298969072165,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,16,1,Bundestag,19
+277,Friedrich Ostendorff,33,0.028350515463917526,0.8505154639175257,Die Grünen,True,Bundesministerium für Ernährung und Landwirtschaft,26,1,Bundestag,19
+278,Katrin Göring-Eckardt,2,0.001718213058419244,0.05154639175257732,Die Grünen,True,Beauftr. der Bundesregierung für Kultur und Medien,1,1,Bundestag,19
+279,Kay Gottschalk,20,0.01718213058419244,0.5154639175257733,AfD,True,Bundesministerium der Finanzen,14,1,Bundestag,19
+280,Christoph Hoffmann,21,0.01804123711340206,0.5412371134020618,FDP,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,12,1,Bundestag,19
+281,Jörg Cézanne,82,0.070446735395189,2.11340206185567,Die Linke,True,Bundesministerium der Finanzen,33,1,Bundestag,19
+282,Frithjof Schmidt,13,0.011168384879725086,0.3350515463917526,Die Grünen,True,Auswärtiges Amt,10,1,Bundestag,19
+283,Siegbert Droese,5,0.00429553264604811,0.1288659793814433,AfD,True,Auswärtiges Amt,3,1,Bundestag,19
+284,Matthias Höhn,20,0.01718213058419244,0.5154639175257733,Die Linke,True,Bundesministerium der Verteidigung,10,1,Bundestag,19
+285,Dietmar Friedhoff,79,0.06786941580756013,2.036082474226804,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,53,1,Bundestag,19
+286,Katja Dörner,20,0.01718213058419244,0.5154639175257733,Die Grünen,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",11,1,Bundestag,19
+287,Bettina Hoffmann,68,0.058419243986254296,1.7525773195876289,Die Grünen,True,"Bundesministerium für Umwelt, Naturschutz und nukleare Sicherheit",40,1,Bundestag,19
+288,Ulle Schauws,25,0.02147766323024055,0.6443298969072165,Die Grünen,True,"Bundesministerium für Familie, Senioren, Frauen und Jugend",9,1,Bundestag,19
+289,Claudia Müller,38,0.03264604810996564,0.9793814432989691,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,15,1,Bundestag,19
+290,Andreas Wagner,11,0.009450171821305841,0.28350515463917525,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,9,1,Bundestag,19
+291,Ulla Jelpke,408,0.35051546391752575,10.515463917525773,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",204,1,Bundestag,19
+292,Frank Sitta,458,0.39347079037800686,11.804123711340205,FDP,True,Bundesministerium für Verkehr und digitale Infrastruktur,178,1,Bundestag,19
+293,Gero Clemens Hocker,73,0.0627147766323024,1.8814432989690721,FDP,True,Bundesministerium für Ernährung und Landwirtschaft,47,1,Bundestag,19
+294,Uwe Kekeritz,49,0.04209621993127148,1.2628865979381445,Die Grünen,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,21,1,Bundestag,19
+295,Kai Gehring,80,0.06872852233676977,2.061855670103093,Die Grünen,True,Bundesministerium für Bildung und Forschung,33,1,Bundestag,19
+296,Hartmut Ebbing,46,0.03951890034364261,1.1855670103092784,FDP,True,Beauftr. der Bundesregierung für Kultur und Medien,39,1,Bundestag,19
+297,Beate Müller-Gemmeke,41,0.0352233676975945,1.056701030927835,Die Grünen,True,Bundesministerium für Arbeit und Soziales,28,1,Bundestag,19
+298,Verena Hartmann,18,0.015463917525773196,0.4639175257731959,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,10,1,Bundestag,19
+299,Christine Buchholz,148,0.12714776632302405,3.8144329896907214,Die Linke,True,Bundesministerium der Verteidigung,59,1,Bundestag,19
+300,Matthias Gastel,178,0.15292096219931273,4.587628865979382,Die Grünen,True,Bundesministerium für Verkehr und digitale Infrastruktur,161,1,Bundestag,19
+301,Kathrin Vogler,14,0.012027491408934709,0.36082474226804123,Die Linke,True,Auswärtiges Amt,9,1,Bundestag,19
+302,Martin Hess,58,0.04982817869415808,1.4948453608247423,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",41,1,Bundestag,19
+303,Sven Lehmann,37,0.03178694158075601,0.9536082474226804,Die Grünen,True,Bundesministerium für Arbeit und Soziales,24,1,Bundestag,19
+304,Mario Brandenburg,48,0.041237113402061855,1.2371134020618557,FDP,True,Bundesministerium für Bildung und Forschung,32,1,Bundestag,19
+305,Martin Hebner,16,0.013745704467353952,0.41237113402061853,AfD,True,Auswärtiges Amt,6,1,Bundestag,19
+306,Maria Klein-Schmeink,55,0.04725085910652921,1.4175257731958761,Die Grünen,True,Bundesministerium für Gesundheit,44,1,Bundestag,19
+307,Thomas Lutze,7,0.006013745704467354,0.18041237113402062,Die Linke,True,Bundesministerium für Verkehr und digitale Infrastruktur,3,1,Bundestag,19
+308,Andrew Ullmann,21,0.01804123711340206,0.5412371134020618,FDP,True,Bundesministerium für Gesundheit,20,1,Bundestag,19
+309,Pascal Kober,12,0.010309278350515464,0.30927835051546393,FDP,True,Bundesministerium für Arbeit und Soziales,9,1,Bundestag,19
+310,Ulrich Oehme,63,0.05412371134020619,1.6237113402061856,AfD,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,43,1,Bundestag,19
+311,Linda Teuteberg,26,0.022336769759450172,0.6701030927835052,FDP,True,"Bundesministerium des Innern, für Bau und Heimat",12,1,Bundestag,19
+312,Eva Schreiber,43,0.036941580756013746,1.1082474226804124,Die Linke,True,Bundesministerium für wirtschaftliche Zusammenarbeit und Entwicklung,21,1,Bundestag,19
+313,Norbert Kleinwächter,14,0.012027491408934709,0.36082474226804123,AfD,True,Bundesministerium für Arbeit und Soziales,8,1,Bundestag,19
+314,Martin Renner,259,0.22250859106529208,6.675257731958762,AfD,True,Bundesministerium für Ernährung und Landwirtschaft,66,1,Bundestag,19
+315,Tobias Lindner,17,0.014604810996563574,0.4381443298969072,Die Grünen,True,Bundesministerium der Verteidigung,11,1,Bundestag,19
+316,Zaklin Nastic,34,0.029209621993127148,0.8762886597938144,Die Linke,True,Auswärtiges Amt,18,1,Bundestag,19
+317,Florian Toncar,204,0.17525773195876287,5.257731958762887,FDP,True,Bundesministerium der Finanzen,184,1,Bundestag,19
+318,Anke Domscheit-Berg,42,0.03608247422680412,1.0824742268041236,Die Linke,True,"Bundesministerium des Innern, für Bau und Heimat",16,1,Bundestag,19
+319,Markus Herbrand,51,0.04381443298969072,1.3144329896907216,FDP,True,Bundesministerium der Finanzen,39,1,Bundestag,19
+320,Omid Nouripour,29,0.02491408934707904,0.7474226804123711,Die Grünen,True,Auswärtiges Amt,18,1,Bundestag,19
+321,Joana Cotar,158,0.13573883161512026,4.072164948453608,AfD,True,"Bundesministerium des Innern, für Bau und Heimat",26,1,Bundestag,19
+322,Bruno Hollnagel,14,0.012027491408934709,0.36082474226804123,AfD,True,Bundesministerium der Finanzen,8,1,Bundestag,19
+323,Jörg Cezanne,1,0.000859106529209622,0.02577319587628866,Die Linke,True,Bundesministerium der Finanzen,1,1,Bundestag,19
+324,Gerold Otten,24,0.020618556701030927,0.6185567010309279,AfD,True,Bundesministerium der Verteidigung,24,1,Bundestag,19
+325,,0,0.0,0.0,AfD,True,,0,1,Bundestag,19
 326,,0,0.0,0.0,AfD,True,,0,1,Bundestag,19
-327,,0,0.0,0.0,AfD,True,,0,1,Bundestag,19
+327,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
 328,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
 329,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
 330,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
@@ -2259,7 +2259,7 @@
 565,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
 566,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
 567,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
-568,,0,0.0,0.0,CDU/CSU,False,,0,1,Bundestag,19
+568,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
 569,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
 570,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
 571,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
@@ -2409,7 +2409,6 @@
 715,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
 716,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
 717,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
-718,,0,0.0,0.0,SPD,False,,0,1,Bundestag,19
 0,Jürgen Lenders,138,0.07561643835616438,2.2684931506849315,FDP,True,"Minister für Wirtschaft, Energie, Verkehr und Landesentwicklung",85,2,Hessen,19
 1,Dirk Landau,6,0.0032876712328767125,0.09863013698630138,CDU,False,"Minister für Wirtschaft, Energie, Verkehr und Landesentwicklung",2,2,Hessen,19
 2,Jürgen Frömmrich,4,0.002191780821917808,0.06575342465753424,Die Grünen,False,Minister des Innern und für Sport,3,2,Hessen,19
