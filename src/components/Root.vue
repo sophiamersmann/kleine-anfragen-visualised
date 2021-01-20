@@ -84,7 +84,8 @@
       :dates=popup.dates
       :has-ended=popup.hasEnded
       :srcRequests=popup.srcRequests
-      :elections=popup.elections />
+      :elections=popup.elections
+      @close="onFlat" />
   </transition>
   <transition name="fade">
     <div

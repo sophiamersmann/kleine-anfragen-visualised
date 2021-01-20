@@ -59,6 +59,7 @@ export default {
   components: {
     MinistryButtonGroup,
   },
+  emits: ['close'],
   props: {
     name: String,
     body: String,
@@ -76,6 +77,7 @@ export default {
     };
   },
   async created() {
+    document.addEventListener('keyup', this.onKeyUp);
     window.addEventListener('resize', this.onResize);
     await this.fetchRequestsData();
   },
@@ -198,6 +200,11 @@ export default {
       this.ringChart
         .drawSkeleton(ringChartDiv.clientHeight)
         .updateMinistry(this.selectedRequests);
+    },
+    onKeyUp(event) {
+      if (event.key === 'Escape') {
+        this.$emit('close');
+      }
     },
     getPartyCounts(requests) {
       let partyCounts = d3
