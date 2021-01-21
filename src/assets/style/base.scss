@@ -22,3 +22,8 @@ html {
 h1, h2, h3 {
   font-family: 'Quicksand', Helvetica, Arial, sans-serif;
 }
+
+a {
+  color: $primary-dark;
+  text-underline-offset: 4px;
+}
