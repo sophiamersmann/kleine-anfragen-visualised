@@ -116,12 +116,12 @@ export default {
   margin-top: 0.5 * $spacing;
   text-align: center;
 
-  .heading {
-    font-family: 'Quicksand', Helvetica, Arial, sans-serif;
-  }
-
   .years {
     white-space: nowrap;
+  }
+
+  p {
+    font-size: 0.9rem;
   }
 }
 </style>
