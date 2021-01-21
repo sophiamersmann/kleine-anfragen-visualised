@@ -162,7 +162,10 @@ export default {
     parties() {
       if (this.requests === null) return null;
       return this.getPartyCounts(this.requests)
-        .sort((a, b) => d3.descending(a.count, b.count))
+        .sort((a, b) => d3.descending(
+          a.party === 'fraktionslos' ? -1 : a.count,
+          b.party === 'fraktionslos' ? -1 : b.count,
+        ))
         .map(({ party }) => party);
     },
     isOpposition() {
