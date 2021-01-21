@@ -3,20 +3,26 @@
     <div class="top">
       <div class="introduction">
         <h1>
-          <a class="kleine-anfragen" href="https://kleineanfragen.de/" target="blank">
+          <a class="kleine-anfragen" href="https://kleineanfragen.de/" target="_blank">
             kleineAnfragen
           </a>
           <span class="visualised"> visualisiert</span>
         </h1>
         <div class="text">
           <div class="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            In ihrer parlamentarischen Arbeit können Abgeordnete durch kleine Anfragen
+            der Regierung auf wenige Punkte begrenzte Fragen stellen, die dann von dieser
+            zeitnah beantwortet und veröffentlicht werden müssen.
+          </div>
+          <div class="p">
+            Über 5 Jahre hat <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>,
+            ein Projekt der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation Deutschland e.V.</a>,
+            kleine und große Anfragen aus den Landesparlamenten und aus
+            dem Bundestag zusammengetragen und maschinell ausgewertet, und diese damit
+            leicht zugänglich, durchsuch- und verlinkbar gemacht. Leider wurde
+            das Projekt zum 31.12.2020 <a href="https://kleineanfragen.de/info/stilllegung" target="_blank">eingestellt</a>.
+            Was bleibt sind <b>mehr als 100.000 dokumentierte Anfragen</b>,
+            die hier visuell aufbereitet sind.
           </div>
           <div class="p">
             Kategorien:
