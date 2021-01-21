@@ -337,8 +337,8 @@ export default class RingChart {
       .attr('class', 'info')
       .selectAll('text')
       .data([
-        { type: 'interact', text: 'Interact with the chart to explore individual requests' },
-        { type: 'reset', text: 'Click anywhere to reset' },
+        { type: 'interact', text: 'Fahre mit der Maus über die Grafik, um einzelne Anfragen zu sehen' },
+        { type: 'reset', text: 'Klicke um zurückzusetzen' },
       ])
       .join('text')
       .attr('class', (d) => `text-info--${d.type}`)
