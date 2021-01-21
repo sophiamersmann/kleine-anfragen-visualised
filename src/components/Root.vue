@@ -9,31 +9,34 @@
           <span class="visualised"> visualisiert</span>
         </h1>
         <div class="text">
-          <div class="p">
-            In ihrer parlamentarischen Arbeit können Abgeordnete durch kleine Anfragen
-            der Regierung auf wenige Punkte begrenzte Fragen stellen, die dann von dieser
-            zeitnah beantwortet und veröffentlicht werden müssen.
+          <div>
+            <div class="p">
+              In ihrer parlamentarischen Arbeit können Abgeordnete durch kleine Anfragen
+              der Regierung auf wenige Punkte begrenzte Fragen stellen, die dann von dieser
+              zeitnah beantwortet und veröffentlicht werden müssen.
+            </div>
+            <div class="p">
+              Über 5 Jahre hat <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>,
+              ein Projekt der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation Deutschland e.V.</a>,
+              kleine und große Anfragen aus den Landesparlamenten und aus
+              dem Bundestag zusammengetragen und maschinell ausgewertet, und diese damit
+              leicht zugänglich, durchsuch- und verlinkbar gemacht. Leider wurde
+              das Projekt zum 31.12.2020 <a href="https://kleineanfragen.de/info/stilllegung" target="_blank">eingestellt</a>.
+              Was bleibt sind <b>mehr als 100.000 dokumentierte Anfragen</b>,
+              die hier visuell aufbereitet sind.
+            </div>
           </div>
           <div class="p">
-            Über 5 Jahre hat <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>,
-            ein Projekt der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation Deutschland e.V.</a>,
-            kleine und große Anfragen aus den Landesparlamenten und aus
-            dem Bundestag zusammengetragen und maschinell ausgewertet, und diese damit
-            leicht zugänglich, durchsuch- und verlinkbar gemacht. Leider wurde
-            das Projekt zum 31.12.2020 <a href="https://kleineanfragen.de/info/stilllegung" target="_blank">eingestellt</a>.
-            Was bleibt sind <b>mehr als 100.000 dokumentierte Anfragen</b>,
-            die hier visuell aufbereitet sind.
-          </div>
-          <div class="p">
-            Kategorien:
             <div class="legend legend-seat-chart">
+              Ein Abgeordneter einer <b>Oppositions-</b> oder Regierungspartei
+              war beteiligt an
               <div
               class="legend-line"
               v-for="(line, i) in legend"
               :key=i
               >
-              <div class="legend-line--chart" :id=line.chartId />
-              <div class="legend-line--label">{{ line.label }}</div>
+                <div class="legend-line--chart" :id=line.chartId />
+                <div class="legend-line--label">{{ line.label }}</div>
               </div>
             </div>
           </div>
@@ -140,12 +143,12 @@ export default {
       tileMap: null,
       popup: null,
       legend: [
-        { chartId: 'legend-line--chart-0', category: '0', label: 'keine Anfragen' },
-        { chartId: 'legend-line--chart-1', category: '<1 per year', label: 'weniger als eine Anfrage im Jahr' },
-        { chartId: 'legend-line--chart-2', category: '>=1 per year', label: 'mehr als eine Anfrage im Jahr' },
-        { chartId: 'legend-line--chart-3', category: '>=1 per month', label: 'mehr als eine Anfrage im Monat' },
-        { chartId: 'legend-line--chart-4', category: '>=1 per week', label: 'mehr als eine Anfrage in der Woche' },
-        { chartId: 'legend-line--chart-5', category: '>=1 per day', label: 'mehr als eine Anfrage am Tag' },
+        { chartId: 'legend-line--chart-0', category: '0', label: 'keinen Anfragen.' },
+        { chartId: 'legend-line--chart-1', category: '<1 per year', label: 'weniger als einer Anfrage im Jahr.' },
+        { chartId: 'legend-line--chart-2', category: '>=1 per year', label: 'mehr als einer Anfrage im Jahr.' },
+        { chartId: 'legend-line--chart-3', category: '>=1 per month', label: 'mehr als einer Anfrage im Monat.' },
+        { chartId: 'legend-line--chart-4', category: '>=1 per week', label: 'mehr als einer Anfrage in der Woche.' },
+        { chartId: 'legend-line--chart-5', category: '>=1 per day', label: 'mehr als einer Anfrage am Tag.' },
       ],
     };
   },
@@ -359,11 +362,16 @@ main {
 
   .legend {
     margin: 0.5 * $spacing 0;
-    padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing 2 * $spacing;
+    padding: 0.5 * $spacing $spacing;
     background-color: white;
     border-radius: $border-radius-weak;
     font-size: 0.9rem;
-    line-height: 1.75;
+    line-height: 1.5;
+    text-align: left;
+
+    @include max-width($bp-xl) {
+      margin: 0;
+    }
 
     @include max-width($bp-sm) {
       padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing $spacing;
@@ -372,6 +380,11 @@ main {
     .legend-line {
       display: flex;
       align-items: baseline;
+      padding-left: $spacing;
+
+      &:first-of-type {
+        margin-top: 0.25 * $spacing;
+      }
     }
 
     .legend-line--chart {
