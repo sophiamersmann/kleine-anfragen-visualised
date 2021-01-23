@@ -328,10 +328,20 @@ main {
 .introduction {
   line-height: 1.5;
 
-  .kleine-anfragen {
-    font-family: 'Raleway', sans-serif;
-    text-decoration: none;
-    color: inherit;
+  h1 {
+    border-bottom: 1px solid $black;
+    text-align: center;
+
+      .kleine-anfragen {
+      font-family: 'Raleway', sans-serif;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .visualised {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: bold;
+    }
   }
 
   .text {
@@ -343,15 +353,6 @@ main {
 
     @include max-width($bp-lg) {
       display: block;
-    }
-  }
-
-  h1 {
-    border-bottom: 1px solid $black;
-    text-align: center;
-
-    .visualised {
-      font-family: 'Quicksand', sans-serif;
     }
   }
 
