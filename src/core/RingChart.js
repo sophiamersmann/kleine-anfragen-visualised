@@ -337,18 +337,23 @@ export default class RingChart {
       .attr('class', 'info')
       .selectAll('text')
       .data([
-        { type: 'interact', text: 'Fahre mit der Maus über die Grafik, um einzelne Anfragen zu sehen' },
-        { type: 'reset', text: 'Klicke um zurückzusetzen' },
+        { type: 'interact', text: ['Fahre mit der Maus über die Grafik,', 'um einzelne Anfragen zu sehen'] },
+        { type: 'reset', text: ['Klicke um zurückzusetzen'] },
       ])
       .join('text')
       .attr('class', (d) => `text-info--${d.type}`)
-      .attr('x', -this.width / 2 + 10)
       .attr('y', -this.height / 2 + 10)
       .attr('dominant-baseline', 'hanging')
       .attr('opacity', (d) => +(d.type === 'interact'))
       .style('font-size', '0.8rem')
       .style('font-style', 'italic')
-      .text((d) => d.text);
+      .selectAll('tspan')
+      .data((d) => d.text)
+      .join('tspan')
+      .attr('x', -this.width / 2 + 10)
+      .attr('dy', (_, i) => i * 12)
+      .text((d) => d);
+
     return this;
   }
 
