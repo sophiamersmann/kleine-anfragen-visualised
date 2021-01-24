@@ -1,8 +1,8 @@
 <template>
   <root
-    src-requests="./requests"
-    src-requests-per-head="./requests-per-head.csv"
-    src-elections="./elections.csv" />
+    src-requests="./data/requests"
+    src-requests-per-head="./data/requests-per-head.csv"
+    src-elections="./data/elections.csv" />
 </template>
 
 <script>
