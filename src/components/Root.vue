@@ -39,6 +39,10 @@
                 <div class="legend-line--label">{{ line.label }}</div>
               </div>
             </div>
+            <div class="p info-source">
+              Daten von <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen.de</a> (Stand: 1.1.2021).
+              Code verfügbar auf <a href="https://github.com/sophiamersmann/kleine-anfragen-visualised" target="_blank">GitHub</a>.
+            </div>
           </div>
         </div>
       </div>
@@ -359,6 +363,11 @@ main {
   .p {
     padding: 0.5 * $spacing 0;
     text-align: justify;
+
+    &.info-source {
+      padding: $spacing 0;
+      font-size: 0.9rem;
+    }
   }
 
   .legend {
