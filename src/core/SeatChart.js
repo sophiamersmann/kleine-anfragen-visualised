@@ -6,7 +6,7 @@ import { computeSeatPositions } from '@/core/utils';
 import color from '@/assets/style/_global.scss';
 
 export default class SeatChart {
-  constructor(selector, innerRadius, labelPositions) {
+  constructor(selector, labelPositions) {
     this.selector = selector;
 
     // data
@@ -20,9 +20,10 @@ export default class SeatChart {
     this.height = null;
     this.marginTop = 20;
     this.config = {
-      seatRadius: 5,
       spacing: 1,
-      innerRadius,
+      seatRadius: null,
+      innerRadius: null,
+      fontSize: null,
     };
     this.labelPositions = labelPositions;
 
@@ -54,13 +55,23 @@ export default class SeatChart {
     return this;
   }
 
-  draw() {
+  draw(config) {
+    this.config.innerRadius = config.innerRadius;
+    this.config.seatRadius = config.seatRadius;
+    this.config.fontSize = config.fontSize;
+
     return this
+      .reset()
       .setUpScales()
       .prepareData()
       .setUpSVG()
       .drawAxis()
       .drawData();
+  }
+
+  reset() {
+    if (this.svg) d3.select(`${this.selector} svg`).remove();
+    return this;
   }
 
   setUpScales() {
@@ -143,7 +154,7 @@ export default class SeatChart {
         }))
       .call((g) => g
         .append('text')
-        .attr('font-size', '0.7rem')
+        .attr('font-size', this.config.fontSize)
         .append('textPath')
         .attr('xlink:href', (_, i) => `#${this.selector}--x-tick--text-path-${i}`)
         .style('font-weight', (d) => (this.isOpposition.get(d.party) ? 'bold' : 'normal'))

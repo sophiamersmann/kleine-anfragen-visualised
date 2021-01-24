@@ -40,18 +40,21 @@ export default {
       seatChart: null,
     };
   },
+  created() {
+    window.addEventListener('resize', this.onResize);
+  },
   mounted() {
     const chartDiv = this.getChartDiv();
-    const innerRadius = this.body === 'Bundestag' ? 50 : 30;
 
     let labelPositions;
     if (LABEL_POSITIONS.has(this.name)) {
       labelPositions = LABEL_POSITIONS.get(this.name);
     }
 
-    this.seatChart = new SeatChart(`#${chartDiv.id}`, innerRadius, labelPositions)
+    const cfg = this.getChartConfig();
+    this.seatChart = new SeatChart(`#${chartDiv.id}`, labelPositions)
       .data(this.requestsPerHead)
-      .draw();
+      .draw(cfg);
   },
   computed: {
     classes() {
@@ -73,8 +76,35 @@ export default {
     getChartDiv() {
       return this.$el.querySelector('.chart-seat');
     },
+    getChartConfig() {
+      let seatRadius = 5;
+      let innerRadius = 50;
+      let fontSize = '0.7rem';
+
+      if (window.innerWidth < 440) {
+        seatRadius = 2;
+        innerRadius = 30;
+        fontSize = '0.5rem';
+      } else if (window.innerWidth < 540) {
+        seatRadius = 3;
+        innerRadius = 40;
+        fontSize = '0.6rem';
+      } else if (window.innerWidth < 640) {
+        seatRadius = 4;
+      }
+
+      if (this.body !== 'Bundestag') {
+        innerRadius -= 20;
+      }
+
+      return { seatRadius, innerRadius, fontSize };
+    },
     onClick() {
       this.$emit('top', this.name);
+    },
+    onResize() {
+      const cfg = this.getChartConfig();
+      this.seatChart.draw(cfg);
     },
   },
 };
