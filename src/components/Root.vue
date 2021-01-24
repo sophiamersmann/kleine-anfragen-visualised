@@ -47,6 +47,11 @@
         </div>
       </div>
 
+      <div class="info-small-screen">
+        Diese Visualiserung wurde nicht für Geräte mit kleinen Bildschirmen entwickelt.
+        Wenn du mit den Grafiken interagieren möchtest, öffne diese Webseite an einem Desktop.
+      </div>
+
       <div class="tiles tiles-bundestag">
         <election-period
           v-for="period in tilesBundestag"
@@ -329,6 +334,20 @@ main {
   }
 }
 
+.info-small-screen {
+  padding: $spacing / 2;
+  border-radius: $border-radius-weak;
+  border: 5px solid $primary;
+  background-color: $primary-dark;
+  color: white;
+
+  display: none;
+
+  @include max-width($bp-lg) {
+    display: block;
+  }
+}
+
 .introduction {
   line-height: 1.5;
 
@@ -337,10 +356,10 @@ main {
     text-align: center;
 
       .kleine-anfragen {
-      font-family: 'Raleway', sans-serif;
-      text-decoration: none;
-      color: inherit;
-    }
+        font-family: 'Raleway', sans-serif;
+        text-decoration: none;
+        color: inherit;
+      }
 
     .visualised {
       font-family: 'Quicksand', sans-serif;
