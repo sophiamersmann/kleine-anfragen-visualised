@@ -8,25 +8,25 @@
           </a>
           <span class="visualised"> visualisiert</span>
         </h1>
+        <div class="author">
+          von Sophia Mersmann
+          <div>
+            <a
+              class="icon no-style"
+              href="mailto:sophia.mersmann.blog@gmail.com"
+              target="_blank">
+              <mail-icon />
+            </a>
+            <a class="icon no-style" href="https://twitter.com/sophiamersmann" target="_blank">
+              <twitter-icon />
+            </a>
+            <a class="icon no-style" href="https://github.com/sophiamersmann" target="_blank">
+              <github-icon />
+            </a>
+          </div>
+        </div>
         <div class="text">
           <div>
-            <div class="author">
-              von Sophia Mersmann
-              <div>
-                <a
-                  class="icon no-style"
-                  href="mailto:sophia.mersmann.blog@gmail.com"
-                  target="_blank">
-                  <mail-icon />
-                </a>
-                <a class="icon no-style" href="https://twitter.com/sophiamersmann" target="_blank">
-                  <twitter-icon />
-                </a>
-                <a class="icon no-style" href="https://github.com/sophiamersmann" target="_blank">
-                  <github-icon />
-                </a>
-              </div>
-            </div>
             <div class="p">
               In ihrer parlamentarischen Arbeit können Abgeordnete durch kleine Anfragen
               der Regierung auf wenige Punkte begrenzte Fragen stellen, die dann von dieser
