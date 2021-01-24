@@ -2,6 +2,7 @@
   <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'>
     <title>Logo Github</title>
     <path
+      :fill=color
       d='M256 32C132.3 32 32 134.9 32 261.7c0 101.5 64.2 187.5 153.2
          217.9a17.56 17.56 0 003.8.4c8.3 0 11.5-6.1 11.5-11.4 0-5.5-.2-19.9-.3-39.1a102.4
          102.4 0 01-22.6 2.7c-43.1
@@ -18,9 +19,15 @@
 </template>
 
 <script>
+import color from '@/assets/style/_global.scss';
 
 export default {
   name: 'GithubIcon',
+  data() {
+    return {
+      color: color.gray700,
+    };
+  },
 };
 </script>
 

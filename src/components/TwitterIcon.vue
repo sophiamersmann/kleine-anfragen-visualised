@@ -2,6 +2,7 @@
   <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'>
     <title>Logo Twitter</title>
     <path
+      :fill=color
       d='M496 109.5a201.8 201.8 0 01-56.55 15.3 97.51 97.51 0 0043.33-53.6
          197.74 197.74 0 01-62.56 23.5A99.14 99.14 0 00348.31 64c-54.42 0-98.46
          43.4-98.46 96.9a93.21 93.21 0 002.54 22.1 280.7 280.7 0 01-203-101.3A95.69
@@ -14,9 +15,15 @@
 </template>
 
 <script>
+import color from '@/assets/style/_global.scss';
 
 export default {
   name: 'TwitterIcon',
+  data() {
+    return {
+      color: color.gray700,
+    };
+  },
 };
 </script>
 

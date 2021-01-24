@@ -23,8 +23,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/style/global';
+
 svg {
   width: 16px;
   height: 16px;
+  color: $gray-700;
 }
 </style>

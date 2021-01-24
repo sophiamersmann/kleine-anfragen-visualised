@@ -394,6 +394,7 @@ main {
   .author {
     text-align: center;
     line-height: 1;
+    color: $gray-700;
   }
 
   .text {
