@@ -411,7 +411,6 @@ main {
 
   .p {
     padding: 0.5 * $spacing 0;
-    text-align: justify;
 
     &.info-source {
       padding: $spacing 0;
