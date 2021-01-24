@@ -313,6 +313,7 @@ $line-height: 20px;
     text-align: center;
     border-bottom: 1px solid $black;
     padding-bottom: 0.5 * $spacing;
+    font-weight: bold;
 
     span {
       font-weight: normal;
