@@ -1,0 +1,1 @@
+Diese Daten wurden am 1.1.2021 von [kleineAnfragen.de](https://kleineanfragen.de/) heruntergeladen. Mehr zur Aufbereitung ist beschrieben im [README](https://github.com/sophiamersmann/kleine-anfragen-visualised/blob/main/README.md).
