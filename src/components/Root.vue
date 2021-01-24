@@ -10,6 +10,23 @@
         </h1>
         <div class="text">
           <div>
+            <div class="author">
+              von Sophia Mersmann
+              <div>
+                <a
+                  class="icon no-style"
+                  href="mailto:sophia.mersmann.blog@gmail.com"
+                  target="_blank">
+                  <mail-icon />
+                </a>
+                <a class="icon no-style" href="https://twitter.com/sophiamersmann" target="_blank">
+                  <twitter-icon />
+                </a>
+                <a class="icon no-style" href="https://github.com/sophiamersmann" target="_blank">
+                  <github-icon />
+                </a>
+              </div>
+            </div>
             <div class="p">
               In ihrer parlamentarischen Arbeit können Abgeordnete durch kleine Anfragen
               der Regierung auf wenige Punkte begrenzte Fragen stellen, die dann von dieser
@@ -124,11 +141,18 @@ import ParliamentLegend from '@/core/ParliamentLegend';
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
 
+import MailIcon from './MailIcon.vue';
+import TwitterIcon from './TwitterIcon.vue';
+import GithubIcon from './GithubIcon.vue';
+
 export default {
   name: 'Root',
   components: {
     ElectionPeriod,
     Popup,
+    MailIcon,
+    TwitterIcon,
+    GithubIcon,
   },
   props: {
     srcRequests: String,
@@ -365,6 +389,11 @@ main {
       font-family: 'Quicksand', sans-serif;
       font-weight: bold;
     }
+  }
+
+  .author {
+    text-align: center;
+    line-height: 1;
   }
 
   .text {
