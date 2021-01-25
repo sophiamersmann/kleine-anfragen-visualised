@@ -13,13 +13,14 @@
         <div class="p">
           Kleine Anfragen sind ein Instrument der <b>parlamentarischen Kontrolle</b>.
           Sie erlauben
-          Abgeordneten eines Parlamentes der Regierung Fragen zu stellen, die dann zeitnah
+          Abgeordneten eines Parlamentes der Regierung Fragen zu stellen, die zeitnah
           von dieser beantwortet werden müssen. Die Antworten werden auf den 16+1
           Parlamentsdokumentationssystemen der Landesparlamente und des Bundestages
           veröffentlicht.
           Die Plattform <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>
           der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation</a>
-          sammelt Anfragen und Antworten aus allen Landesparlamenten. Eine maschinelle
+          nutzt diese Dokumentationssysteme, um Anfragen und Antworten aus allen Parlamenten
+          zusammenzutragen. Eine maschinelle
           Auswertung macht dabei die Anfragen leicht
           zugänglich und ermöglicht das Durchsuchen und Verlinken. Leider wurde das Projekt zum
           31.12.2020 <a href="https://kleineanfragen.de/info/stilllegung" target="_blank">eingestellt</a>.
@@ -28,8 +29,8 @@
         </div>
         <div class="p">
           Die von <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>
-          gesammelten Daten wurden immer wieder genutzt,
-          um Interessantes aufzuzeigen. Zum Beispiel konnte <a href="https://www.zeit.de/index" target="_blank">
+          gesammelten Daten haben immer wieder geholfen, Interessantes herauszufinden.
+          Zum Beispiel konnte <a href="https://www.zeit.de/index" target="_blank">
           ZEIT ONLINE</a> mit Hilfe
           einer Reihe von Anfragen an die Bundesregierung eine
           <a href="https://www.zeit.de/mobilitaet/2014-09/deutsche-bahn-bruecken-zustand" target="_blank">
@@ -37,7 +38,7 @@
           Auch das <a href="https://lab.technologiestiftung-berlin.de" target="_blank">
           Ideation & Prototyping Lab</a> der
           <a href="https://www.technologiestiftung-berlin.de/de/startseite/" target="_blank">
-          Technologiestiftung Berlin</a> haben
+          Technologiestiftung Berlin</a> hat
           schriftliche Anfragen aus dem Berliner Abgeordnetenhaus genutzt, um zu untersuchen,
           <a href="https://lab.technologiestiftung-berlin.de/projects/kleine-anfragen/de/" target="_blank">
           welches Potenzial für Open Data in den Anfragen steckt</a>.
@@ -46,10 +47,10 @@
           Auf dieser Webseite, die ebenfalls auf den Daten von
           <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a> basiert,
           steht nicht der Erkenntnisgewinn im Bezug auf spezifische Sachverhalte im Vordergrund.
-          Vielmehr ermöglicht die <b>visuelle Aufbereitung</b> einen spielerischer
+          Vielmehr bietet die <b>visuelle Aufbereitung</b> einen spielerischen
           Zugang zu den Daten,
-          der das Entdecken und Durchsuchen von Anfragen "fun" machen soll.
-          Eine Parlamentsgrafik zeigt wie häufig einzelne Abgeordnete in einer
+          der das Entdecken von Anfragen leicht und spannend/aufregend machen soll.
+          Eine Parlamentsgrafik (links) zeigt wie häufig einzelne Abgeordnete in einer
           Legislaturperiode kleine Anfragen gestellt haben. Dabei ist auffällig,
           dass Anfragen vor allem ein Instrument der <b>Opposition</b> sind, obwohl in
           einigen Bundesländern nicht wenige Anfragen auch von Abgeordneten der
@@ -57,7 +58,7 @@
           Abgeordneten ist wie folgt kategorisiert:
           <LegendText />
           Ein Klick auf die Parlamentsgrafik ermöglicht dann eine tiefere Auseinandersetzung
-          mit allen Anfragen, die während dieser Legislaturperiode gestellt wurden.
+          mit den Anfragen, die während einer Legislaturperiode gestellt wurden.
         </div>
       </div>
 
