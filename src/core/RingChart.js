@@ -342,16 +342,15 @@ export default class RingChart {
       ])
       .join('text')
       .attr('class', (d) => `text-info--${d.type}`)
-      .attr('y', -this.height / 2 + 10)
-      .attr('dominant-baseline', 'hanging')
+      .attr('y', -this.height / 2 + 12)
       .attr('opacity', (d) => +(d.type === 'interact'))
       .style('font-size', '0.8rem')
       .style('font-style', 'italic')
       .selectAll('tspan')
       .data((d) => d.text)
       .join('tspan')
-      .attr('x', -this.width / 2 + 10)
-      .attr('dy', (_, i) => i * 12)
+      .attr('x', -this.width / 2 + 12)
+      .attr('dy', 12)
       .text((d) => d);
 
     return this;
