@@ -2,7 +2,12 @@
   <div class="meta">
     <div>
       <div class="meta-section--title">Autorin</div>
-      <div class="meta-section--content">Sophia Mersmann</div>
+      <div class="meta-section--content">
+        Sophia Mersmann
+        <a href="https://sophiamersmann.github.io/portfolio/" target="_blank">
+          (Portfolio)
+        </a>
+      </div>
     </div>
     <div>
       <div class="meta-section--title">Datum</div>
