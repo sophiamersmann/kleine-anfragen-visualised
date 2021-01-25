@@ -1,77 +1,72 @@
 <template>
   <main :class=classes>
+    <heading />
+    <meta-info />
+
+    <div class="warning">
+      Diese Visualiserung wurde nicht für Geräte mit kleinen Bildschirmen entwickelt.
+      Wenn du mit den Grafiken interagieren möchtest, öffne diese Webseite an einem Desktop.
+    </div>
+
     <div class="top">
-      <div class="introduction">
-        <h1>
-          <a class="kleine-anfragen" href="https://kleineanfragen.de/" target="_blank">
-            kleineAnfragen
-          </a>
-          <span class="visualised"> visualisiert</span>
-        </h1>
-        <div class="author">
-          von Sophia Mersmann
-          <div>
-            <a
-              class="icon no-style"
-              href="mailto:sophia.mersmann.blog@gmail.com"
-              target="_blank">
-              <mail-icon />
-            </a>
-            <a class="icon no-style" href="https://twitter.com/sophiamersmann" target="_blank">
-              <twitter-icon />
-            </a>
-            <a class="icon no-style" href="https://github.com/sophiamersmann" target="_blank">
-              <github-icon />
-            </a>
-          </div>
+      <div class="top--text">
+        <div class="p">
+          Kleine Anfragen sind ein Instrument der <b>parlamentarischen Kontrolle</b>.
+          Sie erlauben
+          Abgeordneten eines Parlamentes der Regierung Fragen zu stellen, die dann zeitnah
+          von dieser beantwortet werden müssen. Die Antworten werden auf den 16+1
+          Parlamentsdokumentationssystemen der Landesparlamente und des Bundestages
+          veröffentlicht.
+          Die Plattform <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>
+          der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation</a>
+          sammelt Anfragen und Antworten aus allen Landesparlamenten. Eine maschinelle
+          Auswertung macht dabei die Anfragen leicht
+          zugänglich und ermöglicht das Durchsuchen und Verlinken. Leider wurde das Projekt zum
+          31.12.2020 <a href="https://kleineanfragen.de/info/stilllegung" target="_blank">eingestellt</a>.
+          Was bleibt sind <b>mehr als 100.000 dokumentierte Anfragen</b>,
+          die hier visuell aufbereitet sind.
         </div>
-        <div class="text">
-          <div>
-            <div class="p">
-              In ihrer parlamentarischen Arbeit können Abgeordnete durch kleine Anfragen
-              der Regierung auf wenige Punkte begrenzte Fragen stellen, die dann von dieser
-              zeitnah beantwortet und veröffentlicht werden müssen.
-            </div>
-            <div class="p">
-              Über 5 Jahre hat <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>,
-              ein Projekt der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation Deutschland e.V.</a>,
-              kleine und große Anfragen aus den Landesparlamenten und aus
-              dem Bundestag zusammengetragen und maschinell ausgewertet, und diese damit
-              leicht zugänglich, durchsuch- und verlinkbar gemacht. Leider wurde
-              das Projekt zum 31.12.2020 <a href="https://kleineanfragen.de/info/stilllegung" target="_blank">eingestellt</a>.
-              Was bleibt sind <b>mehr als 100.000 dokumentierte Anfragen</b>,
-              die hier visuell aufbereitet sind.
-            </div>
-          </div>
-          <div class="p">
-            <div class="legend legend-seat-chart">
-              Ein Abgeordneter einer <b>Oppositions-</b> oder Regierungspartei
-              war beteiligt an
-              <div
-              class="legend-line"
-              v-for="(line, i) in legend"
-              :key=i
-              >
-                <div class="legend-line--chart" :id=line.chartId />
-                <div class="legend-line--label">{{ line.label }}</div>
-              </div>
-            </div>
-            <div class="p info-source">
-              Daten von <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen.de</a> (Stand: 1.1.2021).
-              Code verfügbar auf <a href="https://github.com/sophiamersmann/kleine-anfragen-visualised" target="_blank">GitHub</a>.
-            </div>
-          </div>
+        <div class="p">
+          Die von <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>
+          gesammelten Daten wurden immer wieder genutzt,
+          um Interessantes aufzuzeigen. Zum Beispiel konnte <a href="https://www.zeit.de/index" target="_blank">
+          ZEIT ONLINE</a> mit Hilfe
+          einer Reihe von Anfragen an die Bundesregierung eine
+          <a href="https://www.zeit.de/mobilitaet/2014-09/deutsche-bahn-bruecken-zustand" target="_blank">
+          interaktive Karte über den Zustand von Bahnbrücken in Deutschland</a> erstellen.
+          Auch das <a href="https://lab.technologiestiftung-berlin.de" target="_blank">
+          Ideation & Prototyping Lab</a> der
+          <a href="https://www.technologiestiftung-berlin.de/de/startseite/" target="_blank">
+          Technologiestiftung Berlin</a> haben
+          schriftliche Anfragen aus dem Berliner Abgeordnetenhaus genutzt, um zu untersuchen,
+          <a href="https://lab.technologiestiftung-berlin.de/projects/kleine-anfragen/de/" target="_blank">
+          welches Potenzial für Open Data in den Anfragen steckt</a>.
+        </div>
+        <div class="p">
+          Auf dieser Webseite, die ebenfalls auf den Daten von
+          <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a> basiert,
+          steht nicht der Erkenntnisgewinn im Bezug auf spezifische Sachverhalte im Vordergrund.
+          Vielmehr ermöglicht die <b>visuelle Aufbereitung</b> einen spielerischer
+          Zugang zu den Daten,
+          der das Entdecken und Durchsuchen von Anfragen "fun" machen soll.
+          Eine Parlamentsgrafik zeigt wie häufig einzelne Abgeordnete in einer
+          Legislaturperiode kleine Anfragen gestellt haben. Dabei ist auffällig,
+          dass Anfragen vor allem ein Instrument der <b>Opposition</b> sind, obwohl in
+          einigen Bundesländern nicht wenige Anfragen auch von Abgeordneten der
+          Regierungsparteien gestellt wurden (z.B. in Berlin). Die Aktivität eines einzelnen
+          Abgeordneten ist wie folgt kategorisiert:
+          <LegendText />
+          Ein Klick auf die Parlamentsgrafik ermöglicht dann eine tiefere Auseinandersetzung
+          mit allen Anfragen, die während dieser Legislaturperiode gestellt wurden.
         </div>
       </div>
 
-      <div class="info-small-screen">
-        Diese Visualiserung wurde nicht für Geräte mit kleinen Bildschirmen entwickelt.
-        Wenn du mit den Grafiken interagieren möchtest, öffne diese Webseite an einem Desktop.
-      </div>
-
-      <div class="tiles tiles-bundestag">
+      <div
+        class="top--chart election-period-wrapper"
+        v-for="(period, i) in tilesBundestag"
+        :key=i
+      >
         <election-period
-          v-for="period in tilesBundestag"
           :key=period.name
           :name=period.name
           :body=period.body
@@ -110,8 +105,9 @@
       </div>
     </div>
   </main>
+
   <transition name="scale">
-    <popup
+    <Popup
       v-if="popup"
       :name=popup.key
       :body=popup.body
@@ -122,12 +118,14 @@
       :elections=popup.elections
       @close="onFlat" />
   </transition>
+
   <transition name="fade">
     <div
       v-if="popup"
       class="overlay"
       @click="onFlat" />
   </transition>
+
   <div class="tooltip tooltip-question" />
   <div class="tooltip tooltip-seat" />
 </template>
@@ -136,23 +134,22 @@
 import d3 from '@/assets/d3';
 
 import { getTermId } from '@/core/utils';
-import ParliamentLegend from '@/core/ParliamentLegend';
 
 import ElectionPeriod from './ElectionPeriod.vue';
 import Popup from './Popup.vue';
 
-import MailIcon from './MailIcon.vue';
-import TwitterIcon from './TwitterIcon.vue';
-import GithubIcon from './GithubIcon.vue';
+import Heading from './Heading.vue';
+import MetaInfo from './MetaInfo.vue';
+import LegendText from './LegendText.vue';
 
 export default {
   name: 'Root',
   components: {
+    Heading,
+    MetaInfo,
+    LegendText,
     ElectionPeriod,
     Popup,
-    MailIcon,
-    TwitterIcon,
-    GithubIcon,
   },
   props: {
     srcRequests: String,
@@ -175,14 +172,6 @@ export default {
       tilesLandtage: [],
       tileMap: null,
       popup: null,
-      legend: [
-        { chartId: 'legend-line--chart-0', category: '0', label: 'keinen Anfragen.' },
-        { chartId: 'legend-line--chart-1', category: '<1 per year', label: 'weniger als einer Anfrage im Jahr.' },
-        { chartId: 'legend-line--chart-2', category: '>=1 per year', label: 'mehr als einer Anfrage im Jahr.' },
-        { chartId: 'legend-line--chart-3', category: '>=1 per month', label: 'mehr als einer Anfrage im Monat.' },
-        { chartId: 'legend-line--chart-4', category: '>=1 per week', label: 'mehr als einer Anfrage in der Woche.' },
-        { chartId: 'legend-line--chart-5', category: '>=1 per day', label: 'mehr als einer Anfrage am Tag.' },
-      ],
     };
   },
   async created() {
@@ -247,15 +236,6 @@ export default {
         return tile;
       })).flat();
   },
-  mounted() {
-    const scale = d3.scalePoint()
-      .domain(this.legend.map((d) => d.category))
-      .range([0, 5]);
-
-    this.legend.forEach((d) => {
-      new ParliamentLegend(`#${d.chartId}`, d.category, scale).draw();
-    });
-  },
   methods: {
     async fetchRequestsPerHeadData() {
       this.requestsPerHead = await d3.csv(this.srcRequestsPerHead, (d) => ({
@@ -304,10 +284,9 @@ export default {
 
 main {
   padding: 2 * $spacing;
-  background-color: $primary-light;
-  transition: filter 0.2s ease;
   max-width: $bp-2xl;
   margin: 0 auto;
+  transition: filter 0.2s ease;
 
   &.background {
     filter: blur(4px);
@@ -317,10 +296,6 @@ main {
 
   @include max-width($bp-md) {
     padding: $spacing;
-  }
-
-  @include max-width($bp-2sm) {
-    padding: 0.5 * $spacing;
   }
 
   // @include max-width($bp-2xl) {
@@ -348,115 +323,69 @@ main {
   // }
 }
 
-.top {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: $spacing;
-
-  @include max-width($bp-xl) {
-    display: block;
-  }
-}
-
-.info-small-screen {
-  padding: $spacing / 2;
+.warning {
   border-radius: $border-radius-weak;
   border: 5px solid $primary;
   background-color: $primary-dark;
   color: white;
-
+  padding: $spacing / 2;
+  margin: $spacing auto;
   display: none;
+  max-width: $text-max-width;
+  line-height: 1.5;
 
   @include max-width($bp-lg) {
     display: block;
   }
 }
 
-.introduction {
-  line-height: 1.5;
+.top {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-auto-flow: dense;
+  gap: 2 * $spacing;
+  padding: 2 * $spacing 0;
 
-  h1 {
-    border-bottom: 1px solid $black;
-    text-align: center;
-
-      .kleine-anfragen {
-        font-family: 'Raleway', sans-serif;
-        text-decoration: none;
-        color: inherit;
-      }
-
-    .visualised {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: bold;
-    }
+  @include max-width($bp-xl) {
+    display: block;
+    padding-bottom: 0;
   }
 
-  .author {
-    text-align: center;
-    line-height: 1;
-    color: $gray-700;
+  @include max-width($bp-lg) {
+    padding-top: $spacing;
   }
 
-  .text {
-    @include max-width($bp-xl) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: $spacing;
+  .top--chart {
+    grid-column: 1;
+
+    &:nth-of-type(1) {
+      grid-row: 1;
     }
 
-    @include max-width($bp-lg) {
-      display: block;
+    &:nth-of-type(2) {
+      grid-row: 2;
     }
-  }
-
-  .p {
-    padding: 0.5 * $spacing 0;
-
-    &.info-source {
-      padding: $spacing 0;
-      font-size: 0.9rem;
-    }
-  }
-
-  .legend {
-    margin: 0.5 * $spacing 0;
-    padding: 0.5 * $spacing $spacing;
-    background-color: white;
-    border-radius: $border-radius-weak;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-align: left;
-
-    @include max-width($bp-xl) {
-      margin: 0;
-    }
-
-    @include max-width($bp-sm) {
-      padding: 0.5 * $spacing 0.5 * $spacing 0.5 * $spacing $spacing;
-    }
-
-    .legend-line {
-      display: flex;
-      align-items: baseline;
-      padding-left: $spacing;
-
-      &:first-of-type {
-        margin-top: 0.25 * $spacing;
-      }
-    }
-
-    .legend-line--chart {
-      margin-right: 0.5 * $spacing;
-    }
-  }
-}
-
-.tiles-bundestag {
-  .election-period {
-    margin: $spacing;
 
     @include max-width($bp-xl) {
       margin: $spacing 0;
+    }
+  }
+
+  .top--text {
+    grid-column: 2;
+    grid-row: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $spacing;
+
+    line-height: 1.5;
+
+    @include max-width($bp-xl) {
+      max-width: $text-max-width;
+      margin: 0 auto 2 * $spacing;
     }
   }
 }
