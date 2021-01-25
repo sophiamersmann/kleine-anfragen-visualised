@@ -1,6 +1,6 @@
 # [kleineAnfragen](https://kleineanfragen.de/) visualisiert
 
-Visualisierung kleiner und großer Anfragen aus dem Bundestag und aus den Landesparlamenten (von [kleineAnfragen.de](https://kleineanfragen.de/))
+Visualisierung kleiner und großer Anfragen aus dem Bundestag und aus den Landesparlamenten (Daten von [kleineAnfragen.de](https://kleineanfragen.de/))
 
 Link: https://sophiamersmann.github.io/kleine-anfragen-visualised/dist/
 
