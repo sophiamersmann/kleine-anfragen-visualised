@@ -49,7 +49,7 @@
           Legislaturperiode kleine Anfragen gestellt haben. Dabei ist auffällig,
           dass Anfragen vor allem ein Instrument der <b>Opposition</b> sind, obwohl in
           einigen Bundesländern nicht wenige Anfragen auch von Abgeordneten der
-          Regierungsparteien gestellt wurden (z.B. in Berlin). Die Aktivität eines einzelnen
+          Regierungsparteien gestellt wurden (z.B. in Berlin). Die Aktivität eines:einer einzelnen
           Abgeordneten ist wie folgt kategorisiert:
           <legend-text />
           Ein Klick auf eine Parlamentsgrafik ermöglicht dann eine tiefere Auseinandersetzung

@@ -1,6 +1,6 @@
 <template>
   <div class="legend">
-    Ein Abgeordneter einer <b>Oppositions-</b> oder Regierungspartei war beteiligt an
+    Ein:e Abgeordnete:r einer <b>Oppositions-</b> oder Regierungspartei war beteiligt an
     <div
       class="legend-line"
       v-for="(line, i) in legendLines"
