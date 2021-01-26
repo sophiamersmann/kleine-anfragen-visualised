@@ -70,7 +70,7 @@ export default {
 
   &[href*="mailto:"] {
     @include max-width($bp-lg) {
-      word-wrap: anywhere;
+      overflow-wrap: break-word;
     }
   }
 }
