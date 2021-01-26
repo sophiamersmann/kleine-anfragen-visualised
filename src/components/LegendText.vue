@@ -1,6 +1,6 @@
 <template>
   <div class="legend">
-    Ein Abgeordneter einer <b>Oppositions-</b> oder Regierungspartei war an
+    Ein Abgeordneter einer <b>Oppositions-</b> oder Regierungspartei war beteiligt an
     <div
       class="legend-line"
       v-for="(line, i) in legendLines"
@@ -9,7 +9,6 @@
       <div class="legend-line--chart" :id=line.chartId />
       <div class="legend-line--label">{{ line.label }}</div>
     </div>
-    beteiligt.
   </div>
 </template>
 

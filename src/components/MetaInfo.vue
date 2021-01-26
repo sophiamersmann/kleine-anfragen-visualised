@@ -10,8 +10,8 @@
       </div>
     </div>
     <div>
-      <div class="meta-section--title">Datum</div>
-      <div class="meta-section--content">25.1.2020</div>
+      <div class="meta-section--title">Veröffentlicht am</div>
+      <div class="meta-section--content">26.1.2021</div>
     </div>
     <div>
       <div class="meta-section--title">Source Code</div>
@@ -59,13 +59,19 @@ export default {
     font-weight: bold;
     margin-bottom: 5px;
   }
+
+  .meta-section--content {
+    line-height: 1.3;
+  }
 }
 
 .contact-information {
   margin-right: 4px;
 
   &[href*="mailto:"] {
-    word-wrap: anywhere;
+    @include max-width($bp-lg) {
+      word-wrap: anywhere;
+    }
   }
 }
 </style>

@@ -127,17 +127,21 @@ export default {
   justify-content: flex-end;
   align-items: center;
 
-  @include max-width($bp-lg) {
-    pointer-events: none;
-  }
-
   &:hover {
     box-shadow: $box-shadow-strong;
     border-color: $primary;
     cursor: pointer;
 
     @include max-width($bp-lg) {
+      box-shadow: $box-shadow-weak;
+      border-color: white;
       cursor: auto;
+    }
+  }
+
+  &:active {
+    @include max-width($bp-lg) {
+      pointer-events: none;
     }
   }
 }

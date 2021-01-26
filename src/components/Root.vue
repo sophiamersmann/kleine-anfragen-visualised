@@ -3,21 +3,16 @@
     <heading />
     <meta-info />
 
-    <div class="warning">
-      Diese Visualiserung wurde nicht für Geräte mit kleinen Bildschirmen entwickelt.
-      Wenn du mit den Grafiken interagieren möchtest, öffne diese Webseite an einem Desktop.
-    </div>
-
     <div class="top">
       <div class="top--text">
         <div class="p">
           Kleine Anfragen sind ein Instrument der <b>parlamentarischen Kontrolle</b>.
-          Sie erlauben
-          Abgeordneten eines Parlamentes der Regierung Fragen zu stellen, die zeitnah
+          Sie ermöglichen
+          Abgeordneten eines Parlamentes der Regierung Fragen zu stellen, die dann zeitnah
           von dieser beantwortet werden müssen. Die Antworten werden auf den 16+1
           Parlamentsdokumentationssystemen der Landesparlamente und des Bundestages
           veröffentlicht.
-          Die Plattform <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>
+          Die Plattform <a href="https://kleineanfragen.de/" target="_blank"><b>kleineAnfragen</b></a>
           der <a href="https://okfn.de/" target="_blank">Open Knowledge Foundation</a>
           nutzt diese Dokumentationssysteme, um Anfragen und Antworten aus allen Parlamenten
           zusammenzutragen. Eine maschinelle
@@ -29,7 +24,7 @@
         </div>
         <div class="p">
           Die von <a href="https://kleineanfragen.de/" target="_blank">kleineAnfragen</a>
-          gesammelten Daten haben immer wieder geholfen, Interessantes herauszufinden.
+          gesammelten Daten haben immer wieder dazu beigetragen, Interessantes herauszufinden.
           Zum Beispiel konnte <a href="https://www.zeit.de/index" target="_blank">
           ZEIT ONLINE</a> mit Hilfe
           einer Reihe von Anfragen an die Bundesregierung eine
@@ -39,7 +34,7 @@
           Ideation & Prototyping Lab</a> der
           <a href="https://www.technologiestiftung-berlin.de/de/startseite/" target="_blank">
           Technologiestiftung Berlin</a> hat
-          schriftliche Anfragen aus dem Berliner Abgeordnetenhaus genutzt, um zu untersuchen,
+          schriftliche Anfragen aus dem Berliner Abgeordnetenhaus nutzen können, um zu untersuchen
           <a href="https://lab.technologiestiftung-berlin.de/projects/kleine-anfragen/de/" target="_blank">
           welches Potenzial für Open Data in den Anfragen steckt</a>.
         </div>
@@ -49,17 +44,22 @@
           steht nicht der Erkenntnisgewinn im Bezug auf spezifische Sachverhalte im Vordergrund.
           Vielmehr bietet die <b>visuelle Aufbereitung</b> einen spielerischen
           Zugang zu den Daten,
-          der das Entdecken von Anfragen leicht und spannend/aufregend machen soll.
-          Eine Parlamentsgrafik (links) zeigt wie häufig einzelne Abgeordnete in einer
+          der das Entdecken von Anfragen lebending machen soll.
+          Eine Parlamentsgrafik zeigt wie häufig einzelne Abgeordnete in einer
           Legislaturperiode kleine Anfragen gestellt haben. Dabei ist auffällig,
           dass Anfragen vor allem ein Instrument der <b>Opposition</b> sind, obwohl in
           einigen Bundesländern nicht wenige Anfragen auch von Abgeordneten der
           Regierungsparteien gestellt wurden (z.B. in Berlin). Die Aktivität eines einzelnen
           Abgeordneten ist wie folgt kategorisiert:
-          <LegendText />
-          Ein Klick auf die Parlamentsgrafik ermöglicht dann eine tiefere Auseinandersetzung
-          mit den Anfragen, die während einer Legislaturperiode gestellt wurden.
+          <legend-text />
+          Ein Klick auf eine Parlamentsgrafik ermöglicht dann eine tiefere Auseinandersetzung
+          mit allen Anfragen, die während einer Legislaturperiode gestellt wurden.
         </div>
+      </div>
+
+      <div class="warning">
+        Diese Visualiserung wurde nicht für Geräte mit kleinen Bildschirmen entwickelt.
+        Wenn du mit den Grafiken interagieren möchtest, öffne diese Webseite an einem Desktop.
       </div>
 
       <div
@@ -108,7 +108,7 @@
   </main>
 
   <transition name="scale">
-    <Popup
+    <popup
       v-if="popup"
       :name=popup.key
       :body=popup.body
@@ -332,7 +332,6 @@ main {
   padding: $spacing / 2;
   margin: $spacing auto;
   display: none;
-  max-width: $text-max-width;
   line-height: 1.5;
 
   @include max-width($bp-lg) {
@@ -353,19 +352,15 @@ main {
     padding-bottom: 0;
   }
 
-  @include max-width($bp-lg) {
-    padding-top: $spacing;
-  }
-
   .top--chart {
     grid-column: 1;
 
     &:nth-of-type(1) {
-      grid-row: 1;
+      grid-row: 2;
     }
 
     &:nth-of-type(2) {
-      grid-row: 2;
+      grid-row: 1;
     }
 
     @include max-width($bp-xl) {
