@@ -372,8 +372,7 @@ main {
     grid-column: 2;
     grid-row: 1 / 3;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
     justify-content: space-between;
     gap: $spacing;
 
