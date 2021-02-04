@@ -17,7 +17,7 @@
       <div class="meta-section--title">Source Code</div>
       <div class="meta-section--content">
         <a href="https://github.com/sophiamersmann/kleine-anfragen-visualised" target="_blank">
-          Verfügbar auf Github
+          Verfügbar auf GitHub
         </a>
       </div>
     </div>
