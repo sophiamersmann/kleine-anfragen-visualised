@@ -2,7 +2,7 @@
 
 Visualisierung kleiner und großer Anfragen aus dem Bundestag und aus den Landesparlamenten (Daten von [kleineAnfragen.de](https://kleineanfragen.de/))
 
-Link: https://sophiamersmann.github.io/kleine-anfragen-visualised/dist/
+Link: https://sophiamersmann.github.io/kleine-anfragen-visualised/
 
 ## Daten: Quelle und Aufbereitung
 
