@@ -1,3 +1,5 @@
 module.exports = {
-  publicPath: '/kleine-anfragen-visualised/dist/',
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/kleine-anfragen-visualised/'
+    : '/',
 };
