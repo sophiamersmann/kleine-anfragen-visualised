@@ -1,1 +1,0 @@
-Diese Daten basieren auf Daten von [kleineAnfragen.de](https://kleineanfragen.de/) (Stand: 1.1.2021). Informationen zur Aufbereitung der Daten ist zu finden in diesem [README](https://github.com/sophiamersmann/kleine-anfragen-visualised/blob/main/README.md).
